@@ -1,0 +1,141 @@
+{include file="header.html"}
+<script type="text/javascript">
+    $(function () {
+        $('#integral_goods_log_form').validate({
+            errorPlacement: function (error, element) {
+                $(element).next('.field_notice').hide();
+                $(element).after(error);
+            },
+            success: function (label) {
+                label.addClass('right').text('OK!');
+            },
+            onkeyup: false,
+            rules: {
+                goods_stock: {
+                    required: true,
+                    number: true
+                },
+                goods_stock_exchange: {
+                    required: true,
+                    number: true
+                },
+                goods_price: {
+                    required: true,
+                    number: true
+                },
+                goods_point: {
+                    required: true,
+                    number: true
+                },
+            },
+            messages: {
+                goods_stock: {
+                    required: '{$lang.empty}',
+                    number: '{$lang.need_number}'
+                },
+                goods_stock_exchange: {
+                    required: '{$lang.empty}',
+                    number: '{$lang.need_number}'
+                },
+                goods_price: {
+                    required: '{$lang.empty}',
+                    number: '{$lang.need_number}'
+                },
+                goods_point: {
+                    required: '{$lang.empty}',
+                    number: '{$lang.need_number}'
+                },
+            }
+        });
+    });
+</script>
+<div id="rightTop">
+    <p>{$lang.integral_goods_log}</p>
+    <ul class="subnav">
+        <li><a class="btn1" href="index.php?app=integral_goods_log">{$lang.manage}</a></li>
+        <li><span>{$lang.edit}</span></li>
+    </ul>
+</div>
+<div class="info">
+    <form method="post" id="integral_goods_log_form">
+        <table class="infoTable">
+            <tr>
+                <th class="paddingT15">{$lang.goods_name}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    {$integral_goods_log.goods_name}
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">{$lang.user_name}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    {$integral_goods_log.user_name}
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">{$lang.my_num}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    {$integral_goods_log.my_num}
+                </td>
+            </tr>
+            
+            <tr>
+                <th class="paddingT15">
+                    {$lang.my_name}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput2" id="my_name" type="text" name="my_name" value="{$integral_goods_log.my_name|escape}" />
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.my_address}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput2" id="my_address" type="text" name="my_address" value="{$integral_goods_log.my_address|escape}" />
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.my_mobile}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput2" id="my_mobile" type="text" name="my_mobile" value="{$integral_goods_log.my_mobile|escape}" />
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.my_remark}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <textarea name="my_remark">{$integral_goods_log.my_remark|escape}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.wuliu_name}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput2" id="wuliu_name" type="text" name="wuliu_name" value="{$integral_goods_log.wuliu_name|escape}" />
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.wuliu_danhao}:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput2" id="wuliu_danhao" type="text" name="wuliu_danhao" value="{$integral_goods_log.wuliu_danhao|escape}" />
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    {$lang.state}:</th>
+                <td class="paddingT15 wordSpacing5">
+                {html_radios options=$states checked=$integral_goods_log.state name=state}</td>
+            </tr>
+            
+            
+            <tr>
+                <th></th>
+                <td class="ptb20">
+                    <input class="formbtn" type="submit" name="Submit" value="{$lang.submit}" />
+                    <input class="formbtn" type="reset" name="Submit2" value="{$lang.reset}" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{include file="footer.html"}

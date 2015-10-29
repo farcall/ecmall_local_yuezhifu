@@ -1,0 +1,51 @@
+{include file=member.header.html}
+<div class="content">
+    {include file=member.menu.html}
+    <div id="right">
+        {include file=member.submenu.html}
+        <div class="wrap">
+            <div class="public table">
+                <table class="table_head_line">
+                    <tbody>
+                        <!--{if $integral_goods_log_list}-->
+                        <tr class="line_bold">
+                            <th class="align1" colspan="7">
+                            </th>
+                        </tr>
+                        <tr class="line tr_color">
+                            <th class="align1">物品名称（数量）</th>
+                            <th>收货姓名</th>
+                            <th>收货地址</th>
+                            <th>联系电话</th>
+                            <th>物流信息</th>
+                            <th align="center">操作时间</th>
+                            <th align="center">状态</th>
+                        </tr>
+                        <!--{/if}-->
+                        <!--{foreach from=$integral_goods_log_list item=integral_goods_log name=v}-->
+                        <!--{if $smarty.foreach.v.last}--><tr class="line_bold"><!--{else}--><tr class="line"><!--{/if}-->              
+                            <td class="link1">{$integral_goods_log.goods_name|escape}（{$integral_goods_log.my_num|escape}）</td>
+                            <td align="center">{$integral_goods_log.my_name|escape}</td>
+                            <td align="center">{$integral_goods_log.my_address|escape}</td>
+                            <td align="center">{$integral_goods_log.my_mobile|escape}</td>
+                            <td align="center">{$integral_goods_log.wuliu_name|escape}<br/>{$integral_goods_log.wuliu_danhao|escape}</td>
+                            <td align="center">{$integral_goods_log.add_time|date}</td>
+                            <td align="center">{$integral_goods_log.state|escape}</td>
+                        </tr>
+                        <!--{foreachelse}-->
+                        <tr>
+                            <td colspan="7" class="member_no_records">{$lang.no_records}</td>
+                        </tr>
+                        <!--{/foreach}-->
+                    </tbody>
+                </table>
+                {include file=member.page.bottom.html}
+                <div class="clear"></div>
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file=footer.html}

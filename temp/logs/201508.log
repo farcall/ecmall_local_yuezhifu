@@ -1,0 +1,3 @@
+Thu, 13 Aug 2015 12:58:50 +0800	[256]MySQL Error[1146]: Table 'ecm-jd2015.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1439413130 AND end_time >1439413130
+Wrong File:  F:\wwwroot\ecm-jd2015\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278

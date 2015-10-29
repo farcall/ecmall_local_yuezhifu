@@ -1,0 +1,64 @@
+Wed, 28 Oct 2015 21:04:29 +0800	[2]session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\message.base.php:319)	\includes\libraries\session.lib.php	396
+Wed, 28 Oct 2015 21:07:29 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446008849 AND end_time >1446008849
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Wed, 28 Oct 2015 21:14:45 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446009285 AND end_time >1446009285
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Wed, 28 Oct 2015 21:16:29 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446009389 AND end_time >1446009389
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Wed, 28 Oct 2015 21:19:20 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446009560 AND end_time >1446009560
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Wed, 28 Oct 2015 21:19:22 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446009562 AND end_time >1446009562
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 14:47:29 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446072449 AND end_time >1446072449
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 14:48:29 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446072509 AND end_time >1446072509
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 14:49:35 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:UPDATE ecm_ju_template SET state='1' WHERE start_time <=1446072575 AND end_time >1446072575
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\model.base.php[523]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 15:16:27 +0800	[2]Missing argument 1 for Message::display(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\message.base.php on line 85 and defined	\eccore\controller\message.base.php	284
+Thu, 29 Oct 2015 15:16:54 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:04 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:SELECT COUNT(*) as c FROM ecm_ju_template jt WHERE 1=1
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[450]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 15:17:04 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:05 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_goods_pvs' doesn't exist
+MySQL Query:SELECT COUNT(*) as c FROM ecm_goods g LEFT JOIN ecm_goods_spec gs ON g.default_spec = gs.spec_id LEFT JOIN ecm_store s ON g.store_id = s.store_id LEFT JOIN ecm_goods_pvs gp ON g.goods_id=gp.goods_id LEFT JOIN ecm_goods_statistics gst ON g.goods_id = gst.goods_id  WHERE 1 = 1 AND gs.spec_id IS NOT NULL AND s.store_id IS NOT NULL 
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[450]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 15:17:11 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:18 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:19 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:20 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_goods_pvs' doesn't exist
+MySQL Query:SELECT COUNT(*) as c FROM ecm_goods g LEFT JOIN ecm_goods_spec gs ON g.default_spec = gs.spec_id LEFT JOIN ecm_store s ON g.store_id = s.store_id LEFT JOIN ecm_goods_pvs gp ON g.goods_id=gp.goods_id LEFT JOIN ecm_goods_statistics gst ON g.goods_id = gst.goods_id  WHERE 1 = 1 AND gs.spec_id IS NOT NULL AND s.store_id IS NOT NULL 
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[450]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 15:17:22 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm_ju_template' doesn't exist
+MySQL Query:SELECT COUNT(*) as c FROM ecm_ju_template jt WHERE 1=1
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[450]	\eccore\model\mysql.php	278
+Thu, 29 Oct 2015 15:17:27 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:28 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:17:35 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:18:01 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:18:19 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:18:21 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:18:29 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:18:29 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:19:23 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:19:23 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:22:49 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:22:49 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:23:01 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:23:01 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:23:09 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:23:09 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:24:07 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:24:07 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:24:53 +0800	[2]Missing argument 1 for FrontendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\app\frontend.base.php	510
+Thu, 29 Oct 2015 15:24:53 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123
+Thu, 29 Oct 2015 15:25:46 +0800	[2]Missing argument 1 for BackendApp::jslang(), called in D:\phpStudy\WWW\ecmall-yuezhifu\eccore\controller\app.base.php on line 139 and defined	\admin\app\backend.base.php	123

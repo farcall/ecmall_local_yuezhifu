@@ -1,0 +1,42 @@
+{include file=header.html}
+
+
+<script>
+    $(function () {
+        cityInit("city");
+    });
+
+    function choice_city_to_index(city_id)
+    {
+        $.setCookie('city_id', city_id);
+        window.location.href = "index.php";
+    }
+</script>
+<style>
+    .city_list{}
+    .city_list .mt{padding-left: 10px;font-size: 14px;color: #323232;line-height: 30px;background-color: #f2f2f2;border-bottom: 1px solid #e2e2e2;font-weight: 700;display: block;}
+    .city_list .mc{overflow: hidden;background-color: #fff;}
+    .city_list .mc li{-webkit-box-sizing: border-box;display: inline-block;width: 33%;line-height: 48px;border-bottom: 1px solid #ededed;border-right: 1px solid #ededed;text-align: center;color: #323232;font-size: 16px;}
+</style>
+<section>
+    <!--{foreach from=$city_info.city_list item=citys key=key}-->
+    <div id="{$key}" class="city_list">
+        <div class="mt">{$key}</div>
+        <div class="mc">
+            <ul>
+                <li>
+                    <!--{foreach from=$citys item=city key=key}-->
+                    <a href="javascript:choice_city_to_index({$city.city_id|escape})" >{$city.city_name|escape}</a>
+                    <!--{/foreach}-->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--{/foreach}-->
+</section>
+
+            
+            
+            
+            
+{include file=footer.html}

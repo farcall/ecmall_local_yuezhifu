@@ -1,0 +1,71 @@
+{include file="header.html"}    
+<div class="mb-head">
+    <a href="{url app=default}" class="l_b">首页</a>
+    <div class="tit">产品搜索</div>
+    <a href="{url app=category}" class="r_b">分类</a>
+</div>
+
+<script type="text/javascript" src="{lib file=search_goods.js}" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("*[ectype='wap_order_by'] a").click(function () {
+            replaceParam('order', this.id + " desc");
+            return false;
+        });
+    });
+</script>
+
+
+
+<style>
+.search_goods_options {width: 100%;}
+.search_goods_options ul {border-top: 1px solid #D7D6D6;border-bottom: 1px solid #d7d6d6;background-color: #fff;display: -webkit-box;}
+.search_goods_options li {width: 25%;float: left;position: relative;}
+.search_goods_options li a {display: block;background-color: #fff;text-align: center;line-height: 36px;padding-right: 16px;}
+.search_goods_options li a.selected {background-color: #F63723;color: #fff;}
+.search_goods_options li .decollator {width: 1px;color: #D7D6D6;position: absolute;top: 0px;right: 1px;height: 13px;}
+
+.search_goods{background: #fff;}
+.search_goods .list{font-size: 12px;display: table;width: 100%;}
+.search_goods .list li{border-bottom: 1px solid #e5e5e5;margin-top: 10px;overflow: hidden;padding: 0 3% 10px;}
+.search_goods .list li img{position: relative;margin-right: 2%;float: left;}
+.search_goods .list li h2 {height: 36px;overflow: hidden;position: relative;font-size: 14px;font-weight: normal;line-height: 18px;}
+.search_goods .list li p {line-height: 14px;position: relative;padding-right: 3%;margin-top:5px;}
+.search_goods .list li p span {color: #e63b53;overflow: hidden;font-size: 14px;display: inline-block;}
+.search_goods .list li p cite {font-size:12px;color: #a1a1a1;text-decoration: line-through;font-style: normal;float:right;}
+</style>
+
+
+
+<section class="search_goods_options" id="sort_order">
+    <ul class="s-items" ectype='wap_order_by'>
+        <li><a href="javascript:void(0);" <!--{if $smarty.get.order eq 'sales desc'}-->class="selected" <!--{/if}-->id="sales" >销量<span class="decollator">|</span></a></li>
+        <li><a href="javascript:void(0);" id="price">价格<span class="decollator">|</span></a></li>
+        <li><a href="javascript:void(0);" id="add_time">新品<span class="decollator">|</span></a></li>
+        <li><a href="javascript:void(0);" id="comments">好评<span class="decollator">|</span></a></li>
+    </ul>
+</section>
+
+
+<section class="search_goods">
+    <!--{if !$goods_list_order}-->
+    <ul class="list">
+
+        <!--{foreach from=$goods_list item=goods name=fe_goods}-->
+        <a href="{url app=goods&id=$goods.goods_id}">
+            <li>
+                <img src="{$goods.default_image}" alt="{$goods.name}" width="80" height="68"/>
+                <h2>{$goods.goods_name|escape}</h2>
+                <p><span>{$goods.price|price}</span><cite>{$goods.market_price|price}</cite></p>
+            </li>
+        </a>
+        <!--{/foreach}-->
+    </ul>
+    <!--{else}-->
+    <center style="font-size:16px;padding:20px 0">没有找到相关的商品！</center>
+    <!--{/if}-->
+</section>
+{include file='page.bottom.html'}
+
+
+{include file="footer.html"}

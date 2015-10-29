@@ -1,0 +1,215 @@
+{include file="member.header.html"}
+<div class="mb-head">
+    <a href="{url app=default}" class="l_b">首页</a>
+    <div class="tit">个人中心</div>
+    <a href="javascript" class="r_b"></a>
+</div>
+
+<!---------个人中心头部--------------->
+<div class="user_header">
+    <div class="user_photo">
+        <a href="{url app=member}"><img src="{$user.portrait}" /></a>
+    </div>
+    <span class="user_name">
+        您好,欢迎{$visitor.user_name|escape}。<a href="index.php?app=member&act=logout">退出</a>
+    </span>
+</div>
+
+<section class="member_index">
+    <div class="info">
+        <dl>
+            <dd>会员等级</dd>
+            <dt>{$user.ugrade.grade_name}</dt>
+        </dl>
+        <dl>
+            <dd>会员成长值</dd>
+            <dt>{$user.ugrade.growth}</dt>
+        </dl>
+        <dl>
+            <dd>当前积分</dd>
+            <dt>{$user.integral}</dt>
+        </dl>
+        <dl>
+            <dd>总积分</dd>
+            <dt>{$user.total_integral}</dt>
+        </dl>
+        <!--{foreach from=$epay item=val}-->
+        <dl>
+            <dd>可用金额</dd>
+            <dt>{$val.money}</dt>
+        </dl>
+        <dl>
+            <dd>冻结金额</dd>
+            <dt>{$val.money_dj}</dt>
+        </dl>
+        <!--{/foreach}-->
+        <dl>
+            <dd>待付款订单</dd>
+            <dt>{$buyer_stat.pending}</dt>
+        </dl>
+        <dl>
+            <dd>待发货订单</dd>
+            <dt>{$buyer_stat.shipped}</dt>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <ul>
+        <li>
+            <a href="{url app=my_favorite}">
+                <span class="ico" style="background:#993399"><em class="iconfont">&#xf00b9;</em></span>
+                <span class="title">商品收藏</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_favorite&type=store}">
+                <span class="ico" style="background:#99CC66"><em class="iconfont">&#xf00eb;</em></span>
+                <span class="title">店铺收藏</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_address}">
+                <span class="ico" style="background:#FF99CC"><em class="iconfont">&#x343a;</em></span>
+                <span class="title">收货地址</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=buyer_order}">
+                <span class="ico" style="background:#FF6666"><em class="iconfont">&#xf00b8;</em></span>
+                <span class="title">我的订单</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://m.kuaidi100.com/">
+                <span class="ico" style="background:#CC6699"><em class="iconfont">&#x345d;</em></span>
+                <span class="title">物流查询</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=member&act=password}">
+                <span class="ico" style="background:#339999"><em class="iconfont">&#xf0109;</em></span>
+                <span class="title">修改密码</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=member&act=profile}">
+                <span class="ico" style="background:#FF99CC"><em class="iconfont">&#xf00fc;</em></span>
+                <span class="title">修改信息</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=refer}">
+                <span class="ico" style="background:#663366"><em class="iconfont">&#xf0103;</em></span>
+                <span class="title">我的推广</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=epay&act=czlist}">
+                <span class="ico" style="background:#99CC66"><em class="iconfont">&#xf00ee;</em></span>
+                <span class="title">资金管理</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_integral_log}">
+                <span class="ico" style="background:#663366"><em class="iconfont">&#xf0126;</em></span>
+                <span class="title">积分明细</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_coupon}">
+                <span class="ico" style="background:#CC6699"><em class="iconfont">&#xf0082;</em></span>
+                <span class="title">我的优惠码</span>
+            </a>
+        </li>
+    </ul>
+</section>
+
+
+<section class="member_index">
+    <!--{if $store}-->
+    <div class="info">
+        <dl>
+            <dd>待处理的订单</dd>
+            <dt>{$seller_stat.submitted}</dt>
+        </dl>
+        <dl>
+            <dd>待发货的订单</dd>
+            <dt>{$seller_stat.accepted}</dt>
+        </dl>
+        <dl>
+            <dd>店铺等级</dd>
+            <dt>{$sgrade.grade_name}</dt>
+        </dl>
+        <dl>
+            <dd>有效期</dd>
+            <dt><!--{if $sgrade.add_time}-->{sprintf lang=leaving_day var1=sgrade.add_time}<!--{else}-->{$lang.no_limit}<!--{/if}--></dt>
+        </dl>
+        <dl>
+            <dd>商品发布</dd>
+            <dt>{$sgrade.goods.used}/<!--{if $sgrade.goods.total}-->{$sgrade.goods.total}<!--{else}-->{$lang.no_limit}<!--{/if}--></dt>
+        </dl>
+        <dl>
+            <dd>空间使用</dd>
+            <dt>{$sgrade.space.used}M/<!--{if $sgrade.space.total}-->{$sgrade.space.total}M<!--{else}-->{$lang.no_limit}<!--{/if}--></dt>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <ul>
+        <li>
+            <a href="{url app=my_store}">
+                <span class="ico" style="background:#CC6699"><em class="iconfont">&#xf00eb;</em></span>
+                <span class="title">店铺设置</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_goods}">
+                <span class="ico" style="background:#003399"><em class="iconfont">&#xf00b5;</em></span>
+                <span class="title">商品管理</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=seller_order}">
+                <span class="ico" style="background:#66CC99"><em class="iconfont">&#xf0133;</em></span>
+                <span class="title">订单管理</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_payment}">
+                <span class="ico" style="background:#CC6699"><em class="iconfont">&#xf00ae;</em></span>
+                <span class="title">支付管理</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=my_shipping}">
+                <span class="ico" style="background:#FF6666"><em class="iconfont">&#xf0078;</em></span>
+                <span class="title">配送管理</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=store&id=$store.store_id}">
+                <span class="ico" style="background:#FF6666"><em class="iconfont">&#xf00b3;</em></span>
+                <span class="title">我的店铺</span>
+            </a>
+        </li>
+        <li>
+            <a href="{url app=seller_coupon&act=check}">
+                <span class="ico" style="background:#CC6699"><em class="iconfont">&#xf0082;;</em></span>
+                <span class="title">优惠码验证</span>
+            </a>
+        </li>
+    </ul>
+
+    <!--{else}-->
+    <ul>
+        <li>
+            <a href="{url app=apply}">
+                <span class="ico" style="background:#993366"><em class="iconfont">&#xf00a0;</em></span>
+                <span class="title">申请开店</span>
+            </a>
+        </li>
+    </ul>
+    <!--{/if}-->
+
+</section>
+
+
+{include file="member.footer.html"}
