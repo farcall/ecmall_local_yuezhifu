@@ -30,7 +30,9 @@ class JiangliModule extends AdminbaseModule
         echo '平台注册共有注册会员'.$memberCount.'人<br>';
 
         //平台有过购买历史的人数
-        $orderMemberCount =
+        $orderMemberCount = OrderModel::orderMemberCount();
+        echo '平台共有'.$orderMemberCount.'人消费过<br>';
+
         //获取上一次奖励分配的时间 并检查是否在今天
         $last_time = $this->get_lasttime();
         $lastDay= date('Y-m-d H:i:s',$last_time);
@@ -132,15 +134,6 @@ class JiangliModule extends AdminbaseModule
 
 
 
-    /**
-     * 作用:返回平台的历史流水
-     * Created by QQ:710932
-     */
-    private function  get_histoyliushui(){
-        $order_mod = &m('order');
-        $histoyliushui = $order_mod->getOne('select sum(order_amount) from fangou.ecm_order where status=40');
-        return $histoyliushui;
-    }
 
 
     /**

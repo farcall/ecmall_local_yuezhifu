@@ -503,3 +503,12 @@ Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[500]	\eccore
 Sat, 31 Oct 2015 21:05:32 +0800	[256]MySQL Error[1146]: Table 'fangou.ecm__member' doesn't exist
 MySQL Query:select * from ecm__member
 Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[500]	\eccore\model\mysql.php	278
+Sat, 31 Oct 2015 22:17:03 +0800	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ct * from ecm_ecm_order group by buyer_id' at line 1
+MySQL Query:ct * from ecm_ecm_order group by buyer_id
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[500]	\eccore\model\mysql.php	278
+Sat, 31 Oct 2015 22:17:22 +0800	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ct * from ecm_order group by buyer_id' at line 1
+MySQL Query:ct * from ecm_order group by buyer_id
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[500]	\eccore\model\mysql.php	278
+Sat, 31 Oct 2015 22:18:44 +0800	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ct * from ecm_order group by buyer_id' at line 1
+MySQL Query:ct * from ecm_order group by buyer_id
+Wrong File:  D:\phpStudy\WWW\ecmall-yuezhifu\eccore\model\mysql.php[500]	\eccore\model\mysql.php	278
