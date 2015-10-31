@@ -43,7 +43,7 @@ class BaseApp extends Object
     }
     function index()
     {
-        echo 'Hello! 追云网络有限公司';
+        echo 'Hello! 临沂盒子信息科技有限公司';
     }
 
     /**

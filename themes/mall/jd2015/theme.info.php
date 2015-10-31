@@ -2,7 +2,7 @@
 
 return array(
     'version'       => '1.0',
-    'author'        => '追云网络有限公司 Team',
+    'author'        => '临沂盒子信息科技有限公司 Team',
     'description'   => 'yes',
 );
 

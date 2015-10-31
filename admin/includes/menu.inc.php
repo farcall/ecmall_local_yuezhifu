@@ -336,5 +336,28 @@ return array(
             ),
         ),
     ),
+    //每日奖励
+    'jianglifenpei'=>array(
+        'text'=>'奖励分配',
+        'default'=>'operate',
+        'children'=>array(
+            'operate'=>array(
+                'text'=>'运营中心',
+                'url'=>'index.php?module=jiangli&act=index',
+            ),
+            'today'=>array(
+                'text'=>'今日分配',
+                'url'=>'index.php?module=jiangli&act=today',
+            ),
+            'history'=>array(
+                'text'=>'历史分配',
+                'url'=>'index.php?module=jiangli&act=history',
+            ),
+            'setting'=>array(
+                'text'=>'设置',
+                'url'=>'index.php?module=jiangli&act=setting',
+            ),
+        ),
+    ),
 );
 ?>

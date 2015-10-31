@@ -5,7 +5,7 @@ return array(
     'name'  => Lang::get('data_call'),
     'desc'  => Lang::get('datacall_desc'),
     'version'   => '1.0',
-    'author'    => '追云网络有限公司 Team',
+    'author'    => '临沂盒子信息科技有限公司 Team',
     'website'   => '',
     'menu'  => array(
         array(

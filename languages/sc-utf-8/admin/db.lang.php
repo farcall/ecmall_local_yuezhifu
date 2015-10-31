@@ -26,7 +26,7 @@ return array(
     'empty_queue' => '备份队列为空或已完成',
     'fail_save_sql' => '备份写入失败',
     'download' => '下载',
-    'version_error' => '追云网络有限公司 当前版本%s与备份数据版本%s不同，备份恢复失败',
+    'version_error' => '临沂盒子信息科技有限公司 当前版本%s与备份数据版本%s不同，备份恢复失败',
     'import_vol_error' => '导入分卷%s失败',
     'restore_success' => '数据恢复成功。',
     'backup_not_finished' => '该备份未完成，可能是备份时被中止，不能继续导入',

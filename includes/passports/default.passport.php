@@ -335,7 +335,7 @@ class DefaultPassportPM extends BasePassportPM
      *    @param     string $folder 可选值:inbox, outbox
      *    @return    array:消息列表
      */
-    function get_list($user_id, $page, $folder = 'privatepm')
+    function get_list($user_id, $page= '0, 10', $folder = 'privatepm')
     {
         $limit = $page['limit'];
         $condition = '';
@@ -586,7 +586,7 @@ class DefaultPassportFriend extends BasePassportFriend
      *    @param     string $limit      条数
      *    @return    array  好友列表
      */
-    function get_list($user_id, $limit = '0, 10')
+    function get_list($user_id, $limit = '0, 10', $folder = 'privatepm')
     {
         $model_member =& m('member');
         $friends = $model_member->getRelatedData('has_friend', array($user_id), array(

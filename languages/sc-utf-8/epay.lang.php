@@ -228,7 +228,7 @@ return array(
     'member_view_order' => '您可以在用户中心中的我的订单查看该订单',
     'payment_zhifu' => '支付密码：',
     'payment_money' => '帐户余额：',
-    'epay_desc' => '使用追云网络有限公司站内余额支付',
+    'epay_desc' => '使用临沂盒子信息科技有限公司站内余额支付',
     'zhuanzhangjilu' => '转账记录',
     'bank_add' => '添加银行卡',
     'bank_inc_error' => '银行配置文件为空或有误',

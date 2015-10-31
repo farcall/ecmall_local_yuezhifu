@@ -5,7 +5,7 @@ return array(
     'hook' => 'after_opening',
     'name' => '开店邮件通知',
     'desc' => '开店成功后给店主发邮件通知',
-    'author' => '追云网络有限公司 Team',
+    'author' => '临沂盒子信息科技有限公司 Team',
     'version' => '1.0',
     'config' => array(
         'subject' => array(

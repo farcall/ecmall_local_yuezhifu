@@ -87,6 +87,17 @@ class OrderModel extends BaseModel
         /* 操作成功 */
         return true;
     }
+
+    /**
+     * @static
+     * 作用:平台中有过购买历史的人数
+     * Created by QQ:710932
+     */
+    static function orderMemberCount(){
+        $order_mod = &('order');
+        $memberArray = $order_mod->getAll("ct * from ".DB_PREFIX."ecm_order group by buyer_id");
+        return sizeof($memberArray);
+    }
 }
 
 ?>

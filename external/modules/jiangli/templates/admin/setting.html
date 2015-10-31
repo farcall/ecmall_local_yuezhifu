@@ -1,0 +1,41 @@
+{include file="header.html"}
+
+<div class="info">
+
+    <table class="infoTable">
+        <form method="post">
+            <tr>
+                <th class="paddingT15">会员消费流水最大奖励比例(百分比):</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="jiangli_consumption_ratio" type="text" value="{$setting.jiangli_consumption_ratio}" size="20">
+                    <span class="grey">奖励用户流水比例，奖励最大额度 = 历史消费流水×奖励比例 精确到0.01</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">平台利润分配比例:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="jiangli_pingtai_profit_ratio" type="text" value="{$setting.jiangli_pingtai_profit_ratio}" size="20">
+                    <span class="grey">平台收入的百分比用于当天奖金分配，奖励最大额度 = 历史消费流水×奖励比例 精确到0.01</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">平台利润分配比例:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="jiangli_last_time" type="text" value="{$setting.jiangli_last_time|date:Y-m-d H:i:s}" size="20" readonly="true">
+
+                    <span class="grey">最后一次分配时间</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <td class="ptb20">
+                    <input class="formbtn" type="submit" name="Submit" value="{$lang.submit}" />
+                    <input class="formbtn" type="reset" name="Submit2" value="{$lang.reset}" />
+                </td>
+            </tr>
+        </form>
+    </table>	
+</div>
+{include file="footer.html"}

@@ -35,7 +35,7 @@ return array(
     'payment_zhaohuizhifumima' => '忘记支付密码',
     'payment_zhifu_desc' => '（默然支付密码与登陆密码一致，请自行修改!）',
     'payment_money' => '帐户余额：',
-    'epay_desc' => '使用追云网络有限公司站内余额支付',
+    'epay_desc' => '使用临沂盒子信息科技有限公司站内余额支付',
 //  余额支付 增加语言部分 结束	
 );
 ?>

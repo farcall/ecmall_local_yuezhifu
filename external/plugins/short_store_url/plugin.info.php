@@ -5,7 +5,7 @@ return array(
     'hook' => 'on_run_action',
     'name' => '店铺地址简写插件',
     'desc' => '本插件可以简化店铺访问地址为“http://商城网址/?店铺id”。',
-    'author' => '追云网络有限公司 Team',
+    'author' => '临沂盒子信息科技有限公司 Team',
     'version' => '1.0',
 );
 

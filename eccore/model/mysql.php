@@ -399,7 +399,7 @@ class cls_mysql
     {
         if ($message)
         {
-            echo "<b>追云网络有限公司 info</b>: $message\n\n";
+            echo "<b>临沂盒子信息科技有限公司 info</b>: $message\n\n";
         }
         else
         {
