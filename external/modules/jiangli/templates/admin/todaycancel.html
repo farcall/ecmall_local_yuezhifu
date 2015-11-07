@@ -21,11 +21,7 @@
                             <tr>
                                 <th style="width: 80px">用户ID</th>
                                 <th>用户名</th>
-                                <th>已用金豆</th>
-                                <th>未用金豆</th>
-                                <th>理论分配金币</th>
-                                <th>实际分配金币</th>
-                                <th>完成进度</th>
+                                <th>分配金币</th>
                                 <th>状态</th>
                                 <th>操作</th>
                             </tr>
@@ -33,21 +29,15 @@
                             <tr>
                                 <td>{$member.user_id}</td>
                                 <th>{$member.user_name}</th>
-                                <th>{$member.yiyongjindou}</th>
-                                <th>{$member.weiyongjindou}</th>
                                 <td>
-                                    <span class="badge bg-red">{$member.lilunjinbi}</span>
+                                    <span class="badge bg-red" style="font-size: large">{$member.jinbi}</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-green">{$member.shijijinbi}</span>
-                                </td>
-                                <td>
-                                    <div class="progress progress-xs">
-                                        <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-                                    </div>
-                                </td>
-                                <td>
+                                    <!--{if $member.status==1}-->
+                                    <span class="label label-warning">已完成</span>
+                                    <!--{else}-->
                                     <span class="label label-warning">未分配</span>
+                                    <!--{/if}-->
                                 </td>
                                 <td>
                                     <a href="#">查看</a>
@@ -69,7 +59,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{$jinriliushui}元</h3>
+                        <h3>{$liushui}元</h3>
                         <p>今日平台流水</p>
                     </div>
                     <div class="icon">
@@ -81,7 +71,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{$jinrichoucheng}元</h3>
+                        <h3>{$choucheng}元</h3>
                         <p>今日平台抽成</p>
                     </div>
                     <div class="icon">
@@ -105,7 +95,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{$membercount}人</h3>
+                        <h3>{$count}人</h3>
                         <p>参与利润分配人数</p>
                     </div>
                     <div class="icon">
@@ -121,35 +111,12 @@
 
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3 class="info-box-number" id="show_shijiedu">最终额度{$shijizhipei}元</h3>
+                                    <h3 class="info-box-number" id="show_shijiedu">{$shijizhipei}元</h3>
 
-                                    <p class="info-box-number" id="show_shijihuilv">最终金豆(转金币)最终汇率{$shijihuilv}元</p>
+                                    <p class="red_big">实际奖励额度综合</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion ion-checkmark-circled"></i>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-12" id="querenfenpei">
-                            <div class="box box-info">
-                                <div class="box-content">
-                                    <form method="get">
-                                        <div class="box-body">
-                                            <input type="hidden" name="module" value="jiangli"/>
-                                            <input type="hidden" name="act" value="today"/>
-                                            <div class="form-group has-success">
-                                                <br/>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" id="shijizhipei" name="shijizhipei" value="{$shijizhipei}" style="font-size: x-large;">
-                                                    <label class="input-group-addon" for="inputSuccess">确认分配金额(元) </label>
-                                                </div>
-                                            </div>
-                                            <button type="submit" name="run" value="save" class="btn  btn-warning btn-lg">保存分配金额<span class="ion-refresh"></span></button>
-                                            <button type="submit" name="run" value="tijiao" class="btn  btn-warning btn-lg pull-right"> 立即提交 <span class="ion-paper-airplane"></span></button>
-                                        </div>
-                                    </form>
-
                                 </div>
                             </div>
 
@@ -162,8 +129,8 @@
                 <div class="col-md-6">
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>{$lilunhuilv}元</h3>
-                            <p>今日理论上金豆(转金币)汇率</p>
+                            <h3>{$fenpei_time|date:Y-m-d H:i:s}</h3>
+                            <p>奖励时间</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-card"></i>

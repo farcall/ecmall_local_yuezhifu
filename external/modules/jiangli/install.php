@@ -5,6 +5,7 @@ $db=&db();
 //金币发放日志表(ecm_epay_jinbi_log)
 $db->query("CREATE TABLE `".DB_PREFIX."epay_jinbi_log` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `operate_id` int(11) NOT NULL DEFAULT '0' COMMENT 'operate表ID',
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '会员ID',
   `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '会员名称',
   `jinbi` float(10,2) NOT NULL DEFAULT '0' COMMENT '当次奖励金币数量',

@@ -350,7 +350,7 @@ return array(
                 'url'=>'index.php?module=jiangli&act=today',
             ),
             'history'=>array(
-                'text'=>'历史分配',
+                'text'=>'查看历史',
                 'url'=>'index.php?module=jiangli&act=history',
             ),
             'setting'=>array(
