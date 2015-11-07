@@ -167,7 +167,6 @@ class MemberApp extends MemberbaseApp {
     function register() {
         if ($this->visitor->has_login) {
             $this->show_warning('has_login');
-
             return;
         }
         if (!IS_POST) {

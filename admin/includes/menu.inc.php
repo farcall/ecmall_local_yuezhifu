@@ -70,10 +70,10 @@ return array(
                 'text' => Lang::get('noticetemplate'),
                 'url' => 'index.php?app=mailtemplate',
             ),
-            'my_weixin' => array(
-                'text' => '微信接口配置',
-                'url' => 'index.php?app=my_wxconfig',
-            ),
+//            'my_weixin' => array(
+//                'text' => '微信接口配置',
+//                'url' => 'index.php?app=my_wxconfig',
+//            ),
         ),
     ),
     // 商品
@@ -108,29 +108,29 @@ return array(
             ),
         ),
     ),
-	// 聚划算
-    'ju' => array(
-        'text' => Lang::get('ju'),
-        'default' => 'jutemplate',
-        'children' => array(
-            'jutemplate' => array(
-                'text' => Lang::get('ju_template'),
-                'url' => 'index.php?app=jutemplate',
-            ),
-            'jucate' => array(
-                'text' => Lang::get('ju_cate'),
-                'url' => 'index.php?app=jucate',
-            ),
-            'jubrand' => array(
-                'text' => Lang::get('ju_brand'),
-                'url' => 'index.php?app=jubrand',
-            ),
-            'goods_verify' => array(
-                'text' => Lang::get('goods_verify'),
-                'url' => 'index.php?app=ju&amp;act=goods_list',
-            ),
-        ),
-    ),
+//	// 聚划算
+//    'ju' => array(
+//        'text' => Lang::get('ju'),
+//        'default' => 'jutemplate',
+//        'children' => array(
+//            'jutemplate' => array(
+//                'text' => Lang::get('ju_template'),
+//                'url' => 'index.php?app=jutemplate',
+//            ),
+//            'jucate' => array(
+//                'text' => Lang::get('ju_cate'),
+//                'url' => 'index.php?app=jucate',
+//            ),
+//            'jubrand' => array(
+//                'text' => Lang::get('ju_brand'),
+//                'url' => 'index.php?app=jubrand',
+//            ),
+//            'goods_verify' => array(
+//                'text' => Lang::get('goods_verify'),
+//                'url' => 'index.php?app=ju&amp;act=goods_list',
+//            ),
+//        ),
+//    ),
     // 店铺
     'store' => array(
         'text' => Lang::get('store'),
@@ -267,56 +267,56 @@ return array(
             ),
         ),
     ),
-    // 手机版设置
-    'wap_setting' => array(
-        'text' => Lang::get('wap_setting'),
-        'default' => 'wap_setting',
-        'children' => array(
-            'wap_setting' => array(
-                'text' => Lang::get('wap_setting'),
-                'url' => 'index.php?app=wap_setting',
-            ),
-            'ad' => array(
-                'text' => Lang::get('ad'),
-                'url' => 'index.php?app=ad',
-            ),
-            'waptheme' => array(
-                'text' => Lang::get('waptheme'),
-                'url' => 'index.php?app=waptheme',
-            ),
-        ),
-    ),
-    // 后台积分相关
-    'integral_manage' => array(
-        'text'      => Lang::get('integral_manage'),
-        'default'   => 'integral_log',
-        'children'  => array(
-            'integral_log' => array(
-                'text'  => Lang::get('integral_log'),
-                'url'   => 'index.php?app=integral_log',
-            ),
-            'egg_setting' => array(
-                'text'  => Lang::get('egg_setting'),
-                'url'   => 'index.php?app=egg',
-            ),
-            'eggpresent_setting' => array(
-                'text'  => Lang::get('eggpresent_setting'),
-                'url'   => 'index.php?app=eggpresent',
-            ),
-            'eggpresentrec_setting' => array(
-                'text'  => Lang::get('eggpresentrec_setting'),
-                'url'   => 'index.php?app=eggpresentrec',
-            ),
-            'integral_goods' => array(
-                'text'  => Lang::get('integral_goods'),
-                'url'   => 'index.php?app=integral_goods',
-            ),
-            'integral_goods_log' => array(
-                'text'  => Lang::get('integral_goods_log'),
-                'url'   => 'index.php?app=integral_goods_log',
-            ),
-        ),
-    ),
+//    // 手机版设置
+//    'wap_setting' => array(
+//        'text' => Lang::get('wap_setting'),
+//        'default' => 'wap_setting',
+//        'children' => array(
+//            'wap_setting' => array(
+//                'text' => Lang::get('wap_setting'),
+//                'url' => 'index.php?app=wap_setting',
+//            ),
+//            'ad' => array(
+//                'text' => Lang::get('ad'),
+//                'url' => 'index.php?app=ad',
+//            ),
+//            'waptheme' => array(
+//                'text' => Lang::get('waptheme'),
+//                'url' => 'index.php?app=waptheme',
+//            ),
+//        ),
+//    ),
+//    // 后台积分相关
+//    'integral_manage' => array(
+//        'text'      => Lang::get('integral_manage'),
+//        'default'   => 'integral_log',
+//        'children'  => array(
+//            'integral_log' => array(
+//                'text'  => Lang::get('integral_log'),
+//                'url'   => 'index.php?app=integral_log',
+//            ),
+//            'egg_setting' => array(
+//                'text'  => Lang::get('egg_setting'),
+//                'url'   => 'index.php?app=egg',
+//            ),
+//            'eggpresent_setting' => array(
+//                'text'  => Lang::get('eggpresent_setting'),
+//                'url'   => 'index.php?app=eggpresent',
+//            ),
+//            'eggpresentrec_setting' => array(
+//                'text'  => Lang::get('eggpresentrec_setting'),
+//                'url'   => 'index.php?app=eggpresentrec',
+//            ),
+//            'integral_goods' => array(
+//                'text'  => Lang::get('integral_goods'),
+//                'url'   => 'index.php?app=integral_goods',
+//            ),
+//            'integral_goods_log' => array(
+//                'text'  => Lang::get('integral_goods_log'),
+//                'url'   => 'index.php?app=integral_goods_log',
+//            ),
+//        ),
+//    ),
     // 扩展
     'extend' => array(
         'text' => Lang::get('extend'),

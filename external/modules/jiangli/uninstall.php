@@ -1,5 +1,7 @@
 <?php
 
 $db=&db();
-$db->query("DROP TABLE ".DB_PREFIX."_epay_jiangli_log");
+$db->query("DROP TABLE ".DB_PREFIX."epay_operate");
+$db->query("DROP TABLE ".DB_PREFIX."epay_jinbi_log");
+$db->query("DROP TABLE ".DB_PREFIX."epay_jinbi2money_log");
 ?>

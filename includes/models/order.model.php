@@ -88,26 +88,7 @@ class OrderModel extends BaseModel
         return true;
     }
 
-    /**
-     * @static
-     * 作用:平台中有过购买历史的人数
-     * Created by QQ:710932
-     */
-    static function orderMemberCount(){
-        $order_mod = &m('order');
-        $memberArray = $order_mod->getAll("select * from ".DB_PREFIX."order where status=40  group by buyer_id");
-        return sizeof($memberArray);
-    }
 
-    /**
-     * 作用:返回平台的历史流水
-     * Created by QQ:710932
-     */
-    private function  histoyliushui(){
-        $order_mod = &m('order');
-        $histoyliushui = $order_mod->getOne('select sum(order_amount) from fangou.ecm_order where status=40');
-        return $histoyliushui;
-    }
 
 }
 

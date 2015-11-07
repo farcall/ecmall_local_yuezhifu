@@ -1,0 +1,87 @@
+{include file="header.html"}
+<div id="rightTop">
+<p>
+    {$lang.hello}<b>{$admin.user_name}</b>{$lang.welcome_to_ecmall}
+    上一次奖金分配时间为 {$last_time|date:complete}
+</p>
+</div>
+<dl id="rightCon">
+<dt>{$lang.ecmall_news}</dt>
+<dd>
+    <ul id="news">
+    </ul>
+</dd>
+<!--{if $remind_info}-->
+<dt>{$lang.remind_info}</dt>
+<dd>
+    <ul>
+        <!--{foreach from=$remind_info item=remind}-->
+        <li>{$remind}</li>
+        <!--{/foreach}-->
+    </ul>
+</dd>
+<!--{/if}-->
+<dt>平台数据</dt>
+<dd>
+    <table>
+        <tr>
+            <th>注册人数:</th>
+            <td class="td">{$memberCount}</td>
+            <th>历史流水:</th>
+            <td class="td">{$news_in_a_week.new_store_qty}/{$news_in_a_week.new_apply_qty}</td>
+        </tr>
+        <tr>
+            <th>消费历史人数:</th>
+            <td class="td">{$news_in_a_week.new_goods_qty}</td>
+
+        </tr>
+    </table>
+</dd>
+<dt>本次分配数据</dt>
+<dd>
+    <table>
+        <tr>
+            <th>{$lang.user_qty}:</th>
+            <td class="td">{$stats.user_qty}</td>
+            <th>{$lang.store_qty}:</th>
+            <td class="td">{$stats.store_qty}/{$stats.apply_qty}</td>
+        </tr>
+        <tr>
+            <th>{$lang.goods_qty}:</th>
+            <td class="td">{$stats.goods_qty}</td>
+            <th>{$lang.order_qty}:</th>
+            <td class="td">{$stats.order_qty}</td>
+        </tr>
+        <tr>
+            <th>{$lang.order_amount}:</th>
+            <td class="td">{$stats.order_amount|price}</td>
+            <th></th>
+            <td class="td"></td>
+        </tr>
+    </table>
+</dd>
+<dt>{$lang.sys_info}</dt>
+<dd>
+    <table>
+        <tr>
+            <th>{$lang.server_os}:</th>
+            <td class="td">{$sys_info.server_os}</td>
+            <th>{$lang.web_server}:</th>
+            <td class="td">{$sys_info.web_server}</td>
+        </tr>
+        <tr>
+            <th>{$lang.php_version}:</th>
+            <td class="td">{$sys_info.php_version}</td>
+            <th>{$lang.mysql_version}:</th>
+            <td class="td">{$sys_info.mysql_version}</td>
+        </tr>
+        <tr>
+            <th>{$lang.ecmall_version}:</th>
+            <td class="td">{$sys_info.ecmall_version}</td>
+            <th>{$lang.install_date}:</th>
+            <td class="td">{$sys_info.install_date}</td>
+        </tr>
+    </table>
+</dd>
+</dl>
+{include file="footer.html"}

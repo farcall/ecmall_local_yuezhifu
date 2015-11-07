@@ -1,0 +1,49 @@
+{include file="header.html"}
+
+<div class="info">
+
+    <table class="infoTable">
+        <form method="post">
+            <tr>
+                <th class="paddingT15">平台分配金币占平台利润比例:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="epay_lirun_fenpei_ratio" type="text" value="{$setting.epay_lirun_fenpei_ratio}" size="20">
+                    <span class="grey">默认0.5</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15 wordSpacing5">一个金豆可转换最多金币数量:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="epay_max_jindou2jinbi" type="text" value="{$setting.epay_max_jindou2jinbi}" size="20">
+                    <span class="grey">个(默认60个 精准到0.01)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15 wordSpacing5">获得一个金豆需要在平台消费:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="epay_min_money2jindou" type="text" value="{$setting.epay_min_money2jindou}" size="20">
+                    <span class="grey">元(默认100元)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">昨日分配时间:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="epay_fenpei_last_time" type="text" value="{$setting.epay_fenpei_last_time|date:Y-m-d H:i:s}" size="20" readonly="true">
+                    <span class="grey">最后一次分配时间(只读:不可修改)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <td class="ptb20">
+                    <input class="formbtn" type="submit" name="Submit" value="{$lang.submit}" />
+                    <input class="formbtn" type="reset" name="Submit2" value="{$lang.reset}" />
+                </td>
+            </tr>
+        </form>
+    </table>	
+</div>
+{include file="footer.html"}

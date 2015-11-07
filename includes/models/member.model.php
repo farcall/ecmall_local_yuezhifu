@@ -210,17 +210,6 @@ class MemberModel extends BaseModel
         $this->edit($user['user_id'], array('ugrade' => $ugrade['grade'])); //更新等级
     }
 
-    /**
-     * @static
-     * 作用:返回平台的注册会员数量
-     * Created by QQ:710932
-     */
-    static function memberCount(){
-        $member_mod = &m('member');
-        $memberarry = $member_mod->getAll("select * from ".DB_PREFIX."member");
-        return sizeof($memberarry);
-    }
-    
 }
 
 ?>
