@@ -208,6 +208,14 @@ class EpayApp extends MemberbaseApp {
             return;
         }
     }
+
+    /**
+     * 作用:金币提现为虚拟账户中的钱
+     * Created by QQ:710932
+     */
+    function jinbiduihuan(){
+        //todo 金币提现为虚拟账户中的钱
+    }
 //余额转帐
     function out() {
         $to_user = trim($_POST['to_user']);
@@ -486,6 +494,10 @@ class EpayApp extends MemberbaseApp {
             array(
                 'name'  => 'epay_withdraw',
                 'url'   => 'index.php?app=epay&act=withdraw',
+            ),
+            array(
+                'name'  => '金币兑换为可用资金(钱)',
+                'url'   => 'index.php?app=epay&act=jinbiduihuan',
             ),
         );
         return $menus;
