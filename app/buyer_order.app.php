@@ -586,6 +586,7 @@ class Buyer_orderApp extends MemberbaseApp {
             'shipped' => Lang::get('shipped_orders'),
             'finished' => Lang::get('finished_orders'),
             'canceled' => Lang::get('canceled_orders')));
+
         $this->assign('type', $_GET['type']);
         $this->assign('orders', $orders);
         $this->_format_page($page);

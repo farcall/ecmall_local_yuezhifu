@@ -21,6 +21,12 @@ class JiangliModule extends AdminbaseModule
      */
     function index()
     {
+        date_default_timezone_set ('Asia/Shanghai');
+        //$gtime = gmtime();
+       // $gtime = time()-8*60*60;
+        $gtime = mktime(0,0,0,date("m"),date("d"),date("Y"))-8*3600;
+   //     $gtime = strtotime(date('Y-m-d', time()));
+        $this->assign('gtime',$gtime);
         $this->display('index.html');
     }
 
@@ -149,9 +155,11 @@ class JiangliModule extends AdminbaseModule
      */
     private function _fenpei(){
         //读取数据库配置 更新到界面中
-        $now_time = time();
+        $now_time = gmtime();
+
         //今日0点0分时间戳
-        $begin_time = mktime(0,0,0,date("d"),date("m"),date("m"));;
+        $begin_time = mktime(0,0,0,date("m"),date("d"),date("Y"))-8*3600;
+
         $end_time = $now_time;
 
 
@@ -263,14 +271,14 @@ class JiangliModule extends AdminbaseModule
      */
     private function _showTodayPage(){
         //读取数据库配置 更新到界面中
-        $now_time = time();
+        $now_time = gmtime();
         //今日0点0分时间戳
-
         $end_time = $now_time;
-        $begin_time = mktime(0,0,0,date("d"),date("m"),date("m"));
+        $begin_time = mktime(0,0,0,date("m"),date("d"),date("Y"))-8*3600;
+
         $epay_operate_mod = &m('epay_operate');
         $epay_operate_data = $epay_operate_mod->get(array(
-            'conditions'=>'add_time>='.$begin_time.' and add_time<='.$end_time,
+            'conditions'=>'add_time>='.$begin_time.' and add_time<='.$end_time.' and status=0',
         ));
 
         if($epay_operate_data['status'] == 1){
@@ -409,9 +417,10 @@ class JiangliModule extends AdminbaseModule
     private function _savejine(){
         //查找epay_operate表中有没有add_time在今天的列
         $shijizhipei = $_GET['shijizhipei'];
-        $now_time = time();
+        $now_time = gmtime();
         //今日0点0分时间戳
-        $begin_time = mktime(0,0,0,date("d"),date("m"),date("m"));;
+        $begin_time = mktime(0,0,0,date("m"),date("d"),date("Y"))-8*3600;
+
         $end_time = $now_time;
         $epay_operate_mod = &m('epay_operate');
         $row = $epay_operate_mod->get(array(
@@ -538,6 +547,12 @@ class JiangliModule extends AdminbaseModule
      * Created by QQ:710932
      */
     private function _todayOrderAmount($begin_time,$end_time){
+//        //插件中的时间都是用的time()本地时间
+//        //框架中用的是gmtime()标准时间,所以需要转换
+//
+//        $begin_time = $begin_time - 8*6400;
+//        $end_time = $end_time- - 8*6400;
+
         $order_mod = &m('order');
         $totalAmount = $order_mod->getOne("select sum(order_amount) from ".DB_PREFIX."order where status=40 and finished_time>".$begin_time." and finished_time<=".$end_time);
         return $totalAmount==null?0:$totalAmount;

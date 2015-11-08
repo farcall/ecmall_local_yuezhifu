@@ -25,7 +25,11 @@
                     <dd>{sprintf lang=you_have_pm var1=new_message}</dd>
                     <dd style="line-height:25px;">
                         <!--{foreach from=$epay item=val}-->
+                        系统奖励金币<span style="font-size: large;color: red">{$jinbi_jindou.jinbi}</span>个&nbsp;&nbsp;&nbsp;&nbsp;消耗金豆<span style="font-size: large;color: #c53800">{$jinbi_jindou.yiyongjindou}</span>个
+                        剩余金豆:<span style="font-size:large;color:#FE5400;">{$jinbi_jindou.weiyongjindou}</span>个&nbsp;&nbsp;&nbsp;&nbsp;
+                        <br/><br/>
                         {$lang.zhanghuzongjinere}<span style="font-size:16px;font-weight:bold; color:#FE5400;">{$val.money}</span>&nbsp;{$lang.yuan}&nbsp;&nbsp;{$lang.dongjiejine}<span style="color:blue;">{$val.money_dj}</span>&nbsp;{$lang.yuan}
+
                         <br/><span class="epay_btn"><a href="{url app=epay&act=withdraw}">{$lang.tixian}</a></span><span class="epay_btn epay_btn_white"><a href="{url app=epay&act=czlist}">{$lang.chongzhi}</a></span>
                         <!--{/foreach}-->
                     </dd>
