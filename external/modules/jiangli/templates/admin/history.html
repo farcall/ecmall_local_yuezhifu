@@ -1,0 +1,53 @@
+{include file="header.html"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+
+                </div>
+                <div class="box-body  table-responsive no-padding">
+                    <div class="box-content">
+                        <table class="table table-bordered" id="history">
+                            <!--ID	平台流水	平台抽成	可支配奖金	实际支配奖金	分配人次	管理员	计算时间	分配时间	状态-->
+                            <!--ID	liushui	choucheng	kezhipei	shijizhipei	count	admin_name	add_time	fenpei_time	status-->
+                            <tr>
+                                <th style="display: none">ID</th>
+                                <th>平台流水</th>
+                                <th>平台抽成</th>
+                                <th>理论奖金</th>
+                                <th>最终奖金</th>
+                                <th>奖励人数</th>
+                                <th>操作管理员</th>
+                                <th>奖励时间</th>
+                                <!--<th>状态</th>-->
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$historys item=today}
+                            <tr>
+                                <td style="display: none">{$today.id}</td>
+                                <td>{$today.liushui}</td>
+                                <td>{$today.choucheng}</td>
+                                <td>{$today.kezhipei}</td>
+                                <td class="bg-red" style="font-size: large">{$today.shijizhipei}</td>
+                                <td>{$today.count}</td>
+                                <td>{$today.admin_name}</td>
+                                <td>{$today.fenpei_time|date:m-d-Y}</td>
+                                <!--<td>{$today.status}</td>-->
+                                <td><a href="index.php?module=jiangli&act=history&id={$today.id}">详情</a></td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {include file="page.bottom.html"}
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</section>
+
+
+{include file="footer.html"}

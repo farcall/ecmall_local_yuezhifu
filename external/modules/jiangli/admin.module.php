@@ -21,7 +21,7 @@ class JiangliModule extends AdminbaseModule
      */
     function index()
     {
-
+        $this->display('index.html');
     }
 
 
@@ -56,8 +56,42 @@ class JiangliModule extends AdminbaseModule
      * Created by QQ:710932
      */
     function history(){
-        //todo 返利历史数据
-        echo '历史';
+
+        $operate_id=$_GET['id'];
+        if($operate_id != null){
+            if(!is_numeric($operate_id)){
+                $this->show_warning('请勿非法提交');
+                return;
+            }
+
+
+            $epay_operate_mod = &m('epay_operate');
+            $epay_operate_data = $epay_operate_mod->get($operate_id);
+            if($epay_operate_data == null){
+                $this->show_warning('查找结果不存在');
+                return;
+            }
+
+            $this->_showCancelPage($epay_operate_data);
+            return;
+        }
+
+
+        $page = $this->_get_page(14);
+        $epay_operate_mod = &m('epay_operate');
+        $epay_operate_data = $epay_operate_mod->find( array(
+            'conditions' => 'status=1',
+            'order'      => 'id desc',
+            'limit'      => $page['limit'],
+            'count'      => true,
+        ));
+
+//        $this->import_resource(array(
+//            'script' => 'AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js',
+//        ));
+        $this->assign('historys',$epay_operate_data);
+        $this->display("history.html");
+        return;
     }
 
 

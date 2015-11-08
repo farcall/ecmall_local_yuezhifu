@@ -177,10 +177,10 @@ return array(
                 'text' => Lang::get('user_notice'),
                 'url' => 'index.php?app=notice',
             ),
-            'tuijian' => array(
-                'text' => Lang::get('tuijian'),
-                'url' => 'index.php?app=tuijian&act=setting',
-            ),
+//            'tuijian' => array(
+//                'text' => Lang::get('tuijian'),
+//                'url' => 'index.php?app=tuijian&act=setting',
+//            ),
         ),
     ),
     // 交易

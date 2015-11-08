@@ -123,6 +123,9 @@ class MemberApp extends MemberbaseApp {
 
         $this->assign('system_notice', $this->_get_system_notice($_SESSION['member_role']));
 
+        /*dong-*/
+
+
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));
 

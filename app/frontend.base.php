@@ -857,24 +857,24 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'overview',
                     'icon' => 'ico1',
                 ),
-                'refer'  => array(
-                    'text'  => Lang::get('refer'),
-                    'url'   => 'index.php?app=refer',
-                    'name'  => 'refer',
-                    'icon'  => 'ico1',
-                ),
-                'my_integral_log'  => array(
-                    'text'  => Lang::get('my_integral_log'),
-                    'url'   => 'index.php?app=my_integral_log',
-                    'name'  => 'my_integral_log',
-                    'icon'  => 'ico5',
-                ),
-                'my_integral_goods'  => array(
-                    'text'  => Lang::get('my_integral_goods'),
-                    'url'   => 'index.php?app=my_integral_goods',
-                    'name'  => 'my_integral_goods',
-                    'icon'  => 'ico5',
-                ),
+//                'refer'  => array(
+//                    'text'  => Lang::get('refer'),
+//                    'url'   => 'index.php?app=refer',
+//                    'name'  => 'refer',
+//                    'icon'  => 'ico1',
+//                ),
+//                'my_integral_log'  => array(
+//                    'text'  => Lang::get('my_integral_log'),
+//                    'url'   => 'index.php?app=my_integral_log',
+//                    'name'  => 'my_integral_log',
+//                    'icon'  => 'ico5',
+//                ),
+//                'my_integral_goods'  => array(
+//                    'text'  => Lang::get('my_integral_goods'),
+//                    'url'   => 'index.php?app=my_integral_goods',
+//                    'name'  => 'my_integral_goods',
+//                    'icon'  => 'ico5',
+//                ),
                 'my_profile' => array(
                     'text' => Lang::get('my_profile'),
                     'url' => 'index.php?app=member&act=profile',
@@ -905,6 +905,7 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'epay',
                     'icon' => 'ico13',
                 ),
+
             ),
         );
 
@@ -1097,18 +1098,18 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'export_excel',
                 'icon' => 'ico19',
             );
-            $menu['im_market']['submenu']['groupbuy_manage'] = array(
+/*            $menu['im_market']['submenu']['groupbuy_manage'] = array(
                 'text' => Lang::get('groupbuy_manage'),
                 'url' => 'index.php?app=seller_groupbuy',
                 'name' => 'groupbuy_manage',
                 'icon' => 'ico22',
-            );
-            $menu['im_seller']['submenu']['ju'] = array(
+            );*/
+/*            $menu['im_seller']['submenu']['ju'] = array(
                 'text' => Lang::get('ju_manage'),
                 'url' => 'index.php?app=seller_ju',
                 'name' => 'ju',
                 'icon' => 'ico5',
-            );
+            );*/
             $menu['im_market']['submenu']['my_qa'] = array(
                 'text' => Lang::get('my_qa'),
                 'url' => 'index.php?app=my_qa',
@@ -1121,78 +1122,78 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'my_partner',
                 'icon' => 'ico16',
             );
-            $menu['im_market']['submenu']['mix_manage'] = array(
-                'text' => Lang::get('mix_manage'),
-                'url' => 'index.php?app=seller_mix',
-                'name' => 'mix_manage',
-                'icon' => 'ico5',
-            );
+//            $menu['im_market']['submenu']['mix_manage'] = array(
+//                'text' => Lang::get('mix_manage'),
+//                'url' => 'index.php?app=seller_mix',
+//                'name' => 'mix_manage',
+//                'icon' => 'ico5',
+//            );
 
 
-            /* 卖家WAP相关管理 */
-            $menu['im_wap'] = array(
-                'name' => 'im_wap',
-                'text' => Lang::get('im_wap'),
-                'submenu' => array(),
-            );
-            $menu['im_wap']['submenu']['my_waptheme'] = array(
-                'text' => Lang::get('my_waptheme'),
-                'url' => 'index.php?app=my_waptheme',
-                'name' => 'my_waptheme',
-                'icon' => 'ico12',
-            );
-            $menu['im_wap']['submenu']['kmenus'] = array(
-                'text' => Lang::get('kmenus'),
-                'url' => 'index.php?app=kmenus',
-                'name' => 'kmenus',
-                'icon' => 'ico13',
-            );
-            $menu['im_wap']['submenu']['lunbo'] = array(
-                'text' => Lang::get('lunbo'),
-                'url' => 'index.php?app=lunbo',
-                'name' => 'lunbo',
-                'icon' => 'ico14',
-            );
+//            /* 卖家WAP相关管理 */
+//            $menu['im_wap'] = array(
+//                'name' => 'im_wap',
+//                'text' => Lang::get('im_wap'),
+//                'submenu' => array(),
+//            );
+//            $menu['im_wap']['submenu']['my_waptheme'] = array(
+//                'text' => Lang::get('my_waptheme'),
+//                'url' => 'index.php?app=my_waptheme',
+//                'name' => 'my_waptheme',
+//                'icon' => 'ico12',
+//            );
+//            $menu['im_wap']['submenu']['kmenus'] = array(
+//                'text' => Lang::get('kmenus'),
+//                'url' => 'index.php?app=kmenus',
+//                'name' => 'kmenus',
+//                'icon' => 'ico13',
+//            );
+//            $menu['im_wap']['submenu']['lunbo'] = array(
+//                'text' => Lang::get('lunbo'),
+//                'url' => 'index.php?app=lunbo',
+//                'name' => 'lunbo',
+//                'icon' => 'ico14',
+//            );
 
 
 
-
-            /* 卖家微信相关管理 */
-            $menu['im_weixin'] = array(
-                'name' => 'im_weixin',
-                'text' => Lang::get('im_weixin'),
-                'submenu' => array(),
-            );
-            $menu['im_weixin']['submenu']['my_wxconfig'] = array(
-                'text' => Lang::get('my_wxconfig'),
-                'url' => 'index.php?app=my_wxconfig',
-                'name' => 'my_wxconfig',
-                'icon' => 'ico5',
-            );
-            $menu['im_weixin']['submenu']['my_wxfollow'] = array(
-                'text' => Lang::get('my_wxfollow'),
-                'url' => 'index.php?app=my_wxfollow',
-                'name' => 'my_wxfollow',
-                'icon' => 'ico21',
-            );
-            $menu['im_weixin']['submenu']['my_wxkeyword'] = array(
-                'text' => Lang::get('my_wxkeyword'),
-                'url' => 'index.php?app=my_wxkeyword',
-                'name' => 'my_wxkeyword',
-                'icon' => 'ico17',
-            );
-            $menu['im_weixin']['submenu']['my_wxmess'] = array(
-                'text' => Lang::get('my_wxmess'),
-                'url' => 'index.php?app=my_wxmess',
-                'name' => 'my_wxmess',
-                'icon' => 'ico6',
-            );
-            $menu['im_weixin']['submenu']['my_wxmenu'] = array(
-                'text' => Lang::get('my_wxmenu'),
-                'url' => 'index.php?app=my_wxmenu',
-                'name' => 'my_wxmenu',
-                'icon' => 'ico7',
-            );
+//
+//            /* 卖家微信相关管理 */
+//            $menu['im_weixin'] = array(
+//                'name' => 'im_weixin',
+//                'text' => Lang::get('im_weixin'),
+//                'submenu' => array(),
+//            );
+//            $menu['im_weixin']['submenu']['my_wxconfig'] = array(
+//                'text' => Lang::get('my_wxconfig'),
+//                'url' => 'index.php?app=my_wxconfig',
+//                'name' => 'my_wxconfig',
+//                'icon' => 'ico5',
+//            );
+//            $menu['im_weixin']['submenu']['my_wxfollow'] = array(
+//                'text' => Lang::get('my_wxfollow'),
+//                'url' => 'index.php?app=my_wxfollow',
+//                'name' => 'my_wxfollow',
+//                'icon' => 'ico21',
+//            );
+//            $menu['im_weixin']['submenu']['my_wxkeyword'] = array(
+//                'text' => Lang::get('my_wxkeyword'),
+//                'url' => 'index.php?app=my_wxkeyword',
+//                'name' => 'my_wxkeyword',
+//                'icon' => 'ico17',
+//            );
+//            $menu['im_weixin']['submenu']['my_wxmess'] = array(
+//                'text' => Lang::get('my_wxmess'),
+//                'url' => 'index.php?app=my_wxmess',
+//                'name' => 'my_wxmess',
+//                'icon' => 'ico6',
+//            );
+//            $menu['im_weixin']['submenu']['my_wxmenu'] = array(
+//                'text' => Lang::get('my_wxmenu'),
+//                'url' => 'index.php?app=my_wxmenu',
+//                'name' => 'my_wxmenu',
+//                'icon' => 'ico7',
+//            );
         }
 
         return $menu;

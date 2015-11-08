@@ -8,12 +8,13 @@
 <div class="row">
     <!--left col-->
     <section class="col-md-6 connectedSortable">
+
         <div class="row">
             <div id="fenpeiliebiao" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="col-md-12">
                 <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">今日分配预览</h3>
+                    <div class="box-header">
+                        <h3 class="box-title">{$fenpei_time|date:m-d-Y}奖金分配情况</h3>
                     </div>
 
                     <div class="box-body  table-responsive no-padding">
@@ -46,11 +47,14 @@
                             {/foreach}
                         </table>
                     </div>
+                    <div class="box-footer">
+                        {include file="page.bottom.html"}
+                    </div>
                 </div>
             </div>
             </div>
         </div>
-        {include file="page.bottom.html"}
+
     </section><!--/.left col-->
 
     <section class="col-md-6 connectedSortable">

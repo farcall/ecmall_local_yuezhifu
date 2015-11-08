@@ -435,8 +435,7 @@ class EpayApp extends BackendApp {
             
             //线下汇款信息
             $data['epay_offline_info'] = $_POST['epay_offline_info'];
-			
-            
+
             $model_setting->setAll($data);
 
             $this->show_message('setting_successed');
