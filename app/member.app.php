@@ -123,13 +123,13 @@ class MemberApp extends MemberbaseApp {
 
         $this->assign('system_notice', $this->_get_system_notice($_SESSION['member_role']));
 
-        /*dong-未用金豆-获奖励金币*/
+        /*dong-未用金豆-获奖励金币开始*/
         $model_setting = &af('settings');
         $setting = $model_setting->getAll(); //载入系统设置数据
-        $sql_quanbujindou = "select floor(sum(order_amount)/'{$setting['epay_min_money2jindou']}') as quanbujindou from ecm_order where buyer_id='{$user['user_id']}' and status=40";
-        $sql_yiyongjindou = "select floor(sum(jinbi)/'{$setting['epay_max_jindou2jinbi']}') as yiyongjindou from ecm_epay_jinbi_log where status=1 and user_id='{$user['user_id']}'";
-        $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ecm_epay_jinbi_log where user_id='{$user['user_id']}' and status=1";
-        $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ecm_epay_jinbi2money_log where user_id='{$user['user_id']}' and status=1";
+        $sql_quanbujindou = "select floor(sum(order_amount)/'{$setting['epay_min_money2jindou']}') as quanbujindou from ".DB_PREFIX."order where buyer_id='{$user['user_id']}' and status=40";
+        $sql_yiyongjindou = "select floor(sum(jinbi)/'{$setting['epay_max_jindou2jinbi']}') as yiyongjindou from ".DB_PREFIX."epay_jinbi_log where status=1 and user_id='{$user['user_id']}'";
+        $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ".DB_PREFIX."epay_jinbi_log where user_id='{$user['user_id']}' and status=1";
+        $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ".DB_PREFIX."epay_jinbi2money_log where user_id='{$user['user_id']}' and status=1";
 
         $quanbujindou = $order_mod->getOne($sql_quanbujindou);
         $yiyongjindou = $order_mod->getOne($sql_yiyongjindou);
@@ -145,6 +145,7 @@ class MemberApp extends MemberbaseApp {
             'jinbi'=>$jinbi,
         );
         $this->assign('jinbi_jindou',$jinbi_jindou);
+        /*dong-未用金豆-获奖励金币结束*/
 
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));

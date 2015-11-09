@@ -39,7 +39,7 @@ define('EPAY_REFUND_OUT',90); // 账户退款收入,通常为卖家退款成功 
 define('EPAY_TUIJIAN_BUYER',100); // 用户推荐注册,注册者购买产品，推荐人会获得佣金，店铺会损失佣金。
 define('EPAY_TUIJIAN_SELLER',110); // 用户推荐注册,注册者成为店主，卖出产品推荐人会获得佣金，店主会损失佣金。
 define('EPAY_TRADE_CHARGES',120); // 交易成功扣除佣金
-
+define('EPAY_DX', 130);    //dong...金币兑现转入
 
 
 /* 意见留言类型 */

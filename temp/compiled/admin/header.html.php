@@ -1,42 +1,22 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
-    
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <script type="text/javascript">
-        //<!CDATA[
-        var SITE_URL = "<?php echo $this->_var['site_url']; ?>";
-        var REAL_SITE_URL = "<?php echo $this->_var['real_site_url']; ?>";
-        var REAL_BACKEND_URL = "<?php echo $this->_var['real_backend_url']; ?>";
-        //]]>
-    </script>
-
-    
-    <link rel="stylesheet" href="<?php echo $this->_var['real_backend_url']; ?>/templates/AdminLTE/bootstrap/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="<?php echo $this->_var['real_backend_url']; ?>/templates/AdminLTE/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?php echo $this->_var['real_backend_url']; ?>/templates/AdminLTE/dist/css/skins/_all-skins.min.css">
-
-
-    
-    
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <?php echo $this->_var['_head_tags']; ?>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=<?php echo $this->_var['charset']; ?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->_var['charset']; ?>" />
+<title> 首页 </title>
+<link href="templates/style/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "<?php echo $this->_var['site_url']; ?>";
+var REAL_SITE_URL = "<?php echo $this->_var['real_site_url']; ?>";
+var REAL_BACKEND_URL = "<?php echo $this->_var['real_backend_url']; ?>";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this->lib_base . "/" . 'jquery.js'; ?>" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this->lib_base . "/" . 'ecmall.js'; ?>" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this->res_base . "/" . 'js/admin.js'; ?>" charset="utf-8"></script>
+<script type="text/javascript" src="index.php?act=jslang"></script>
+<?php echo $this->_var['_head_tags']; ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-
-<div class="wrapper" style="background: #ecf0f5;">
+<body>

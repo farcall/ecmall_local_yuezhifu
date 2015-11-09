@@ -214,20 +214,77 @@ class EpayApp extends MemberbaseApp {
      * Created by QQ:710932
      */
     function jinbi2money(){
-        //todo 金币提现为虚拟账户中的钱
+        $to_money = trim($_POST['to_money']);
+        $user_id = $this->visitor->get('user_id');
+        $user_name = $this->visitor->get('user_name');
 
+        /*dong-持有金币开始*/
+        $epay_jinbi_log_mod = &m('epay_jinbi_log');
+        $epay_jinbi2money_log_mod = &m('epay_jinbi2money_log');
+
+        $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ".DB_PREFIX."epay_jinbi_log where user_id='{$user_id}' and status=1";
+        $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ".DB_PREFIX."epay_jinbi2money_log where user_id='{$user_id}' and status=1";
+
+        $zhuanrujinbi = $epay_jinbi_log_mod->getOne($sql_zhuanrujinbi);
+        $zhuanchujinbi = $epay_jinbi2money_log_mod->getOne($sql_zhuanchujinbi);
+        $maxjinbi = $zhuanrujinbi-$zhuanchujinbi;
+        /*dong-持有金币结束*/
+
+        session_start();
         if(IS_POST){
-            //校验手机验证码
-            //读取有效金币额度
-            //有效金币额度与会员申请额度进行比较
-            //jinbi2money表中增加日志
-            //money表增加
+            if(!is_numeric($to_money)){
+                $this->show_warning('非法输入');
+                return;
+            }
+            if($to_money > $maxjinbi){
+                $this->show_warning('请正确输入金币数量');
+            }
+
+            //todo 硬编码 兑换比例1:1
+            $jinbi = $to_money;
+            /*epay_jinbi2money表*/
+            $epay_jinbi2money_log_mod->add(array(
+               // user_id	user_name	jinbi	add_time	status
+                'user_id'=>$user_id,
+                'user_name'=>$user_name,
+                'jinbi'=>$jinbi,
+                'money'=>$to_money,
+                'add_time'=>gmtime(),
+                'status'=>1,
+            ));
+
+            /*epay表*/
+            $epady_mod = &m('epay');
+            $epay_data = $epady_mod->get(array(
+                'conditions'    => "user_id = '{$user_id}'",
+            ));
+            $epay_data['money'] = $epay_data['money']+$to_money;
+            $epady_mod->edit($epay_data['id'],$epay_data);
+
+            /*epaylog*/
+            $epaylog_mod = &m('epaylog');
+            $epaylog_data = $epaylog_mod->add(array(
+             //   user_id user_name type(EPAY_DX) states(40) money money_flow(income) complete(1) log_text addtime
+                'user_id'=>$user_id,
+                'user_name'=>$user_name,
+                'type'=>EPAY_DX,
+                'states'=>40,
+                'money'=>$to_money,
+                'money_flow'=>'income',
+                'complete'=>1,
+                'log_text'=>$jinbi.'金币兑换'.$to_money.'元',
+                'add_time'=>gmtime(),
+            ));
+
+            $this->show_message('兑换成功完成');
+            return;
         }
         else{
-            //显示金币额度
-            //输入申请提现额度
-            //发送手机验证码
-            //提交
+            /* 当前用户中心菜单 */
+            $this->_curitem('epay');
+            $this->_curmenu('金币兑换为可用资金(钱)');
+            $this->assign('jinbi', $maxjinbi);
+            $this->display('epay.jinbi2money.html');
         }
     }
 //余额转帐

@@ -11,8 +11,6 @@ class JiangliModule extends AdminbaseModule
     function FenpeiModule()
     {
         parent::__construct();
-
-
     }
 
     /**
