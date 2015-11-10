@@ -238,6 +238,7 @@ class EpayApp extends MemberbaseApp {
             }
             if($to_money > $maxjinbi){
                 $this->show_warning('请正确输入金币数量');
+                return;
             }
 
             //todo 硬编码 兑换比例1:1
@@ -286,6 +287,33 @@ class EpayApp extends MemberbaseApp {
             $this->assign('jinbi', $maxjinbi);
             $this->display('epay.jinbi2money.html');
         }
+    }
+
+    /**
+     * 作用:金币兑换日志记录
+     * Created by QQ:710932
+     */
+    function duihuanlogall(){
+        $user_id = $this->visitor->get('user_id');
+
+        $page = $this->_get_page(2);
+        $epay_jinbi2money_log_mod = &m('epay_jinbi2money_log');
+        $logs = $epay_jinbi2money_log_mod->find(array(
+            'conditions' => 'status=1 and user_id='.$user_id,
+            'order'      => 'id desc',
+            'fields'     => '',
+            'limit'      => $page['limit'],
+            'count'      => true,
+        ));
+        $page['item_count'] = $epay_jinbi2money_log_mod->getCount();
+        $this->_format_page($page);
+        $this->assign('page_info', $page);
+
+        /* 当前用户中心菜单 */
+        $this->_curitem('epay');
+        $this->_curmenu('金币兑换记录');
+        $this->assign('logs', $logs);
+        $this->display('epay.duihuanlogall.html');
     }
 //余额转帐
     function out() {
@@ -569,6 +597,10 @@ class EpayApp extends MemberbaseApp {
             array(
                 'name'  => '金币兑换为可用资金(钱)',
                 'url'   => 'index.php?app=epay&act=jinbi2money',
+            ),
+            array(
+                'name'  => '金币兑换记录',
+                'url'   => 'index.php?app=epay&act=duihuanlogall',
             ),
         );
         return $menus;
