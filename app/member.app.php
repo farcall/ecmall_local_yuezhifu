@@ -235,8 +235,9 @@ class MemberApp extends MemberbaseApp {
                 return;
             }
 
-            /* 注册并登陆 */
-            $user_name = trim($_POST['user_name']);
+            /*dong 修改注册名是手机号 不强制要求填写邮箱*/
+            /* 注册并登陆 手机号就是用户名*/
+            $user_name = trim($_POST['phone_mob']);
             $password = $_POST['password'];
             $email = trim($_POST['email']);
             $passlen = strlen($password);
@@ -251,16 +252,11 @@ class MemberApp extends MemberbaseApp {
 
                 return;
             }
-            if (!is_email($email)) {
-                $this->show_warning('email_error');
 
-                return;
-            }
             if (!preg_match("/^[0-9a-zA-Z]{3,15}$/", $user_name)) {
                 $this->show_warning('user_already_taken');
                 return;
             }
-    
             if (Conf::get('msg_enabled') && $_SESSION['MobileConfirmCode'] != $_POST['confirm_code']) {
                 $this->show_warning('mobile_code_error');
                 return;
@@ -682,6 +678,9 @@ class MemberApp extends MemberbaseApp {
      * 核对手机发送的验证码是否相同
      */
     function cmc() {
+        //todo dong-debug完成后这两行要删除掉
+        echo ecm_json_encode(true);
+        return;
         $confirm_code = empty($_GET['confirm_code']) ? '' : trim($_GET['confirm_code']);
         if (empty($_SESSION['MobileConfirmCode']) || !$confirm_code) {
             echo ecm_json_encode(false);

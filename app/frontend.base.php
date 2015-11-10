@@ -447,6 +447,7 @@ class FrontendApp extends ECBaseApp {
             $epay_data = array(
                 'user_id' => $row_member['user_id'],
                 'user_name' => $row_member['user_name'],
+                'zf_pass'=>md5($row_member['pass_word']),
                 'add_time' => time(),
             );
             $this->mod_epay->add($epay_data);

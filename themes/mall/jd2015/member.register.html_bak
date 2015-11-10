@@ -12,6 +12,28 @@
             },
             onkeyup: false,
             rules: {
+                user_name: {
+                    required: true,
+                    byteRange: [3, 15, '{$charset}'],
+                    remote: {
+                        url: 'index.php?app=member&act=check_user&ajax=1',
+                        type: 'get',
+                        data: {
+                            user_name: function() {
+                                return $('#user_name').val();
+                            }
+                        },
+                        beforeSend: function() {
+                            var _checking = $('#checking_user');
+                            _checking.prev('.field_notice').hide();
+                            _checking.next('label').hide();
+                            $(_checking).show();
+                        },
+                        complete: function() {
+                            $('#checking_user').hide();
+                        }
+                    }
+                },
                 phone_mob: {
                     required: true,
                     number: true,
@@ -89,6 +111,11 @@
                 }
             },
             messages: {
+                user_name: {
+                    required: '{$lang.user_name_required}',
+                    byteRange: '{$lang.user_name_limit}',
+                    remote: '{$lang.user_already_taken}'
+                },
                 phone_mob: {
                     required: '{$lang.phone_mob_required}',
                     number: '{$lang.phone_mob_number}',
@@ -182,6 +209,7 @@
 </script>
 <script type="text/javascript">
     $(function() {
+        poshytip_message($('#user_name'));
         poshytip_message($('#password'));
         poshytip_message($('#password_confirm'));
         poshytip_message($('#email'));
@@ -212,9 +240,9 @@
                     <div class="content">
                         <form name="" id="register_form" method="post" action="">
                             <dl class="clearfix">
-                                <dt>用户名({$lang.phone_mob})</dt>
+                                <dt>{$lang.user_name}</dt>
                                 <dd>
-                                    <input type="text" id="phone_mob" name="phone_mob" class="input" maxlength="11" />
+                                    <input type="text" style="width:245px;height:26px;" id="user_name" class="input"  name="user_name" title="{$lang.user_name_tip}"  />
                                     <br /><label></label>
                                 </dd>
                             </dl>
@@ -232,7 +260,14 @@
                                     <div class="clr"></div><label></label>
                                 </dd>
                             </dl>
-
+                            <!--{if $msg_enabled}-->
+                            <dl class="clearfix">
+                                <dt>{$lang.phone_mob}</dt>
+                                <dd>
+                                    <input type="text" id="phone_mob" name="phone_mob" class="input" maxlength="11" />
+                                    <br /><label></label>
+                                </dd>
+                            </dl>
                             <dl class="clearfix">
                                 <dt>{$lang.confirm_code}</dt>
                                 <dd>
@@ -247,7 +282,14 @@
                                     <br /><label></label>
                                 </dd>
                             </dl>
-
+                            <!--{/if}-->
+                            <dl class="clearfix">
+                                <dt>{$lang.email}</dt>
+                                <dd>
+                                    <input class="input" type="text" id="email" name="email" title="{$lang.email_tip}" />
+                                    <div class="clr"></div><label></label>
+                                </dd>
+                            </dl>
                             <!--{if $captcha}-->
                             <dl class="clearfix">
                                 <dt>{$lang.captcha}</dt>

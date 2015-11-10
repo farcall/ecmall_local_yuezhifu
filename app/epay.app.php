@@ -296,7 +296,7 @@ class EpayApp extends MemberbaseApp {
     function duihuanlogall(){
         $user_id = $this->visitor->get('user_id');
 
-        $page = $this->_get_page(2);
+        $page = $this->_get_page(50);
         $epay_jinbi2money_log_mod = &m('epay_jinbi2money_log');
         $logs = $epay_jinbi2money_log_mod->find(array(
             'conditions' => 'status=1 and user_id='.$user_id,
