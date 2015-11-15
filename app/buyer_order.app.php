@@ -585,7 +585,9 @@ class Buyer_orderApp extends MemberbaseApp {
             'accepted' => Lang::get('accepted_orders'),
             'shipped' => Lang::get('shipped_orders'),
             'finished' => Lang::get('finished_orders'),
-            'canceled' => Lang::get('canceled_orders')));
+            'canceled' => Lang::get('canceled_orders'),
+            'shenhe'=>'线下消费审核中'
+        ));
 
         $this->assign('type', $_GET['type']);
         $this->assign('orders', $orders);
