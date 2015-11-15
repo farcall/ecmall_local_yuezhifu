@@ -912,6 +912,10 @@ class Seller_orderApp extends StoreadminbaseApp {
                 return;
             }
 
+            //应当支付的佣金
+            $model_setting = &af('settings');
+            $setting = $model_setting->getAll(); //载入系统设置数据
+            $yongjin = $money*$setting['epay_trade_charges_ratio'];
 
             /*检查用户*/
             $order_xianxia_data = array(
@@ -920,25 +924,19 @@ class Seller_orderApp extends StoreadminbaseApp {
                 'buyer_mobile'=>$buyer_mobile,
                 'goods_name'=>$goods_name,
                 'money'=>$money,
+                'yongjin'=>$yongjin,
                 'seller_userid'=> $user_id,
                 'seller_username'=>$seller_username,
                 'seller_storeid'=>$store_id,
                 'seller_storename'=>$seller_storename,
                 'seller_mobile'=>$seller_mobile,
                 'pingzheng'=>$pingzheng_path,
-                'status'=>0,
-                'add_time'=> gmtime(),
             );
 
 
             /*检查资金是否够佣金*/
-            //余额支付
             $epay_mod = &m('epay');
             $zijin = $epay_mod->getOne("select money from " . DB_PREFIX . "epay where user_id=$user_id");
-            //应当支付的佣金
-            $model_setting = &af('settings');
-            $setting = $model_setting->getAll(); //载入系统设置数据
-            $yongjin = $money*$setting['epay_trade_charges_ratio'];
             if($zijin< $yongjin){
                 $this->show_warning('您的资金不足需支付的佣金,请先充值');
                 return;

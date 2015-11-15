@@ -70,11 +70,8 @@ class XianxiaOrder extends BaseOrder {
             'payment_name'=>$this->_payment_name,
             'payment_code'=>$this->_payment_code,
             'pay_time'=>$now,
-            'evaluation_status'=>1,
-            'finished_time'=>$now,
             'goods_amount'=>$money,
             'order_amount'=>$money,
-            'evaluation_time'=>$now,
         );
     }
     /**
@@ -123,8 +120,11 @@ class XianxiaOrder extends BaseOrder {
 
         /*插入线下订单表*/
         $order_xianxia_mod = &m('order_xianxia');
-        $data['order_sn'] = $order_id;
+        $data['order_id'] = $order_id;
+        $data['order_sn'] = $base_info['order_sn'];
         $data['goods_id'] = $goods_id;
+        $data['status'] = ORDER_SHENHE_ING;         //默认订单审核中
+        $data['add_time'] = gmtime();
         $xxid = $order_xianxia_mod->add($data);
         if(empty($xxid)){
             $this->_error('create_order_failed');

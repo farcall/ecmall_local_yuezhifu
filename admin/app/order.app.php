@@ -90,15 +90,91 @@ class OrderApp extends BackendApp
             ORDER_SHIPPED => Lang::get('order_shipped'),
             ORDER_FINISHED => Lang::get('order_finished'),
             ORDER_CANCELED => Lang::get('order_canceled'),
+            ORDER_SHENHE_ING=>'线下做单等待审核',
         ));
         $this->assign('search_options', $search_options);
         $this->assign('page_info', $page);          //将分页信息传递给视图，用于形成分页条
         $this->assign('orders', $orders);
+
         $this->import_resource(array('script' => 'inline_edit.js,jquery.ui/jquery.ui.js,jquery.ui/i18n/' . i18n_code() . '.js',
                                       'style'=> 'jquery.ui/themes/ui-lightness/jquery.ui.css'));
         $this->display('order.index.html');
     }
-    
+
+    /**
+     * 作用:线下做单 管理员审核通过
+     * Created by QQ:710932
+     */
+    function tongguo(){
+        $order_id = $_GET['id'];
+        if(empty($order_id) or !is_numeric($order_id)){
+            $this->show_warning('非法提交');
+            return;
+        }
+
+        /*订单finished_time和status修改修改*/
+        $order_mod = &m('order');
+        $order_result = $order_mod->edit($order_id,array(
+            'finished_time'=>gmtime(),
+            'status'=>ORDER_FINISHED,
+        ));
+        if($order_result == false){
+            $this->show_warning('操作失败');
+            return;
+        }
+
+
+        /*线下订单order_xianxia修改*/
+        $order_xianxia_mod = &m('order_xianxia');
+        $order_xianxia_result = $order_xianxia_mod->edit('order_id='.$order_id,array(
+            'admin'=>$this->visitor->_get_detail('user_name'),
+            'shenhe_time'=>gmtime(),
+            'status'=>ORDER_SHENHE_FINISHED,
+        ));
+
+        $order_xianxia_data = $order_xianxia_mod->get(array(
+            'conditions' => 'order_id='.$order_id,
+        ));
+
+        /*卖家佣金从冻结资金中扣除*/
+        $epay_mod = &m('epay');
+        $epay_data = $epay_mod->get(array(
+            'conditions'=>'user_id='.$order_xianxia_data['seller_userid'],
+        ));
+
+        $money_dj = $epay_data['money_dj']-$order_xianxia_data['yongjin'];
+        $epay_mod->edit('user_id='.$order_xianxia_data['seller_userid'],array(
+            'money_dj'=>$money_dj,
+        ));
+
+
+
+        /*资金变动日志*/
+        $epaylog_mod = &m('epaylog');
+        $epaylog_mod->add(array(
+            'user_id'=>$order_xianxia_data['seller_userid'],
+            'user_name'=>$order_xianxia_data['seller_username'],
+            'order_id'=>$order_xianxia_data['order_id'],
+            'order_sn'=>$order_xianxia_data['order_sn'],
+            'type'=>EPAY_TRADE_CHARGES,
+            'states'=>EPAY_TRADE_CHARGES,
+            'money'=>$order_xianxia_data['yongjin'],
+            'money_flow'=>'outlay',
+            'complete'=>1,
+            'log_text'=>'扣除线下交易佣金:买家('.$order_xianxia_data['buyer_username'].'),价格('.$order_xianxia_data['money'].')',
+            'add_time'=>gmtime(),
+        ));
+
+        $this->show_message('操作成功!','返回列表','index.php?app=order');
+    }
+
+    /**
+     * 作用:线下做单 管理员拒绝
+     * Created by QQ:710932
+     */
+    function jujue(){
+        //todo 线下做单 管理员拒绝
+    }
 /**
      * 订单导出
      */
@@ -319,7 +395,14 @@ class OrderApp extends BackendApp
         }
         $this->assign('order', $order_info);
         $this->assign($order_detail['data']);
-        $this->display('order.view.html');
+
+        if($_GET['xx'] == 1){
+            $this->display('orderxx.view.html');
+        }
+        else{
+            $this->display('order.view.html');
+        }
+
     }
 }
 ?>

@@ -47,13 +47,15 @@ $db->query("CREATE TABLE `".DB_PREFIX."epay_jinbi2money_log` (
 //增加线下交易管理表
 $db->query("CREATE TABLE `".DB_PREFIX."order_xianxia` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `buyer_id` int(11) NOT NULL DEFAULT '0' COMMENT '买家ID',
-  `order_sn` int(11) NOT NULL DEFAULT '0' COMMENT '订单序号',
+  `order_id` int(11) NOT NULL DEFAULT '0' COMMENT '订单序号:order:id',
+  `order_sn` int(11) NOT NULL DEFAULT '0' COMMENT '订单sn',
+  `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '对应order_goods',
   `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '对应order_goods',
   `buyer_name` varchar(255) NOT NULL DEFAULT '' COMMENT '买家用户名',
   `buyer_mobile` varchar(255) NOT NULL DEFAULT '' COMMENT '买家手机号',
   `goods_name` varchar(255) NOT NULL DEFAULT '' COMMENT '交易商品名称',
-  `money` float(2,2) NOT NULL DEFAULT '0.00' COMMENT '订单总额度',
+  `money` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单总额度',
+  `yongjin` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单佣金',
   `seller_userid` int(11) NOT NULL DEFAULT '0' COMMENT '店主ID',
   `seller_username` varchar(255) NOT NULL DEFAULT '' COMMENT '店主名',
   `seller_storeid` int(11) NOT NULL DEFAULT '0' COMMENT '商铺ID',
