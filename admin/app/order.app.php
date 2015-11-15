@@ -173,8 +173,51 @@ class OrderApp extends BackendApp
      * Created by QQ:710932
      */
     function jujue(){
-        //todo 线下做单 管理员拒绝
-    }
+        $order_id = $_GET['id'];
+        if(empty($order_id) or !is_numeric($order_id)){
+            $this->show_warning('非法提交');
+            return;
+        }
+
+        /*订单finished_time和status修改修改*/
+        $order_mod = &m('order');
+        $order_result = $order_mod->edit($order_id,array(
+            'finished_time'=>gmtime(),
+            'status'=>ORDER_SHENHE_CANCELED,
+        ));
+        if($order_result == false){
+            $this->show_warning('操作失败');
+            return;
+        }
+
+
+        /*线下订单order_xianxia修改*/
+        $order_xianxia_mod = &m('order_xianxia');
+        $order_xianxia_result = $order_xianxia_mod->edit('order_id='.$order_id,array(
+            'admin'=>$this->visitor->_get_detail('user_name'),
+            'shenhe_time'=>gmtime(),
+            'status'=>ORDER_SHENHE_CANCELED,
+        ));
+
+        $order_xianxia_data = $order_xianxia_mod->get(array(
+            'conditions' => 'order_id='.$order_id,
+        ));
+
+        /*卖家佣金从冻结资金中转到可用资金用*/
+        $epay_mod = &m('epay');
+        $epay_data = $epay_mod->get(array(
+            'conditions'=>'user_id='.$order_xianxia_data['seller_userid'],
+        ));
+
+        $money_dj = $epay_data['money_dj']-$order_xianxia_data['yongjin'];
+        $money = $epay_data['money']+$order_xianxia_data['yongjin'];
+        $epay_mod->edit('user_id='.$order_xianxia_data['seller_userid'],array(
+            'money_dj'=>$money_dj,
+            'money'=>$money,
+        ));
+
+
+        $this->show_message('操作成功!','返回列表','index.php?app=order');    }
 /**
      * 订单导出
      */
