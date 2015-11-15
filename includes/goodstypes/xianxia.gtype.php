@@ -16,8 +16,8 @@ class XianxiaGoods extends BaseGoods
     {
         /* 初始化 */
         $param['_is_material']  = flase;
-        $param['_name']         = 'xianxiagoods';
-        $param['_order_type']   = 'xianxiaorder';
+        $param['_name']         = 'xianxia';
+        $param['_order_type']   = 'xianxia';
 
         parent::__construct($param);
     }
