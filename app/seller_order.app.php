@@ -39,8 +39,7 @@ class Seller_orderApp extends StoreadminbaseApp {
             }
         }
     }
-    
-    
+
 
     function index() {
         $this->auto_confirm_order();
@@ -799,14 +798,203 @@ class Seller_orderApp extends StoreadminbaseApp {
                 'name' => 'canceled',
                 'url' => 'index.php?app=seller_order&amp;type=canceled',
             ),
+            array(
+                'name' => '线下做单',
+                'url' => 'index.php?app=seller_order&amp;act=xianxia',
+            ),
         );
         return $array;
     }
-    
-    
-    
-    
 
+    /**
+     * 上传头像
+     *
+     * @param int $user_id
+     * @return mix false表示上传失败,空串表示没有上传,string表示上传文件地址
+     */
+    function _upload_pingzheng($user_id) {
+        $file = $_FILES['pingzheng'];
+        if ($file['error'] != UPLOAD_ERR_OK) {
+            return '';
+        }
+        import('uploader.lib');
+        $uploader = new Uploader();
+        $uploader->allowed_type(IMAGE_FILE_TYPE);
+        $uploader->addFile($file);
+        if ($uploader->file_info() === false) {
+            $this->show_warning($uploader->get_error());
+            return false;
+        }
+        $uploader->root_dir(ROOT_PATH);
+        $filename = $uploader->random_filename();
+
+        return $uploader->save('data/files/mall/pingzheng', $filename);
+    }
+
+    /**
+     * 作用:检查用户佣金是否足够
+     * Created by QQ:710932
+     */
+    function ajax_checkyongjin(){
+        $money = $_GET['money'];
+        if(empty($money)){
+            echo ecm_json_encode(false);
+            return;
+        }
+
+        /*检查资金是否够佣金*/
+        //余额支付
+        $user_id = $this->visitor->get('user_id');
+        $epay_mod = &m('epay');
+        $zijin = $epay_mod->getOne("select money from " . DB_PREFIX . "epay where user_id=$user_id");
+        //应当支付的佣金
+        $model_setting = &af('settings');
+        $setting = $model_setting->getAll(); //载入系统设置数据
+        $yongjin = $money*$setting['epay_lirun_fenpei_ratio'];
+        if($zijin< $yongjin){
+            echo ecm_json_encode(false);
+            return;
+        }
+
+        echo ecm_json_encode(true);
+        return;
+    }
+
+    /**
+     * 作用:线下
+     * Created by QQ:710932
+     */
+    function xianxia(){
+        //todo 顾客线下消费
+        $store_id = intval($this->visitor->get('manage_store'));
+        $store_mod = & m('store');
+        $store = $store_mod->get_info($store_id);
+
+        $user_id = $this->visitor->get('user_id');
+        $model_user = & m('member');
+        $member = $model_user->get_info(intval($user_id));
+
+        if($_POST){
+            $buyer_name = $_POST['buyer_name'];
+            $buyer_mobile = $_POST['buyer_telephone'];
+            $goods_name = $_POST['goods_name'];
+            $money = $_POST['money'];
+            $seller_storename = $_POST['seller_storename'];
+            $seller_username = $_POST['seller_username'];
+            $seller_mobile = $_POST['seller_phone'];
+            if(empty($buyer_mobile) or empty($buyer_mobile) or empty($goods_name) or
+               empty($money) or empty($seller_storename) or  empty($seller_username) or empty($seller_mobile)){
+
+                $this->show_warning('非法操作');
+                return;
+            }
+
+
+            /*检查用户是否存在*/
+            $member_mod = &m('member');
+            $member_data = $member_mod->get(array(
+                'conditions' => 'user_name='.$buyer_name,
+            ));
+
+            if(empty($member_data)){
+                $this->show_warning('非法操作');
+                return;
+            }
+
+            $pingzheng_path = $this->_upload_pingzheng($member_data['user_id']);
+            if(empty($pingzheng_path)){
+                $this->show_warning('必须上传交易凭证');
+                return;
+            }
+            /*检查用户*/
+            $order_xianxia_data = array(
+                'buyer_id'=>$member_data['user_id'],
+                'buyer_name'=>$buyer_name,
+                'buyer_mobile'=>$buyer_mobile,
+                'goods_name'=>$goods_name,
+                'money'=>$money,
+                'seller_userid'=> $user_id,
+                'seller_username'=>$seller_username,
+                'seller_storeid'=>$store_id,
+                'seller_storename'=>$seller_storename,
+                'seller_mobile'=>$seller_mobile,
+                'pingzheng'=>$pingzheng_path,
+                'status'=>0,
+                'add_time'=> gmtime(),
+            );
+
+
+            /*检查资金是否够佣金*/
+            //余额支付
+            $epay_mod = &m('epay');
+            $zijin = $epay_mod->getOne("select money from " . DB_PREFIX . "epay where user_id=$user_id");
+            //应当支付的佣金
+            $model_setting = &af('settings');
+            $setting = $model_setting->getAll(); //载入系统设置数据
+            $yongjin = $money*$setting['epay_trade_charges_ratio'];
+            if($zijin< $yongjin){
+                $this->show_warning('您的资金不足需支付的佣金,请先充值');
+                return;
+            }
+
+            /*写入order_order_xianxia表*/
+            $order_xianxia_mod = &m('order_xianxia');
+            $order_xianxia_mod->add($order_xianxia_data);
+
+            /*资金冻结epay表*/
+            $epay_data = $epay_mod->get(array(
+                'conditions'=>'user_id='.$user_id,
+            ));
+            $epay_data['money_dj'] = $epay_data['money_dj']+$yongjin;
+            $epay_data['money'] = $epay_data['money']-$yongjin;
+            $epay_mod->edit('user_id='.$user_id,$epay_data);
+
+            /*订单order*/
+            /*订单拓展表order_extm*/
+            /*订单商品表order_goods*/
+            /*订单日志表order_log*/
+            $this->show_message('已成功提交,您的信息会在48小时内审核完成,请耐心等待.');
+            return;
+        }
+
+
+
+        $this->assign('member',$member);
+        $this->assign('store',$store);
+
+        /* 导入jQuery的表单验证插件   */
+        $this->import_resource(array(
+            'script' => array(
+                array(
+                    'path' => 'dialog/dialog.js',
+                    'attr' => 'id="dialog_js"',
+                ),
+                array(
+                    'path' => 'jquery.ui/jquery.ui.js',
+                    'attr' => '',
+                ),
+                array(
+                    'path' => 'jquery.ui/i18n/' . i18n_code() . '.js',
+                    'attr' => '',
+                ),
+                array(
+                    'path' => 'jquery.plugins/jquery.validate.js',
+                    'attr' => '',
+                ),
+            ),
+            'style' => 'jquery.ui/themes/ui-lightness/jquery.ui.css',
+        ));
+
+        /* 当前位置 */
+        $this->_curlocal(LANG::get('member_center'), 'index.php?app=member', LANG::get('order_manage'), 'index.php?app=seller_order', LANG::get('order_list'));
+
+        /* 当前用户中心菜单 */
+        $this->_curitem('线下做单');
+        $this->_curmenu('线下做单');
+        $this->_config_seo('title', Lang::get('member_center') . ' - 线下做单');
+
+        $this->display('seller_order.xianxia.html');
+    }
     //自动收货
     function auto_confirm_order() {
         //获取当前 已发货的 ORDER_SHIPPED   并且支付方式  为  payment_code=zjgl    auto_finished_time 大于系统设置的数值
@@ -895,7 +1083,6 @@ class Seller_orderApp extends StoreadminbaseApp {
         $mobile_msg = new Mobile_msg();
         $mobile_msg->send_msg_order($order_info, 'check');
     }
-    
     
     /**
      *    给买家评价
@@ -1054,8 +1241,6 @@ class Seller_orderApp extends StoreadminbaseApp {
 
         return $buyer_praise_rate;
     }
-    
-    
 
 }
 

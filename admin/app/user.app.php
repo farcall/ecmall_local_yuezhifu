@@ -60,7 +60,9 @@ class UserApp extends BackendApp {
         $page['item_count'] = $this->_user_mod->getCount();
         $this->_format_page($page);
         $this->assign('filtered', $conditions ? 1 : 0); //是否有查询条件
-        $this->assign('page_info', item_count);
+     //   $this->assign('page_info', item_count);
+        /*QQ:435795*/
+        $this->assign('page_info', $page);
         /* 导入jQuery的表单验证插件 */
         $this->import_resource(array(
             'script' => 'jqtreetable.js,inline_edit.js',

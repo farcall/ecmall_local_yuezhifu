@@ -767,8 +767,66 @@ class MemberApp extends MemberbaseApp {
             $this->show_message('edit_mobile_successed');
         }
     }
-    
 
+
+    /**
+     * 作用:检查用户是否存在
+     * Created by QQ:710932
+     */
+    function Ajax_checkuser(){
+        $user_name = empty($_GET['user_name']) ? null : trim($_GET['user_name']);
+        if (!$user_name) {
+            echo ecm_json_encode(false);
+
+            return;
+        }
+        if(!preg_match("/^[0-9a-zA-Z]{3,15}$/",$user_name)){
+            echo ecm_json_encode(false);
+            return;
+        }
+        $model_user = & m('member');
+        $member = $model_user->get(array(
+            'conditions'=>'user_name='.$user_name,
+        ));
+        if(empty($member)){
+            echo ecm_json_encode(false);
+            return;
+        }
+
+        echo ecm_json_encode(true);
+        return;
+    }
+    /**
+     * 作用:获取userinfo
+     * Created by QQ:710932
+     */
+    function Ajax_userinfo(){
+        $user_name = empty($_GET['user_name']) ? null : trim($_GET['user_name']);
+        if (!$user_name) {
+            echo ecm_json_encode(false);
+
+            return;
+        }
+        if(!preg_match("/^[0-9a-zA-Z]{3,15}$/",$user_name)){
+            echo ecm_json_encode(false);
+            return;
+        }
+        $model_user = & m('member');
+        $member = $model_user->get(array(
+            'conditions'=>'user_name='.$user_name,
+        ));
+        if($member==null){
+            echo ecm_json_encode(false);
+            return;
+        }
+
+        $data = array(
+            'user_name'=>$member['user_name'],
+            'real_name'=>$member['real_name'],
+        );
+        echo ecm_json_encode($data);
+        return;
+    }
 }
 
 ?>

@@ -508,7 +508,7 @@ class FrontendApp extends ECBaseApp {
      *    @param    none
      *    @return    void
      */
-    static function jslang($var) {
+    static function jslang($lang='') {
         $lang = Lang::fetch(lang_file('jslang'));
         parent::jslang($lang);
     }
@@ -1011,6 +1011,12 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'order_manage',
                 'icon' => 'ico10',
             );
+            $menu['im_seller']['submenu']['order_xianxia'] = array(
+                'text' => '线下做单',
+                'url' => 'index.php?app=seller_order&act=xianxia',
+                'name' => '线下做单',
+                'icon' => 'ico10',
+            );
             $menu['im_seller']['submenu']['my_category'] = array(
                 'text' => Lang::get('my_category'),
                 'url' => 'index.php?app=my_category',
@@ -1055,7 +1061,6 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'refund_receive',
                 'icon' => 'ico9',
             );
-
 
             /* 卖家营销管理 */
             $menu['im_market'] = array(

@@ -188,6 +188,7 @@
         poshytip_message($('#captcha1'));
     });
 </script>
+
 <div id="main" class="w-full">
     <div id="page-register" class="w login-register mt20 mb20">
         <div class="w clearfix">
@@ -212,7 +213,7 @@
                     <div class="content">
                         <form name="" id="register_form" method="post" action="">
                             <dl class="clearfix">
-                                <dt>用户名({$lang.phone_mob})</dt>
+                                <dt>{$lang.phone_mob}</dt>
                                 <dd>
                                     <input type="text" id="phone_mob" name="phone_mob" class="input" maxlength="11" />
                                     <br /><label></label>
@@ -247,6 +248,7 @@
                                     <br /><label></label>
                                 </dd>
                             </dl>
+
 
                             <!--{if $captcha}-->
                             <dl class="clearfix">

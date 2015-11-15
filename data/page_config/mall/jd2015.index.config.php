@@ -9,11 +9,7 @@ return array (
       'options' => 
       array (
         'model_name' => '',
-        'amount' => '0',
-        'img' => '',
-        'img_link' => '',
-        'store_name' => '',
-        'store_id' => '',
+        'cate_id' => '0',
       ),
     ),
     '_widget_237' => 
@@ -21,8 +17,8 @@ return array (
       'name' => 'jd2015_article',
       'options' => 
       array (
-        'model_name' => '京东快报',
-        'cate_id_1' => '4',
+        'model_name' => '公告',
+        'cate_id_1' => '2',
       ),
     ),
     '_widget_552' => 
@@ -36,7 +32,7 @@ return array (
       'options' => 
       array (
         'model_name' => '',
-        'effect' => 'scrolly',
+        'effect' => 'scrollx',
         'autoplay' => 'true',
         'ads' => 
         array (
@@ -866,7 +862,7 @@ return array (
       array (
         'num_name' => '12F',
         'model_name' => '今日抄底',
-        'img_recom_id_1' => '1',
+        'img_recom_id_1' => '2',
         'img_cate_id_1' => '0',
         'ad1_image_url' => false,
         'ad2_image_url' => false,
@@ -920,150 +916,6 @@ return array (
   ),
   'tmp' => 
   array (
-    '_widget_513' => 
-    array (
-      'options' => 
-      array (
-        'num_name' => '12F',
-        'model_name' => '今日抄底',
-        'img_recom_id_1' => '2',
-        'img_cate_id_1' => '0',
-        'ad1_image_url' => false,
-        'ad2_image_url' => false,
-        'ad3_image_url' => false,
-        'ad4_image_url' => false,
-        'ad5_image_url' => false,
-        'ad6_image_url' => false,
-        'ad7_image_url' => false,
-        'ad8_image_url' => false,
-      ),
-    ),
-    '_widget_563' => 
-    array (
-      'options' => 
-      array (
-        'num_name' => '10F',
-        'model_name' => '图书音像',
-        'sub_title_name1' => '图书',
-        'sub_title_name1_link_url' => '',
-        'sub_title_name2' => '音像',
-        'sub_title_name2_link_url' => '',
-        'sub_title_name3' => '特色书店',
-        'sub_title_name3_link_url' => '',
-        'sub_title_name4' => '数字商品',
-        'sub_title_name4_link_url' => '',
-        'ad1_image_url' => 'data/files/mall/template/201506300615221609.jpg',
-        'ad1_link_url' => '',
-        'ad2_image_url' => 'data/files/mall/template/201507091121371476.jpg',
-        'ad2_link_url' => '',
-        'ad3_image_url' => 'data/files/mall/template/201507091121376049.jpg',
-        'ad3_link_url' => '',
-        'ad4_image_url' => 'data/files/mall/template/201507091121375107.jpg',
-        'ad4_link_url' => '',
-        'ad5_image_url' => 'data/files/mall/template/201507091121372652.jpg',
-        'ad5_link_url' => '',
-        'ad6_image_url' => 'data/files/mall/template/201507091121378368.jpg',
-        'ad6_link_url' => '',
-        'ad7_image_url' => 'data/files/mall/template/201507091121373940.jpg',
-        'ad7_link_url' => '',
-        'ad8_image_url' => 'data/files/mall/template/201507091121375027.jpg',
-        'ad8_link_url' => '',
-        'ad9_image_url' => 'data/files/mall/template/201507091121371428.jpg',
-        'ad9_link_url' => '',
-        'ad10_image_url' => 'data/files/mall/template/201507091121375116.jpg',
-        'ad10_link_url' => '',
-        'ad11_image_url' => 'data/files/mall/template/201507091121374174.jpg',
-        'ad11_link_url' => '',
-        'ad12_image_url' => 'data/files/mall/template/201507091121371203.jpg',
-        'ad12_link_url' => '',
-        'ad13_image_url' => 'data/files/mall/template/201507091121377233.jpg',
-        'ad13_link_url' => '',
-        'ad14_image_url' => 'data/files/mall/template/201507091121372805.jpg',
-        'ad14_link_url' => '',
-        'cate_id_1' => '1',
-        'model_name1' => '热门',
-        'img_recom_id_1' => '1',
-        'img_cate_id_1' => '0',
-        'model_name2' => '文学/经管',
-        'img_recom_id_2' => '2',
-        'img_cate_id_2' => '0',
-        'model_name3' => '生活/少儿',
-        'img_recom_id_3' => '-100',
-        'img_cate_id_3' => '0',
-        'model_name4' => '社科/科教',
-        'img_recom_id_4' => '1',
-        'img_cate_id_4' => '0',
-        'model_name5' => '音像产品',
-        'img_recom_id_5' => '2',
-        'img_cate_id_5' => '0',
-        'model_name6' => '电子书',
-        'img_recom_id_6' => '-100',
-        'img_cate_id_6' => '0',
-        'model_name7' => '杂志',
-        'img_recom_id_7' => '1',
-        'img_cate_id_7' => '0',
-      ),
-    ),
-    '_widget_947' => 
-    array (
-      'options' => 
-      array (
-        0 => 
-        array (
-          'model_name' => '',
-          'num' => '',
-          'cate_id' => '26',
-        ),
-      ),
-    ),
-    '_widget_237' => 
-    array (
-      'options' => 
-      array (
-        'model_name' => '京东快报',
-        'cate_id_1' => '4',
-      ),
-    ),
-    '_widget_546' => 
-    array (
-      'options' => 
-      array (
-        'num_name' => '',
-        'model_name' => '',
-        'img_recom_id_1' => '1',
-        'img_cate_id_1' => '0',
-        'ad1_image_url' => false,
-        'ad2_image_url' => false,
-        'ad3_image_url' => false,
-        'ad4_image_url' => false,
-        'ad5_image_url' => false,
-        'ad6_image_url' => false,
-        'ad7_image_url' => false,
-        'ad8_image_url' => false,
-      ),
-    ),
-    '_widget_959' => 
-    array (
-      'options' => 
-      array (
-        'model_name' => '',
-        'cate_id' => '0',
-      ),
-    ),
-    '_widget_506' => 
-    array (
-      'options' => 
-      array (
-        'model_name' => '',
-        'width' => '1600',
-        'height' => '150',
-        'effect' => 'scrolly',
-        'autoplay' => 'true',
-        'ads' => 
-        array (
-        ),
-      ),
-    ),
     '_widget_123' => 
     array (
       'options' => 
@@ -1076,14 +928,93 @@ return array (
           0 => 
           array (
             'ad_image_url' => 'data/files/mall/template/201506290532016361.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => '',
           ),
           1 => 
           array (
             'ad_image_url' => 'data/files/mall/template/201506290532021389.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => '',
           ),
         ),
+      ),
+    ),
+    '_widget_165' => 
+    array (
+      'options' => 
+      array (
+        'model_name' => '最新上架',
+        'img_recom_id_1' => '-100',
+        'img_cate_id_1' => '0',
+      ),
+    ),
+    '_widget_647' => 
+    array (
+      'options' => 
+      array (
+        'num_name' => '1F',
+        'model_name' => '服装鞋包  全场满1000送600',
+        'sub_title_name1' => '男装',
+        'sub_title_name1_link_url' => '',
+        'sub_title_name2' => '女装',
+        'sub_title_name2_link_url' => '',
+        'sub_title_name3' => '内衣',
+        'sub_title_name3_link_url' => '',
+        'sub_title_name4' => '鞋靴',
+        'sub_title_name4_link_url' => '',
+        'sub_title_name5' => '箱包',
+        'sub_title_name5_link_url' => '',
+        'sub_title_name6' => '奢侈品',
+        'sub_title_name6_link_url' => '',
+        'ad1_image_url' => 'data/files/mall/template/201506300523081879.jpg',
+        'ad1_link_url' => '',
+        'ad2_image_url' => 'data/files/mall/template/201507090941126764.jpg',
+        'ad2_link_url' => '',
+        'ad3_image_url' => 'data/files/mall/template/201507090941122279.jpg',
+        'ad3_link_url' => '',
+        'ad4_image_url' => 'data/files/mall/template/201507090941127996.jpg',
+        'ad4_link_url' => '',
+        'ad5_image_url' => 'data/files/mall/template/201507090942149021.jpg',
+        'ad5_link_url' => '',
+        'ad6_image_url' => 'data/files/mall/template/201507090942148651.jpg',
+        'ad6_link_url' => '',
+        'ad7_image_url' => 'data/files/mall/template/201507090942143337.jpg',
+        'ad7_link_url' => '',
+        'ad8_image_url' => 'data/files/mall/template/201507090942149054.jpg',
+        'ad8_link_url' => '',
+        'ad9_image_url' => 'data/files/mall/template/201507090942143426.jpg',
+        'ad9_link_url' => '',
+        'ad10_image_url' => 'data/files/mall/template/201507090942141913.jpg',
+        'ad10_link_url' => '',
+        'ad11_image_url' => 'data/files/mall/template/201507090942145914.jpg',
+        'ad11_link_url' => '',
+        'ad12_image_url' => 'data/files/mall/template/201507090942144972.jpg',
+        'ad12_link_url' => '',
+        'cate_id_1' => '0',
+        'cate_id_2' => '1',
+        'model_name1' => '大牌',
+        'img_recom_id_1' => '1',
+        'img_cate_id_1' => '0',
+        'model_name2' => '男装',
+        'img_recom_id_2' => '2',
+        'img_cate_id_2' => '0',
+        'model_name3' => '女装',
+        'img_recom_id_3' => '-100',
+        'img_cate_id_3' => '0',
+        'model_name4' => '鞋靴',
+        'img_recom_id_4' => '1',
+        'img_cate_id_4' => '0',
+        'model_name5' => '箱包',
+        'img_recom_id_5' => '2',
+        'img_cate_id_5' => '0',
+        'model_name6' => '内衣配饰',
+        'img_recom_id_6' => '-100',
+        'img_cate_id_6' => '0',
+        'model_name7' => '珠宝首饰',
+        'img_recom_id_7' => '1',
+        'img_cate_id_7' => '0',
+        'model_name8' => '',
+        'img_recom_id_8' => '0',
+        'img_cate_id_8' => '0',
       ),
     ),
   ),

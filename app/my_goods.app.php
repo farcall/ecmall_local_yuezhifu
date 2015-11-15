@@ -562,8 +562,6 @@ class My_goodsApp extends StoreadminbaseApp {
         
         
     }
-    
-    
 
     function edit() {
         import('image.func');
@@ -780,9 +778,6 @@ class My_goodsApp extends StoreadminbaseApp {
             $this->show_message('edit_ok', 'back_list', 'index.php?app=my_goods&page=' . $ret_page, 'edit_again', 'index.php?app=my_goods&amp;act=edit&amp;id=' . $id);
         }
     }
-    
-    
-    
 
     function spec_edit() {
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;

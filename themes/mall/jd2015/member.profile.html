@@ -24,6 +24,7 @@ $(function(){
     $('input[ectype="change_avatar"]').change(function(){
 
         var src = getFullPath($(this)[0]);
+        alert(src);
         $('img[ectype="avatar"]').attr('src', src);
         $('input[ectype="change_avatar"]').removeAttr('name');
         $(this).attr('name', 'portrait');

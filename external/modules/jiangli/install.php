@@ -43,4 +43,26 @@ $db->query("CREATE TABLE `".DB_PREFIX."epay_jinbi2money_log` (
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='金币转换虚拟货币日志表(默认金币1:1虚拟货币)';
 ");
+
+//增加线下交易管理表
+$db->query("CREATE TABLE `".DB_PREFIX."order_xianxia` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `buyer_id` int(11) NOT NULL DEFAULT '0' COMMENT '买家ID',
+  `buyer_name` varchar(255) NOT NULL DEFAULT '' COMMENT '买家用户名',
+  `buyer_mobile` varchar(255) NOT NULL DEFAULT '' COMMENT '买家手机号',
+  `goods_name` varchar(255) NOT NULL DEFAULT '' COMMENT '交易商品名称',
+  `money` float(2,2) NOT NULL DEFAULT '0.00' COMMENT '订单总额度',
+  `seller_userid` int(11) NOT NULL DEFAULT '0' COMMENT '店主ID',
+  `seller_username` varchar(255) NOT NULL DEFAULT '' COMMENT '店主名',
+  `seller_storeid` int(11) NOT NULL DEFAULT '0' COMMENT '商铺ID',
+  `seller_storename` varchar(255) NOT NULL DEFAULT '' COMMENT '商品名称',
+  `seller_mobile` varchar(255) NOT NULL DEFAULT '' COMMENT '商家联系电话',
+  `pingzheng` varchar(255) NOT NULL DEFAULT '' COMMENT '交易凭证图片路径',
+  `admin` varchar(255) NOT NULL DEFAULT '' COMMENT '审核管理员名称',
+  `add_time` int(11) NOT NULL DEFAULT '0' COMMENT '商家提交时间',
+  `shenhe_time` int(11) NOT NULL DEFAULT '0' COMMENT '管理员审核时间',
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0-商家提交;1管理员审核通过;-1管理员审核失败',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='线下订单';
+");
 ?>

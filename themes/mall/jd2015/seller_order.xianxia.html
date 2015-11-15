@@ -1,0 +1,199 @@
+{include file=member.header.html}
+<style>
+    .borline td { padding:10px 0px; }
+    .ware_list th { text-align:left; }
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#xianxia_form").validate({
+        success: function(label) {
+            label.addClass('validate_right').text('OK!');
+        },
+            onkeyup: false,
+            rules: {
+                buyer_name: {
+                    required: true,
+                    number:true,
+                    byteRange: [11, 11],
+                    remote: {
+                        url: "index.php?app=member&act=Ajax_checkuser",     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json",           //接受数据格式
+                        data: {                     //要传递的数据
+                            user_name: function() {
+                                return $("#name").val();
+                            }
+                        }
+                    },
+                    success: function(label) {
+                        $tele = $('#name').val();
+                        $('#telephone').val($tele);
+                    }
+
+                },
+                buyer_telephone:{
+                    required: true,
+                    number:true,
+                    byteRange: [11, 11]
+                },
+                goods_name:{
+                    required: true
+                },
+                money:{
+                    required: true,
+                    number:true,
+                    byteRange: [1, 15],
+                    remote: {
+                        url: "index.php?app=seller_order&act=ajax_checkyongjin",     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json",           //接受数据格式
+                        data: {                     //要传递的数据
+                            money: function(){
+                                return $("#money").val();
+                            }
+                        }
+                    }
+                },
+                seller_storename:{
+                    required: true
+                },
+                seller_username:{
+                    required: true
+                },
+                seller_phone:{
+                    required: true,
+                    number:true,
+                    byteRange: [11, 11]
+                }
+            },
+            messages: {
+                buyer_name: {
+                    remote: '该用户不存在'
+                },
+                money:{
+                    remote:'您的余额不足,请充值<span class="epay_btn"><a href="index.php?app=epay&amp;act=czlist" target="_blank" >充值</a></span>'
+                }
+            }
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    $('#xianxia_form').validate({
+        rules : {
+            pingzheng : {
+                accept   : 'gif|jpe?g|png'
+            }
+        },
+        messages : {
+            pingzheng  : {
+                accept   : '图片格式不正确'
+            }
+        }
+    });
+    $(function(){
+        $('input[ectype="change_avatar"]').change(function(){
+            var src = getFullPath($(this)[0]);
+            $('img[ectype="avatar"]').attr('src', src);
+            $('input[ectype="change_avatar"]').removeAttr('name');
+            $(this).attr('name', 'pingzheng');
+        });
+    });
+</script>
+<div class="content">
+    {include file=member.menu.html}
+    <div id="right">
+        {include file=member.curlocal.html}
+        {include file=member.submenu.html}
+        <div class="wrap">
+            <div class="public">
+                <form method="post" enctype="multipart/form-data" id="xianxia_form">
+                    <div class="information">
+                        <!--消费清单-->
+                        <div class="photo width13">
+                            <p><img src="{$site_url}/data/system/qingshangchuanjiaoyipingzheng.png" width="120" height="120" alt="" ectype="avatar" /></p>
+                            <b>
+                                <span class="file1"><input type="file" ectype="change_avatar" name="pingzheng1" /></span>
+                                <span class="file2"><input type="file" ectype="change_avatar" name="pingzheng2" /></span>
+
+                                <div class="txt">上传凭证</div>
+                            </b>
+                        </div>
+                        <div class="info individual">
+                            <table>
+                                <!--会员名-->
+                                <tr>
+                                    <th>会员名:</th>
+                                    <td>
+                                        <input type="text" class="text width_normal"  id="name" name="buyer_name" title="请输入会员名"/>
+                                        <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+                                <!--联系电话-->
+                                <tr>
+                                    <th>联系电话:</th>
+                                    <td><input type="text" id="telephone" class="text width_normal" name="buyer_telephone" title="请输入11位的手机号码"/><label style="color: red">*</label></td>
+                                </tr>
+                                <!--产品名称-->
+                                <tr>
+                                    <th>产品名称: </th>
+                                    <td>
+                                        <input type="text" class="text width_normal" name="goods_name" title="请输入产品名称" />
+                                       <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+                                <!--总计-->
+                                <tr>
+                                    <th>总金额:</th>
+                                    <td>
+                                        <input type="text" class="text width_normal" id="money" name="money" title="请输入总金额,单位元,精准到0.01元"/>
+                                       <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <th>商业联盟商店名:</th>
+                                    <td>
+                                        <input type="text" class="text width_normal" name="seller_storename" value="{$store.store_name}" title="商家名称"/>
+                                        <label for="seller_storename" generated="true" class="error validate_right">OK!</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>经手人:</th>
+                                    <td>
+                                        <input type="text" class="text width_normal" name="seller_username" value="{$member.real_name}" title="请输入您的名字"/>
+                                       <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>经手人联系方式:</th>
+                                    <td>
+                                        <input type="text" class="text width_normal" name="seller_phone" value="{$store.tel}" title="请输入您的11位手机号"/>
+                                       <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th></th>
+                                    <td><input type="submit" class="btn" value="提交" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="adorn_right1"></div>
+        <div class="adorn_right2"></div>
+        <div class="adorn_right3"></div>
+        <div class="adorn_right4"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+</div>
+{include file=footer.html}
