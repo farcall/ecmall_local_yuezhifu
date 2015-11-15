@@ -207,6 +207,9 @@ function order_status_translator($order_status_text) {
         case 'finished':    //已完成的订单
             return ORDER_FINISHED;
             break;
+        case 'shenhe':      //线下做单审核中
+            return ORDER_SHENHE_ING;
+            break;
         default:            //所有订单
             return '';
             break;

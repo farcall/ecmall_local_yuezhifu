@@ -6,9 +6,12 @@
  *    @author    Garbin
  *    @usage    none
  */
-class NormalOrder extends BaseOrder {
+class XianxiaOrder extends BaseOrder {
 
     var $_name = 'xianxia';
+    var $_payment_name = '线下支付';
+    var $_payment_code = 'xxzf';
+
 
     /**
      *    查看订单
@@ -42,36 +45,38 @@ class NormalOrder extends BaseOrder {
         return array('data' => $data);
     }
 
-    /* 显示订单表单 */
 
-    function get_order_form($store_id) { // delivery
-        $data = array();
-        $template = 'order.form.html';
+    function _handle_order_info($data){
+        /* 默认是交易完成 */
+        $order_status = ORDER_SHENHE_ING;
+        extract($data);
 
-        $visitor = & env('visitor');
+        /*留言*/
+        $postscript = '购买者电话:'.$buyer_mobile.'商品名称:'.$goods_name.'经手人电话:'.$seller_mobile;
 
-        /* 获取我的收货地址 */
-        $data['my_address'] = $this->_get_my_address($visitor->get('user_id'));
-        $data['addresses'] = ecm_json_encode($data['my_address']);
-        $data['regions'] = $this->_get_regions();
-
-        /* 配送方式 */
-        $data['shipping_methods']   = $this->_get_shipping_methods($store_id);
-        if (empty($data['shipping_methods']))
-        {
-            $this->_error('no_shipping_methods');
-
-            return false;
-        }
-        $data['shippings']          = ecm_json_encode($data['shipping_methods']);
-        foreach ($data['shipping_methods'] as $shipping)
-        {
-            $data['shipping_options'][$shipping['shipping_id']] = $shipping['shipping_name'];
-        }
-        
-        return array('data' => $data, 'template' => $template);
+        /* 返回基本信息 */
+        $now = gmtime();
+        return array(
+            'order_sn' => $this->_gen_order_sn(),
+            'type' => 'xianxia',
+            'extension' => 'xianxia',
+            'seller_id' => $seller_userid,
+            'seller_name' => $seller_username,
+            'buyer_id' => $buyer_id,
+            'buyer_name' => $buyer_name,
+            'status' => $order_status,
+            'add_time' => $now,
+            'postscript'=>$postscript,
+            'payment_name'=>$this->_payment_name,
+            'payment_code'=>$this->_payment_code,
+            'pay_time'=>$now,
+            'evaluation_status'=>1,
+            'finished_time'=>$now,
+            'goods_amount'=>$money,
+            'order_amount'=>$money,
+            'evaluation_time'=>$now,
+        );
     }
-
     /**
      *    提交生成订单，外部告诉我要下的单的商品类型及用户填写的表单数据以及商品数据，我生成好订单后返回订单ID
      *
@@ -83,31 +88,15 @@ class NormalOrder extends BaseOrder {
         /* 释放goods_info和post两个变量 */
         extract($data);
         /* 处理订单基本信息 */
-        $base_info = $this->_handle_order_info($goods_info, $post);
+        $base_info = $this->_handle_order_info($data);
+
         if (!$base_info) {
             /* 基本信息验证不通过 */
 
             return 0;
         }
 
-        /* 处理订单收货人信息 */
-        $consignee_info = $this->_handle_consignee_info($goods_info, $post);
-        if (!$consignee_info) {
-            /* 收货人信息验证不通过 */
-            return 0;
-        }
-
-        /* 至此说明订单的信息都是可靠的，可以开始入库了 */
-
-        /* 插入订单基本信息 */
-        //订单总实际总金额，可能还会在此减去折扣等费用
-        $base_info['order_amount'] = $base_info['goods_amount'] + $consignee_info['shipping_fee'] - $base_info['discount'];
-
-        /* 如果优惠金额大于商品总额和运费的总和 */
-        if ($base_info['order_amount'] < 0) {
-            $base_info['order_amount'] = 0;
-            $base_info['discount'] = $base_info['goods_amount'] + $consignee_info['shipping_fee'];
-        }
+        /*插入订单信息*/
         $order_model = & m('order');
         $order_id = $order_model->add($base_info);
 
@@ -118,29 +107,58 @@ class NormalOrder extends BaseOrder {
             return 0;
         }
 
+
+        /* 插入商品信息 */
+        $goods_item =  array(
+                'order_id' => $order_id,
+                'goods_name' => $goods_name,
+                'price' => $money,
+                'specification'=>'',
+                'goods_image' =>$pingzheng,
+            );
+
+
+        $order_goods_model = & m('ordergoods');
+        $goods_id = $order_goods_model->add($goods_item);
+
+        /*插入线下订单表*/
+        $order_xianxia_mod = &m('order_xianxia');
+        $data['order_sn'] = $order_id;
+        $data['goods_id'] = $goods_id;
+        $xxid = $order_xianxia_mod->add($data);
+        if(empty($xxid)){
+            $this->_error('create_order_failed');
+            $order_model->del($order_id);
+            return 0;
+        }
+
         /* 插入收货人信息 */
+        $consignee_info = array(
+            'order_id'=>$order_id,
+            'consignee'=>$buyer_name,
+            'region_id'=>0,
+            'region_name'=>'同城',
+            'address'=>'到本店消费',
+            'phone_tel'=>$buyer_mobile,
+            'phone_mob' =>$buyer_mobile,
+            'shipping_id'=>3,
+            'shipping_name'=>'本店消费',
+        );
         $consignee_info['order_id'] = $order_id;
         $order_extm_model = & m('orderextm');
         $order_extm_model->add($consignee_info);
 
-        /* 插入商品信息 */
-        $goods_items = array();
-        foreach ($goods_info['items'] as $key => $value) {
-            $goods_items[] = array(
-                'order_id' => $order_id,
-                'goods_id' => $value['goods_id'],
-                'goods_name' => $value['goods_name'],
-                'spec_id' => $value['spec_id'],
-                'specification' => $value['specification'],
-                'price' => $value['price'],
-                'quantity' => $value['quantity'],
-                'goods_image' => $value['goods_image'],
-            );
-        }
-        $order_goods_model = & m('ordergoods');
-        $order_goods_model->add(addslashes_deep($goods_items)); //防止二次注入
 
-        return $order_id;
+        /*修改卖家金额 冻结佣金*/
+        $epay_mod = &m('epay');
+        $epay_data = $epay_mod->get(array(
+            'conditions'=>'user_id='.$seller_userid,
+        ));
+        $epay_data['money_dj'] = $epay_data['money_dj']+$yongjin;
+        $epay_data['money'] = $epay_data['money']-$yongjin;
+        $epay_mod->edit('user_id='.$seller_userid,$epay_data);
+
+        return $xxid;
     }
 
 }

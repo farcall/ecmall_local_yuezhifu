@@ -114,6 +114,7 @@
                     </tr>
                     <!--{foreach from=$order.order_goods item=goods name=fe_goods}-->
                     <tr class="line<!--{if $smarty.foreach.fe_goods.last}--> last_line<!--{/if}-->">
+                        <!--{if $goods.goos_id ne 0}-->
                         <td valign="top" class="first clearfix">
                             <div class="pic-info fleft">
                                 <a href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.goods_image}" width="50" height="50" /></a>
@@ -125,6 +126,19 @@
                                 <!--{if $goods.specification}--><p class="gray-color mt5">{$goods.specification}</p><!--{/if}-->
                             </div>
                         </td>
+                        <!--{else}-->
+                        <td valign="top" class="first clearfix">
+                            <div class="pic-info fleft">
+                                <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank"><img src="{$goods.goods_image}" width="50" height="50" /></a>
+                            </div>
+                            <div class="txt-info fleft">
+                                <div class="txt">
+                                    <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">{$goods.goods_name}</a>
+                                </div>
+                            </div>
+                        </td>
+                        <!--{/if}-->
+
                         <td valign="top" class="align2">{$goods.price}</td>
                         <td valign="top" class="align2"><strong>{$goods.quantity}</strong></td>
                         <td class="align2">
@@ -169,21 +183,30 @@
                         </td>
                         <td valign="top"class="align2 bottom-blue" rowspan="{$order.goods_quantities}">
                             <div class="btn-order-status">
-                                <p><span class="{if $order.status==0}gray-color{else}color4{/if}">{$order.status|modifier:order_status}</span></p>
-                                {if $order.status eq ORDER_FINISHED and $order.seller_evaluation_status eq '0'}<a class="btn1" href="{url app=seller_order&act=evaluate&order_id=$order.order_id}" target="_blank" >{$lang.seller_evaluate}</a>{/if}
-                                <!--//查看订单-->
-                                <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">{$lang.view_order}</a>
-                                <!--//发货-->
-                                <a href="javascript:;" class="btn-order-status-shipped" ectype="dialog" dialog_title="{$lang.shipped_order}" dialog_id="seller_order_shipped" uri="index.php?app=seller_order&amp;act=shipped&amp;order_id={$order.order_id}&ajax"  dialog_width="400" id="order{$order.order_id}_action_shipped"{if $order.status neq ORDER_ACCEPTED} style="display:none"{/if} />{$lang.shipped_order}</a>
-                                <!--//取消订单 不是取消和完成的订单就可以取消-->
-                                <a href="javascript:;" ectype="dialog" uri="index.php?app=seller_order&amp;act=cancel_order&order_id={$order.order_id}&ajax" dialog_title="{$lang.cancel_order}" dialog_id="seller_order_cancel_order" dialog_width="400" id="order{$order.order_id}_action_cancel"{if $order.status eq ORDER_CANCELED or $order.status eq ORDER_FINISHED} style="display:none"{/if} />{$lang.cancel_order}</a>
-                                <!--//确认订单-->
-                                <a href="javascript:;" ectype="dialog" uri="index.php?app=seller_order&amp;act=confirm_order&amp;order_id={$order.order_id}&ajax" dialog_id="seller_order_confirm_order" dialog_title="{$lang.confirm_cod_order}"  dialog_width="400" id="order{$order.order_id}_action_confirm"{if $order.status neq ORDER_SUBMITTED} style="display:none" {/if} />{$lang.confirm_cod_order}</a>
-                                <!--//完成订单-->
-                                <a href="javascript:;" ectype="dialog" dialog_id="seller_order_finished"  dialog_title="{$lang.finish_order}" uri="index.php?app=seller_order&amp;act=finished&order_id={$order.order_id}&ajax" dialog_width="400"  id="order{$order.order_id}_action_finish"{if $order.payment_code neq 'cod' or $order.status neq ORDER_SHIPPED} style="display:none"{/if} />{$lang.finish_order}</a>
-                                <!--//修改单号-->
-                                <a href="javascript:;" ectype="dialog" dialog_title="{$lang.edit_invoice_no}" uri="index.php?app=seller_order&amp;act=shipped&amp;order_id={$order.order_id}&ajax" dialog_id="seller_order_shipped" dialog_width="400" id="order{$order.order_id}_action_edit_invoice_no"{if $order.status neq ORDER_SHIPPED} style="display:none" {/if} />{$lang.edit_invoice_no}</a>
-                                <a href="{url app=seller_order&act=orderprint&order_id=$order.order_id}" target="_blank">打印详情</a>
+
+                               {if $order.type ne "xianxia"}
+                                    <p><span class="{if $order.status==0}gray-color{else}color4{/if}">{$order.status|modifier:order_status}</span></p>
+                                    {if $order.status eq ORDER_FINISHED and $order.seller_evaluation_status eq '0'}<a class="btn1" href="{url app=seller_order&act=evaluate&order_id=$order.order_id}" target="_blank" >{$lang.seller_evaluate}</a>{/if}
+                                    <!--//查看订单-->
+                                    <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">{$lang.view_order}</a>
+                                    <!--//发货-->
+                                    <a href="javascript:;" class="btn-order-status-shipped" ectype="dialog" dialog_title="{$lang.shipped_order}" dialog_id="seller_order_shipped" uri="index.php?app=seller_order&amp;act=shipped&amp;order_id={$order.order_id}&ajax"  dialog_width="400" id="order{$order.order_id}_action_shipped"{if $order.status neq ORDER_ACCEPTED} style="display:none"{/if} />{$lang.shipped_order}</a>
+                                    <!--//取消订单 不是取消和完成的订单就可以取消-->
+                                    <a href="javascript:;" ectype="dialog" uri="index.php?app=seller_order&amp;act=cancel_order&order_id={$order.order_id}&ajax" dialog_title="{$lang.cancel_order}" dialog_id="seller_order_cancel_order" dialog_width="400" id="order{$order.order_id}_action_cancel"{if $order.status eq ORDER_CANCELED or $order.status eq ORDER_FINISHED} style="display:none"{/if} />{$lang.cancel_order}</a>
+                                    <!--//确认订单-->
+                                    <a href="javascript:;" ectype="dialog" uri="index.php?app=seller_order&amp;act=confirm_order&amp;order_id={$order.order_id}&ajax" dialog_id="seller_order_confirm_order" dialog_title="{$lang.confirm_cod_order}"  dialog_width="400" id="order{$order.order_id}_action_confirm"{if $order.status neq ORDER_SUBMITTED} style="display:none" {/if} />{$lang.confirm_cod_order}</a>
+                                    <!--//完成订单-->
+                                    <a href="javascript:;" ectype="dialog" dialog_id="seller_order_finished"  dialog_title="{$lang.finish_order}" uri="index.php?app=seller_order&amp;act=finished&order_id={$order.order_id}&ajax" dialog_width="400"  id="order{$order.order_id}_action_finish"{if $order.payment_code neq 'cod' or $order.status neq ORDER_SHIPPED} style="display:none"{/if} />{$lang.finish_order}</a>
+                                    <!--//修改单号-->
+                                    <a href="javascript:;" ectype="dialog" dialog_title="{$lang.edit_invoice_no}" uri="index.php?app=seller_order&amp;act=shipped&amp;order_id={$order.order_id}&ajax" dialog_id="seller_order_shipped" dialog_width="400" id="order{$order.order_id}_action_edit_invoice_no"{if $order.status neq ORDER_SHIPPED} style="display:none" {/if} />{$lang.edit_invoice_no}</a>
+                                    <a href="{url app=seller_order&act=orderprint&order_id=$order.order_id}" target="_blank">打印详情</a>
+                               {else}
+                                {if $order.status==0}<p><span class="gray-color">线下做单:审核未通过</span></p>{/if}
+                                {if $order.status==31}<p><span class="color4">线下做单:交易审核中</span></p>{/if}
+                                {if $order.status==40}<p><span class="color3">线下做单:交易完成</span></p>{/if}
+                               {/if}
+
+
                             </div>
                         </td>
                         <td valign="top" width="54" class="align2 bottom-blue last" rowspan="{$order.goods_quantities}">

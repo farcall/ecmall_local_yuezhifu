@@ -799,6 +799,10 @@ class Seller_orderApp extends StoreadminbaseApp {
                 'url' => 'index.php?app=seller_order&amp;type=canceled',
             ),
             array(
+                'name' => '线下订单审核中',
+                'url' => 'index.php?app=seller_order&amp;type=shenhe',
+            ),
+            array(
                 'name' => '线下做单',
                 'url' => 'index.php?app=seller_order&amp;act=xianxia',
             ),
@@ -883,7 +887,7 @@ class Seller_orderApp extends StoreadminbaseApp {
             $seller_username = $_POST['seller_username'];
             $seller_mobile = $_POST['seller_phone'];
             if(empty($buyer_mobile) or empty($buyer_mobile) or empty($goods_name) or
-               empty($money) or empty($seller_storename) or  empty($seller_username) or empty($seller_mobile)){
+               empty($money) or empty($seller_storename) or  empty($seller_username) or empty($seller_mobile) ){
 
                 $this->show_warning('非法操作');
                 return;
@@ -901,11 +905,14 @@ class Seller_orderApp extends StoreadminbaseApp {
                 return;
             }
 
+            /*确认凭证必须上传成功*/
             $pingzheng_path = $this->_upload_pingzheng($member_data['user_id']);
             if(empty($pingzheng_path)){
                 $this->show_warning('必须上传交易凭证');
                 return;
             }
+
+
             /*检查用户*/
             $order_xianxia_data = array(
                 'buyer_id'=>$member_data['user_id'],
@@ -937,22 +944,14 @@ class Seller_orderApp extends StoreadminbaseApp {
                 return;
             }
 
-            /*写入order_order_xianxia表*/
-            $order_xianxia_mod = &m('order_xianxia');
-            $order_xianxia_mod->add($order_xianxia_data);
 
-            /*资金冻结epay表*/
-            $epay_data = $epay_mod->get(array(
-                'conditions'=>'user_id='.$user_id,
-            ));
-            $epay_data['money_dj'] = $epay_data['money_dj']+$yongjin;
-            $epay_data['money'] = $epay_data['money']-$yongjin;
-            $epay_mod->edit('user_id='.$user_id,$epay_data);
 
-            /*订单order*/
-            /*订单拓展表order_extm*/
-            /*订单商品表order_goods*/
-            /*订单日志表order_log*/
+            $goods_type = & gt('xianxia');
+            $order_type = & ot('xianxia');
+            $xxid = $order_type->submit_order($order_xianxia_data);
+            if(empty($xxid)){
+                $this->show_warning('订单创建失败');
+            }
             $this->show_message('已成功提交,您的信息会在48小时内审核完成,请耐心等待.');
             return;
         }

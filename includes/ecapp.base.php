@@ -56,6 +56,10 @@ define('ORDER_ACCEPTED', 20);                  // 买家已付款，等待卖家
 define('ORDER_SHIPPED', 30);                   // 卖家已发货
 define('ORDER_FINISHED', 40);                  // 交易成功
 define('ORDER_CANCELED', 0);                   // 交易已取消
+/*新增两个订单状态2015年11月15日20:21:111*/
+define('ORDER_SHENHE_ING', 31);                       // 线下做单审核中  买家已付款,卖家已发货，等待管理员审核
+define('ORDER_SHENHE_FINISHED', 40);                 // 线下做单管理员通过
+define('ORDER_SHENHE_CANCELED', 0);                  // 线下做单管理员拒绝(订单取消)
 
 /* 特殊文章分类ID */
 define('STORE_NAV',    -1); // 店铺导航

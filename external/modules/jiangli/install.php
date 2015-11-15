@@ -48,6 +48,8 @@ $db->query("CREATE TABLE `".DB_PREFIX."epay_jinbi2money_log` (
 $db->query("CREATE TABLE `".DB_PREFIX."order_xianxia` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `buyer_id` int(11) NOT NULL DEFAULT '0' COMMENT '买家ID',
+  `order_sn` int(11) NOT NULL DEFAULT '0' COMMENT '订单序号',
+  `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '对应order_goods',
   `buyer_name` varchar(255) NOT NULL DEFAULT '' COMMENT '买家用户名',
   `buyer_mobile` varchar(255) NOT NULL DEFAULT '' COMMENT '买家手机号',
   `goods_name` varchar(255) NOT NULL DEFAULT '' COMMENT '交易商品名称',

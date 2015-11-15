@@ -126,16 +126,16 @@ class NormalOrder extends BaseOrder {
         /* 插入商品信息 */
         $goods_items = array();
         foreach ($goods_info['items'] as $key => $value) {
-            $goods_items[] = array(
-                'order_id' => $order_id,
-                'goods_id' => $value['goods_id'],
-                'goods_name' => $value['goods_name'],
-                'spec_id' => $value['spec_id'],
-                'specification' => $value['specification'],
-                'price' => $value['price'],
-                'quantity' => $value['quantity'],
-                'goods_image' => $value['goods_image'],
-            );
+                $goods_items[] = array(
+                    'order_id' => $order_id,
+                    'goods_id' => $value['goods_id'],
+                    'goods_name' => $value['goods_name'],
+                    'spec_id' => $value['spec_id'],
+                    'specification' => $value['specification'],
+                    'price' => $value['price'],
+                    'quantity' => $value['quantity'],
+                    'goods_image' => $value['goods_image'],
+                );
         }
         $order_goods_model = & m('ordergoods');
         $order_goods_model->add(addslashes_deep($goods_items)); //防止二次注入
