@@ -1,10 +1,57 @@
 {include file="header.html"}
+
+<script type="text/javascript">
+    function tongguo(){
+        $log = $('#log').val();
+        location.href = "index.php?app=order&act=tongguo&id="+{$order.order_id}+"&log="+$log;//location.href实现客户端页面的跳转
+    }
+
+    function jujue(){
+        $log = $('#log').val();
+
+        location.href = "index.php?app=order&act=jujue&id="+{$order.order_id}+"&log="+$log;//location.href实现客户端页面的跳转
+    }
+</script>
 <div id="rightTop">
     <p><b>{$lang.order_detail}</b></p>
 </div>
 <div class="info">
     <div class="demand">
     </div>
+
+    <div class="order_form">
+        <h2>{$lang.goods_info}</h2>
+        <!--{foreach from=$goods_list item=goods}-->
+        <div class="order_info">
+            <ul>
+                <li>
+                    <p><b>{$goods.goods_name|escape} :</b> <span class="red_common">{$goods.specification|escape}</span></p>
+                    <p><b>{$lang.price} :</b> <span class="red_common">{$goods.price|price}</span></p>
+                    <p><b>{$lang.quantity} :</b> {$goods.quantity}</p>
+                    <br/>
+                    <img alt="{$lang.goods_pic}" src="{$goods.goods_image}" />
+                </li>
+                <li>
+                    <form id="log_form">
+                        <p>
+                            <b>原因:</b><br/>
+                            <textarea style="width: 300px;height: 100px;line-height: 20px;" id="log" maxlength="256"></textarea>
+                            <br/>
+                            <input style="color: #fff;" class="btn1" type="button" value="通过" onclick="tongguo();">
+                            <input style="color: #fff;" class="btn1" type="button" value="拒绝" onclick="jujue();">
+                        </p>
+                    </form>
+
+                </li>
+            </ul>
+
+        </div>
+        <!--{/foreach}-->
+        <div class="clear"></div>
+    </div>
+    
+
+
     <div class="order_form">
         <h1>{$lang.order_status}</h1>
         <ul>
@@ -57,20 +104,6 @@
             <li><b>{$lang.invoice_no}:</b> {$order.invoice_no|escape}</li>
             <!--{/if}-->
         </ul>
-        <div class="clear"></div>
-    </div>
-
-    <div class="order_form">
-        <h2>{$lang.goods_info}</h2>
-        <!--{foreach from=$goods_list item=goods}-->
-        <div class="order_info">
-            <p><b>{$goods.goods_name|escape} :</b> <span class="red_common">{$goods.specification|escape}</span></p>
-            <p><b>{$lang.price} :</b> <span class="red_common">{$goods.price|price}</span></p>
-            <p><b>{$lang.quantity} :</b> {$goods.quantity}</p>
-            <br/>
-            <img alt="{$lang.goods_pic}" src="{$goods.goods_image}" />
-        </div>
-        <!--{/foreach}-->
         <div class="clear"></div>
     </div>
 </div>

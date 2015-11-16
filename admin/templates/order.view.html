@@ -37,7 +37,14 @@
             <li><b>{$lang.finished_time}:</b>{$order.finished_time|date:complete}</li>
             <!--{/if}-->
             <!--{if $order.postscript}-->
-            <li><b>{$lang.postscript}:</b>{$order.postscript|escape}</li>
+            <li><b>
+                {if $order.status eq 0 and $order.type=="xianxia"}
+                管理员拒绝原因:
+                {else}
+                {$lang.postscript}:
+                {/if}
+
+            </b>{$order.postscript|escape}</li>
             <!--{/if}-->
         </ul>
         <div class="clear"></div>

@@ -78,7 +78,15 @@
                <br />
            <!--{/if}-->
            <!--{if $order.postscript}-->
-           {$lang.postscript}&nbsp;:&nbsp;{$order.postscript|escape}<br />
+            <span style="color: #ff4f01;font-size: large">
+                {if $order.status eq 0 and $order.type=="xianxia"}
+                管理员拒绝原因:
+                {else}
+                {$lang.postscript}:
+                {/if}
+                &nbsp;:&nbsp;{$order.postscript|escape}
+            </span>
+              <br />
            <!--{/if}-->
           </div>
        <!--{if $order_logs}-->

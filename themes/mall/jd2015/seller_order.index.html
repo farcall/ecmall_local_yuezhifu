@@ -201,9 +201,18 @@
                                     <a href="javascript:;" ectype="dialog" dialog_title="{$lang.edit_invoice_no}" uri="index.php?app=seller_order&amp;act=shipped&amp;order_id={$order.order_id}&ajax" dialog_id="seller_order_shipped" dialog_width="400" id="order{$order.order_id}_action_edit_invoice_no"{if $order.status neq ORDER_SHIPPED} style="display:none" {/if} />{$lang.edit_invoice_no}</a>
                                     <a href="{url app=seller_order&act=orderprint&order_id=$order.order_id}" target="_blank">打印详情</a>
                                {else}
-                                {if $order.status==0}<p><span class="gray-color">线下做单:审核未通过</span></p>{/if}
-                                {if $order.status==31}<p><span class="color4">线下做单:交易审核中</span></p>{/if}
-                                {if $order.status==40}<p><span class="color3">线下做单:交易完成</span></p>{/if}
+                                {if $order.status==0}<p><span class="gray-color">线下做单:审核未通过</span>
+                                <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">查看详情</a>
+                                </p>
+                                {/if}
+                                {if $order.status==31}<p><span class="color4">线下做单:交易审核中</span>
+                                <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">查看详情</a>
+                            </p>
+                                {/if}
+                                {if $order.status==40}<p><span class="color3">线下做单:交易完成</span>
+                                <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">查看详情</a>
+                            </p>
+                                {/if}
                                {/if}
 
 

@@ -108,6 +108,9 @@ class OrderApp extends BackendApp
      */
     function tongguo(){
         $order_id = $_GET['id'];
+        $log = $_GET['log'];
+        //todo log安全性
+
         if(empty($order_id) or !is_numeric($order_id)){
             $this->show_warning('非法提交');
             return;
@@ -117,6 +120,7 @@ class OrderApp extends BackendApp
         $order_mod = &m('order');
         $order_result = $order_mod->edit($order_id,array(
             'finished_time'=>gmtime(),
+            'postscript'=>$log,
             'status'=>ORDER_FINISHED,
         ));
         if($order_result == false){
@@ -174,9 +178,10 @@ class OrderApp extends BackendApp
      * Created by QQ:710932
      */
     function jujue(){
-
-        $this->
+        $log = $_GET['log'];
         $order_id = $_GET['id'];
+        //todo log安全性
+
         if(empty($order_id) or !is_numeric($order_id)){
             $this->show_warning('非法提交');
             return;
@@ -186,6 +191,7 @@ class OrderApp extends BackendApp
         $order_mod = &m('order');
         $order_result = $order_mod->edit($order_id,array(
             'finished_time'=>gmtime(),
+            'postscript'=>$log,
             'status'=>ORDER_SHENHE_CANCELED,
         ));
         if($order_result == false){
