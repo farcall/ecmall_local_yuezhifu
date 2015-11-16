@@ -96,8 +96,9 @@ class OrderApp extends BackendApp
         $this->assign('page_info', $page);          //将分页信息传递给视图，用于形成分页条
         $this->assign('orders', $orders);
 
-        $this->import_resource(array('script' => 'inline_edit.js,jquery.ui/jquery.ui.js,jquery.ui/i18n/' . i18n_code() . '.js',
+        $this->import_resource(array('script' => 'inline_edit.js,jquery.ui/jquery.ui.js,jquery.ui/i18n/' . i18n_code() . '.js,http://cdn.bootcss.com/jquery/1.8.0/jquery.min.js,layer/layer.js',
                                       'style'=> 'jquery.ui/themes/ui-lightness/jquery.ui.css'));
+
         $this->display('order.index.html');
     }
 
@@ -173,6 +174,8 @@ class OrderApp extends BackendApp
      * Created by QQ:710932
      */
     function jujue(){
+
+        $this->
         $order_id = $_GET['id'];
         if(empty($order_id) or !is_numeric($order_id)){
             $this->show_warning('非法提交');
