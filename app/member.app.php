@@ -678,9 +678,6 @@ class MemberApp extends MemberbaseApp {
      * 核对手机发送的验证码是否相同
      */
     function cmc() {
-        //todo dong-debug完成后这两行要删除掉
-        echo ecm_json_encode(true);
-        return;
         $confirm_code = empty($_GET['confirm_code']) ? '' : trim($_GET['confirm_code']);
         if (empty($_SESSION['MobileConfirmCode']) || !$confirm_code) {
             echo ecm_json_encode(false);

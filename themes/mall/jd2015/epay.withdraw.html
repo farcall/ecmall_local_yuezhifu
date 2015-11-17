@@ -1,11 +1,64 @@
 {include file=member.header.html}
 <script>
     $(function () {
+
         $('#epay-withdraw').submit(function () {
             if ($(this).find('input[name="tx_money"]').val() == '' || $(this).find('input[name="tx_money"]').val() <= 0) {
                 alert('{$lang.withdraw_money_error}');
                 return false;
             }
+        });
+
+        var canSend = true;
+        var time = 60;
+        var dtime = 60;
+        $("#sendsms").bind('click', function() {
+            var btn = $(this);
+            if (!canSend)
+                return;
+            var sendaddress = $('#phone_mob').val();
+            var fhm = $("[for='phone_mob']").text();
+            if (fhm != '' && fhm != "OK!") {
+                alert("请输入正确的手机号码！");
+                return;
+            }
+            if (fhm == '' && $('#phone_mob').val() == "") {
+                alert("请输入正确的手机号码！");
+                return;
+            }
+            $.ajax({
+                type: "get",
+                url: "index.php?app=epay&act=send_code&type=tixian",
+                data: {
+                    mobile: function() {
+                        return sendaddress;
+                    }
+                },
+                success: function(msg) {
+                    var hander = setInterval(function() {
+                                if (time <= 0) {
+                                    canSend = true;
+                                    clearInterval(hander);
+                                    btn.val("重新发送验证码");
+                                    btn.removeAttr("disabled");
+                                    time = dtime;
+                                } else {
+                                    canSend = false;
+                                    btn.attr({
+                                        "disabled": "disabled"
+                                    });
+                                    btn.val(time + "秒后可重新发送");
+                                    time--;
+                                }
+                            },
+                            1000);
+                    if (msg) {
+                        alert("短信已发送至:" + sendaddress + " 请注意查收！");
+                    } else {
+                        alert("短信发送失败，请检查手机号码是否正确！");
+                    }
+                }
+            });
         });
     })
 </script>
@@ -35,7 +88,11 @@
                             <dd>
                                 <!--{foreach from=$bank_list item=bank name=fe_bank}-->
                                 <div class="bank-each clearfix {if $smarty.foreach.fe_bank.first} selected {/if}">
-                                    <div class="radio float-left"><input name="bank_id" type="radio" value="{$bank.bank_id}" {if $smarty.foreach.fe_bank.first} checked="checked" {/if}/></div>
+                                    <div class="radio float-left">
+
+                                        <input name="bank_id" type="radio" value="{$bank.bank_id}" {if $smarty.foreach.fe_bank.first} checked="checked" {/if} />
+                                    </div>
+
                                     <div class="bank-name float-left">{$bank.bank_name}</div>
                                     <div class="bank-num float-left">{$bank.num}</div>
                                     <div class="action float-right">

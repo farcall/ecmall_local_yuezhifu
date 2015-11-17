@@ -124,6 +124,32 @@ class EpayApp extends MemberbaseApp {
     }
 
 
+
+    /**
+     * 提现发送验证码
+     */
+    function send_code() {
+        if (!Conf::get('msg_enabled')) {
+            return;
+        }
+        $mobile = empty($_GET['mobile']) ? '' : trim($_GET['mobile']);
+        if (!$mobile) {
+            echo ecm_json_encode(false);
+            return;
+        }
+        //发送短信的格式
+        $type = $_GET['type'];
+        if (!in_array($type, array('register', 'find', 'change','tixian'))) {
+            echo ecm_json_encode(false);
+            return;
+        }
+        //发送验证码
+        import('mobile_msg.lib');
+        $mobile_msg = new Mobile_msg();
+        $result = $mobile_msg->send_msg_system($type, $mobile);
+        echo ecm_json_encode($result);
+    }
+
     //提现申请
     function withdraw() {
         $user_id = $this->visitor->get('user_id');
@@ -147,9 +173,14 @@ class EpayApp extends MemberbaseApp {
             
             $this->display('epay.withdraw.html');
         } else {
+            if (Conf::get('msg_enabled') && $_SESSION['MobileConfirmCode'] != $_POST['confirm_code']) {
+                $this->show_warning('验证码错误');
+                return;
+            }
+
             $tx_money = trim($_POST['tx_money']);
             $money_row = $this->mod_epay->getrow("select * from " . DB_PREFIX . "epay where user_id='$user_id'");
-            
+
             $post_zf_pass = trim($_POST['post_zf_pass']);
             if (empty($post_zf_pass)) {
                 $this->show_warning('cuowu_zhifumimabunengweikong');

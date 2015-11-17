@@ -89,6 +89,9 @@ class Mobile_msg {
         } else if ($type == 'find') {
             //找回密码发送的短信内容
             $smsText = "您的找回密码验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
+        }else if($type == 'tixian'){
+            //提现申请验证短信
+            $smsText = "您的申请提现验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
         }
         //存入session 做认证
         unset($_SESSION['MobileConfirmCode']);
