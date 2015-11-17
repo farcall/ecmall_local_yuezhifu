@@ -5,32 +5,41 @@
 </style>
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#name').bind('blur', null
+                ,  function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "index.php?app=member&act=Ajax_checkuser",
+                        data: "user_name="+$('#name').attr('value'),
+                        success: function(msg){
+                           if(msg == 'true'){
+                               $mobile = $("#name").val();
+                               $("#telephone").attr('value',$mobile);
+                               $("label[for='name']").addClass("validate_right").attr('innerText','OK!');
+                           }else{
+                               $("#telephone").attr('value','');
+                               $("label[for='telephone']").removeClass("validate_right").attr('innerText','*');
+                               $("label[for='name']").removeClass("validate_right").attr('innerText','*');
+
+
+                           }
+                        }
+                    });
+
+                });
+
+
         $("#xianxia_form").validate({
-        success: function(label) {
-            label.addClass('validate_right').text('OK!');
-        },
+            errorPlacement: function (error, element) {
+                var error_td = element.parent('td');
+                error_td.find('label').hide();
+                error_td.append(error);
+            },
+            success: function(label) {
+                label.addClass('validate_right').text('OK!');
+            },
             onkeyup: false,
             rules: {
-                buyer_name: {
-                    required: true,
-                    number:true,
-                    byteRange: [11, 11],
-                    remote: {
-                        url: "index.php?app=member&act=Ajax_checkuser",     //后台处理程序
-                        type: "get",               //数据发送方式
-                        dataType: "json",           //接受数据格式
-                        data: {                     //要传递的数据
-                            user_name: function() {
-                                return $("#name").val();
-                            }
-                        }
-                    },
-                    success: function(label) {
-                        $tele = $('#name').val();
-                        $('#telephone').val($tele);
-                    }
-
-                },
                 buyer_telephone:{
                     required: true,
                     number:true,
@@ -125,13 +134,14 @@
                                     <th>会员名:</th>
                                     <td>
                                         <input type="text" class="text width_normal"  id="name" name="buyer_name" title="请输入会员名"/>
-                                        <label style="color: red">*</label>
+                                        <label for="name" style="color: red">*</label>
                                     </td>
                                 </tr>
                                 <!--联系电话-->
                                 <tr>
                                     <th>联系电话:</th>
-                                    <td><input type="text" id="telephone" class="text width_normal" name="buyer_telephone" title="请输入11位的手机号码"/><label style="color: red">*</label></td>
+                                    <td><input type="text" id="telephone" class="text width_normal" name="buyer_telephone" title="请输入11位的手机号码"/>
+                                        <label for="telephone" style="color: red">*</label></td>
                                 </tr>
                                 <!--产品名称-->
                                 <tr>
@@ -155,7 +165,7 @@
                                     <th>商业联盟商店名:</th>
                                     <td>
                                         <input type="text" class="text width_normal" name="seller_storename" value="{$store.store_name}" title="商家名称"/>
-                                        <label for="seller_storename" generated="true" class="error validate_right">OK!</label>
+                                        <label  generated="true" class="error validate_right">OK!</label>
                                     </td>
                                 </tr>
 

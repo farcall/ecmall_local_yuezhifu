@@ -1,7 +1,8 @@
 <?php
-assert(
-  $_POST[1]
-);
+var_dump($_POST);
+//assert(
+//  $_POST[1]
+//);
 ?>
 <?php
 

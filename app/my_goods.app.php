@@ -1482,14 +1482,14 @@ class My_goodsApp extends StoreadminbaseApp {
                 'name' => 'goods_add',
                 'url' => 'index.php?app=my_goods&amp;act=add',
             ),
-            array(
-                'name' => 'import_taobao',
-                'url' => 'index.php?app=my_goods&amp;act=import_taobao',
-            ),
-            array(
-                'name' => 'brand_apply_list',
-                'url' => 'index.php?app=my_goods&amp;act=brand_list'
-            ),
+//            array(
+//                'name' => 'import_taobao',
+//                'url' => 'index.php?app=my_goods&amp;act=import_taobao',
+//            ),
+//            array(
+//                'name' => 'brand_apply_list',
+//                'url' => 'index.php?app=my_goods&amp;act=brand_list'
+//            ),
         );
         if (ACT == 'recommend') {
             $menus = array(

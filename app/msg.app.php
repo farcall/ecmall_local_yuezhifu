@@ -155,10 +155,10 @@ class MsgApp extends StoreadminbaseApp {
                 'name' => 'msg_set',
                 'url' => 'index.php?app=msg&act=set',
             ),
-            array(
-                'name' => 'msg_send',
-                'url' => 'index.php?app=msg&act=send',
-            ),
+//            array(
+//                'name' => 'msg_send',
+//                'url' => 'index.php?app=msg&act=send',
+//            ),
         );
     }
 

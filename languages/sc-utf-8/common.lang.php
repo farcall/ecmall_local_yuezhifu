@@ -70,7 +70,7 @@ return array(
     'my_ecmall' => '我的账户',
     'overview' => '账户概览',
     'member_center' => '用户中心',
-    'hello' => '喵，欢迎来天猫',
+    'hello' => '喵，欢迎来众盈商城',
     'login' => '请登录',
     'register' => '注册',
     'search' => '搜索',

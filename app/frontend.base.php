@@ -922,18 +922,18 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'my_order',
                     'icon' => 'ico5',
                 ),
-                'my_groupbuy' => array(
-                    'text' => Lang::get('my_groupbuy'),
-                    'url' => 'index.php?app=buyer_groupbuy',
-                    'name' => 'my_groupbuy',
-                    'icon' => 'ico21',
-                ),
-                'supply_demand' => array(
-                    'text' => Lang::get('supply_demand'),
-                    'url' => 'index.php?app=supply_demand',
-                    'name' => 'supply_demand',
-                    'icon' => 'ico10',
-                ),
+//                'my_groupbuy' => array(
+//                    'text' => Lang::get('my_groupbuy'),
+//                    'url' => 'index.php?app=buyer_groupbuy',
+//                    'name' => 'my_groupbuy',
+//                    'icon' => 'ico21',
+//                ),
+//                'supply_demand' => array(
+//                    'text' => Lang::get('supply_demand'),
+//                    'url' => 'index.php?app=supply_demand',
+//                    'name' => 'supply_demand',
+//                    'icon' => 'ico10',
+//                ),
                 'my_question' => array(
                     'text' => Lang::get('my_question'),
                     'url' => 'index.php?app=my_question',
@@ -952,12 +952,12 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'my_address',
                     'icon' => 'ico7',
                 ),
-                'my_coupon' => array(
-                    'text' => Lang::get('my_coupon'),
-                    'url' => 'index.php?app=my_coupon',
-                    'name' => 'my_coupon',
-                    'icon' => 'ico20',
-                ),
+//                'my_coupon' => array(
+//                    'text' => Lang::get('my_coupon'),
+//                    'url' => 'index.php?app=my_coupon',
+//                    'name' => 'my_coupon',
+//                    'icon' => 'ico20',
+//                ),
                 'my_evaluation'  => array(
                     'text'  => Lang::get('my_evaluation'),
                     'url'   => 'index.php?app=my_evaluation&type=from_buyer',
@@ -1086,24 +1086,24 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'template',
                 'icon' => 'ico22',
             );
-            $menu['im_market']['submenu']['my_statistics'] = array(
-                'text' => Lang::get('my_statistics'),
-                'url' => 'index.php?app=my_statistics',
-                'name' => 'my_statistics',
-                'icon' => 'ico20',
-            );
-            $menu['im_market']['submenu']['seller_coupon'] = array(
-                'text' => Lang::get('seller_coupon'),
-                'url' => 'index.php?app=seller_coupon',
-                'name' => 'seller_coupon',
-                'icon' => 'ico19',
-            );
-            $menu['im_market']['submenu']['export_excel'] = array(
-                'text' => Lang::get('export_excel'),
-                'url' => 'index.php?app=export_excel',
-                'name' => 'export_excel',
-                'icon' => 'ico19',
-            );
+//            $menu['im_market']['submenu']['my_statistics'] = array(
+//                'text' => Lang::get('my_statistics'),
+//                'url' => 'index.php?app=my_statistics',
+//                'name' => 'my_statistics',
+//                'icon' => 'ico20',
+//            );
+//            $menu['im_market']['submenu']['seller_coupon'] = array(
+//                'text' => Lang::get('seller_coupon'),
+//                'url' => 'index.php?app=seller_coupon',
+//                'name' => 'seller_coupon',
+//                'icon' => 'ico19',
+//            );
+//            $menu['im_market']['submenu']['export_excel'] = array(
+//                'text' => Lang::get('export_excel'),
+//                'url' => 'index.php?app=export_excel',
+//                'name' => 'export_excel',
+//                'icon' => 'ico19',
+//            );
 /*            $menu['im_market']['submenu']['groupbuy_manage'] = array(
                 'text' => Lang::get('groupbuy_manage'),
                 'url' => 'index.php?app=seller_groupbuy',

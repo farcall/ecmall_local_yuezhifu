@@ -227,10 +227,6 @@ function drop_image(file_id)
                                       <span class="field_notice">元</span>
                                   </td>
                             </tr>
-                            <tr>
-                                  <th>{$lang.im_msn}:</th>
-                                  <td>{if $store.im_msn}{$store.im_msn|escape} <a target="_blank" href="{url app=my_store&act=drop_im_msn}">{$lang.disable_msn}</a>{else}<a target="_blank" href="{$msn_active_url}">{$lang.active_msn}</a><span class="padding1">{$lang.msn_info}</span>{/if}</td>
-                             </tr>
                             <!--{if $store.functions.enable_free_fee}-->
                              <tr>
                                   <th>{$lang.amount_for_free_fee}:</th>

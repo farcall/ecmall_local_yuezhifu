@@ -9,7 +9,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201309050141133314.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => '',
         'ad_width' => '450',
         'ad_height' => '350',
         'ad_border' => '',
