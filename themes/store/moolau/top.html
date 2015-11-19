@@ -33,7 +33,7 @@
             <!--{if $smarty.get.app eq 'goods' && $smarty.get.id}-->
             <li><a class="active"><span>{$lang.goods_detail}</span></a></li>
             <!--{/if}-->
-            <li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'coupon'}active{else}normal{/if}" href="{url app=store&act=coupon&id=$store.store_id}"><span>优惠卷</span></a></li>
+            <!--<li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'coupon'}active{else}normal{/if}" href="{url app=store&act=coupon&id=$store.store_id}"><span>优惠卷</span></a></li>-->
 
         </ul>
     </div>
@@ -49,10 +49,10 @@
             </form>
         </div>
         <div class="keys">
-            <span>{$lang.hot_search}{$lang.colon}</span>
-            {foreach from=$store.hot_search item=keyword}
-            <a href="{url app=store&act=search&id=$store.store_id&keyword=$keyword|escape:url}">{$keyword}</a> 
-            {/foreach}
-        </div>
-    </div>
+<span>{$lang.hot_search}{$lang.colon}</span>
+{foreach from=$store.hot_search item=keyword}
+<a href="{url app=store&act=search&id=$store.store_id&keyword=$keyword|escape:url}">{$keyword}</a>
+{/foreach}
+</div>
+</div>
 </div>
