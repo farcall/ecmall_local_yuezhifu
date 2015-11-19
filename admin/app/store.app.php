@@ -655,6 +655,8 @@ class StoreApp extends BackendApp
         }
 
         /*删除店铺的所有支付方式*/
+        $payment_mod = &m('payment');
+        $payment_mod->drop('store_id='.$store_id);
         //删除店铺的目录 , 此目录 存放店铺上传的图片和信息。
         $this->del_DirAndFile(ROOT_PATH."/data/files/store_".$store_id);
     }

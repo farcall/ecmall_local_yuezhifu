@@ -494,7 +494,7 @@ class JiangliModule extends AdminbaseModule
                     t1.quanbujindou,ifnull(t2.yiyongjindou,0) as yiyongjindou,
                     (t1.quanbujindou-ifnull(t2.yiyongjindou,0)) as weiyongjindou
                 from
-                     (select buyer_id as user_id,buyer_name as user_name,floor(sum(order_amount)/$min_money2jindou) as quanbujindou
+                     (select buyer_id as user_id,buyer_name as user_name,floor(sum(goods_amount)/$min_money2jindou) as quanbujindou
                       from
                         ecm_order
                       where status=40 group by user_name)as t1
@@ -552,7 +552,7 @@ class JiangliModule extends AdminbaseModule
 //        $end_time = $end_time- - 8*6400;
 
         $order_mod = &m('order');
-        $totalAmount = $order_mod->getOne("select sum(order_amount) from ".DB_PREFIX."order where status=40 and finished_time>".$begin_time." and finished_time<=".$end_time);
+        $totalAmount = $order_mod->getOne("select sum(goods_amount) from ".DB_PREFIX."order where status=40 and finished_time>".$begin_time." and finished_time<=".$end_time);
         return $totalAmount==null?0:$totalAmount;
     }
 }
