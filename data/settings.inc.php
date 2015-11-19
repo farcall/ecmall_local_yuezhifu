@@ -150,5 +150,6 @@ return array (
   'epay_fenpei_last_time' => '0',
   'epay_max_jindou2jinbi' => '60',
   'epay_min_money2jindou' => '100',
+  'store_allow' => '1',
 );
 ?>

@@ -237,30 +237,8 @@ function drop_image(file_id)
                                   <td><input name="acount_for_free_fee" type="text" class="text width_normal" id="acount_for_free_fee" value="{$store.acount_for_free_fee|escape}" /><span class="field_notice">{$lang.acount_free_fee_info}</span></td>
                              </tr>
                              <!--{/if}-->
-                             {if $store.functions.groupbuy}
-							 <tr>
-                                  <th>{$lang.enable_groupbuy}:</th>
-                                  <td>
-								      <input id="enable_groupbuy_0" type="radio" name="enable_groupbuy" {if !$store.enable_groupbuy}checked{/if} value="0" />
-                                      <label for="enable_groupbuy_0">{$lang.no}</label>
-                                      <input id="enable_groupbuy_1" type="radio" name="enable_groupbuy" {if $store.enable_groupbuy}checked{/if} value="1" />
-                                      <label for="enable_groupbuy_1">{$lang.yes}</label>
-                                  </td>
-                             </tr>
-                             {/if}
-                             {if $store.functions.enable_radar}
-                             <!-- goods radar  -->
-                             <tr>
-                                  <th>{$lang.enable_radar}:</th>
-                                  <td><label>
-					                 <input type="radio" name="enable_radar" value="1" {if $store.enable_radar}checked="checked"{/if} />
-					                {$lang.yes}</label>
-					                <label>
-					                <input type="radio" name="enable_radar" value="0" {if !$store.enable_radar}checked="checked"{/if} />
-					                {$lang.no}</label></td>
-                             </tr>
-                             <!-- goods radar -->
-                             {/if}
+
+
                              <tr>
                                 <th class="align3">{$lang.description}:</th>
                                 <td><div class="editor"><div>

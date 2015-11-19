@@ -103,6 +103,7 @@ class ApplyApp extends MallbaseApp {
                         'zipcode' => $_POST['zipcode'],
                         'tel' => $_POST['tel'],
                         'sgrade' => $sgrade['grade_id'],
+                        'theme'=>'jd2015|default',  //默认主题
                         //'apply_remark' => $_POST['apply_remark'],
                         'state' => $sgrade['need_confirm'] ? 0 : 1,
                         'add_time' => gmtime(),
