@@ -35,6 +35,10 @@ class ApplyApp extends MallbaseApp {
         }
         $sgrade_mod = & m('sgrade');
 
+        /*安装所有的支付方式 by:qq435795*/
+        $payment_mod = &m('payment');
+        $payment_mod->install_all_payment($this->visitor->get('user_id'));
+
         switch ($step) {
             case 1:
                 $sgrades = $sgrade_mod->find(array(
@@ -146,11 +150,6 @@ class ApplyApp extends MallbaseApp {
                             'store_url' => SITE_URL . '/' . url('app=store&id=' . $store_id),
                             'seller_name' => $data['store_name'],
                         ));
-
-
-                    //安装所有的支付方式 by:qq435795
-                    $payment_mod = &m('payment');
-                    $payment_mod->install_all_payment($this->visitor->get('user_id'));
 
                     $this->_hook('after_opening', array('user_id' => $store_id));
 
