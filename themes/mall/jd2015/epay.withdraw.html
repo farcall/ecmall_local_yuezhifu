@@ -1,13 +1,86 @@
 {include file=member.header.html}
-<script>
-    $(function () {
+<script type="text/javascript">
+    $(function(){
 
-        $('#epay-withdraw').submit(function () {
-            if ($(this).find('input[name="tx_money"]').val() == '' || $(this).find('input[name="tx_money"]').val() <= 0) {
-                alert('{$lang.withdraw_money_error}');
-                return false;
+//        $('#epay-withdraw').submit(function () {
+//            if ($(this).find('input[name="tx_money"]').val() == '' || $(this).find('input[name="tx_money"]').val() <= 0) {
+//                alert('{$lang.withdraw_money_error}');
+//                return false;
+//            }
+//        });
+
+        $('#epay-withdraw').validate({
+            errorPlacement: function(error, element) {
+                var error_td = element.parent('dd');
+                error_td.find('label').hide();
+                error_td.append(error);
+            },
+            success: function(label) {
+                label.addClass('validate_right').text('OK!');
+            },
+            onkeyup: false,
+            rules: {
+                tx_money:{
+                    required: true,
+                    digits:true
+                },
+                post_zf_pass:{
+                    required: true
+                },
+                phone_mob:{
+                    required: true,
+                    digits:true,
+                    byteRange: [11,11]
+                },
+                confirm_code: {
+                    required: true,
+                    number: true,
+                    byteRange: [6, 6, '{$charset}'],
+                    remote: {
+                        url: 'index.php?app=member&act=cmc&ajax=1',
+                        type: 'get',
+                        data: {
+                            confirm_code: function() {
+                                return $('#confirm_code').val();
+                            }
+                        },
+                        beforeSend: function() {
+                            var _checking = $('#checking_code');
+                            _checking.next('label').hide();
+                            $(_checking).show();
+
+                        },
+                        complete: function() {
+                            $('#checking_code').hide();
+                        }
+                    }
+                }
+
+            },
+            messages: {
+                tx_money:{
+                    required:'必填',
+                    digits:'必须是整数'
+                },
+                post_zf_pass:{
+                    required: '必填'
+                },
+                phone_mob:{
+                    required: '必填',
+                    digits:'请输入11位数字',
+                    byteRange:'请输入11位数字'
+                },
+                confirm_code:{
+                    required:'必填',
+                    number:'请输入数字',
+                    byteRange:'请输入六位数字',
+                    remote:'验证码错误'
+                }
             }
+
         });
+
+
 
         var canSend = true;
         var time = 60;
@@ -60,7 +133,9 @@
                 }
             });
         });
-    })
+
+
+    });
 </script>
 <div class="content">
     {include file=member.menu.html}
@@ -122,7 +197,10 @@
 
                         <dl class="clearfix">
                             <dt>确认验证码:</dt>
-                            <dd><input class="text width_normal" type="text" id="confirm_code" name="confirm_code" value=""/></dd>
+                            <dd>
+                                <input class="text width_normal" type="text" id="confirm_code" name="confirm_code" value=""/>
+                                <label class="field_notice">*</label>
+                            </dd>
                         </dl>
 
 

@@ -164,13 +164,23 @@ class EpayApp extends MemberbaseApp {
                 $this->show_message('epay_editpassword', 'epay_editpassword', 'index.php?app=epay&act=editpassword');
                 return;
             }
-            
+
             $this->assign('epay', $epay);
             
             //获取当前用户设置的银行卡信息
             $bank_list = $this->mod_epay_bank->find(array('conditions'=>'user_id='.$this->visitor->get('user_id')));
             $this->assign('bank_list', $bank_list);
-            
+
+            /* 导入jQuery的表单验证插件   */
+            $this->import_resource(array(
+                'script' => array(
+                    array(
+                        'path' => 'jquery.plugins/jquery.validate.js',
+                        'attr' => '',
+                    ),
+                )
+            ));
+
             $this->display('epay.withdraw.html');
         } else {
             if (Conf::get('msg_enabled') && $_SESSION['MobileConfirmCode'] != $_POST['confirm_code']) {
