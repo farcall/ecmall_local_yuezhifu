@@ -288,13 +288,16 @@ class BaseModel extends Object
         }
 
         $data = $this->_valid($data);
+
         if (!$data)
         {
             $this->_error('no_valid_data');
             return false;
         }
+
         $insert_info = $this->_getInsertInfo($data);
         $mode = $compatible ? 'REPLACE' : 'INSERT';
+
 
         $this->db->query("{$mode} INTO {$this->table}{$insert_info['fields']} VALUES{$insert_info['values']}");
         $insert_id = $this->db->insert_id();
@@ -966,7 +969,12 @@ class BaseModel extends Object
                 /* 大小|长度限制 */
                 if ($type == 'string')
                 {
-                    $strlen = strlen($value);
+                    if(is_array($value)){
+                        $strlen = implode($value);
+                    }else{
+                        $strlen = strlen($value);
+                    }
+
                     if ($min != 0 && $strlen < $min)
                     {
                         $this->_error('autov_length_lt_min', $_k);
@@ -1022,6 +1030,7 @@ class BaseModel extends Object
                 if ($filter)
                 {
                     $funs    = explode(',', $filter);
+
                     foreach ($funs as $fun)
                     {
                         function_exists($fun) && $value = $fun($value);
@@ -1030,6 +1039,7 @@ class BaseModel extends Object
                 }
             }
         }
+
         if (!$is_multi)
         {
             $data = $data[0];

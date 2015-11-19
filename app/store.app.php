@@ -361,6 +361,7 @@ class StoreApp extends StorebaseApp
         $goods_list = $goods_mod->find(array(
             'conditions' => "closed = 0 AND if_show = 1 AND recommended = 1",
             'fields'     => 'goods_name, default_image, price',
+            'order'      =>  'last_update desc',
             'limit'      => $num,
         ));
         foreach ($goods_list as $key => $goods)

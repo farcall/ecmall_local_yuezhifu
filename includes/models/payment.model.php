@@ -62,6 +62,7 @@ class PaymentModel extends BaseModel
             return;
         }
 
+
         return $this->add($payment);
     }
 
@@ -165,6 +166,50 @@ class PaymentModel extends BaseModel
         return include($payment_path);
     }
 
+    function install_all_payment(){
+        //todo 安装所有支付方式
+        /* 取得列表数据 */
+        $model_payment =& m('payment');
+        /* 获取白名单 */
+        $white_list    = $this->get_white_list();
+        /* 获取白名单过滤后的内置支付方式列表 */
+        $payments      = $this->get_builtin($white_list);
+
+        foreach ($payments as $payment) {
+            if (!$payment)
+            {
+               continue;
+            }
+            $payment_info = $model_payment->get("store_id=" . $this->visitor->get('manage_store') . " AND payment_code='{$payment['code']}'");
+            if (!empty($payment_info))
+            {
+                //已经安装
+                continue;
+            }
+
+            $data = array(
+                'store_id'      => $this->visitor->get('manage_store'),
+                'payment_name'  => $payment['name'],
+                'payment_code'  => $payments['code'],
+                'payment_desc'  => $payments['desc'],
+                'config'        => $_POST['config'],
+                'is_online'     => $payment['is_online'],
+                'enabled'       => $_POST['enabled'],
+                'sort_order'    => $_POST['sort_order'],
+            );
+            if (!($payment_id = $model_payment->install($data)))
+            {
+                //$this->show_warning($model_payment->get_error());
+                $msg = $model_payment->get_error();
+                $this->pop_warning($msg['msg']);
+                return;
+            }
+            $this->pop_warning('ok', 'my_payment_install');
+
+        }
+
+
+    }
     /**
      *    获取支付方式白名单
      *
