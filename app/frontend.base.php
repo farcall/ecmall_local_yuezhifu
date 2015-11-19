@@ -1037,12 +1037,12 @@ class MemberbaseApp extends MallbaseApp {
 //                'icon' => 'ico12',
 //            );
 
-            $menu['im_seller']['submenu']['my_payment'] = array(
-                'text' => Lang::get('my_payment'),
-                'url' => 'index.php?app=my_payment',
-                'name' => 'my_payment',
-                'icon' => 'ico13',
-            );
+//            $menu['im_seller']['submenu']['my_payment'] = array(
+//                'text' => Lang::get('my_payment'),
+//                'url' => 'index.php?app=my_payment',
+//                'name' => 'my_payment',
+//                'icon' => 'ico13',
+//            );
             $menu['im_seller']['submenu']['my_shipping'] = array(
                     'text'  => Lang::get('my_shipping'),
                     'url'   => 'index.php?app=my_shipping',
