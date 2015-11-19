@@ -166,10 +166,12 @@ class PaymentModel extends BaseModel
         return include($payment_path);
     }
 
+    /**
+     * 作用:所有商铺安装 管理员后台已经允许的支付方式
+     * Created by QQ:710932
+     */
     function install_all_payment(){
-        //todo 安装所有支付方式
         /* 取得列表数据 */
-        $model_payment =& m('payment');
         /* 获取白名单 */
         $white_list    = $this->get_white_list();
         /* 获取白名单过滤后的内置支付方式列表 */
@@ -180,7 +182,7 @@ class PaymentModel extends BaseModel
             {
                continue;
             }
-            $payment_info = $model_payment->get("store_id=" . $this->visitor->get('manage_store') . " AND payment_code='{$payment['code']}'");
+            $payment_info = $this->get("store_id=" . $this->visitor->get('manage_store') . " AND payment_code='{$payment['code']}'");
             if (!empty($payment_info))
             {
                 //已经安装
@@ -192,19 +194,15 @@ class PaymentModel extends BaseModel
                 'payment_name'  => $payment['name'],
                 'payment_code'  => $payments['code'],
                 'payment_desc'  => $payments['desc'],
-                'config'        => $_POST['config'],
+                'config'        => $payments['config'],
                 'is_online'     => $payment['is_online'],
-                'enabled'       => $_POST['enabled'],
-                'sort_order'    => $_POST['sort_order'],
+                'enabled'       => 1,
+                'sort_order'    => $payments['sort_order'],
             );
-            if (!($payment_id = $model_payment->install($data)))
+            if (!($payment_id = $this->install($data)))
             {
-                //$this->show_warning($model_payment->get_error());
-                $msg = $model_payment->get_error();
-                $this->pop_warning($msg['msg']);
-                return;
+                continue;
             }
-            $this->pop_warning('ok', 'my_payment_install');
 
         }
 
