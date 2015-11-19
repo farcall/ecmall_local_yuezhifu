@@ -315,22 +315,7 @@ $(function(){
                                     <li>
                                         <div class="arrange"><span class="red" style="margin-right:5px;">*</span><span class="gray">{$lang.ugrade_desc}</span></div>
                                     </li>
-                                    <li>
-                                        <h2>{$lang.if_open}: </h2>
-                                        <div class="arrange">
-                                            <span class="distance">
-                                                <label><input name="if_open" value="1" {if $goods.if_open}checked="checked" {/if}type="radio"  /> {$lang.yes}</label>
-                                                <label><input name="if_open" value="0" {if !$goods.if_open}checked="checked" {/if}type="radio"  /> {$lang.no}</label>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <!--{foreach from=$goods.ugrades item=ugrade name=fe_ugrade}-->
-                                    <li>
-                                        <h2 >{$ugrade.grade_name}: </h2>
-                                        <input name="grade[]" value="{$ugrade.grade}" type="hidden" />
-                                        <div class="arrange"><input name="grade_id[]" value="{$ugrade.grade_id}" type="hidden" /><input name="grade_discount[]" value="{$ugrade.grade_discount|default:}" type="text" class="text width_short" /></div>
-                                    </li>
-                                    <!--{/foreach}-->
+
 
                                     
                                     <li ectype="no_spec">
