@@ -5,6 +5,7 @@
 class ApplyApp extends MallbaseApp {
 
     function index() {
+
         $step = isset($_GET['step']) ? intval($_GET['step']) : 1;
         /* 判断是否开启了店铺申请 */
         if (!Conf::get('store_allow')) {
@@ -108,6 +109,7 @@ class ApplyApp extends MallbaseApp {
                         'state' => $sgrade['need_confirm'] ? 0 : 1,
                         'add_time' => gmtime(),
                     );
+
                     $image = $this->_upload_image($store_id);
                     if ($this->has_error()) {
                         $this->show_warning($this->get_error());
@@ -144,9 +146,15 @@ class ApplyApp extends MallbaseApp {
                             'store_url' => SITE_URL . '/' . url('app=store&id=' . $store_id),
                             'seller_name' => $data['store_name'],
                         ));
-                        $this->_hook('after_opening', array('user_id' => $store_id));
 
-                        $this->show_message('store_opened', 'index', 'index.php');
+
+                    //安装所有的支付方式 by:qq435795
+                    $payment_mod = &m('payment');
+                    $payment_mod->install_all_payment($this->visitor->get('user_id'));
+
+                    $this->_hook('after_opening', array('user_id' => $store_id));
+
+                    $this->show_message('store_opened', 'index', 'index.php');
                     }
                 }
                 break;

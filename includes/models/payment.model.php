@@ -62,7 +62,6 @@ class PaymentModel extends BaseModel
             return;
         }
 
-
         return $this->add($payment);
     }
 
@@ -170,19 +169,22 @@ class PaymentModel extends BaseModel
      * 作用:所有商铺安装 管理员后台已经允许的支付方式
      * Created by QQ:710932
      */
-    function install_all_payment(){
-        /* 取得列表数据 */
-        /* 获取白名单 */
+    function install_all_payment($user_id){
+        /*取得列表数据*/
+        /*获取白名单*/
         $white_list    = $this->get_white_list();
         /* 获取白名单过滤后的内置支付方式列表 */
         $payments      = $this->get_builtin($white_list);
+
 
         foreach ($payments as $payment) {
             if (!$payment)
             {
                continue;
             }
-            $payment_info = $this->get("store_id=" . $this->visitor->get('manage_store') . " AND payment_code='{$payment['code']}'");
+
+            $store_id = $user_id;
+            $payment_info = $this->get("store_id=" . $store_id. " AND payment_code='{$payment['code']}'");
             if (!empty($payment_info))
             {
                 //已经安装
@@ -190,22 +192,21 @@ class PaymentModel extends BaseModel
             }
 
             $data = array(
-                'store_id'      => $this->visitor->get('manage_store'),
+                'store_id'      => $store_id,
                 'payment_name'  => $payment['name'],
-                'payment_code'  => $payments['code'],
-                'payment_desc'  => $payments['desc'],
-                'config'        => $payments['config'],
+                'payment_code'  => $payment['code'],
+                'payment_desc'  => $payment['desc'],
+                'config'        => $payment['config'],
                 'is_online'     => $payment['is_online'],
                 'enabled'       => 1,
-                'sort_order'    => $payments['sort_order'],
+                'sort_order'    => $payment['sort_order'],
             );
+
             if (!($payment_id = $this->install($data)))
             {
                 continue;
             }
-
         }
-
 
     }
     /**

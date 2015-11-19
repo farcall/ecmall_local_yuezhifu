@@ -19,9 +19,6 @@ class PaymentApp extends BackendApp
             $payments[$key]['system_enabled'] = in_array($key, $white_list);
         }
 
-        var_dump($white_list);
-        var_dump($payments);
-        return;
         $this->assign('payments', $payments);
         $this->display('payment.index.html');
     }

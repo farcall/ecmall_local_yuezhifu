@@ -36,10 +36,10 @@ class CashierApp extends ShoppingbaseApp {
             return;
         }
         $payment_model = & m('payment');
+
         if (!$order_info['payment_id']) {
             /* 若还没有选择支付方式，则让其选择支付方式 */
             $payments = $payment_model->get_enabled($order_info['seller_id']);
-
             //余额支付  读取资金，读取店铺是否安装支付方式
             $epay_model = & m('epay'); //model
             $user_id = $this->visitor->get('user_id');
