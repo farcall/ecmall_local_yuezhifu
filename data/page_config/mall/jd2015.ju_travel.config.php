@@ -9,7 +9,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201502051529073861.png',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '990',
         'ad_height' => '46',
         'ad_border' => '',
@@ -24,19 +24,19 @@ return array (
         0 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051528456368.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '阿萨德发',
         ),
         1 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051528455740.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => 'ffffffffff',
         ),
         2 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051528455684.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '阿萨德范围',
         ),
       ),
@@ -47,7 +47,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201502051528519676.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '340',
         'ad_height' => '110',
         'ad_border' => '',
@@ -60,7 +60,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201502051528567250.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '340',
         'ad_height' => '110',
         'ad_border' => '0',

@@ -95,7 +95,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/store_1/template/201310050908002165.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '',
         'ad_height' => '',
         'ad_border' => '',

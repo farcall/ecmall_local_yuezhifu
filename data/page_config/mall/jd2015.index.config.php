@@ -12,18 +12,14 @@ return array (
         'cate_id' => '0',
       ),
     ),
+    '_widget_231' => 
+    array (
+      'name' => 'jd2015_sold2',
+      'options' => NULL,
+    ),
     '_widget_237' => 
     array (
       'name' => 'jd2015_article',
-      'options' => 
-      array (
-        'model_name' => '公告',
-        'cate_id_1' => '2',
-      ),
-    ),
-    '_widget_552' => 
-    array (
-      'name' => 'jd2015_sold',
       'options' => NULL,
     ),
     '_widget_123' => 
@@ -69,14 +65,29 @@ return array (
         'ad6_link_url' => '',
       ),
     ),
-    '_widget_165' => 
+    '_widget_763' => 
     array (
-      'name' => 'jd2015_floor5',
+      'name' => 'channel_phone_floor2',
       'options' => 
       array (
         'model_name' => '明星商家',
-        'img_recom_id_1' => '-100',
-        'img_cate_id_1' => '0',
+        'ad1_image_url' => 'data/files/mall/template/201511210005486422.jpg',
+        'ad1_link_url' => '',
+        'ad2_image_url' => 'data/files/mall/template/201511210005483194.jpg',
+        'ad2_link_url' => '',
+        'ad3_image_url' => 'data/files/mall/template/201511210005481423.jpg',
+        'ad3_link_url' => '',
+        'ad4_image_url' => 'data/files/mall/template/201511210005481680.jpg',
+        'ad4_link_url' => '',
+        'ad5_image_url' => 'data/files/mall/template/201511210005488025.jpg',
+        'ad5_link_url' => '',
+        'ad6_image_url' => 'data/files/mall/template/201511210005481882.jpg',
+        'ad6_link_url' => '',
+        'ad7_image_url' => 'data/files/mall/template/201511210005482139.jpg',
+        'ad7_link_url' => '',
+        'ad8_image_url' => false,
+        'ad9_image_url' => false,
+        'ad10_image_url' => false,
       ),
     ),
     '_widget_647' => 
@@ -128,11 +139,11 @@ return array (
         'img_recom_id_1' => '1',
         'img_cate_id_1' => '0',
         'model_name2' => '男装',
-        'img_recom_id_2' => '2',
+        'img_recom_id_2' => '1',
         'img_cate_id_2' => '0',
         'model_name3' => '女装',
         'img_recom_id_3' => '-100',
-        'img_cate_id_3' => '0',
+        'img_cate_id_3' => '1',
         'model_name4' => '鞋靴',
         'img_recom_id_4' => '1',
         'img_cate_id_4' => '0',
@@ -855,25 +866,6 @@ return array (
         'ad16_link_url' => '',
       ),
     ),
-    '_widget_513' => 
-    array (
-      'name' => 'jd2015_floor4',
-      'options' => 
-      array (
-        'num_name' => '12F',
-        'model_name' => '今日抄底',
-        'img_recom_id_1' => '2',
-        'img_cate_id_1' => '0',
-        'ad1_image_url' => false,
-        'ad2_image_url' => false,
-        'ad3_image_url' => false,
-        'ad4_image_url' => false,
-        'ad5_image_url' => false,
-        'ad6_image_url' => false,
-        'ad7_image_url' => false,
-        'ad8_image_url' => false,
-      ),
-    ),
   ),
   'config' => 
   array (
@@ -883,8 +875,8 @@ return array (
     ),
     'col-1-right' => 
     array (
-      0 => '_widget_237',
-      1 => '_widget_552',
+      0 => '_widget_231',
+      1 => '_widget_237',
     ),
     'col-2' => 
     array (
@@ -893,25 +885,24 @@ return array (
     'col-3' => 
     array (
       0 => '_widget_350',
+      1 => '_widget_763',
     ),
     'col-4' => 
     array (
-      0 => '_widget_165',
-      1 => '_widget_647',
-      2 => '_widget_239',
-      3 => '_widget_927',
-      4 => '_widget_558',
-      5 => '_widget_823',
-      6 => '_widget_845',
-      7 => '_widget_938',
-      8 => '_widget_801',
-      9 => '_widget_855',
-      10 => '_widget_326',
-      11 => '_widget_323',
-      12 => '_widget_586',
-      13 => '_widget_563',
-      14 => '_widget_923',
-      15 => '_widget_513',
+      0 => '_widget_647',
+      1 => '_widget_239',
+      2 => '_widget_927',
+      3 => '_widget_558',
+      4 => '_widget_823',
+      5 => '_widget_845',
+      6 => '_widget_938',
+      7 => '_widget_801',
+      8 => '_widget_855',
+      9 => '_widget_326',
+      10 => '_widget_323',
+      11 => '_widget_586',
+      12 => '_widget_563',
+      13 => '_widget_923',
     ),
   ),
 );

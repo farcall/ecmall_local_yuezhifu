@@ -262,6 +262,46 @@ return array (
       5 => '_widget_877',
     ),
   ),
+  'tmp' => 
+  array (
+    '_widget_914' => 
+    array (
+      'options' => 
+      array (
+        'model_name' => '今日热门',
+        'sub_title_name1' => '全部',
+        'describe_name1' => '返60%',
+        'img_recom_id_1' => '1',
+        'img_cate_id_1' => '0',
+        'sub_title_name2' => '特价',
+        'describe_name2' => '特价',
+        'img_recom_id_2' => '2',
+        'img_cate_id_2' => '0',
+        'sub_title_name3' => '新品',
+        'describe_name3' => '新品',
+        'img_recom_id_3' => '-100',
+        'img_cate_id_3' => '0',
+        'sub_title_name4' => '好评',
+        'describe_name4' => '好评',
+        'img_recom_id_4' => '1',
+        'img_cate_id_4' => '0',
+        'sub_title_name5' => '热销',
+        'describe_name5' => '热销',
+        'img_recom_id_5' => '2',
+        'img_cate_id_5' => '0',
+        'ad1_image_url' => false,
+        'ad2_image_url' => false,
+        'ad3_image_url' => false,
+        'ad4_image_url' => false,
+        'ad5_image_url' => false,
+        'ad6_image_url' => false,
+        'ad7_image_url' => false,
+        'ad8_image_url' => false,
+        'ad9_image_url' => false,
+        'ad10_image_url' => false,
+      ),
+    ),
+  ),
 );
 
 ?>

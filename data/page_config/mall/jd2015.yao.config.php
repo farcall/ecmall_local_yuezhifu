@@ -16,7 +16,7 @@ return array (
         'model_name' => '#',
         'cate_id' => '0',
         'ad_image_url' => 'data/files/mall/template/201407221427122655.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
     '_widget_368' => 
@@ -27,31 +27,31 @@ return array (
         0 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201407230249372496.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '#',
         ),
         1 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201407230249372440.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '#',
         ),
         2 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201407230249371812.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '#',
         ),
         3 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201407230249371184.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '#',
         ),
         4 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201407230249371699.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '#',
         ),
       ),
@@ -93,7 +93,7 @@ return array (
         'img_recom_id_1' => '1',
         'img_cate_id_1' => '0',
         'ad_image_url' => 'data/files/mall/template/201407230440439919.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
     '_widget_661' => 
@@ -132,7 +132,7 @@ return array (
         'color' => '#5296d0',
         'title' => '家庭常备',
         'ad_image_url' => 'data/files/mall/template/201407230543388354.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
     '_widget_935' => 
@@ -146,7 +146,7 @@ return array (
         'color' => '#f46575',
         'title' => '健康护航',
         'ad_image_url' => 'data/files/mall/template/201407230558146151.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
     '_widget_286' => 
@@ -160,7 +160,7 @@ return array (
         'color' => '#6dd4ab',
         'title' => '活力绽放',
         'ad_image_url' => 'data/files/mall/template/201407230600406102.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
     '_widget_374' => 
@@ -174,7 +174,7 @@ return array (
         'color' => '#d1b59d',
         'title' => '延年益寿',
         'ad_image_url' => 'data/files/mall/template/201407230601463024.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
       ),
     ),
   ),

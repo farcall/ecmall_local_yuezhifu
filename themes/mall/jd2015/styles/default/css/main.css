@@ -104,6 +104,15 @@
 .jd2015_sold .mc .p_info .p-detail .icon-r {font-size: 38px;line-height: 38px;color: #aaa;vertical-align: -24px;font-family: Arial;}
 .jd2015_sold .ks-switchable-nav{display:none;}
 
+
+/*jd2015_sold2*/
+.jd2015_sold{width: 250px;border-top: 1px solid #B1191A;height:207px;}
+.jd2015_sold .mc{height:198px;overflow: hidden;}
+.jd2015_sold .mc li{padding:5px 0;height:18px;width:230px;margin-left:10px;float:left;}
+.jd2015_sold .mc .lieven{ background: #F40;color: #fff;}
+
+
+
 /*jd2015_fashion*/
 .jd2015_fashion{}
 .jd2015_fashion .subject-title {display: block;margin: 15px 0 8px;height: 20px;line-height: 20px;font-size: 17px;font-weight: 700;color: #000;text-indent: -1000em;width: 192px;background-image: url(../images/tmall-brand.png);background-repeat: no-repeat;background-position: 0 -35px;}

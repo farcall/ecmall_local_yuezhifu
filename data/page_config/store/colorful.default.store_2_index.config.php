@@ -66,32 +66,32 @@ return array (
         ),
         'ad_link_url' => 
         array (
-          0 => 'http://www.lanmaoshangcheng.com/',
-          1 => 'http://www.lanmaoshangcheng.com/',
-          2 => 'http://www.lanmaoshangcheng.com/',
-          3 => 'http://www.lanmaoshangcheng.com/',
+          0 => 'http://www.linyihezi.com/',
+          1 => 'http://www.linyihezi.com/',
+          2 => 'http://www.linyihezi.com/',
+          3 => 'http://www.linyihezi.com/',
         ),
         'ads' => 
         array (
           0 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856271969.gif',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           1 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856279465.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           2 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856278967.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           3 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856278886.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
         ),
       ),
@@ -137,26 +137,26 @@ return array (
         ),
         'ad_link_url' => 
         array (
-          0 => 'http://www.lanmaoshangcheng.com/',
-          1 => 'http://www.lanmaoshangcheng.com/',
-          2 => 'http://www.lanmaoshangcheng.com/',
+          0 => 'http://www.linyihezi.com/',
+          1 => 'http://www.linyihezi.com/',
+          2 => 'http://www.linyihezi.com/',
         ),
         'ads' => 
         array (
           0 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308150330497904.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           1 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308150330492325.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           2 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308150330497881.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
         ),
       ),
@@ -370,32 +370,32 @@ return array (
         ),
         'ad_link_url' => 
         array (
-          0 => 'http://www.lanmaoshangcheng.com/',
-          1 => 'http://www.lanmaoshangcheng.com/',
-          2 => 'http://www.lanmaoshangcheng.com/',
-          3 => 'http://www.lanmaoshangcheng.com/',
+          0 => 'http://www.linyihezi.com/',
+          1 => 'http://www.linyihezi.com/',
+          2 => 'http://www.linyihezi.com/',
+          3 => 'http://www.linyihezi.com/',
         ),
         'ads' => 
         array (
           0 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856271969.gif',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           1 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856279465.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           2 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856278967.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
           3 => 
           array (
             'ad_image_url' => 'data/files/store_1/template/201308130856278886.jpg',
-            'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+            'ad_link_url' => 'http://www.linyihezi.com/',
           ),
         ),
       ),

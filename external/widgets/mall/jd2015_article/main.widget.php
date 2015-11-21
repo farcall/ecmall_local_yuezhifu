@@ -41,7 +41,7 @@ class jd2015_articleWidget extends BaseWidget {
         $articles = $article_mod->find(array(
             'conditions' => 'code = "" AND if_show=1 AND store_id=0 ' . $conditions,
             'fields' => 'article_id, title',
-            'limit' => 5,
+            'limit' => 3,
             'order' => 'sort_order ASC, article_id DESC'
         ));
         return $articles;

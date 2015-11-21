@@ -11,25 +11,25 @@ return array (
         0 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051524067351.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '阿萨德发',
         ),
         1 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051524068180.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => 'osa旗舰店',
         ),
         2 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051524067552.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '阿萨德范围',
         ),
         3 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051524064839.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => 'ffffffffff',
         ),
       ),

@@ -20,13 +20,13 @@ return array (
         0 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201409190157265866.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '',
         ),
         1 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201409190157267815.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '',
         ),
       ),
@@ -37,7 +37,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201409190159074349.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '240',
         'ad_height' => '420',
         'ad_border' => '',
@@ -50,7 +50,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201409190159423476.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '630',
         'ad_height' => '230',
         'ad_border' => '',

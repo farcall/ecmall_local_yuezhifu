@@ -102,10 +102,10 @@ return array(
                 'text' => LANG::get('recommend_type'),
                 'url' => 'index.php?app=recommend'
             ),
-            'mix' => array(
-                'text' => LANG::get('mix'),
-                'url' => 'index.php?app=mix'
-            ),
+//            'mix' => array(
+//                'text' => LANG::get('mix'),
+//                'url' => 'index.php?app=mix'
+//            ),
         ),
     ),
 //	// 聚划算
@@ -233,10 +233,10 @@ return array(
                 'text' => Lang::get('db'),
                 'url' => 'index.php?app=db&amp;act=backup',
             ),
-            'groupbuy' => array(
-                'text' => Lang::get('groupbuy'),
-                'url' => 'index.php?app=groupbuy',
-            ),
+//            'groupbuy' => array(
+//                'text' => Lang::get('groupbuy'),
+//                'url' => 'index.php?app=groupbuy',
+//            ),
             'consulting' => array(
                 'text' => LANG::get('consulting'),
                 'url' => 'index.php?app=consulting',
@@ -356,6 +356,30 @@ return array(
             'setting'=>array(
                 'text'=>'设置',
                 'url'=>'index.php?module=jiangli&act=setting',
+            ),
+        ),
+    ),
+
+    //核心运营
+    'meiriyunying'=>array(
+        'text'=>'每日运营',
+        'default'=>'tixianshenhe',
+        'children'=>array(
+            'tixianshenhe'=>array(
+                'text'=>'提现审核',
+                'url'=>'index.php?app=epay&act=txlog'
+            ),
+            'dingdanshenhe'=>array(
+                'text'=>'订单审核',
+                'url'=>'http://600.com/admin/index.php?app=order&act=index&field=seller_name&search_name=&status=31',
+            ),
+            'jinrifenpei'=>array(
+                'text'=>'今日分配',
+                'url'=>'index.php?module=jiangli&act=today',
+            ),
+            'shujuku'=>array(
+                'text'=>'数据库',
+                'url'=>'http://600.com/admin/index.php?app=db&act=backup',
             ),
         ),
     ),

@@ -11,25 +11,25 @@ return array (
         0 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051525364312.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '阿萨德发',
         ),
         1 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051525362227.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => 'osa旗舰店',
         ),
         2 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051525361599.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => '名鞋库',
         ),
         3 => 
         array (
           'ad_image_url' => 'data/files/mall/template/201502051525368514.jpg',
-          'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+          'ad_link_url' => 'http://www.linyihezi.com/',
           'ad_title' => 'ffffffffff',
         ),
       ),
@@ -40,7 +40,7 @@ return array (
       'options' => 
       array (
         'ad_image_url' => 'data/files/mall/template/201502051525499342.jpg',
-        'ad_link_url' => 'http://www.lanmaoshangcheng.com/',
+        'ad_link_url' => 'http://www.linyihezi.com/',
         'ad_width' => '302',
         'ad_height' => '120',
         'ad_border' => '',

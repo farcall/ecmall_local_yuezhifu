@@ -1,0 +1,21 @@
+<div class="jd2015_sold">
+    <div class="mc s{$widget_data.model_id}">
+        <ul class="clearfix ks-switchable-content">
+            <!-- {foreach from=$widget_data.order_list item=order} -->
+            <li>{$order.buyer_name|truncate:8:"*"}{if $order.type=="xianxia"}[线下消费了]{else}[线上消费]{/if}{$order.order_amount}元</li>
+            <!--{/foreach}-->
+        </ul>
+    </div>
+    <script type="text/javascript" src="{lib file=scroll.js}" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.jd2015_sold li:even').addClass('lieven');
+        })
+        $(function(){
+            $("div.jd2015_sold").myScroll({
+                speed:40, //数值越大，速度越慢
+                rowHeight:22 //li的高度
+            });
+        });
+    </script>
+</div>
