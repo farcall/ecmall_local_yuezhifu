@@ -1,14 +1,6 @@
 {include file=member.header.html}
 <script type="text/javascript">
     $(function(){
-
-//        $('#epay-withdraw').submit(function () {
-//            if ($(this).find('input[name="tx_money"]').val() == '' || $(this).find('input[name="tx_money"]').val() <= 0) {
-//                alert('{$lang.withdraw_money_error}');
-//                return false;
-//            }
-//        });
-
         $('#epay-withdraw').validate({
             errorPlacement: function(error, element) {
                 var error_td = element.parent('dd');
