@@ -148,7 +148,7 @@ return array (
   'epay_wxnative_enabled' => '1',
   'epay_lirun_fenpei_ratio' => '0.5',
   'epay_fenpei_last_time' => '0',
-  'epay_max_jindou2jinbi' => '60',
+  'epay_max_jindou2jinbi' => '40',
   'epay_min_money2jindou' => '100',
   'store_allow' => '1',
 );

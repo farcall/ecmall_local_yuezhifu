@@ -897,7 +897,7 @@ class Seller_orderApp extends StoreadminbaseApp {
             /*检查用户是否存在*/
             $member_mod = &m('member');
             $member_data = $member_mod->get(array(
-                'conditions' => 'user_name='.$buyer_name,
+                'conditions' => 'user_name='."'$buyer_name'",
             ));
 
             if(empty($member_data)){

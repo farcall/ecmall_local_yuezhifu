@@ -962,3 +962,21 @@ CREATE TABLE `ecm_user_priv` (
   `privs` text NOT NULL,
   PRIMARY KEY  (`user_id`,`store_id`)
 ) TYPE=MyISAM;
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ecm_fanli_setting`
+--
+DROP TABLE EXISTS `ecm_fanli_setting`;
+CREATE TABLE `ecm_fanli_setting` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `chouchenguse_fanli_ratio` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '平台的总抽成用于返利的比例',
+  `line2jindou` int(11) NOT NULL DEFAULT '0' COMMENT '线上消费(默认100)赠送一个金豆',
+  `online2jindou` int(11) NOT NULL DEFAULT '0' COMMENT '线下消费(默认100)赠送一个金豆',
+  `jindou2maxjinbi` int(11) NOT NULL DEFAULT '0' COMMENT '一个金豆最多可转换的金币数量',
+  `jinbi2rmb` int(9) NOT NULL DEFAULT '0' COMMENT '金币到人民币转换率(默认1)',
+  `add_time` int(11) NOT NULL DEFAULT '0' COMMENT '添加时间',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='返利配置表';

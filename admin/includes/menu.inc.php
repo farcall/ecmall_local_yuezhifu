@@ -336,6 +336,21 @@ return array(
             ),
         ),
     ),
+    //返利模块
+    'fanli'=>array(
+        'text'=>'返利',
+        'default'=>'setting',
+        'children'=>array(
+            'setting'=>array(
+                'text'=>'返利配置',
+                'url'=>'index.php?app=fanli_setting&act=index',
+            ),
+            'today'=>array(
+                'text'=>'今日返利',
+                'url'=>'index.php?app=fanli&act=index',
+            ),
+        ),
+    ),
     //每日奖励
     'jianglifenpei'=>array(
         'text'=>'奖励分配',
