@@ -1,0 +1,78 @@
+{include file="fanli/header.html"}
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">配置中心</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal" method="post">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">一个金豆可兑换</label>
+
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" name="epay_max_jindou2jinbi" placeholder="" value="{$setting.epay_max_jindou2jinbi}">
+                            </div>
+                            <label class="col-md-7 control-label" style="text-align:left">个金币;(默认40)</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">平台收益的</label>
+
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" name="epay_lirun_fenpei_ratio" value="{$setting.epay_lirun_fenpei_ratio}">
+                            </div>
+                            <label class="col-md-7 control-label" style="text-align:left">用于奖励(默认0.5)</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">当会员线上消费</label>
+
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" name="line2jindou" value="{$setting.line2jindou}">
+                            </div>
+                            <label class="col-md-7 control-label" style="text-align:left">元为其奖励一个金豆(默认100)</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">当会员线下消费</label>
+
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" name="online2jindou" value="{$setting.online2jindou}">
+                            </div>
+                            <label class="col-md-7 control-label" style="text-align:left">元为其奖励一个金豆(默认130)</label>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-md-3 control-label">一个金币可兑换</label>
+
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" value="1" disabled>
+                        </div>
+                        <label class="col-md-7 control-label" style="text-align:left">个虚拟货币(人民币)</label>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-block btn-warning btn-lg">保存</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <div class="col-md-6"></div>
+
+    </div>
+
+</section><!-- /.content -->
+
+
+{include file="fanli/footer.html"}

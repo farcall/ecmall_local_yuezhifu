@@ -1,0 +1,174 @@
+{include file="header.html"}
+
+
+
+<!-- Main content -->
+<section class="content">
+<!-- Main row -->
+<div class="row">
+    <!--left col-->
+    <section class="col-md-6 connectedSortable">
+
+        <div class="row">
+            <div id="fenpeiliebiao" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">{$fenpei_time|date:m-d-Y}奖金分配情况</h3>
+                    </div>
+
+                    <div class="box-body  table-responsive no-padding">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th style="width: 80px">用户ID</th>
+                                <th>用户名</th>
+                                <th>分配金币</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$members item=member}
+                            <tr>
+                                <td>{$member.user_id}</td>
+                                <th>{$member.user_name}</th>
+                                <td>
+                                    <span class="badge bg-red" style="font-size: large">{$member.jinbi}</span>
+                                </td>
+                                <td>
+                                    <!--{if $member.status==1}-->
+                                    <span class="label label-warning">已完成</span>
+                                    <!--{else}-->
+                                    <span class="label label-warning">未分配</span>
+                                    <!--{/if}-->
+                                </td>
+                                <td>
+                                    <a href="#">查看</a>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                    <div class="box-footer">
+                        {include file="page.bottom.html"}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </section><!--/.left col-->
+
+    <section class="col-md-6 connectedSortable">
+        <div class="row info">
+            <div class="col-md-6 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{$liushui}元</h3>
+                        <p>今日平台流水</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-card"></i>
+                    </div>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-md-6 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{$choucheng}元</h3>
+                        <p>今日平台抽成</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-social-yen"></i>
+                    </div>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-md-6 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>{$kezhipei}元</h3>
+                        <p class="red_big">今日理论上用于奖励总额度</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-md-6 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{$count}人</h3>
+                        <p>参与利润分配人数</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div><!-- ./col -->
+        </div>
+        <div class="row jinrifenpei">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12" id="shijihuilv">
+
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3 class="info-box-number" id="show_shijiedu">{$shijizhipei}元</h3>
+
+                                    <p class="red_big">实际奖励额度综合</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion ion-checkmark-circled"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>{$fenpei_time|date:Y-m-d H:i:s}</h3>
+                            <p>奖励时间</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-card"></i>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+</div><!-- /.row (main row) -->
+
+
+</section><!-- /.content -->
+
+
+<script type="text/javascript">
+//    $('#shijihuilv').hide();
+    $('#querenfenpei').show();
+
+    $(function(){
+        $('#shijizhipei').bind('input propertychange', function() {
+            $('#shijihuilv').show();
+            $shijihuilvzhi = $('#shijizhipei')[0].value;
+
+            if(!isNaN($shijihuilvzhi)){
+                $('#show_shijiedu').text("今日分配额度"+$shijihuilvzhi$shijihuilvzhi+"元");
+                $('#show_shijihuilv').text("今日金豆(转金币)最终汇率"+($shijihuilvzhi/{$pingtai_weiyongjindou}).toFixed(2)+"元");
+            }else{
+                alert("非法输入");
+            }
+
+
+        });
+
+    })
+</script>
+
+{include file="footer.html"}

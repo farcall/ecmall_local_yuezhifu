@@ -13,17 +13,18 @@
  * 返利配置模块
  */
 class Fanli_settingApp extends BackendApp{
-    var $mod_order;
-    var $mod_jinbi_log;
+    var $mod_fanli_setting;
     function __construct() {
         $this->Fanli_setting();
     }
 
     function Fanli_setting() {
         parent::BackendApp();
-        $this->mod_order = &m('order');
-        $this->mod_jinbi_log = &m('epay_jinbi_log');
+        $this->mod_fanli_setting = &m('fanli_setting');
     }
 
 
+    function index(){
+        $this->display('fanli/setting.html');
+    }
 }
