@@ -154,6 +154,12 @@ class OrderApp extends BackendApp
         ));
 
 
+        /*用户确认收货后 奖励金豆*/
+        $order_info = $order_mod->get($order_id);
+        import('fanli.lib');
+        $fanli=new fanli();
+        $fanli->RewardJindou($order_info);
+
 
         /*资金变动日志*/
         $epaylog_mod = &m('epaylog');
