@@ -299,7 +299,13 @@ class Buyer_orderApp extends MemberbaseApp {
             import('epay.lib');
             $epay=new epay();
             $epay->trade_charges($order_info);
-            
+
+            /*用户确认收货后 奖励金豆*/
+            import('fanli.lib');
+            $fanli=new fanli();
+            $fanli->RewardJindou($order_info);
+
+
             /* 发送给卖家买家确认收货邮件，交易完成 */
             $model_member = & m('member');
             $seller_info = $model_member->get($order_info['seller_id']);

@@ -1019,3 +1019,21 @@ CREATE TABLE `ecm_fanli_jinbi` (
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '1:完成0:未完成',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT='金币发放日志';
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ecm_fanli_jindou`
+--
+ DROP  TABLE `ecm_fanli_jindou`;
+CREATE TABLE `ecm_fanli_jindou` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '会员ID',
+  `deposition` float(10,4) NOT NULL DEFAULT '0.0000' COMMENT '沉淀池中金豆(精准到0.0001)',
+  `total` int(11) NOT NULL DEFAULT '0' COMMENT '全部金豆',
+  `consume` int(11) NOT NULL DEFAULT '0' COMMENT '已消耗金豆',
+  `unused` int(10) NOT NULL DEFAULT '0' COMMENT '未用金豆数',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='所有会员的金豆详情';

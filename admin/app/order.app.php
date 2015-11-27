@@ -142,6 +142,7 @@ class OrderApp extends BackendApp
         ));
 
         /*卖家佣金从冻结资金中扣除*/
+
         $epay_mod = &m('epay');
         $epay_data = $epay_mod->get(array(
             'conditions'=>'user_id='.$order_xianxia_data['seller_userid'],
