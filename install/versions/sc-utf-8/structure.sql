@@ -997,7 +997,23 @@ CREATE TABLE `ecm_fanli_operate` (
   `count` int(11) NOT NULL DEFAULT '0' COMMENT '今日参与返利的人数',
   `admin_name` varchar(255) NOT NULL DEFAULT '' COMMENT '提交返利的管理员名',
   `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建返利预览的时间',
-  `fenpei_time` int(10) NOT NULL DEFAULT '0' COMMENT '返利确定时间',
+  `fanli_time` int(10) NOT NULL DEFAULT '0' COMMENT '返利确定时间',
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '1:完成0:未完成',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='每日运营情况表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ecm_fanli_jinbi`
+--
+DROP TABLE `ecm_fanli_jinbi`;
+CREATE TABLE `ecm_fanli_jinbi` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `operate_id` int(11) NOT NULL DEFAULT '0' COMMENT 'operate表ID',
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '会员ID',
+  `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '会员名称',
+  `jinbi` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '当次奖励金币数量',
+  `add_time` int(11) NOT NULL DEFAULT '0' COMMENT '本次奖励时间',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT='金币发放日志';
