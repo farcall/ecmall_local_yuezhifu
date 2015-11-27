@@ -618,8 +618,13 @@ class Seller_orderApp extends StoreadminbaseApp {
             }
 
 
+            /*用户确认收货后 奖励金豆*/
+            import('fanli.lib');
+            $fanli=new fanli();
+            $fanli->RewardJindou($order_info);
+
             /* 发送给买家交易完成通知，提示评论 */
-            $model_member = & m('member');
+            $model_member = &m('member');
             $buyer_info = $model_member->get($order_info['buyer_id']);
             $mail = get_mail('tobuyer_cod_order_finish_notify', array('order' => $order_info));
             $this->_mailto($buyer_info['email'], addslashes($mail['subject']), addslashes($mail['message']));
