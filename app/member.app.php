@@ -126,14 +126,16 @@ class MemberApp extends MemberbaseApp {
         /*dong-未用金豆-获奖励金币开始*/
         $model_setting = &af('settings');
         $setting = $model_setting->getAll(); //载入系统设置数据
-        $sql_quanbujindou = "select floor(sum(order_amount)/'{$setting['epay_min_money2jindou']}') as quanbujindou from ".DB_PREFIX."order where buyer_id='{$user['user_id']}' and status=40";
-        $sql_yiyongjindou = "select floor(sum(jinbi)/'{$setting['epay_max_jindou2jinbi']}') as yiyongjindou from ".DB_PREFIX."epay_jinbi_log where status=1 and user_id='{$user['user_id']}'";
         $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ".DB_PREFIX."epay_jinbi_log where user_id='{$user['user_id']}' and status=1";
         $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ".DB_PREFIX."epay_jinbi2money_log where user_id='{$user['user_id']}' and status=1";
 
-        $quanbujindou = $order_mod->getOne($sql_quanbujindou);
-        $yiyongjindou = $order_mod->getOne($sql_yiyongjindou);
-        $weiyongjindou = $quanbujindou-$yiyongjindou;
+        $mod_fanli_jindou = &m('fanli_jindou');
+        $jindou_data = $mod_fanli_jindou->get(array(
+
+        ));
+        $quanbujindou = $jindou_data['total'];
+        $yiyongjindou = $jindou_data['consume'];
+        $weiyongjindou = $jindou_data['unused'];
 
         $zhuanrujinbi = $order_mod->getOne($sql_zhuanrujinbi);
         $zhuanchujinbi = $order_mod->getOne($sql_zhuanchujinbi);

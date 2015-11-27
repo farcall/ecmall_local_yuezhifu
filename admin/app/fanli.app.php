@@ -58,6 +58,10 @@ class FanliApp extends BackendApp{
             $this->display('fanli/todaycancel.html');
             return;
         }
+
+
+
+
         $this->fanli();
         return;
         $UnusedJindous = $this->getUnusedJindous();
