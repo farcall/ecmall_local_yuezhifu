@@ -1,4 +1,4 @@
-{include file="header.html"}
+{include file="fanli/header.html"}
 
 
 
@@ -34,10 +34,10 @@
                             <tr>
                                 <td>{$member.user_id}</td>
                                 <th>{$member.user_name}</th>
-                                <th>{$member.yiyongjindou}</th>
-                                <th>{$member.weiyongjindou}</th>
+                                <th>{$member.usedjindou}</th>
+                                <th>{$member.jindou}</th>
                                 <td>
-                                    <span class="badge bg-red">{$member.lilunjinbi}</span>
+                                    <span class="badge bg-red">{$member.jinbi}</span>
                                 </td>
                                 <td>
                                     <span class="badge bg-green">{$member.shijijinbi}</span>
@@ -48,11 +48,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="label label-warning">未分配</span>
+                                    <span class="label label-warning">等待分配</span>
                                 </td>
-                                <td>
-                                    <a href="#">查看</a>
-                                </td>
+                                <!--<td>-->
+                                    <!--<a href="#">查看</a>-->
+                                <!--</td>-->
                             </tr>
                             {/foreach}
                         </table>
@@ -61,7 +61,7 @@
             </div>
             </div>
         </div>
-        {include file="page.bottom.html"}
+        {include file="fanli/page.bottom.html"}
     </section><!--/.left col-->
 
     <section class="col-md-6 connectedSortable">
@@ -70,7 +70,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{$jinriliushui}元</h3>
+                        <h3>{$turnover}元</h3>
                         <p>今日平台流水</p>
                     </div>
                     <div class="icon">
@@ -82,7 +82,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{$jinrichoucheng}元</h3>
+                        <h3>{$cut}元</h3>
                         <p>今日平台抽成</p>
                     </div>
                     <div class="icon">
@@ -94,7 +94,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>{$kezhipei}元</h3>
+                        <h3>{$theoryfanli}元</h3>
                         <p class="red_big">今日理论上用于奖励总额度</p>
                     </div>
                     <div class="icon">
@@ -106,7 +106,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{$membercount}人</h3>
+                        <h3>{$count}人</h3>
                         <p>参与利润分配人数</p>
                     </div>
                     <div class="icon">
@@ -201,4 +201,4 @@
     })
 </script>
 
-{include file="footer.html"}
+{include file="fanli/footer.html"}
