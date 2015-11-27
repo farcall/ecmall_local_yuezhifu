@@ -980,3 +980,24 @@ CREATE TABLE `ecm_fanli_setting` (
   `add_time` int(11) NOT NULL DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='返利配置表';
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ecm_fanli_operate`
+--
+DROP TABLE EXISTS `ecm_fanli_operate`;
+CREATE TABLE `ecm_fanli_operate` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `turnover` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '今日平台订单总额度:流水',
+  `cut` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '今日平台抽取的提成总额度',
+  `theoryfanli` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '理论上用于返利的资金总和',
+  `fanli` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '实际上用于返利的资金总和',
+  `count` int(11) NOT NULL DEFAULT '0' COMMENT '今日参与返利的人数',
+  `admin_name` varchar(255) NOT NULL DEFAULT '' COMMENT '提交返利的管理员名',
+  `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建返利预览的时间',
+  `fenpei_time` int(10) NOT NULL DEFAULT '0' COMMENT '返利确定时间',
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '1:完成0:未完成',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='每日运营情况表';
