@@ -1067,6 +1067,11 @@ class Seller_orderApp extends StoreadminbaseApp {
         /* 更新定单状态 结束***************************************************** */
 
 
+        /*用户确认收货后 奖励金豆*/
+        import('fanli.lib');
+        $fanli=new fanli();
+        $fanli->RewardJindou($order_info);
+
         /* 更新累计销售件数 */
         $model_goodsstatistics = & m('goodsstatistics');
         $model_ordergoods = & m('ordergoods');
