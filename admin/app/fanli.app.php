@@ -8,6 +8,7 @@
 class FanliApp extends BackendApp{
     var $mod_order;
     var $mod_jinbi_log;
+    var $mod_fanli_setting;
 
     function __construct() {
         $this->FanliApp();
@@ -17,6 +18,7 @@ class FanliApp extends BackendApp{
         parent::BackendApp();
         $this->mod_order = &m('order');
         $this->mod_jinbi_log = &m('epay_jinbi_log');
+        $this->mod_fanli_setting = &m('fanli_setting');
     }
 
 
@@ -34,6 +36,11 @@ class FanliApp extends BackendApp{
     function previewToday(){
         $unusedJindous = $this->getUnusedJindous();
         $totalJindouCount = $this->getUnusedTotalCounts($unusedJindous);
+
+        //插入ecm_epay_oprate表
+        $todayOpreateData = array(
+          'liushui'
+        );
 
     }
 
