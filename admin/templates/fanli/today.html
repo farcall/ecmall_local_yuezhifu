@@ -25,8 +25,7 @@
                                 <th>已用金豆</th>
                                 <th>未用金豆</th>
                                 <th>理论分配金币</th>
-                                <th>实际分配金币</th>
-                                <th>完成进度</th>
+                                <th>预览分配金币</th>
                                 <th>状态</th>
                                 <th>操作</th>
                             </tr>
@@ -34,18 +33,13 @@
                             <tr>
                                 <td>{$member.user_id}</td>
                                 <th>{$member.user_name}</th>
-                                <th>{$member.usedjindou}</th>
-                                <th>{$member.jindou}</th>
+                                <th>{$member.consume}</th>
+                                <th>{$member.unused}</th>
                                 <td>
-                                    <span class="badge bg-red">{$member.jinbi}</span>
+                                    <span class="badge bg-red">{$member.theoryjinbi}</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-green">{$member.shijijinbi}</span>
-                                </td>
-                                <td>
-                                    <div class="progress progress-xs">
-                                        <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-                                    </div>
+                                    <span class="badge bg-green">{$member.previewjinbi}</span>
                                 </td>
                                 <td>
                                     <span class="label label-warning">等待分配</span>
@@ -95,7 +89,7 @@
                 <div class="small-box bg-yellow">
                     <div class="inner">
                         <h3>{$theoryfanli}元</h3>
-                        <p class="red_big">今日理论上用于奖励总额度</p>
+                        <p class="red_big">理论上分配额度</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -122,9 +116,9 @@
 
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3 class="info-box-number" id="show_shijiedu">最终额度{$shijizhipei}元</h3>
+                                    <h3 class="info-box-number" id="show_shijiedu">确定分配额度{$confirmfanli}元</h3>
 
-                                    <p class="info-box-number" id="show_shijihuilv">最终金豆(转金币)最终汇率{$shijihuilv}元</p>
+                                    <!--<p class="info-box-number" id="show_shijihuilv">最终金豆(转金币)最终汇率{$shijihuilv}元</p>-->
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion ion-checkmark-circled"></i>
@@ -137,17 +131,17 @@
                                 <div class="box-content">
                                     <form method="get">
                                         <div class="box-body">
-                                            <input type="hidden" name="module" value="jiangli"/>
-                                            <input type="hidden" name="act" value="today"/>
+                                            <input type="hidden" name="app" value="fanli"/>
+                                            <input type="hidden" name="act" value="index"/>
                                             <div class="form-group has-success">
                                                 <br/>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="shijizhipei" name="shijizhipei" value="{$shijizhipei}" style="font-size: x-large;">
+                                                    <input type="text" class="form-control" id="confirmfanli" name="confirmfanli" value="{$confirmfanli}" style="font-size: x-large;">
                                                     <label class="input-group-addon" for="inputSuccess">确认分配金额(元) </label>
                                                 </div>
                                             </div>
-                                            <button type="submit" name="run" value="save" class="btn  btn-warning btn-lg">保存分配金额<span class="ion-refresh"></span></button>
-                                            <button type="submit" name="run" value="tijiao" class="btn  btn-warning btn-lg pull-right"> 立即提交 <span class="ion-paper-airplane"></span></button>
+                                            <button type="submit" name="method" value="preview" class="btn  btn-warning btn-lg">马上预览<span class="ion-refresh"></span></button>
+                                            <button type="submit" name="method" value="submit" class="btn  btn-warning btn-lg pull-right"> 立即提交 <span class="ion-paper-airplane"></span></button>
                                         </div>
                                     </form>
 
@@ -157,19 +151,6 @@
                         </div>
                     </div>
 
-
-                </div>
-
-                <div class="col-md-6">
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>{$lilunhuilv}元</h3>
-                            <p>今日理论上金豆(转金币)汇率</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-card"></i>
-                        </div>
-                    </div>
                 </div>
         </div>
     </section>
@@ -179,26 +160,5 @@
 </section><!-- /.content -->
 
 
-<script type="text/javascript">
-//    $('#shijihuilv').hide();
-    $('#querenfenpei').show();
-
-    $(function(){
-        $('#shijizhipei').bind('input propertychange', function() {
-            $('#shijihuilv').show();
-            $shijihuilvzhi = $('#shijizhipei')[0].value;
-
-            if(!isNaN($shijihuilvzhi)){
-                $('#show_shijiedu').text("今日分配额度"+$shijihuilvzhi$shijihuilvzhi+"元");
-                $('#show_shijihuilv').text("今日金豆(转金币)最终汇率"+($shijihuilvzhi/{$pingtai_weiyongjindou}).toFixed(2)+"元");
-            }else{
-                alert("非法输入");
-            }
-
-
-        });
-
-    })
-</script>
 
 {include file="fanli/footer.html"}

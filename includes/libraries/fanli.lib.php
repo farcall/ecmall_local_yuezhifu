@@ -16,6 +16,11 @@ class fanli{
         $this->mod_fanli_jindou = &m('fanli_jindou');
     }
 
+    /**
+     * @param $order_info
+     * 作用:订单完成后系统根据订单详情奖励金豆
+     * Created by QQ:710932
+     */
     function RewardJindou($order_info){
         $fanliSetting = $this->mod_fanli_setting->get(array(
             'order' => 'add_time desc',
@@ -71,4 +76,38 @@ class fanli{
         return;
     }
 
+
+    /**
+     * @param $jinbi
+     * 作用:返利提交完成后消耗金豆
+     * Created by QQ:710932
+     */
+    function consumeJindou($jinbi_info){
+
+        //读取用户金豆详情
+        $jindou_data = $this->mod_fanli_jindou->get(array(
+            'conditions'=>'user_id='.$jinbi_info['user_id'],
+        ) );
+
+
+        //读取配置
+        $fanliSetting = $this->mod_fanli_setting->get(array(
+            'order' => 'add_time desc',
+        ));
+        $jindou2maxjinbi = $fanliSetting['jindou2maxjinbi'];
+
+        //本次操作完成消耗的金豆数
+        $theTimeConsumeJindou = $jinbi_info['jinbi']/$jindou2maxjinbi;
+
+        //本次消耗
+        //1:历史消耗金豆数-历史消耗金豆整数部分
+        //2:本次消耗金豆数+历史消耗金豆小数部分
+        $changeJindou = floor(($jindou_data['consume'] - floor($jindou_data['consume']) + $theTimeConsumeJindou));
+
+        $jindou_data['consume'] = $jindou_data['consume']+$theTimeConsumeJindou;
+        $jindou_data['unused'] =  $jindou_data['unused'] - $changeJindou;
+
+        //修改数据
+        $this->mod_fanli_jindou->edit($jinbi_info['user_id'],$jindou_data);
+    }
 }
