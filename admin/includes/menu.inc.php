@@ -322,14 +322,14 @@ return array(
         'text' => Lang::get('extend'),
         'default' => 'plugin',
         'children' => array(
-            'plugin' => array(
-                'text' => Lang::get('plugin'),
-                'url' => 'index.php?app=plugin',
-            ),
-            'module' => array(
-                'text' => Lang::get('module'),
-                'url' => 'index.php?app=module&act=manage',
-            ),
+//            'plugin' => array(
+//                'text' => Lang::get('plugin'),
+//                'url' => 'index.php?app=plugin',
+//            ),
+//            'module' => array(
+//                'text' => Lang::get('module'),
+//                'url' => 'index.php?app=module&act=manage',
+//            ),
             'widget' => array(
                 'text' => Lang::get('widget'),
                 'url' => 'index.php?app=widget',
@@ -351,29 +351,29 @@ return array(
             ),
         ),
     ),
-    //每日奖励
-    'jianglifenpei'=>array(
-        'text'=>'奖励分配',
-        'default'=>'operate',
-        'children'=>array(
-            'operate'=>array(
-                'text'=>'运营中心',
-                'url'=>'index.php?module=jiangli&act=index',
-            ),
-            'today'=>array(
-                'text'=>'今日分配',
-                'url'=>'index.php?module=jiangli&act=today',
-            ),
-            'history'=>array(
-                'text'=>'查看历史',
-                'url'=>'index.php?module=jiangli&act=history',
-            ),
-            'setting'=>array(
-                'text'=>'设置',
-                'url'=>'index.php?module=jiangli&act=setting',
-            ),
-        ),
-    ),
+//    //每日奖励
+//    'jianglifenpei'=>array(
+//        'text'=>'奖励分配',
+//        'default'=>'operate',
+//        'children'=>array(
+//            'operate'=>array(
+//                'text'=>'运营中心',
+//                'url'=>'index.php?module=jiangli&act=index',
+//            ),
+//            'today'=>array(
+//                'text'=>'今日分配',
+//                'url'=>'index.php?module=jiangli&act=today',
+//            ),
+//            'history'=>array(
+//                'text'=>'查看历史',
+//                'url'=>'index.php?module=jiangli&act=history',
+//            ),
+//            'setting'=>array(
+//                'text'=>'设置',
+//                'url'=>'index.php?module=jiangli&act=setting',
+//            ),
+//        ),
+//    ),
 
     //核心运营
     'meiriyunying'=>array(

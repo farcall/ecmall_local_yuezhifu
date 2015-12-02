@@ -173,11 +173,11 @@ class OrderApp extends BackendApp
             'money'=>$order_xianxia_data['yongjin'],
             'money_flow'=>'outlay',
             'complete'=>1,
-            'log_text'=>'扣除线下交易佣金:买家('.$order_xianxia_data['buyer_username'].'),价格('.$order_xianxia_data['money'].')',
+            'log_text'=>'扣除线下交易佣金:买家('.$order_xianxia_data['buyer_name'].'),价格('.$order_xianxia_data['money'].')',
             'add_time'=>gmtime(),
         ));
 
-        $this->show_message('操作成功!','返回列表','index.php?app=order');
+        $this->show_message('操作成功!','返回列表','index.php?app=order&act=index&field=seller_name&search_name=&status=31');
     }
 
     /**

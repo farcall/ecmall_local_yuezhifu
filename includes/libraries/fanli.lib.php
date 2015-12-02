@@ -72,7 +72,7 @@ class fanli{
         $jindou_data['total']+=$theTime_jindou;
         $jindou_data['unused'] += $theTime_jindou;
 
-        $this->mod_fanli_jindou->edit($order_info['user_id'],$jindou_data);
+        $this->mod_fanli_jindou->edit("user_id=".$order_info['buyer_id'],$jindou_data);
         return;
     }
 

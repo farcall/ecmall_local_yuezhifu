@@ -18,24 +18,26 @@
                         <span>{$lang.last_ip}{$lang.colon}{$user.last_ip}</span>
                     </dd>
                     <dd>{sprintf lang=you_have_pm var1=new_message}</dd>
+                    <br/>
                     <dd style="line-height:25px;">
                         <!--{foreach from=$epay item=val}-->
-                        系统奖励金币<span style="font-size: large;color: red">{$jinbi_jindou.jinbi}</span>个&nbsp;&nbsp;&nbsp;&nbsp;消耗金豆<span style="font-size: large;color: #c53800">{$jinbi_jindou.yiyongjindou}</span>个
-                        剩余金豆:<span style="font-size:large;color:#FE5400;">{$jinbi_jindou.weiyongjindou}</span>个&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br/><br/>
-                        {$lang.zhanghuzongjinere}<span style="font-size:16px;font-weight:bold; color:#FE5400;">{$val.money}</span>&nbsp;{$lang.yuan}&nbsp;&nbsp;{$lang.dongjiejine}<span style="color:blue;">{$val.money_dj}</span>&nbsp;{$lang.yuan}
+                        金币:<em>{$jinbi_jindou.jinbi}</em>个<br/>
+                        <!--消耗金豆<em>{$jinbi_jindou.yiyongjindou}</em>个<br/>-->
+                        金豆:<em>{$jinbi_jindou.weiyongjindou}</em>个<br/>
+                        账户余额:<em>{$val.money}</em>{$lang.yuan}<br/>
+                        冻结资金:<em>{$val.money_dj}</em>{$lang.yuan}
 
                         <br/><span class="epay_btn"><a href="{url app=epay&act=withdraw}">{$lang.tixian}</a></span><span class="epay_btn epay_btn_white"><a href="{url app=epay&act=czlist}">{$lang.chongzhi}</a></span>
                         <!--{/foreach}-->
                     </dd>
                 </dl>
                 <!--{if $store && $member_role eq 'seller_admin'}-->
-                <dl class="col-2 fleft">
-                    <dt><strong>{$lang.store_rate}</strong></dt>
-                    <dd>{$lang.credit_value}{$lang.colon}<a href="{url app=store&act=credit&id=$store.store_id}" target="_blank">{$store.credit_value}</a>{if $store.credit_value ge 0 } <img src="{$store.credit_image}" align="absmiddle" /> {/if}
-                    </dd>
-                    <dd>{$lang.praise_rate}{$lang.colon}{$store.praise_rate}%</dd>
-                </dl>
+                <!--<dl class="col-2 fleft">-->
+                    <!--<dt><strong>{$lang.store_rate}</strong></dt>-->
+                    <!--<dd>{$lang.credit_value}{$lang.colon}<a href="{url app=store&act=credit&id=$store.store_id}" target="_blank">{$store.credit_value}</a>{if $store.credit_value ge 0 } <img src="{$store.credit_image}" align="absmiddle" /> {/if}-->
+                    <!--</dd>-->
+                    <!--<dd>{$lang.praise_rate}{$lang.colon}{$store.praise_rate}%</dd>-->
+                <!--</dl>-->
                 <!--{/if}-->
             </div>
         </div>

@@ -383,6 +383,7 @@ class TemplateApp extends StoreadminbaseApp
 					'rule'	=>	"store_{$this->_store_id}_goodsinfo",
 			);
 		}
+
 		return $data;
         
     }

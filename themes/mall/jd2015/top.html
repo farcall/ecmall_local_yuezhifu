@@ -32,6 +32,43 @@ var PRICE_FORMAT = '{$price_format}';
 //]]>
 </script>
 
+    <script type="text/javascript" language="javascript">
+        //加入收藏
+        function AddFavorite(sURL, sTitle) {
+            sURL = encodeURI(sURL);
+            try {
+                window.external.addFavorite(sURL, sTitle);
+            } catch (e) {
+                try {
+                    window.sidebar.addPanel(sTitle, sURL, "");
+                } catch (e) {
+                    alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+                }
+            }
+        }
+        //设为首页
+        function SetHome(url) {
+            if (document.all) {
+                document.body.style.behavior = 'url(#default#homepage)';
+                document.body.setHomePage(url);
+
+            } else {
+                alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
+            }
+        }
+        //保存到桌面
+        function toDesktop(sUrl,sName){
+            try {
+                var WshShell = new ActiveXObject("WScript.Shell");
+                var oUrlLink =          WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop")     + "\\" + sName + ".url");
+                oUrlLink.TargetPath = sUrl;
+                oUrlLink.Save();
+            }
+            catch(e)  {
+                alert("当前IE安全级别不允许操作！");
+            }
+        }
+    </script>
 {$_head_tags}
 <!--<editmode></editmode>-->
 </head>
@@ -48,6 +85,9 @@ var PRICE_FORMAT = '{$price_format}';
          <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)<!--{/if}--></a>
          <a href="{url app=member&act=logout}">{$lang.logout}</a>
          <!--{/if}-->
+          <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
+          <a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
+          <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
       </div>
       <ul class="quick-menu">
         {if !$index}<li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>{/if}

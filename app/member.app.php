@@ -124,28 +124,22 @@ class MemberApp extends MemberbaseApp {
         $this->assign('system_notice', $this->_get_system_notice($_SESSION['member_role']));
 
         /*dong-未用金豆-获奖励金币开始*/
-        $model_setting = &af('settings');
-        $setting = $model_setting->getAll(); //载入系统设置数据
-        $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ".DB_PREFIX."epay_jinbi_log where user_id='{$user['user_id']}' and status=1";
-        $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ".DB_PREFIX."epay_jinbi2money_log where user_id='{$user['user_id']}' and status=1";
-
-        $mod_fanli_jindou = &m('fanli_jindou');
-        $jindou_data = $mod_fanli_jindou->get(array(
-
+        $jindou_mod = &m('fanli_jindou');
+        $jindou_data = $jindou_mod->get(array(
+            'conditions'=>'user_id='.$my_user_id,
         ));
-        $quanbujindou = $jindou_data['total'];
-        $yiyongjindou = $jindou_data['consume'];
-        $weiyongjindou = $jindou_data['unused'];
 
-        $zhuanrujinbi = $order_mod->getOne($sql_zhuanrujinbi);
-        $zhuanchujinbi = $order_mod->getOne($sql_zhuanchujinbi);
-        $jinbi = $zhuanrujinbi-$zhuanchujinbi;
+        $jinbi_mod = &m('fanli_jinbi');
+        $jinbi_data = $jinbi_mod->get(array(
+            'conditions'=>'user_id='.$my_user_id,
+        ));
 
         $jinbi_jindou = array(
-            'yiyongjindou' => $yiyongjindou,
-            'weiyongjindou'=> $weiyongjindou,
-            'jinbi'=>$jinbi,
+            'yiyongjindou' => $jindou_data['consume']>0?$jindou_data['consume']:0,
+            'weiyongjindou'=> $jindou_data['unused']>0?$jindou_data['unused']:0,
+            'jinbi'=>$jinbi_data['jinbi']>0?$jinbi_data['jinbi']:0,
         );
+
         $this->assign('jinbi_jindou',$jinbi_jindou);
         /*dong-未用金豆-获奖励金币结束*/
 
