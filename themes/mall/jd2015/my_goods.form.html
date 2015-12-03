@@ -182,6 +182,9 @@ $(function(){
                                     <input type="hidden" name="cate_name" value="{$goods.cate_name|escape}" class="mls_names" />
                                 </p>
                             </div>
+                            <div class="assort">
+                                <input type="hidden" name="sgcate_id[]" value="" class="mls_names" />
+                            </div>
                         </div>
                         
                         
@@ -288,11 +291,6 @@ $(function(){
                                         <h2  ectype="no_spec">{$lang.price}: </h2>
                                         <div class="arrange"  ectype="no_spec"><input name="spec_id" value="{$goods._specs.0.spec_id}" type="hidden" /><input name="price" value="{$goods._specs.0.price}" type="text" class="text width_short" /></div>
                                     </li>
-                                    
-                                    <li>
-                                        <div class="arrange"><span class="red" style="margin-right:5px;">*</span><span class="gray">{$lang.ugrade_desc}</span></div>
-                                    </li>
-
 
                                     
                                     <li ectype="no_spec">
