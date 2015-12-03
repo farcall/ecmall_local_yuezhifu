@@ -21,7 +21,7 @@ return array (
   'sitemap_enabled' => true,
   'sitemap_frequency' => 1,
   'rewrite_enabled' => false,
-  'guest_comment' => true,
+  'guest_comment' => false,
   'enable_radar' => false,
   'qq_appid' => '101221337',
   'qq_appkey' => '20c4a32e1cc9cdf50cef44846a6839e1',

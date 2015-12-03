@@ -75,7 +75,7 @@ class GoodsApp extends StorebaseApp {
         $this->assign('props', $props);
         // end sku
 
-
+        $this->assign('statistics',$this->_get_goods_statistics($id));
         $this->assign('guest_comment_enable', Conf::get('guest_comment'));
         $this->display('goods.index.html');
     }
@@ -130,8 +130,8 @@ class GoodsApp extends StorebaseApp {
         $good_comments_sql = "SELECT COUNT(*) FROM {$order_goods_mod->table} WHERE goods_id={$id}  AND evaluation = '1'";
         $comments_count['bad'] =  $order_goods_mod->getOne($good_comments_sql);
         $this->assign('comments_count', $comments_count);
-        
-        
+
+        $this->assign('statistics',$this->_get_goods_statistics($id));
         $this->display('goods.comments.html');
     }
 
@@ -154,7 +154,7 @@ class GoodsApp extends StorebaseApp {
         /* 赋值销售记录 */
         $data = $this->_get_sales_log($id, 10);
         $this->_assign_sales_log($data);
-
+        $this->assign('statistics',$this->_get_goods_statistics($id));
         $this->display('goods.saleslog.html');
     }
 
@@ -525,11 +525,20 @@ class GoodsApp extends StorebaseApp {
         $this->assign('more_sales', $data['more_sales']);
     }
 
-    /* 取得商品评论 */
+    /*商品_统计QQ:435795*/
+    function _get_goods_statistics($goods_id){
+        $data = array();
+        $conditions = "goods_id = '$goods_id'";
 
+        $order_statistics_mod = & m('goodsstatistics');
+        $result = $order_statistics_mod->get_info($goods_id);
+        return $result;
+    }
+
+    /* 取得商品评论 */
     function _get_goods_comment($goods_id, $num_per_page) {
         $data = array();
-        
+
         $conditions = "goods_id = '$goods_id' AND evaluation_status = '1'";
         if(in_array($_GET['evalscore'], array('1','2','3'))){
             $conditions.=' AND evaluation='.$_GET['evalscore'];
