@@ -1,176 +1,192 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="{$site_url}/" />
-<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
-{$page_seo}
+    <base href="{$site_url}/"/>
+    <meta http-equiv="Content-Type" content="text/html; charset={$charset}"/>
+    {$page_seo}
 
-<meta name="generator" content="临沂盒子信息科技有限公司 {$ecmall_version}" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
+    <meta name="generator" content="临沂盒子信息科技有限公司 {$ecmall_version}"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-<link type="text/css" href="{res file=css/header.css}" rel="stylesheet" />
-<link type="text/css" href="{res file=css/main.css}" rel="stylesheet"  />
-<link type="text/css" href="{res file=css/footer.css}" rel="stylesheet" />
+    <link type="text/css" href="{res file=css/header.css}" rel="stylesheet"/>
+    <link type="text/css" href="{res file=css/main.css}" rel="stylesheet"/>
+    <link type="text/css" href="{res file=css/footer.css}" rel="stylesheet"/>
 
-<script type="text/javascript" src="index.php?act=jslang"></script>
-<script type="text/javascript" src="{lib file=jquery.js}" charset="utf-8"></script>
-<script type="text/javascript" src="{lib file=ecmall.js}" charset="utf-8"></script>
-<script type="text/javascript" src="{lib file=cart.js}" charset="utf-8"></script>
-<script type="text/javascript" src="{res file=js/main.js}" charset="utf-8"></script> 
-<script type="text/javascript" src="{lib file=kissy/build/kissy.js}"></script>
-<script type="text/javascript" src="{lib file=kissy/build/switchable/switchable-pkg.js}"></script>
+    <script type="text/javascript" src="index.php?act=jslang"></script>
+    <script type="text/javascript" src="{lib file=jquery.js}" charset="utf-8"></script>
+    <script type="text/javascript" src="{lib file=ecmall.js}" charset="utf-8"></script>
+    <script type="text/javascript" src="{lib file=cart.js}" charset="utf-8"></script>
+    <script type="text/javascript" src="{res file=js/main.js}" charset="utf-8"></script>
+    <script type="text/javascript" src="{lib file=kissy/build/kissy.js}"></script>
+    <script type="text/javascript" src="{lib file=kissy/build/switchable/switchable-pkg.js}"></script>
 
-<!--[if lte IE 6]>
-<script type="text/javascript" language="Javascript" src="{res file=js/hoverForIE6.js}"></script>
-<![endif]-->
+    <!--[if lte IE 6]>
+    <script type="text/javascript" language="Javascript" src="{res file=js/hoverForIE6.js}"></script>
+    <![endif]-->
 
-<script type="text/javascript">
-//<!CDATA[
-var SITE_URL = "{$site_url}";
-var REAL_SITE_URL = "{$real_site_url}";
-var PRICE_FORMAT = '{$price_format}';
-//]]>
-</script>
-
-    <script type="text/javascript" language="javascript">
-        //加入收藏
-        function AddFavorite(sURL, sTitle) {
-            sURL = encodeURI(sURL);
-            try {
-                window.external.addFavorite(sURL, sTitle);
-            } catch (e) {
-                try {
-                    window.sidebar.addPanel(sTitle, sURL, "");
-                } catch (e) {
-                    alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
-                }
-            }
-        }
-        //设为首页
-        function SetHome(url) {
-            if (document.all) {
-                document.body.style.behavior = 'url(#default#homepage)';
-                document.body.setHomePage(url);
-
-            } else {
-                alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
-            }
-        }
-        //保存到桌面
-        function toDesktop(sUrl,sName){
-            try {
-                var WshShell = new ActiveXObject("WScript.Shell");
-                var oUrlLink =          WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop")     + "\\" + sName + ".url");
-                oUrlLink.TargetPath = sUrl;
-                oUrlLink.Save();
-            }
-            catch(e)  {
-                alert("当前IE安全级别不允许操作！");
-            }
-        }
+    <script type="text/javascript">
+        //<!CDATA[
+        var SITE_URL = "{$site_url}";
+        var REAL_SITE_URL = "{$real_site_url}";
+        var PRICE_FORMAT = '{$price_format}';
+        //]]>
     </script>
-{$_head_tags}
-<!--<editmode></editmode>-->
+
+    {$_head_tags}
+    <!--<editmode></editmode>-->
 </head>
 <body>
 <div id="site-nav" class="w-full">
-   <div class="shoptop w clearfix">
-      <div class="login_info">
-         {$lang.hello}
-         <!--{if !$visitor.user_id}-->
-         <a href="{url app=member&act=login&ret_url=$ret_url}">{$lang.login}</a>
-         <a href="{url app=member&act=register&ret_url=$ret_url}">{$lang.register}</a>
-         <!--{else}-->
-         <a href="{url app=member}">{$visitor.user_name|escape}</a>
-         <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)<!--{/if}--></a>
-         <a href="{url app=member&act=logout}">{$lang.logout}</a>
-         <!--{/if}-->
-          <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
-          <a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
-          <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
-      </div>
+    <div class="shoptop w clearfix">
+        <div class="login_info">
+            {$lang.hello}
+            <!--{if !$visitor.user_id}-->
+            <a href="{url app=member&act=login&ret_url=$ret_url}">{$lang.login}</a>
+            <a href="{url app=member&act=register&ret_url=$ret_url}">{$lang.register}</a>
+            <!--{else}-->
+            <a href="{url app=member}">{$visitor.user_name|escape}</a>
+            <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)
+                <!--{/if}--></a>
+            <a href="{url app=member&act=logout}">{$lang.logout}</a>
+            <!--{/if}-->
+            <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
+            <a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
+            <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
+        </div>
 
-       <div class="bdsharebuttonbox" style="float: left;margin-left: 50px">
-           <a href="#" class="bds_more" data-cmd="more"></a>
-           <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-           <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-           <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-       </div>
+        <div class="bdsharebuttonbox" style="float: left;margin-left: 16px">
+            <a href="#" class="bds_more" data-cmd="more"> </a>
+            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+        </div>
 
 
+        <ul class="quick-menu">
+            {if !$index}
+            <li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>
+            {/if}
+            <li class="item">
+                <div class="menu iwantbuy">
+                    <a class="menu-hd" href="{url app=category}">{$lang.i_want_buy}<b></b></a>
 
-       <ul class="quick-menu">
-        {if !$index}<li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>{/if}
-        <li class="item">
-           <div class="menu iwantbuy">
-              <a class="menu-hd" href="{url app=category}">{$lang.i_want_buy}<b></b></a>
-              <div class="menu-bd">
-                 <div class="menu-bd-panel">
-                    <div>
-                       <p><a href="{url app=category}">{$lang.gcategory}</a></p>
-                       <p><a href="#">大家正在买</a></p>
-					   <p><a href="#">品味连连看</a></p>
+                    <div class="menu-bd">
+                        <div class="menu-bd-panel">
+                            <div>
+                                <p><a href="{url app=category}">{$lang.gcategory}</a></p>
+
+                                <p><a href="#">大家正在买</a></p>
+
+                                <p><a href="#">品味连连看</a></p>
+                            </div>
+                        </div>
                     </div>
-                 </div>
-              </div>
-           </div>
-         </li>
-         <li class="item">
-            <div class="menu mytb">
-               <a class="menu-hd" href="{url app=buyer_admin}">我是买家<b></b></a>
-               <div class="menu-bd">
-                  <div class="menu-bd-panel">
-                     <div>
-                        <p><a href="{url app=buyer_order}">已买到的宝贝</a></p>
-                        <p><a href="{url app=friend}">我的好友</a></p>
-                        <p><a href="{url app=my_question}">我的咨询</a></p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </li>
-         <li class="item">
-            <div class="menu seller-center">
-               <a class="menu-hd" href="{url app=seller_admin}">卖家中心<b></b></a>
-               <div class="menu-bd">
-                  <div class="menu-bd-panel">
-                     <div>
-                        <p><a href="{url app=seller_order}">已卖出的宝贝</a></p>
-                        <p><a href="{url app=my_goods}">出售中的宝贝</a></p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </li>
-         <li class="service">
-            <a href="{url app=article&code=help}">帮助中心</a>
-         </li>
-         <li class="item">
-            <div class="menu favorite">
-               <a class="menu-hd" href="{url app=my_favorite}">收藏夹<b></b></a>
-               <div class="menu-bd">
-                  <div class="menu-bd-panel">
-                     <div>
-                       <p><a href="{url app=my_favorite}">收藏的宝贝</a></p>
-                       <p><a href="{url app=my_favorite&type=store}">收藏的店铺</a></p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="menu mytb">
+                    <a class="menu-hd" href="{url app=buyer_admin}">我是买家<b></b></a>
+
+                    <div class="menu-bd">
+                        <div class="menu-bd-panel">
+                            <div>
+                                <p><a href="{url app=buyer_order}">已买到的宝贝</a></p>
+
+                                <p><a href="{url app=friend}">我的好友</a></p>
+
+                                <p><a href="{url app=my_question}">我的咨询</a></p>
+                            </div>
+                        </div>
                     </div>
-                 </div>
-               </div>
-           </div>
-         </li>
-         <li class="item" style="background:none">
-            <div class="menu sites">
-               <a class="menu-hd" href="javascript:;">网站导航<b></b></a>
-               <div class="menu-bd padding10">
-                  <!--{foreach from=$navs.header item=nav}-->
-                  <a href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a>
-                  <!--{/foreach}-->
-               </div>
-            </div>
-        </li>
-     </ul>
-   </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="menu seller-center">
+                    <a class="menu-hd" href="{url app=seller_admin}">卖家中心<b></b></a>
+
+                    <div class="menu-bd">
+                        <div class="menu-bd-panel">
+                            <div>
+                                <p><a href="{url app=seller_order}">已卖出的宝贝</a></p>
+
+                                <p><a href="{url app=my_goods}">出售中的宝贝</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="service">
+                <a href="{url app=article&code=help}">帮助中心</a>
+            </li>
+            <li class="item">
+                <div class="menu favorite">
+                    <a class="menu-hd" href="{url app=my_favorite}">收藏夹<b></b></a>
+
+                    <div class="menu-bd">
+                        <div class="menu-bd-panel">
+                            <div>
+                                <p><a href="{url app=my_favorite}">收藏的宝贝</a></p>
+
+                                <p><a href="{url app=my_favorite&type=store}">收藏的店铺</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="item" style="background:none">
+                <div class="menu sites">
+                    <a class="menu-hd" href="javascript:;">网站导航<b></b></a>
+
+                    <div class="menu-bd padding10">
+                        <!--{foreach from=$navs.header item=nav}-->
+                        <a href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a>
+                        <!--{/foreach}-->
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
+
+<script type="text/javascript" language="javascript">
+    //加入收藏
+    function AddFavorite(sURL, sTitle) {
+        sURL = encodeURI(sURL);
+        try {
+            window.external.addFavorite(sURL, sTitle);
+        } catch (e) {
+            try {
+                window.sidebar.addPanel(sTitle, sURL, "");
+            } catch (e) {
+                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+            }
+        }
+    }
+    //设为首页
+    function SetHome(url) {
+        if (document.all) {
+            document.body.style.behavior = 'url(#default#homepage)';
+            document.body.setHomePage(url);
+
+        } else {
+            alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
+        }
+    }
+    //保存到桌面
+    function toDesktop(sUrl, sName) {
+        try {
+            var WshShell = new ActiveXObject("WScript.Shell");
+            var oUrlLink = WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop") + "\\" + sName + ".url");
+            oUrlLink.TargetPath = sUrl;
+            oUrlLink.Save();
+        }
+        catch (e) {
+            alert("当前IE安全级别不允许操作！");
+        }
+    }
+</script>
+
 
 <script>window._bd_share_config = {
     "common": {
@@ -181,10 +197,6 @@ var PRICE_FORMAT = '{$price_format}';
         "bdPic": "",
         "bdStyle": "0",
         "bdSize": "16"
-    },
-    "share": {},
-    "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16"},
-    "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}
+    }, "share": {}
 };
-with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-</script>
+with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>

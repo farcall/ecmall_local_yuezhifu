@@ -42,7 +42,20 @@ var PRICE_FORMAT = '{$price_format}';
          <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)<!--{/if}--></a>
          <a href="{url app=member&act=logout}">{$lang.logout}</a>
          <!--{/if}-->
+          <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
+          <a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
+          <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
       </div>
+
+       <div class="bdsharebuttonbox" style="float: left;margin-left: 16px">
+           <a href="#" class="bds_more" data-cmd="more"> </a>
+           <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+           <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+           <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+           <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+       </div>
+
+
       <ul class="quick-menu">
         {if !$index}<li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>{/if}
         <li class="item">
@@ -88,9 +101,6 @@ var PRICE_FORMAT = '{$price_format}';
          </li>
          <li class="service">
             <a href="{url app=article&code=help}">帮助中心</a>
-         </li>
-         <li class="service">
-            <a href="{url app=article&code=help}">在线客服</a>
          </li>
          <li class="item">
             <div class="menu favorite">
@@ -228,3 +238,54 @@ var PRICE_FORMAT = '{$price_format}';
         </ul>
     </div>
 </div>
+
+
+<script type="text/javascript" language="javascript">
+    //加入收藏
+    function AddFavorite(sURL, sTitle) {
+        sURL = encodeURI(sURL);
+        try {
+            window.external.addFavorite(sURL, sTitle);
+        } catch (e) {
+            try {
+                window.sidebar.addPanel(sTitle, sURL, "");
+            } catch (e) {
+                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+            }
+        }
+    }
+    //设为首页
+    function SetHome(url) {
+        if (document.all) {
+            document.body.style.behavior = 'url(#default#homepage)';
+            document.body.setHomePage(url);
+
+        } else {
+            alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
+        }
+    }
+    //保存到桌面
+    function toDesktop(sUrl,sName){
+        try {
+            var WshShell = new ActiveXObject("WScript.Shell");
+            var oUrlLink =          WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop")     + "\\" + sName + ".url");
+            oUrlLink.TargetPath = sUrl;
+            oUrlLink.Save();
+        }
+        catch(e)  {
+            alert("当前IE安全级别不允许操作！");
+        }
+    }
+</script>
+<script>window._bd_share_config = {
+    "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+    }, "share": {}
+};
+with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>

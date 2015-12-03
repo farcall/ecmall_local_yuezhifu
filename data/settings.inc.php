@@ -7,7 +7,7 @@ return array (
   'site_title' => '临沂盒子信息科技有限公司',
   'site_description' => '这是一个用临沂盒子信息科技有限公司架设的网上商城:联系人QQ:435795',
   'site_keywords' => '临沂盒子信息科技有限公司 mall',
-  'icp_number' => '2014 鲁ICP备xxxxxxxx号',
+  'icp_number' => '鲁ICP备15040903号-1',
   'site_status' => '1',
   'closed_reason' => '商城维护中，暂时关闭，请稍候访问。',
   'hot_search' => '加油卡,洗浴卡',
