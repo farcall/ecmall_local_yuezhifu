@@ -155,10 +155,12 @@ a:hover{color:#C81623; text-decoration:none}
 #site-nav .quick-menu li.service{padding-left:10px;padding-right:10px;}
 #site-nav .quick-menu li.service a{line-height:24px;}
 
+
 #site-nav .menu-hd { position:relative; display:block;_display:inline-block;padding-bottom:0px;padding-left:10px;padding-right:22px;padding-top:1px; height:20px;line-height:17px; margin:3px 1px 0px; cursor:pointer; z-index:901;}
 #site-nav .sites .menu-hd{width:48px;}
 #site-nav .mytb .menu-hd {width: 48px}
 #site-nav .favorite .menu-hd {width: 36px}
+
 
 #site-nav .menu-hd b,#site-nav .mini-cart b{border-bottom: #eee 4px solid; position: absolute; border-left: #eee 4px solid; line-height: 0; width: 0px; height: 0px;font-size: 0px; border-top: #bbb 4px solid; top: 7px; right: 10px; border-right: #eee 4px solid; -webkit-transition: -webkit-transform .2s ease-in;-webkit-backface-visibility: hidden; -moz-transition: -moz-transform .2s ease-in; -o-transition: -o-transform .2s ease-in; transition: transform .2s ease-in}
 
@@ -212,5 +214,12 @@ a:hover{color:#C81623; text-decoration:none}
 #site-nav .shoptop a{color:#999;}
 #site-nav .shoptop a:hover{color:#E4393C; text-decoration:underline}
 
+
+
+#site-nav .weixin { width: 100px;}
+#site-nav .weixin a{  background:url(../images/weixin.png) no-repeat; padding-left: 20px; }
+#site-nav .weixin a:active{  background:url(../images/weixin.png) no-repeat; padding-left: 20px; }
+#site-nav .weixin h4 { line-height: 18px; color:#F98016; text-align: center; font-size: 12px;}
+#site-nav .weixin img { max-width: 96px; max-height: 96px;}
 
 /************** common end ***************************************************/

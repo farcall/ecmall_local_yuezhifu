@@ -3,23 +3,23 @@
 return array (
   'widgets' => 
   array (
-    '_widget_959' => 
+    '_widget_423' => 
     array (
-      'name' => 'jd2015_gcategory_list',
-      'options' => 
-      array (
-        'model_name' => '',
-        'cate_id' => '0',
-      ),
-    ),
-    '_widget_231' => 
-    array (
-      'name' => 'jd2015_sold2',
+      'name' => 'jd2015_gcategory_list_ico',
       'options' => NULL,
     ),
     '_widget_237' => 
     array (
       'name' => 'jd2015_article',
+      'options' => 
+      array (
+        'model_name' => '平台公告',
+        'cate_id_1' => '4',
+      ),
+    ),
+    '_widget_231' => 
+    array (
+      'name' => 'jd2015_sold2',
       'options' => NULL,
     ),
     '_widget_123' => 
@@ -63,6 +63,32 @@ return array (
         'ad5_link_url' => '',
         'ad6_image_url' => 'data/files/mall/template/201506290635266882.jpg',
         'ad6_link_url' => '',
+      ),
+    ),
+    '_widget_976' => 
+    array (
+      'name' => 'zhying_index_shoprecommend',
+      'options' => 
+      array (
+        'model_name' => '商家推荐',
+        'ad1_image_url' => 'data/files/mall/template/201512040446237960.jpg',
+        'ad1_link_url' => '',
+        'ad2_image_url' => 'data/files/mall/template/201512040446235392.jpg',
+        'ad2_link_url' => '',
+        'ad3_image_url' => 'data/files/mall/template/201512040446234708.jpg',
+        'ad3_link_url' => '',
+        'ad4_image_url' => 'data/files/mall/template/201512040446236366.jpg',
+        'ad4_link_url' => '',
+        'ad5_image_url' => 'data/files/mall/template/201512040446239168.jpg',
+        'ad5_link_url' => '',
+        'ad6_image_url' => 'data/files/mall/template/201512040446235569.jpg',
+        'ad6_link_url' => '',
+        'ad7_image_url' => 'data/files/mall/template/201512040446237743.jpg',
+        'ad7_link_url' => '',
+        'ad8_image_url' => 'data/files/mall/template/201512040446235860.jpg',
+        'ad9_image_url' => 'data/files/mall/template/201512040446233976.jpg',
+        'ad9_link_url' => '',
+        'ad10_image_url' => false,
       ),
     ),
     '_widget_763' => 
@@ -871,12 +897,12 @@ return array (
   array (
     'col-1-left' => 
     array (
-      0 => '_widget_959',
+      0 => '_widget_423',
     ),
     'col-1-right' => 
     array (
-      0 => '_widget_231',
-      1 => '_widget_237',
+      0 => '_widget_237',
+      1 => '_widget_231',
     ),
     'col-2' => 
     array (
@@ -885,7 +911,8 @@ return array (
     'col-3' => 
     array (
       0 => '_widget_350',
-      1 => '_widget_763',
+      1 => '_widget_976',
+      2 => '_widget_763',
     ),
     'col-4' => 
     array (

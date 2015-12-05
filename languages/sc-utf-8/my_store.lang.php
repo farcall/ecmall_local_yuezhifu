@@ -31,7 +31,7 @@ return array(
     'change_store_logo' => '更换店标',
     'change_store_banner' => '更换店铺条幅',
     'change_store_logo_des' => '此处为您的店铺标志，将显示在店铺信息栏里建议尺寸100*100像素',
-    'change_store_banner_des' => '此处为您的店铺条幅，将显示在店铺导航上方的banner位置，建议尺寸1000*120像素',
+    'change_store_banner_des' => '此处为您的店铺条幅，将显示在店铺导航上方的banner位置，建议尺寸1585*115像素',
     'address_info' => '不必重复填写所在地区',
     'contact_info' => '填写后将显示在店铺信息栏里，可留空',
     'msn_info' => '激活后将显示在店铺信息栏里',

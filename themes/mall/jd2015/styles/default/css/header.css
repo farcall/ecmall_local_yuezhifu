@@ -89,6 +89,48 @@
 .allcategory-list .item .pborder p a{display:block;width:190px;height:31px;line-height:31px;font-size: 14px;white-space: nowrap;vertical-align: 2px;color:#fff;}
 .allcategory-list .item .pborder p b{position: absolute;z-index: 1;top: 9px;right: 14px;width: 4px;height: 14px;font: 400 9px/14px consolas;color:#fff;}
 
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1449317212_2924566.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1449317212_2924566.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1449317212_2924566.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1449317212_2924566.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1449317212_2924566.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lingshijiushui:before { content: "\e600"; }
+.icon-shumajiadian:before { content: "\e601"; }
+.icon-canyinmeishi:before { content: "\e602"; }
+.icon-yingyangshanshi:before { content: "\e603"; }
+.icon-shenghuoyule:before { content: "\e604"; }
+.icon-jinrongbaoxian:before { content: "\e605"; }
+.icon-jiajujiancai:before { content: "\e606"; }
+.icon-lipintechan:before { content: "\e607"; }
+.icon-fushixiebao:before { content: "\e608"; }
+.icon-meironghufu:before { content: "\e609"; }
+.icon-yundonghuwai:before { content: "\e60a"; }
+.icon-muyingyongpin:before { content: "\e60b"; }
+.icon-jiudianzhusu:before { content: "\e60c"; }
+.icon-qicheyongpin:before { content: "\e60d"; }
+.icon-jiaoyupeixun:before { content: "\e60e"; }
+
+.allcategory-list .item .pborder li{list-style: none;}
+.allcategory-list .item .pborder li i {margin-right: 4px;}
+.allcategory-list .item .pborder li a{width:190px;height:31px;line-height:31px;font-size: 14px;white-space: nowrap;vertical-align: 2px;color:#fff;}
+.allcategory-list .item .pborder li b{position: absolute;z-index: 1;top: 9px;right: 14px;width: 4px;height: 14px;font: 400 9px/14px consolas;color:#fff;}
+
+
+
 .allcategory-list .item a{color:#3e3e3e;}
 .allcategory-list .item a:hover{color:#f33100;}
 .allcategory-list .item .pop{ display:none}
