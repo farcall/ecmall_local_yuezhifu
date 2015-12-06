@@ -71,7 +71,7 @@ class CartApp extends MallbaseApp {
             /* 商品不存在 */
             return;
         }
-        
+
 
 
         /* 如果是自己店铺的商品，则不能购买 */

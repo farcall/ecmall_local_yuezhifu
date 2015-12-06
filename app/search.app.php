@@ -105,6 +105,8 @@ class SearchApp extends MallbaseApp {
         /* 配置seo信息 */
         $this->_config_seo($this->_get_seo_info('goods', $cate_id));
 
+
+
         $this->assign('allcategories',$this->get_all_category_tree(0));
         $this->assign("recommend_goods", $this->_get_list_goods($param));
         $this->assign("owner_rec_goods", $this->_get_list_goods($param, 'owner_rec'));

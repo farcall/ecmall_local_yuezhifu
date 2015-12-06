@@ -72,23 +72,6 @@ $(function (){
 <div id="page-search-store" class="w mt10 mb10">  
 	{include file=curlocal.html}
     <div class="w mb10 border">
-        <div class="search-by by-category relative">
-			<!--{foreach from=$scategorys item=scategory name=fe_scategory}-->
-			<dl class="relative clearfix">
-				<dt class="float-left"><a href="{url app=search&act=store&cate_id=$scategory.id}">{$scategory.value|escape}</a></dt>
-				<dd class="float-left">
-					<!--{if $scategory.children}-->
-					<!--{foreach from=$scategory.children item=child name=fe_child}-->
-					<a href="{url app=search&act=store&cate_id=$child.id}" class="{if $smarty.foreach.fe_child.iteration gt 7}toggle hidden{/if}">{$child.value|escape}</a>
-                    <!--{/foreach}-->
-                    <!--{else}-->
-                    &nbsp;
-					<!--{/if}-->
-				</dd>
-                <dd class="float-left show-more"><h3 class="pointer clearfix"><i></i><span>展开</span>分类</span></h3></dd>
-			</dl>
-			<!--{/foreach}-->
-		</div>
 		<div class="search-by by-region relative clearfix">
 			<dl class="clearfix" style="border-bottom:0">
 				<dt class="float-left"><a ectype="region" id="" href="javascript:;">{$lang.region_name}</a></dt>

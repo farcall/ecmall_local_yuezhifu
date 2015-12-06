@@ -354,6 +354,55 @@ class OrderApp extends ShoppingbaseApp {
                 $return['otype'] = 'groupbuy';
                 $return['allow_coupon'] = false;
                 break;
+            case 'now':
+                $_GET['spec_id'] = isset($_GET['spec_id']) ? intval($_GET['spec_id']) : 0;
+                $spec_id = $_GET['spec_id'];
+                $_GET['store_id'] = isset($_GET['store_id']) ? intval($_GET['store_id']) : 0;
+                $store_id = $_GET['store_id'];
+                if (!$spec_id or !$store_id) {
+                    return false;
+                }
+
+
+                $cart_model = & m('cart');
+
+                /*
+                $cart_items = $cart_model->find(array(
+                    'conditions' => "user_id = " . $this->visitor->get('user_id') . " AND store_id = {$store_id} AND session_id='" . SESS_ID . "'",
+                    'join' => 'belongs_to_goodsspec',
+                ));
+                 */
+                $cart_items = $cart_model->find(array(
+                    'conditions' => "user_id = " . $this->visitor->get('user_id') . " AND cart.spec_id = {$spec_id} AND store_id = {$store_id} AND session_id='" . SESS_ID . "'",
+                    'join' => 'belongs_to_goodsspec',
+                    'fields' => 'gs.spec_id,gs.spec_1,gs.spec_2,gs.color_rgb,gs.stock,gs.sku,cart.*' // 不能有 gs.price， 要不读取的不是促销价格，购物车里面才是促销价格
+                ));
+
+
+
+                if (empty($cart_items)) {
+                    return false;
+                }
+
+                $store_model = & m('store');
+                $store_info = $store_model->get($store_id);
+
+                foreach ($cart_items as $rec_id => $goods) {
+                    $return['quantity'] += $goods['quantity'];                      //商品总量
+                    $return['amount'] += $goods['quantity'] * $goods['price'];    //商品总价
+                    $cart_items[$rec_id]['subtotal'] = $goods['quantity'] * $goods['price'];   //小计
+                    empty($goods['goods_image']) && $cart_items[$rec_id]['goods_image'] = Conf::get('default_goods_image');
+                }
+
+                $return['items'] = $cart_items;
+                $return['store_id'] = $store_id;
+                $return['store_name'] = $store_info['store_name'];
+                $return['store_im_qq'] = $store_info['im_qq'];
+                $return['type'] = 'material';
+                $return['amount_for_free_fee'] = $store_info['amount_for_free_fee'];
+                $return['acount_for_free_fee'] = $store_info['acount_for_free_fee'];
+                $return['otype'] = 'normal';
+                break;
             default:
                 /* 从购物车中取商品 */
                 $_GET['store_id'] = isset($_GET['store_id']) ? intval($_GET['store_id']) : 0;
@@ -421,6 +470,25 @@ class OrderApp extends ShoppingbaseApp {
                     'order_id' => $order_id,
                 ));
                 break;
+            case 'now':
+                $_GET['spec_id'] = isset($_GET['spec_id']) ? intval($_GET['spec_id']) : 0;
+                $spec_id = $_GET['spec_id'];
+                if (!$spec_id) {
+                    return false;
+                }
+                $model_cart = & m('cart');
+                $model_cart->drop("spec_id = {$spec_id}");
+
+                //优惠券信息处理
+                if (isset($_POST['coupon_sn']) && !empty($_POST['coupon_sn'])) {
+                    $sn = trim($_POST['coupon_sn']);
+                    $couponsn_mod = & m('couponsn');
+                    $couponsn = $couponsn_mod->get("coupon_sn = '{$sn}'");
+                    if ($couponsn['remain_times'] > 0) {
+                        $couponsn_mod->edit("coupon_sn = '{$sn}'", "remain_times= remain_times - 1");
+                    }
+                }
+                break;
             default://购物车中的商品
                 /* 订单下完后清空指定购物车 */
                 $_GET['store_id'] = isset($_GET['store_id']) ? intval($_GET['store_id']) : 0;
@@ -430,6 +498,7 @@ class OrderApp extends ShoppingbaseApp {
                 }
                 $model_cart = & m('cart');
                 $model_cart->drop("store_id = {$store_id} AND session_id='" . SESS_ID . "'");
+
                 //优惠券信息处理
                 if (isset($_POST['coupon_sn']) && !empty($_POST['coupon_sn'])) {
                     $sn = trim($_POST['coupon_sn']);

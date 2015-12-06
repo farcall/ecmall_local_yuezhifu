@@ -113,6 +113,7 @@ class BackendApp extends ECBaseApp
         return true;
     }
 
+
     /**
      *    获取JS语言项
      *
@@ -120,7 +121,7 @@ class BackendApp extends ECBaseApp
      *    @param    none
      *    @return    void
      */
-    static function jslang($var)
+    static function jslang()
     {
         $lang = Lang::fetch(lang_file('admin/jslang'));
         parent::jslang($lang);

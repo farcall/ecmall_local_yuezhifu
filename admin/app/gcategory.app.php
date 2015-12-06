@@ -44,7 +44,7 @@ class GcategoryApp extends BackendApp
 
         /* 导入jQuery的表单验证插件 */
         $this->import_resource(array(
-            'script' => 'jqtable.js,inline_edit.js',
+            'script' => 'inline_edit.js',
             'style'  => 'res:style/jqtreetable.css'
         ));
         $this->display('gcategory.index.html');
