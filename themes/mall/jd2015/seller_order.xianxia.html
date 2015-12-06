@@ -106,6 +106,13 @@
             $('img[ectype="avatar"]').attr('src', src);
             $('input[ectype="change_avatar"]').removeAttr('name');
             $(this).attr('name', 'pingzheng');
+
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('.photo img').attr('src',this.result);
+            })
         });
     });
 </script>
