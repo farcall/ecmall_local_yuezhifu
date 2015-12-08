@@ -74,6 +74,12 @@ class Buyer_adminApp extends MemberApp {
 
         $this->assign('system_notice', $this->_get_system_notice('buyer_admin'));
 
+        /*dong-未用金豆-获奖励金币开始*/
+        import('fanli.lib');
+        $fanli = new fanli();
+        $this->assign('jinbi_jindou',$fanli->getJinbiAndJinbi($my_user_id));
+        /*dong-未用金豆-获奖励金币结束*/
+
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));
 

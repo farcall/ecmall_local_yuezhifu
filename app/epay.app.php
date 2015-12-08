@@ -260,15 +260,13 @@ class EpayApp extends MemberbaseApp {
         $user_name = $this->visitor->get('user_name');
 
         /*dong-持有金币开始*/
-        $epay_jinbi_log_mod = &m('epay_jinbi_log');
-        $epay_jinbi2money_log_mod = &m('epay_jinbi2money_log');
-
-        $sql_zhuanrujinbi = "select sum(jinbi) as zhuanrujinbi from ".DB_PREFIX."epay_jinbi_log where user_id='{$user_id}' and status=1";
-        $sql_zhuanchujinbi = "select sum(jinbi) as zhuanchujinbi from ".DB_PREFIX."epay_jinbi2money_log where user_id='{$user_id}' and status=1";
-
-        $zhuanrujinbi = $epay_jinbi_log_mod->getOne($sql_zhuanrujinbi);
-        $zhuanchujinbi = $epay_jinbi2money_log_mod->getOne($sql_zhuanchujinbi);
-        $maxjinbi = $zhuanrujinbi-$zhuanchujinbi;
+        $fanli_jindou_mod = &m('fanli_jindou');
+        $fanli_jindou_data = $fanli_jindou_mod->get('user_id='.$user_id);
+        if(!isset($fanli_jindou_data)){
+            $jinbi = 0;
+        }else{
+            $jinbi = $fanli_jindou_data['jinbi'];
+        }
         /*dong-持有金币结束*/
 
         session_start();
@@ -277,23 +275,28 @@ class EpayApp extends MemberbaseApp {
                 $this->show_warning('非法输入');
                 return;
             }
-            if($to_money > $maxjinbi){
+            if($to_money > $jinbi){
                 $this->show_warning('请正确输入金币数量');
                 return;
             }
 
             //todo 硬编码 兑换比例1:1
             $jinbi = $to_money;
-            /*epay_jinbi2money表*/
-            $epay_jinbi2money_log_mod->add(array(
+            /*fanli_jinbi_log表*/
+            $fanli_jinbi_log_mod = &m('fanli_jinbi_log');
+            $fanli_jinbi_log_mod->add(array(
                // user_id	user_name	jinbi	add_time	status
                 'user_id'=>$user_id,
                 'user_name'=>$user_name,
-                'jinbi'=>$jinbi,
-                'money'=>$to_money,
+                'jinbi'=>$to_money,
+                'flow'=>'out',
                 'add_time'=>gmtime(),
                 'status'=>1,
             ));
+
+            //金币减少
+            $fanli_jindou_data['jinbi'] = $fanli_jindou_data['jinbi']-$to_money;
+            $fanli_jindou_mod->edit('user_id='.$user_id,$fanli_jindou_data);
 
             /*epay表*/
             $epady_mod = &m('epay');
@@ -325,7 +328,7 @@ class EpayApp extends MemberbaseApp {
             /* 当前用户中心菜单 */
             $this->_curitem('epay');
             $this->_curmenu('金币兑换为可用资金(钱)');
-            $this->assign('jinbi', $maxjinbi);
+            $this->assign('jinbi', $jinbi);
             $this->display('epay.jinbi2money.html');
         }
     }
@@ -338,15 +341,15 @@ class EpayApp extends MemberbaseApp {
         $user_id = $this->visitor->get('user_id');
 
         $page = $this->_get_page(50);
-        $epay_jinbi2money_log_mod = &m('epay_jinbi2money_log');
-        $logs = $epay_jinbi2money_log_mod->find(array(
-            'conditions' => 'status=1 and user_id='.$user_id,
+        $jinbi_log_mod = &m('fanli_jinbi_log');
+        $logs = $jinbi_log_mod->find(array(
+            'conditions' => "status=1 and flow= 'out' and user_id=".$user_id,
             'order'      => 'id desc',
             'fields'     => '',
             'limit'      => $page['limit'],
             'count'      => true,
         ));
-        $page['item_count'] = $epay_jinbi2money_log_mod->getCount();
+        $page['item_count'] = $jinbi_log_mod->getCount();
         $this->_format_page($page);
         $this->assign('page_info', $page);
 

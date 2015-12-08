@@ -1,0 +1,60 @@
+{include file="fanli/header.html"}
+
+
+<!-- Main content -->
+<section class="content">
+<!-- Main row -->
+<div class="row">
+    <section class="col-md-4 connectedSortable">
+        {if $user_name}
+        {else if}
+            <div class="box-body">
+
+            </div><!-- /.box-footer-->
+        {/if}
+
+        <div class="row">
+            <div id="fenpeiliebiao" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="col-md-12">
+                <div class="box">
+                    <div class="box-body  table-responsive no-padding">
+                        <div class="box-header with-border">
+                            <form action="" method="get">
+                                <div class="input-group">
+                                    <input type="hidden" name="app" value="fanli_operate"/>
+                                    <input type="hidden" name="act" value="user"/>
+                                    <input type="text" name="name" placeholder="请输入会员名称" {if $user_name} value= '{$user_name}'{/if} class="form-control">
+                                    <span class="input-group-btn">
+                                        <input type="submit" class="btn btn-danger btn-flat" value="Send"/>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>金币数</th>
+                                <th>时间</th>
+                            </tr>
+                            {foreach from=$jinbis item=jinbi}
+                            <tr>
+                                <th>{$jinbi.jinbi}</th>
+
+                                <th>
+                                    {$jinbi.add_time|date:m月d日 H:i}
+                                </th>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {include file="fanli/page.bottom.html"}
+    </section>
+</div><!-- /.row (main row) -->
+</section><!-- /.content -->
+
+
+
+{include file="fanli/footer.html"}

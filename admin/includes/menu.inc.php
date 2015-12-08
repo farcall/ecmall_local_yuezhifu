@@ -1,6 +1,64 @@
 <?php
 
 return array(
+    //核心运营
+    'meiriyunying'=>array(
+        'text'=>'每日运营',
+        'default'=>'jinrifenpei',
+        'children'=>array(
+//            'cmd'=>array(
+//                'text'=>'核心数据',
+//                'url'=>'index.php?app=fanli_cmd&act=index'
+//            ),
+            'tixianshenhe'=>array(
+                'text'=>'提现审核',
+                'url'=>'index.php?app=epay&act=txlog&status=70'
+            ),
+            'dingdanshenhe'=>array(
+                'text'=>'订单审核',
+                'url'=>'http://600.com/admin/index.php?app=order&act=index&field=seller_name&search_name=&status=31',
+            ),
+            'jinrifenpei'=>array(
+                'text'=>'今日分配',
+                'url'=>'index.php?app=fanli&act=index',
+            ),
+            'weishenhedianpu'=>array(
+                'text'=>'未审核店铺',
+                'url'=>'index.php?app=store&wait_verify=1',
+            ),
+            'shujuku'=>array(
+                'text'=>'数据库',
+                'url'=>'http://600.com/admin/index.php?app=db&act=backup',
+            ),
+        ),
+    ),
+
+    //返利模块
+    'fanli'=>array(
+        'text'=>'奖励',
+        'default'=>'today',
+        'children'=>array(
+            'today'=>array(
+                'text'=>'今日奖励',
+                'url'=>'index.php?app=fanli&act=index',
+            ),
+            'history'=>array(
+                'text'=>'运营历史',
+                'url'=>'index.php?app=fanli_operate&act=index',
+            ),
+            'user'=>array(
+                'text'=>'会员历史',
+                'url'=>'index.php?app=fanli_operate&act=user',
+            ),
+            'setting'=>array(
+                'text'=>'奖励配置',
+                'url'=>'index.php?app=fanli_setting&act=index',
+            ),
+        ),
+    ),
+
+
+
     'dashboard' => array(
         'text' => Lang::get('dashboard'),
         'subtext' => Lang::get('offen_used'),
@@ -336,67 +394,7 @@ return array(
             ),
         ),
     ),
-    //返利模块
-    'fanli'=>array(
-        'text'=>'返利',
-        'default'=>'setting',
-        'children'=>array(
-            'setting'=>array(
-                'text'=>'返利配置',
-                'url'=>'index.php?app=fanli_setting&act=index',
-            ),
-            'today'=>array(
-                'text'=>'今日返利',
-                'url'=>'index.php?app=fanli&act=index',
-            ),
-        ),
-    ),
-//    //每日奖励
-//    'jianglifenpei'=>array(
-//        'text'=>'奖励分配',
-//        'default'=>'operate',
-//        'children'=>array(
-//            'operate'=>array(
-//                'text'=>'运营中心',
-//                'url'=>'index.php?module=jiangli&act=index',
-//            ),
-//            'today'=>array(
-//                'text'=>'今日分配',
-//                'url'=>'index.php?module=jiangli&act=today',
-//            ),
-//            'history'=>array(
-//                'text'=>'查看历史',
-//                'url'=>'index.php?module=jiangli&act=history',
-//            ),
-//            'setting'=>array(
-//                'text'=>'设置',
-//                'url'=>'index.php?module=jiangli&act=setting',
-//            ),
-//        ),
-//    ),
 
-    //核心运营
-    'meiriyunying'=>array(
-        'text'=>'每日运营',
-        'default'=>'tixianshenhe',
-        'children'=>array(
-            'tixianshenhe'=>array(
-                'text'=>'提现审核',
-                'url'=>'index.php?app=epay&act=txlog'
-            ),
-            'dingdanshenhe'=>array(
-                'text'=>'订单审核',
-                'url'=>'http://600.com/admin/index.php?app=order&act=index&field=seller_name&search_name=&status=31',
-            ),
-            'jinrifenpei'=>array(
-                'text'=>'今日分配',
-                'url'=>'index.php?module=jiangli&act=today',
-            ),
-            'shujuku'=>array(
-                'text'=>'数据库',
-                'url'=>'http://600.com/admin/index.php?app=db&act=backup',
-            ),
-        ),
-    ),
+
 );
 ?>

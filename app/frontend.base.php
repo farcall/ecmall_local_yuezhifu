@@ -438,20 +438,9 @@ class FrontendApp extends ECBaseApp {
         $mod_user->edit("user_id = '{$user_id}'", "last_login = '" . gmtime() . "', last_ip = '" . real_ip() . "', logins = logins + 1");
 
         /* 自动注册开通资金账户 开始***************************** */
-        $db = &db();
-        $row_epay = $db->getAll("select * from " . DB_PREFIX . "epay where user_id='$user_id'");
-        if (empty($row_epay)) {
-            $row_member = $db->getrow("select * from " . DB_PREFIX . "member where user_id='$user_id'");
-            // 添加自动开通  
-            $this->mod_epay = & m('epay');
-            $epay_data = array(
-                'user_id' => $row_member['user_id'],
-                'user_name' => $row_member['user_name'],
-                'zf_pass'=>md5($row_member['pass_word']),
-                'add_time' => time(),
-            );
-            $this->mod_epay->add($epay_data);
-        }
+        import('epay.lib');
+        $epay=new Epay();
+        $epay->register($user_id);
         /* 自动注册开通 结束***************************** */
 
 

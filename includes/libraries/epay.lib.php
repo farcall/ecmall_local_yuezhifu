@@ -50,6 +50,29 @@ class Epay {
         $this->_epay_mod->edit('user_id=' . $order_info['seller_id'], $new_seller_epay);
     }
 
+    /**
+     * @param $user_id
+     * 作用:登陆时调用
+     * Created by QQ:710932
+     */
+    function register($user_id){
+        $db = &db();
+        $row_epay = $db->getAll("select * from " . DB_PREFIX . "epay where user_id='$user_id'");
+
+        //如果没有虚拟账户则开户(默认支付密码=登陆密码)
+        if (empty($row_epay)) {
+            $row_member = $db->getrow("select * from " . DB_PREFIX . "member where user_id='$user_id'");
+            // 添加自动开通
+            $mod_epay_mod = & m('epay');
+
+            $mod_epay_mod->add(array(
+                'user_id' => $row_member['user_id'],
+                'user_name' => $row_member['user_name'],
+                'zf_pass'=>$row_member['password'],
+                'add_time' => time(),
+                ));
+        }
+    }
 }
 
 ?>

@@ -8,10 +8,9 @@
 
 class FanliApp extends BackendApp{
     var $mod_order;
-    var $mod_jinbi_log;
     var $mod_fanli_setting;
     var $mod_fanli_operate;
-    var $mod_fanli_jinbi;
+    var $mod_fanli_jinbi_log;
     var $mod_fanli_jindou;
     function __construct() {
         $this->FanliApp();
@@ -19,20 +18,19 @@ class FanliApp extends BackendApp{
 
     function FanliApp() {
         parent::BackendApp();
-        $this->mod_jinbi_log = &m('epay_jinbi_log');
         $this->mod_order = &m('order');$this->mod_fanli_setting = &m('fanli_setting');
         $this->mod_fanli_operate = &m('fanli_operate');
-        $this->mod_fanli_jinbi = &m('fanli_jinbi');
+        $this->mod_fanli_jinbi_log = &m('fanli_jinbi_log');
         $this->mod_fanli_jindou = &m('fanli_jindou');
     }
 
 
     function index(){
-        $lastFanli = $this->todayFanliStatus();
-        if(($lastFanli !=false ) && ($lastFanli['status']==1)){
-            $this->_cancel();
-            return;
-        }
+//        $lastFanli = $this->todayFanliStatus();
+//        if(($lastFanli !=false ) && ($lastFanli['status']==1)){
+//            $this->_cancel();
+//            return;
+//        }
 
         $method = $_GET['method'];
         if($method == 'submit'){
@@ -58,9 +56,10 @@ class FanliApp extends BackendApp{
 
         //分页
         $page = $this->_get_page(20);
-        $pageMember = $this->mod_fanli_jinbi->find(array(
+        $pageMember = $this->mod_fanli_jinbi_log->find(array(
             'order'=>'jinbi desc',
             'limit'=>$page['limit'],
+            'conditions'=>'operate_id='.$operate_data['Id'],
             'count' => true,
         ));
         $page['item_count'] = $operate_data['count'];   //获取统计数据
@@ -91,34 +90,37 @@ class FanliApp extends BackendApp{
             return;
         }
 
-        //今日流水
-        $todayTurnOver = $this->getTodayTurnOver();
-        //今日抽成
+        //本次流水
+        $thisTimeTurnOver = $this->thisTimeTurnOver();
+
+        //本次抽成
         $model_setting = &af('settings');
         $configSetting = $model_setting->getAll(); //载入系统设置数据
-        $todayCut = $todayTurnOver*$configSetting['epay_trade_charges_ratio'];
+        $thisTimeCut = $thisTimeTurnOver*$configSetting['epay_trade_charges_ratio'];
 
         //理论上应该返的额度
         $fanliSetting = $this->mod_fanli_setting->get(array(
             'order' => 'add_time desc',
         ));
-        $theoryfanli = $todayCut*$fanliSetting['chouchenguse_fanli_ratio'];
+        /*平台抽成*抽成用于返利的比例*/
+        $theoryfanli = $thisTimeCut*$fanliSetting['chouchenguse_fanli_ratio'];
 
-        //计算返利资金
+        //最终用于返利的额度
         $confirmfanli = $_GET['confirmfanli']>0?$_GET['confirmfanli']:$theoryfanli;
 
 
+
         $members = $this->mod_fanli_jindou->find(array(
-            'fields' => '*',
-            'conditions' => "unused!=0",
+            'fields' => 'user_name,user_id,floor(total) as total,ceil(consume) as consume,floor(unused) as unused,jinbi',
+            'conditions' => "unused>=1",
             'order'=>'unused desc',
         ));
 
         //保存ecm_fanli_operate
         $add_time = gmtime();
         $operate_data = array(
-            'turnover' => $todayTurnOver,
-            'cut'=> $todayCut,
+            'turnover' => $thisTimeTurnOver,
+            'cut'=> $thisTimeCut,
             'theoryfanli'=>$theoryfanli,
             'fanli'=>$confirmfanli,
             'count'=>count($members),
@@ -142,19 +144,20 @@ class FanliApp extends BackendApp{
                 'user_id'=>$v['user_id'],
                 'user_name'=>$v['user_name'],
                 'jinbi'=>floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100,
+                'flow'=>'in',
                 'add_time'=>$add_time,
                 'status'=>1,
             );
-            $this->mod_fanli_jinbi->add($jinbi_data);
+            $this->mod_fanli_jinbi_log->add($jinbi_data);
 
-            //todo 扣除金豆
+            //扣除金豆且保存金币
             /*金币奖励后扣除金豆*/
             $jinbi_info = array(
                 'user_id'=>$v['user_id'],
                 'user_name'=>$v['user_name'],
                 'jinbi'=>$jinbi_data['jinbi'],
             );
-            $fanli->consumeJindou($jinbi_info);
+            $fanli->consumeJindouAndSaveJinbi($jinbi_info);
         }
 
 
@@ -170,7 +173,7 @@ class FanliApp extends BackendApp{
         }
 
         //今日流水
-        $todayTurnOver = $this->getTodayTurnOver();
+        $todayTurnOver = $this->thisTimeTurnOver();
         //今日抽成
         $model_setting = &af('settings');
         $configSetting = $model_setting->getAll(); //载入系统设置数据
@@ -188,8 +191,8 @@ class FanliApp extends BackendApp{
         //分页
         $page = $this->_get_page(20);
         $pageMember = $this->mod_fanli_jindou->find(array(
-            'fields' => '*',
-            'conditions' => "unused!=0",
+            'fields' => 'user_name,user_id,floor(total) as total,ceil(consume) as consume,floor(unused) as unused,jinbi',
+            'conditions' => "unused>=1",
             'order'=>'unused desc',
             'limit'=>$page['limit'],
             'count' => true,
@@ -236,12 +239,14 @@ class FanliApp extends BackendApp{
         return $lastFanli;
     }
     /**
-     * 作用:计算今日流水
+     * 作用:本次分配时流水
+     * 从上一次分配时间到当前时间的流水
      * Created by QQ:710932
      */
-    function getTodayTurnOver()
+    function thisTimeTurnOver()
     {
-        $end_time = gmtime();
+        $now_time = gmtime();
+        $end_time = $now_time;
         $lastFanli = $this->mod_fanli_operate->get(array(
             'order' => 'fanli_time desc',
         ));
@@ -254,88 +259,10 @@ class FanliApp extends BackendApp{
         }
 
         //begin_time到end_time这个时间段内的订单流水
-
         $order_mod = &m('order');
         $totalAmount = $order_mod->getOne("select sum(goods_amount) from ".DB_PREFIX."order where status=40 and finished_time>".$begin_time." and finished_time<=".$end_time);
         return $totalAmount==null?0:$totalAmount;
 
-    }
-    /**
-     * 作用:所有成员的全部金豆(未用金豆+已用金豆)信息集合
-     * Created by QQ:710932
-     */
-    function getAllJindous(){
-        //线上消费产生金豆集合{user_id,user_name,jindou}的二维数组,下标是数字
-        $jindou_line = $this->mod_order->getAll("select buyer_id as user_id,buyer_name as user_name,floor(sum(goods_amount)/100)as jindou from ".DB_PREFIX."order where status=40 and  type!='xianxia' group by user_name");
-        //线下消费产生金豆集合{user_id,user_name,jindou}的二维数组,下标是数字
-        $jindou_online = $this->mod_order->getAll("select buyer_id as user_id,buyer_name as user_name,floor(sum(goods_amount)/130)as jindou from ".DB_PREFIX."order where status=40 and  type='xianxia' group by user_name");
-
-        //线上消费金豆集合的二维数组,下标是会员名
-        foreach ($jindou_line as $k => $v) {
-            $jindou_line[$v['user_name']] = array_shift($jindou_line);
-        }
-
-        //线下消费金豆集合的二维数组,下标是会员名
-        foreach ($jindou_online as $k => $v) {
-            $jindou_online[$v['user_name']] = array_shift($jindou_online);
-        }
-
-
-        //递归地合并一个或多个数组。
-        $alljindou = array_merge_recursive($jindou_line,$jindou_online);
-
-        foreach ($alljindou as $k => $v) {
-            if(is_array($v['jindou'])){
-                $jindou  = array_sum($v['jindou']);
-                $alljindou[$k]['user_id'] = $v['user_id'][0];
-                $alljindou[$k]['user_name'] = $v['user_name'][0];
-                $alljindou[$k]['jindou'] = $jindou;
-            }
-        }
-
-        return $alljindou;
-    }
-
-    /**
-     * 作用:所有成员的已用金豆信息集合
-     * Created by QQ:710932
-     */
-    function getUsedJindous(){
-        $usedJindous = $this->mod_jinbi_log->getAll("select user_id,user_name,floor(sum(jinbi)/100) as jindou from ".DB_PREFIX."epay_jinbi_log where status=1 group by user_name");
-
-        foreach ($usedJindous as $k => $v) {
-            $usedJindous[$v['user_name']] = array_shift($usedJindous);
-        }
-        return $usedJindous;
-    }
-
-    /**
-     * 作用:通过所有金豆集合和已用金豆集合计算未用金豆集合
-     * Created by QQ:710932
-     */
-    function getUnusedJindous(){
-        $allJindous = $this->getAllJindous();
-        $usedJindous = $this->getUsedJindous();
-        //递归地合并一个或多个数组。
-        $unusedjindous = array_merge_recursive($allJindous,$usedJindous);
-
-        foreach ($unusedjindous as $k => $v) {
-            if(is_array($v['jindou'])){
-                $jindou  = $v['jindou'][0]-$v['jindou'][1];
-                $unusedjindous[$k]['user_id'] = $v['user_id'][0];
-                $unusedjindous[$k]['user_name'] = $v['user_name'][0];
-                $unusedjindous[$k]['jindou'] = $jindou;
-                $unusedjindous[$k]['alljindou'] = $v['jindou'][0];
-                $unusedjindous[$k]['usedjindou'] = $v['jindou'][1];
-            }else{
-                $unusedjindous[$k]['alljindou'] = $v['jindou'];
-                $unusedjindous[$k]['usedjindou'] = 0;
-            }
-
-        }
-        //todo 去掉未用金豆为0的项
-        //未用金豆额为0的清空
-        return $unusedjindous;
     }
 
 
@@ -346,10 +273,16 @@ class FanliApp extends BackendApp{
      * Created by QQ:710932
      */
     function getUnusedTotalCounts(){
-       return $this->mod_fanli_jindou->getOne("select sum(unused) from " . DB_PREFIX . "fanli_jindou");
+        $this->mod_fanli_jindou->find();
+       return $this->mod_fanli_jindou->getOne("select sum(floor(unused)) from " . DB_PREFIX . "fanli_jindou");
     }
 
+    /**
+     * @return mixed
+     * 作用:返回含有未用金豆的人数
+     * Created by QQ:710932
+     */
     function getValidMemberCount(){
-        return $this->mod_fanli_jindou->getOne("select count(*) from  " . DB_PREFIX . "fanli_jindou where unused!=0");
+        return $this->mod_fanli_jindou->getOne("select count(*) from  " . DB_PREFIX . "fanli_jindou where unused>=1");
     }
 }

@@ -1,0 +1,74 @@
+{include file="fanli/header.html"}
+
+
+<!-- Main content -->
+<section class="content">
+<!-- Main row -->
+<div class="row">
+    <section class="col-md-8 connectedSortable">
+
+        <div class="row">
+            <div id="fenpeiliebiao" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">每日运营情况</h3>
+                    </div>
+
+                    <div class="box-body  table-responsive no-padding">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th style="width: 80px">ID</th>
+                                <th>流水</th>
+                                <th>抽成</th>
+                                <th>理论金额</th>
+                                <th>实际金额</th>
+                                <th>分成人数</th>
+                                <th>操作管理员</th>
+                                <th>时间</th>
+                                <th>日期</th>
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$operates item=operate}
+                            <tr>
+                                <td>{$operate.id}</td>
+                                <th>{$operate.turnover}</th>
+                                <th>{$operate.cut}</th>
+
+                                <td>
+                                    <span class="label bg-green">{$operate.theoryfanli}</span>
+                                </td>
+                                <td>
+                                    <span class="label label-warning">{$operate.fanli}</span>
+                                </td>
+                                <th>
+                                    {$operate.count}
+                                </th>
+                                <th>
+                                    {$operate.admin_name}
+                                </th>
+                                <th>
+                                    {$operate.fanli_time|date:H:i}
+                                </th>
+                                <th>
+                                    {$operate.zero_time|date:m月d日}
+                                </th>
+                                <td>
+                                    <a href="index.php?app=fanli_operate&act=detail&id={$operate.id}">详情</a>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {include file="fanli/page.bottom.html"}
+    </section>
+</div><!-- /.row (main row) -->
+</section><!-- /.content -->
+
+
+
+{include file="fanli/footer.html"}

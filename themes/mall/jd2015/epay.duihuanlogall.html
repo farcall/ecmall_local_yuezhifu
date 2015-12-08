@@ -29,7 +29,7 @@
                     <!--{if $smarty.foreach.v.last}--><tr class="line_bold"><!--{else}--><tr class="line"><!--{/if}-->
                         <td align="center">{$log.add_time|date:Y-m-d H:i}</td>
                     <td align="center">{$log.jinbi}</td>
-                        <td align="center">{$log.money}{$epaylog.yuan}</td>
+                        <td align="center">{$log.jinbi}{$epaylog.yuan}</td>
                         <td align="center"><!--{if $log.status==0}-->未完成<!--{else}-->已完成<!--{/if}--></td>
                     </tr>
                     <!--{foreachelse}-->

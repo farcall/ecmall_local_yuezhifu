@@ -124,23 +124,9 @@ class MemberApp extends MemberbaseApp {
         $this->assign('system_notice', $this->_get_system_notice($_SESSION['member_role']));
 
         /*dong-未用金豆-获奖励金币开始*/
-        $jindou_mod = &m('fanli_jindou');
-        $jindou_data = $jindou_mod->get(array(
-            'conditions'=>'user_id='.$my_user_id,
-        ));
-
-        $jinbi_mod = &m('fanli_jinbi');
-        $jinbi_data = $jinbi_mod->get(array(
-            'conditions'=>'user_id='.$my_user_id,
-        ));
-
-        $jinbi_jindou = array(
-            'yiyongjindou' => $jindou_data['consume']>0?$jindou_data['consume']:0,
-            'weiyongjindou'=> $jindou_data['unused']>0?$jindou_data['unused']:0,
-            'jinbi'=>$jinbi_data['jinbi']>0?$jinbi_data['jinbi']:0,
-        );
-
-        $this->assign('jinbi_jindou',$jinbi_jindou);
+        import('fanli.lib');
+        $fanli = new fanli();
+        $this->assign('jinbi_jindou',$fanli->getJinbiAndJinbi($my_user_id));
         /*dong-未用金豆-获奖励金币结束*/
 
         /* 当前位置 */

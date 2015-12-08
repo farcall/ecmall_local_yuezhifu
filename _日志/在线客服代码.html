@@ -1,0 +1,118 @@
+
+<style type="text/css">
+    .sidebar_fixed {
+        display: none;
+        height: 352px;
+        position: fixed;
+        visibility: visible;
+        width: 106px;
+    }
+    .sidebar_block {
+        background: url("http://beilouweb.b0.upaiyun.com/public/images/pc/pc_dt.png") no-repeat scroll -1115px -828px;
+        height: 352px;
+        left: 50%;
+        margin-left: 701px;
+        z-index: 3;
+    }
+    .sidebar_unfixed {
+        position: absolute;
+        visibility: visible;
+        width: 106px;
+    }
+    .sidebar_block img {
+        bottom: 236px;
+        left: 11px;
+        position: absolute;
+    }
+    .sidebar_block .gw {
+        background-color: #fff;
+        border-radius: 2px;
+        bottom: 196px;
+        color: #333;
+        margin: 0 10px;
+        position: absolute;
+        text-align: center;
+        width: 85px;
+    }
+    .sidebar_block .zxkf {
+        bottom: 87px;
+        cursor: pointer;
+        height: 43px;
+        left: 5px;
+        position: absolute;
+        width: 96px;
+    }
+    .sidebar_block .zxkf img {
+        bottom: 0;
+        display: block;
+        left: 0;
+    }
+    .sidebar_block .gw span {
+        background: url("http://beilouweb.b0.upaiyun.com/public/images/pc/pc_dt.png") no-repeat scroll -945px -1205px;
+        padding-left: 22px;
+        padding-top: 4px;
+    }
+    #back-to-top {
+        display: none;
+        left: 50%;
+        margin-left: 730px;
+        position: fixed;
+        z-index: 201;
+    }
+    #back-to-top a {
+        color: #d1d1d1;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        transition: color 1s ease 0s;
+        width: 48px;
+    }
+    #back-to-top a span {
+        background: #f2f2f2 url("http://beilouweb.b0.upaiyun.com/public/images/pc/pc_dt.png") no-repeat scroll -210px -262px;
+        border-radius: 6px;
+        display: block;
+        height: 48px;
+        margin-bottom: 5px;
+        text-indent: -999em;
+        transition: background 1s ease 0s;
+        width: 47px;
+    }
+    .carousel {
+        height: 400px;
+    }
+</style>
+
+
+<div class="sidebar_fixed sidebar_block fixed" style="top: 70px;">
+    <img src="{$default_qrcode}" width="84px" height="84px">
+    <div class="gw"><a target="_blank" href="http://www.sucaihuo.com"><span>关注我们</span></a> </div>
+    <div id="zxkf_div" class="zxkf">
+        <!-- Live800在线客服图标:蜜淘客服[固定图标] 开始-->
+        <div ><a href="http://www.sucaihuo.com/js">在线客服系统</a></div>
+
+        <a href="http://www.sucaihuo.com/js" target="_blank" id="live800iconlink">
+            <img border="0" src="http://v2.live800.com/live800/SurferServer?cmd=111&amp;companyID=457931&amp;configID=124644&amp;online=https://icon.live800.com/fileupload/CustomFileDownloadServer?companyID=457931&amp;fna=1428726437959457931&amp;offline=https://icon.live800.com/fileupload/CustomFileDownloadServer?companyID=457931&amp;fna=1428745327541457931" id="live800icon" name="live800icon"></a>
+    </div>
+    <!-- 在线客服图标:蜜淘客服 结束-->
+</div>
+<p id="back-to-top" class="fixed" style="top: 352px;">
+    <a href="#top">
+        <span></span>
+    </a>
+</p>
+<script src="http://www.sucaihuo.com/Public/js/jquery.js"></script>
+<script>
+    $(window).scroll(function() {
+        var scrollTop = $(document).scrollTop();
+        if (scrollTop > 200) {
+            $(".fixed").fadeIn()
+        } else {
+            $(".fixed").fadeOut()
+        }
+    })
+
+    //    $("#back-to-top").click(function() { //顶部返回
+    //        $("html,body").animate({scrollTop: 0}, 600);
+    //    });
+</script>
+

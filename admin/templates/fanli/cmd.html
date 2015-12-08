@@ -1,0 +1,30 @@
+{include file="fanli/header.html"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-2">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user-2">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-yellow">
+                    <div class="widget-user-image">
+                    </div><!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">24小时动态</h3>
+                    <h5 class="widget-user-desc">24小时内核心数据统计</h5>
+                </div>
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-stacked">
+                        <li><a href="#">新增用户数<span class="pull-right label bg-blue">{$news_in_a_day.new_user_qty}</span></a></li>
+                        <li class="bg-red"><a href="#">新增店铺数 <span class="pull-right label bg-aqua">{$news_in_a_day.new_store_qty}</span></a></li>
+                        <li><a href="#">新增店铺申请数<span class="pull-right label bg-green">{$news_in_a_day.new_apply_qty}</span></a></li>
+                        <li><a href="#">新增商品<span class="pull-right label bg-red">{$news_in_a_day.new_goods_qty}</span></a></li>
+                        <li><a href="#">新增订单<span class="pull-right label bg-yellow">{$news_in_a_day.new_order_qty}</span></a></li>
+                    </ul>
+                </div>
+            </div><!-- /.widget-user -->
+        </div><!-- /.col -->
+
+    </div>
+</section>
+
+
+{include file="fanli/footer.html"}
