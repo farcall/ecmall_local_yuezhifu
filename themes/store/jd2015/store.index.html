@@ -1,4 +1,5 @@
 {include file=header.html}
+{include file=top.html}
 
 <div class="w-full"  area="top_ad_area" widget_type="area">
     <!--{widgets page=index area=top_ad_area}-->
@@ -68,14 +69,14 @@
             <h2 class="common_title veins2">
                 <div class="ornament1"></div>
                 <div class="ornament2"></div>
-                <span class="ico1"><span class="ico2">{$lang.new_goods}</span></span>
+                <span class="ico1"><span class="ico2">所有商品</span></span>
             </h2>
             <div class="wrap">
                 <div class="wrap_child">
-                    <!--{if $new_goods}-->
+                    <!--{if $page_goods}-->
                     <div class="major">
                         <ul class="list">
-                            <!--{foreach from=$new_goods item=ngoods}-->
+                            <!--{foreach from=$page_goods item=ngoods}-->
                             <li>
                                 <div class="pic"><a href="{url app=goods&id=$ngoods.goods_id}" target="_blank"><img src="{$ngoods.default_image}" width="150" height="150" /></a></div>
                                 <h3><a href="{url app=goods&id=$ngoods.goods_id}" target="_blank">{$ngoods.goods_name|escape}</a></h3>
@@ -87,8 +88,10 @@
                     <!--{else}-->
                     <div class="nothing"><p>{$lang.no_records}</p></div>
                     <!--{/if}-->
+                    {include file=page.bottom.html}
                 </div>
             </div>
+
         </div>
     </div>
 

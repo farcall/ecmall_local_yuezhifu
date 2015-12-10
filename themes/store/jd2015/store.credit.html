@@ -97,7 +97,7 @@
                 <td><div class="tab_table_con">{$goods.comment|escape|nl2br}</div></td>
                 <td><a class="ware_link" href="{url app=goods&id=$goods.goods_id}">{$goods.goods_name|escape}</a></td>
                 <td class="tab_align money">{$goods.price|price}</td>
-                <td class="tab_align fontColor10">{$goods.buyer_name|escape}<br/><img src="{$goods.buyer_credit_image}" title="{$goods.buyer_credit_value}" /></td>
+                <td class="tab_align fontColor10">{$goods.buyer_name|truncate:5:"---"}<br/><img src="{$goods.buyer_credit_image}" title="{$goods.buyer_credit_value}" /></td>
                 <td class="tab_align fontColor11">{$goods.evaluation_time|date:complete}</td>
             </tr>
             <!--{/foreach}-->

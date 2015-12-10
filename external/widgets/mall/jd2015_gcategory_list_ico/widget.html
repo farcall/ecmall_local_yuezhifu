@@ -1,4 +1,3 @@
-
 <div class="allcategory">
     <div class="allcategory-list">
         <div class="content clearfix">
@@ -6,18 +5,16 @@
             <!--{if $smarty.foreach.fe_category.iteration lt 16}-->
             <div class="item item_{$smarty.foreach.fe_category.iteration}">
                 <div class="pborder">
+
                     <p>
-                        <li>
-                             <i class="iconfont icon-{$category.ico}"></i>
-                            <i class="dot fp-iconfont"></i>
-                            <a href="{url app=search&cate_id=$category.id}" target="_blank">{$category.value|escape}</a><b>></b>
-                         </li>
+                        <a href="{url app=search&cate_id=$category.id}" target="_blank"><i class="iconfont icon-{$category.ico}"></i><i class="dot fp-iconfont"></i>{$category.value|escape}</a>
+                        <b>></b>
                     </p>
                 </div>
                 <div class="pop" {if $category.top} style="top:{$category.top}"{/if}>
                      <div class="item-channels">
-                        <!--{foreach from=$category.children item=child name=fe_child}-->
-                         <a href="{url app=search&cate_id=$child.id}">{$child.value|escape}<b>></b></a>
+                        <!--{foreach from=$category.children item=child name=fe_child}--> 
+                        <a href="{url app=search&cate_id=$child.id}">{$child.value|escape}<b>></b></a>
                         <!--{/foreach}-->
                     </div>
                     <div class="catlist float-left">

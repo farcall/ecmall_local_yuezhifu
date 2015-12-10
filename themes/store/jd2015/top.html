@@ -1,157 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <base href="{$site_url}/"/>
-    <meta http-equiv="Content-Type" content="text/html; charset={$charset}"/>
-    {$page_seo}
-
-    <meta name="generator" content="临沂盒子信息科技有限公司 {$ecmall_version}"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-
-    <link type="text/css" href="{res file=css/header.css}" rel="stylesheet"/>
-    <link type="text/css" href="{res file=css/main.css}" rel="stylesheet"/>
-    <link type="text/css" href="{res file=css/footer.css}" rel="stylesheet"/>
-
-    <script type="text/javascript" src="index.php?act=jslang"></script>
-    <script type="text/javascript" src="{lib file=jquery.js}" charset="utf-8"></script>
-    <script type="text/javascript" src="{lib file=ecmall.js}" charset="utf-8"></script>
-    <script type="text/javascript" src="{lib file=cart.js}" charset="utf-8"></script>
-    <script type="text/javascript" src="{res file=js/main.js}" charset="utf-8"></script>
-    <script type="text/javascript" src="{lib file=kissy/build/kissy.js}"></script>
-    <script type="text/javascript" src="{lib file=kissy/build/switchable/switchable-pkg.js}"></script>
-
-    <!--[if lte IE 6]>
-    <script type="text/javascript" language="Javascript" src="{res file=js/hoverForIE6.js}"></script>
-    <![endif]-->
-
-    <script type="text/javascript">
-        //<!CDATA[
-        var SITE_URL = "{$site_url}";
-        var REAL_SITE_URL = "{$real_site_url}";
-        var PRICE_FORMAT = '{$price_format}';
-        //]]>
-    </script>
-
-    {$_head_tags}
-    <!--<editmode></editmode>-->
-</head>
-<body>
-<div id="site-nav" class="w-full">
-    <div class="shoptop w clearfix">
-        <div class="login_info">
-            {$lang.hello}
-            <!--{if !$visitor.user_id}-->
-            <a href="{url app=member&act=login&ret_url=$ret_url}">{$lang.login}</a>
-            <a href="{url app=member&act=register&ret_url=$ret_url}">{$lang.register}</a>
-            <!--{else}-->
-            <a href="{url app=member}">{$visitor.user_name|escape}</a>
-            <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)
-                <!--{/if}--></a>
-            <!--{/if}-->
-            <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
-            <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
-        </div>
-
-        <div class="bdsharebuttonbox" style="float: left;margin-left: 16px">
-            <a href="#" class="bds_more" data-cmd="more"> </a>
-            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-        </div>
-
-
-        <ul class="quick-menu">
-            {if !$index}
-            <li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>
-            {/if}
-
-            <li class="item">
-                <div class="menu mytb">
-                    <a class="menu-hd" href="{url app=buyer_admin}">我是买家<b></b></a>
-
-                    <div class="menu-bd">
-                        <div class="menu-bd-panel">
-                            <div>
-                                <p><a href="{url app=buyer_order}">已买到的宝贝</a></p>
-
-                                <p><a href="{url app=friend}">我的好友</a></p>
-
-                                <p><a href="{url app=my_question}">我的咨询</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="menu seller-center">
-                    <a class="menu-hd" href="{url app=seller_admin}">卖家中心<b></b></a>
-
-                    <div class="menu-bd">
-                        <div class="menu-bd-panel">
-                            <div>
-                                <p><a href="{url app=seller_order}">已卖出的宝贝</a></p>
-
-                                <p><a href="{url app=my_goods}">出售中的宝贝</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <li class="item">
-                <div class="menu weixin">
-                    <a class="menu-hd" href="#">关注我们<b></b></a>
-
-                    <div class="menu-bd">
-                        <div class="menu-bd-panel">
-                                <h4>扫描二维码<br>
-                                关注商城微信号</h4>
-                                <img src="{$default_qrcode}">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
+<div class="banner">
+    <a href="{url app=store&id=$store.store_id}">
+        <!--{if $store.store_banner}-->
+        <img src="{$store.store_banner}" width="1000" height="120" />
+        <!--{else}-->
+        <img src="{res file=images/banner.jpg}"  />
+        <!--{/if}-->
+    </a>
 </div>
-
-<script type="text/javascript" language="javascript">
-    //设为首页
-    function SetHome(url) {
-        if (document.all) {
-            document.body.style.behavior = 'url(#default#homepage)';
-            document.body.setHomePage(url);
-
-        } else {
-            alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
-        }
-    }
-    //保存到桌面
-    function toDesktop(sUrl, sName) {
-        try {
-            var WshShell = new ActiveXObject("WScript.Shell");
-            var oUrlLink = WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop") + "\\" + sName + ".url");
-            oUrlLink.TargetPath = sUrl;
-            oUrlLink.Save();
-        }
-        catch (e) {
-            alert("当前IE安全级别不允许操作！");
-        }
-    }
-</script>
-
-
-<script>window._bd_share_config = {
-    "common": {
-        "bdSnsKey": {},
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": "",
-        "bdStyle": "0",
-        "bdSize": "16"
-    }, "share": {}
-};
-with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<div id="nav">
+    <ul>
+        <li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'index'}active{else}normal{/if}" href="{url app=store&id=$store.store_id}"><span>{$lang.store_index}</span></a></li>
+        {if $store.functions.groupbuy and $store.enable_groupbuy}
+        <li><a class="{if $smarty.get.app eq 'groupbuy' or $smarty.get.act eq 'groupbuy'}active{else}normal{/if}" href="{url app=store&act=groupbuy&id=$store.store_id}"><span>{$lang.nav_groupbuy}</span></a></li>
+        {/if}
+        <!--{foreach from=$store.store_navs item=store_nav}-->
+        <li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'article' and $smarty.get.id eq $store_nav.article_id}active{else}normal{/if}" href="{url app=store&act=article&id=$store_nav.article_id}"><span>{$store_nav.title|escape}</span></a></li>
+        <!--{/foreach}-->
+        <li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'credit'}active{else}normal{/if}" href="{url app=store&act=credit&id=$store.store_id}"><span>{$lang.credit_evaluation}</span></a></li>
+        <!--<li><a class="{if $smarty.get.app eq 'store' and $smarty.get.act eq 'coupon'}active{else}normal{/if}" href="{url app=store&act=coupon&id=$store.store_id}"><span>优惠卷</span></a></li>-->
+        <li><a class="normal" href="javascript:collect_store({$store.store_id})"><span>{$lang.collect_the_store}</span></a></li>
+    </ul>
+</div>

@@ -430,32 +430,32 @@
 
 
 
-/*
- * -------------------------------------------------------
- * ******************** page.css *************************
- * -------------------------------------------------------
- */
+/**/
+ /** -------------------------------------------------------*/
+ /** ******************** page.css **************************/
+ /** -------------------------------------------------------*/
+ /**/
 
-.shop_list_page .page { float: right; margin-top: 15px; padding-bottom: 10px; }
-.down, .down_no, .former, .former_no, .page_link, .page_hover, .nonce { margin-left: 5px; }
-.former { border: 1px solid #ff7a32; display: block; float: left; width: 15px; height: 17px; background: #ff975f url(images/page_ico.gif) no-repeat 5px -21px; }
-.former:hover {border: 1px solid #a53a00;}
-.down { display: block; color: #fff; text-decoration: none; padding: 2px 15px 0 8px; float: left; border: 1px solid #ff7a32; background: #ff975f url(images/page_ico.gif) no-repeat 50px -49px; }
-.down:hover {border: 1px solid #a53a00;}
-.page_link { color: #666; }
-.page_hover { color: #ff6000; }
-.page_link, .page_hover { font-weight: bold; display: block; float: left; text-decoration: none; padding: 2px 5px 0; font-size: 14px; }
-.page_link:hover, .page_hover:hover { text-decoration: underline; }
-.former_no { border: 1px solid #ddd; display: block; float: left; width: 15px; height: 17px; background: #fff url(images/page_ico.gif) no-repeat 5px 5px; }
-.down_no { display: block; color: #fff; text-decoration: none; padding: 2px 15px 0 8px; float: left; border: 1px solid #c7c7c7; background: #e0e0e0 url(images/page_ico.gif) no-repeat 50px -49px; }
-.nonce { border: 1px solid #ddd; display: block; float: left; height: 17px; text-decoration: none; color: #a3a3a3; line-height: 17px; padding: 0 5px; }
-.stat { float: left; height: 20px; line-height: 20px; color: #a3a3a3; text-decoration: none; }
+/*.shop_list_page .page { float: right; margin-top: 15px; padding-bottom: 10px; }*/
+/*.down, .down_no, .former, .former_no, .page_link, .page_hover, .nonce { margin-left: 5px; }*/
+/*.former { border: 1px solid #ff7a32; display: block; float: left; width: 15px; height: 17px; background: #ff975f url(images/page_ico.gif) no-repeat 5px -21px; }*/
+/*.former:hover {border: 1px solid #a53a00;}*/
+/*.down { display: block; color: #fff; text-decoration: none; padding: 2px 15px 0 8px; float: left; border: 1px solid #ff7a32; background: #ff975f url(images/page_ico.gif) no-repeat 50px -49px; }*/
+/*.down:hover {border: 1px solid #a53a00;}*/
+/*.page_link { color: #666; }*/
+/*.page_hover { color: #ff6000; }*/
+/*.page_link, .page_hover { font-weight: bold; display: block; float: left; text-decoration: none; padding: 2px 5px 0; font-size: 14px; }*/
+/*.page_link:hover, .page_hover:hover { text-decoration: underline; }*/
+/*.former_no { border: 1px solid #ddd; display: block; float: left; width: 15px; height: 17px; background: #fff url(images/page_ico.gif) no-repeat 5px 5px; }*/
+/*.down_no { display: block; color: #fff; text-decoration: none; padding: 2px 15px 0 8px; float: left; border: 1px solid #c7c7c7; background: #e0e0e0 url(images/page_ico.gif) no-repeat 50px -49px; }*/
+/*.nonce { border: 1px solid #ddd; display: block; float: left; height: 17px; text-decoration: none; color: #a3a3a3; line-height: 17px; padding: 0 5px; }*/
+/*.stat { float: left; height: 20px; line-height: 20px; color: #a3a3a3; text-decoration: none; }*/
 
-/*
- * -------------------------------------------------------
- * ******************** end page.css *********************
- * -------------------------------------------------------
- */
+/**/
+ /** -------------------------------------------------------*/
+ /** ******************** end page.css **********************/
+ /** -------------------------------------------------------*/
+ /**/
 
 
 

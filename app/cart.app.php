@@ -149,9 +149,7 @@ class CartApp extends MallbaseApp {
             'cart' => $cart_status['status'], //返回购物车状态
                 ), 'addto_cart_successed');
     }
-    
-    
-    
+
 
     /**
      *    丢弃商品

@@ -33,10 +33,13 @@ class StoreApp extends StorebaseApp
         $this->assign('new_groupbuy', $this->_get_new_groupbuy($id));
 
         /* 取得最新商品 */
-        $this->assign('new_goods', $this->_get_new_goods($id));
-		
+//        $this->assign('new_goods', $this->_get_new_goods($id));
+        /*从所有商品中提取一页*/
+        $this->assign('page_goods',$this->_get_page_goods($id,12));
 		/* 取得热卖商品 */
 		$this->assign('hot_sale_goods', $this->_get_hot_sale_goods($id));
+
+
 
         /* 当前位置 */
         $this->_curlocal(LANG::get('all_stores'), 'index.php?app=search&amp;act=store', $store['store_name']);
@@ -372,6 +375,7 @@ class StoreApp extends StorebaseApp
         return $goods_list;
     }
 
+
     function _get_new_groupbuy($id, $num = 12)
     {
         $model_groupbuy =& m('groupbuy');
@@ -395,6 +399,35 @@ class StoreApp extends StorebaseApp
         }
 
         return $groupbuy_list;
+    }
+
+    /**
+     * @param $id商铺ID
+     * @param $num一次取几个
+     * 作用:
+     * Created by QQ:710932
+     */
+    function _get_page_goods($id,$num){
+        $page = $this->_get_page($num);   //获取分页信息
+        $goods_mod =& bm('goods', array('_store_id' => $id));
+        $goods_list = $goods_mod->find(array(
+            'conditions' => "closed = 0 AND if_show = 1",
+            'fields'     => 'goods_name, default_image, price',
+            'order'      => 'add_time desc',
+            'limit'      => $page['limit'],
+            'count' => true
+        ));
+
+        $page['item_count'] = $goods_mod->getCount();   //获取统计数据
+        $this->_format_page($page);
+        $this->assign('page_info', $page);   //将分页信息传递给视图，用于形成分页条
+
+        foreach ($goods_list as $key => $goods)
+        {
+            empty($goods['default_image']) && $goods_list[$key]['default_image'] = Conf::get('default_goods_image');
+        }
+
+        return $goods_list;
     }
 
     /* 取得最新商品 */

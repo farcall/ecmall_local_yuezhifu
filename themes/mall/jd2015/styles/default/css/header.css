@@ -124,10 +124,9 @@
 .icon-qicheyongpin:before { content: "\e60d"; }
 .icon-jiaoyupeixun:before { content: "\e60e"; }
 
-.allcategory-list .item .pborder li{list-style: none;}
-.allcategory-list .item .pborder li i {margin-right: 4px;}
-.allcategory-list .item .pborder li a{width:190px;height:31px;line-height:31px;font-size: 14px;white-space: nowrap;vertical-align: 2px;color:#fff;}
-.allcategory-list .item .pborder li b{position: absolute;z-index: 1;top: 9px;right: 14px;width: 4px;height: 14px;font: 400 9px/14px consolas;color:#fff;}
+.allcategory-list .item .pborder p i {margin-right: 4px;}
+.allcategory-list .item .pborder p a{width:190px;height:31px;line-height:31px;font-size: 14px;white-space: nowrap;vertical-align: 2px;color:#fff;}
+.allcategory-list .item .pborder p b{position: absolute;z-index: 1;top: 9px;right: 14px;width: 4px;height: 14px;font: 400 9px/14px consolas;color:#fff;}
 
 
 
