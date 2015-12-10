@@ -421,7 +421,7 @@ class OrderApp extends ShoppingbaseApp {
                 ));
                  */
                 $cart_items = $cart_model->find(array(
-                    'conditions' => "user_id = " . $this->visitor->get('user_id') . " AND store_id = {$store_id} AND session_id='" . SESS_ID . "'",
+                    'conditions' => "status = 1 AND user_id = " . $this->visitor->get('user_id') . " AND store_id = {$store_id} AND session_id='" . SESS_ID . "'",
                     'join' => 'belongs_to_goodsspec',
                     'fields' => 'gs.spec_id,gs.spec_1,gs.spec_2,gs.color_rgb,gs.stock,gs.sku,cart.*' // 不能有 gs.price， 要不读取的不是促销价格，购物车里面才是促销价格
                 ));
@@ -497,7 +497,7 @@ class OrderApp extends ShoppingbaseApp {
                     return false;
                 }
                 $model_cart = & m('cart');
-                $model_cart->drop("store_id = {$store_id} AND session_id='" . SESS_ID . "'");
+                $model_cart->drop("status = 1 AND store_id = {$store_id} AND session_id='" . SESS_ID . "'");
 
                 //优惠券信息处理
                 if (isset($_POST['coupon_sn']) && !empty($_POST['coupon_sn'])) {

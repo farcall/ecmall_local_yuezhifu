@@ -51,6 +51,27 @@ function move_favorite(store_id, rec_id, goods_id){
 
     });
 }
+function change_status(rec_id,store_id){
+    var amount_span = $('#cart' + store_id + '_amount');
+    if($("#cart_item_"+rec_id+" input").attr("checked")==true){
+       var status = 1;
+    }
+    else{
+        var status = 0;
+    }
+
+    $.getJSON('index.php?app=cart&act=update&rec_id=' + rec_id + '&status=' + status, function(result){
+        if(result.done){
+            //更新成功
+            amount_span.html(price_format(result.retval.amount));
+        }
+        else{
+            //更新失败
+            alert(result.msg);
+            $(input).val($(input).attr('changed'));
+        }
+    });
+}
 function change_quantity(store_id, rec_id, spec_id, input, orig){
     var subtotal_span = $('#item' + rec_id + '_subtotal');
     var amount_span = $('#cart' + store_id + '_amount');

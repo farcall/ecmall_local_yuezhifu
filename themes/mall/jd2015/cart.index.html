@@ -56,7 +56,7 @@ $(function(){
             <div class="store-name pb10">{$lang.store}{$lang.colon}<a href="{url app=store&id=$store_id}">{$cart.store_name|escape}</a></div>
             <!--{foreach from=$cart.goods item=goods name=fe_goods}-->
             <dl class="goods-each clearfix" id="cart_item_{$goods.rec_id}">
-               <dd class="select"><input type="checkbox" name="s{$store_id}" value="{$store_id}:{$goods.rec_id}:{$goods.goods_id}" /></dd>
+               <dd class="select"><input type="checkbox" onclick="change_status({$goods.rec_id},{$store_id})" name="s{$store_id}" value="{$store_id}:{$goods.rec_id}:{$goods.goods_id}" {if $goods.status} checked="checked" {/if} /></dd>
                <dd class="pic"><a class="block" href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.goods_image}" alt="{$goods.goods_name|escape}" width="80" height="80" /></a></dd>
                <dd class="desc">
                   <p><a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|escape}</a></p>

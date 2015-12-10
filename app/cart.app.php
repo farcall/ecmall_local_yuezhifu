@@ -190,57 +190,85 @@ class CartApp extends MallbaseApp {
      *    @return    void
      */
     function update() {
-        $spec_id = isset($_GET['spec_id']) ? intval($_GET['spec_id']) : 0;
-        $quantity = isset($_GET['quantity']) ? intval($_GET['quantity']) : 0;
-        if (!$spec_id || !$quantity) {
-            /* 不合法的请求 */
-            return;
+        $rec_id = isset($_GET['rec_id']) ? intval($_GET['rec_id']) : 0;
+        $status = isset($_GET['status']) ? intval($_GET['status']) : 0;
+
+        if($rec_id>0){
+            //商品状态更新
+            $model_cart = & m('cart');
+            $cart_spec_info = $model_cart->get('rec_id='.$rec_id);
+            if (empty($cart_spec_info)) {
+                /* 并没有添加该商品到购物车 */
+                return;
+            }
+
+            $store_id = $cart_spec_info['store_id'];
+            $model_cart->edit('rec_id='.$rec_id, array(
+                'status' => $status,
+            ));
+
+
+            /* 返回JSON结果 */
+            $cart_status = $this->_get_cart_status();
+            $this->json_result(array(
+                'cart' => $cart_status['status'], //返回总的购物车状态
+                'amount' => $cart_status['carts'][$store_id]['amount']  //店铺购物车总计
+            ), 'update_item_successed');
+
+        }else{
+            //商品个数更新
+            $spec_id = isset($_GET['spec_id']) ? intval($_GET['spec_id']) : 0;
+            $quantity = isset($_GET['quantity']) ? intval($_GET['quantity']) : 0;
+            if (!$spec_id || !$quantity) {
+                /* 不合法的请求 */
+                return;
+            }
+
+            /* 判断库存是否足够 */
+            $model_spec = & m('goodsspec');
+            $spec_info = $model_spec->get($spec_id);
+            if (empty($spec_info)) {
+                /* 没有该规格 */
+                $this->json_error('no_such_spec');
+                return;
+            }
+
+            if ($quantity > $spec_info['stock']) {
+                /* 数量有限 */
+                $this->json_error('no_enough_goods');
+                return;
+            }
+
+            /* 修改数量 */
+            $where = "spec_id={$spec_id} AND session_id='" . SESS_ID . "'";
+            $model_cart = & m('cart');
+
+
+            /* 获取购物车中的信息，用于获取价格并计算小计 */
+            $cart_spec_info = $model_cart->get($where);
+            if (empty($cart_spec_info)) {
+                /* 并没有添加该商品到购物车 */
+                return;
+            }
+
+            $store_id = $cart_spec_info['store_id'];
+
+            /* 修改数量 */
+            $model_cart->edit($where, array(
+                'quantity' => $quantity,
+            ));
+
+            /* 小计 */
+            $subtotal = $quantity * $cart_spec_info['price'];
+
+            /* 返回JSON结果 */
+            $cart_status = $this->_get_cart_status();
+            $this->json_result(array(
+                'cart' => $cart_status['status'], //返回总的购物车状态
+                'subtotal' => $subtotal, //小计
+                'amount' => $cart_status['carts'][$store_id]['amount']  //店铺购物车总计
+                    ), 'update_item_successed');
         }
-
-        /* 判断库存是否足够 */
-        $model_spec = & m('goodsspec');
-        $spec_info = $model_spec->get($spec_id);
-        if (empty($spec_info)) {
-            /* 没有该规格 */
-            $this->json_error('no_such_spec');
-            return;
-        }
-
-        if ($quantity > $spec_info['stock']) {
-            /* 数量有限 */
-            $this->json_error('no_enough_goods');
-            return;
-        }
-
-        /* 修改数量 */
-        $where = "spec_id={$spec_id} AND session_id='" . SESS_ID . "'";
-        $model_cart = & m('cart');
-
-
-        /* 获取购物车中的信息，用于获取价格并计算小计 */
-        $cart_spec_info = $model_cart->get($where);
-        if (empty($cart_spec_info)) {
-            /* 并没有添加该商品到购物车 */
-            return;
-        }
-
-        $store_id = $cart_spec_info['store_id'];
-
-        /* 修改数量 */
-        $model_cart->edit($where, array(
-            'quantity' => $quantity,
-        ));
-
-        /* 小计 */
-        $subtotal = $quantity * $cart_spec_info['price'];
-
-        /* 返回JSON结果 */
-        $cart_status = $this->_get_cart_status();
-        $this->json_result(array(
-            'cart' => $cart_status['status'], //返回总的购物车状态
-            'subtotal' => $subtotal, //小计
-            'amount' => $cart_status['carts'][$store_id]['amount']  //店铺购物车总计
-                ), 'update_item_successed');
     }
 
     /**
@@ -295,6 +323,7 @@ class CartApp extends MallbaseApp {
         $this->display('cart.empty.html');
     }
 
+
     /**
      *    以购物车为单位获取购物车列表及商品项
      *
@@ -327,7 +356,9 @@ class CartApp extends MallbaseApp {
             /* 以店铺ID为索引 */
             empty($item['goods_image']) && $item['goods_image'] = Conf::get('default_goods_image');
             $carts[$item['store_id']]['store_name'] = $item['store_name'];
-            $carts[$item['store_id']]['amount'] += $item['subtotal'];   //各店铺的总金额
+            if($item['status'] == 1) {
+                $carts[$item['store_id']]['amount'] += $item['subtotal'];   //各店铺的总金额
+            }
             $carts[$item['store_id']]['quantity'] += $item['quantity'];   //各店铺的总数量
             $carts[$item['store_id']]['goods'][] = $item;
         }
