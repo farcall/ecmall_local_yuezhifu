@@ -859,7 +859,7 @@ class Seller_orderApp extends StoreadminbaseApp {
         //应当支付的佣金
         $model_setting = &af('settings');
         $setting = $model_setting->getAll(); //载入系统设置数据
-        $yongjin = $money*$setting['epay_lirun_fenpei_ratio'];
+        $yongjin = $money*$setting['epay_trade_charges_ratio'];
         if($zijin< $yongjin){
             echo ecm_json_encode(false);
             return;
@@ -991,7 +991,6 @@ class Seller_orderApp extends StoreadminbaseApp {
         $this->_curlocal(LANG::get('member_center'), 'index.php?app=member', LANG::get('order_manage'), 'index.php?app=seller_order', LANG::get('order_list'));
 
         /* 当前用户中心菜单 */
-        $this->_curitem('线下做单');
         $this->_curmenu('线下做单');
         $this->_config_seo('title', Lang::get('member_center') . ' - 线下做单');
 

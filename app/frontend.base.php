@@ -79,8 +79,8 @@ class FrontendApp extends ECBaseApp {
         $this->_get_wap_info();
         //微信登录
         $this->weixin_login();
-        
-        
+
+
         /* 热门搜素  */
         $this->assign('hot_keywords', $this->_get_hot_keywords());
 

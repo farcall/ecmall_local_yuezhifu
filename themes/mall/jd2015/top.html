@@ -47,10 +47,8 @@
             <a href="{url app=member}">{$visitor.user_name|escape}</a>
             <a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->(<span>{$new_message}</span>)
                 <!--{/if}--></a>
-            <a href="{url app=member&act=logout}">{$lang.logout}</a>
             <!--{/if}-->
             <a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
-            <a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
             <a href="javascript:void(0);" onclick="toDesktop(location.href,'众盈商城')">保存到桌面</a>
         </div>
 
@@ -67,23 +65,7 @@
             {if !$index}
             <li class="home"><a href="{$site_url}">{$lang.back_home}</a></li>
             {/if}
-            <li class="item">
-                <div class="menu iwantbuy">
-                    <a class="menu-hd" href="{url app=category}">{$lang.i_want_buy}<b></b></a>
 
-                    <div class="menu-bd">
-                        <div class="menu-bd-panel">
-                            <div>
-                                <p><a href="{url app=category}">{$lang.gcategory}</a></p>
-
-                                <p><a href="#">大家正在买</a></p>
-
-                                <p><a href="#">品味连连看</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
             <li class="item">
                 <div class="menu mytb">
                     <a class="menu-hd" href="{url app=buyer_admin}">我是买家<b></b></a>
@@ -116,24 +98,6 @@
                     </div>
                 </div>
             </li>
-            <li class="service">
-                <a href="{url app=article&code=help}">帮助中心</a>
-            </li>
-            <li class="item">
-                <div class="menu favorite">
-                    <a class="menu-hd" href="{url app=my_favorite}">收藏夹<b></b></a>
-
-                    <div class="menu-bd">
-                        <div class="menu-bd-panel">
-                            <div>
-                                <p><a href="{url app=my_favorite}">收藏的宝贝</a></p>
-
-                                <p><a href="{url app=my_favorite&type=store}">收藏的店铺</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
 
             <li class="item">
                 <div class="menu weixin">
@@ -149,35 +113,11 @@
                 </div>
             </li>
 
-            <li class="item" style="background:none">
-                <div class="menu sites">
-                    <a class="menu-hd" href="javascript:;">网站导航<b></b></a>
-
-                    <div class="menu-bd padding10">
-                        <!--{foreach from=$navs.header item=nav}-->
-                        <a href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a>
-                        <!--{/foreach}-->
-                    </div>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
 
 <script type="text/javascript" language="javascript">
-    //加入收藏
-    function AddFavorite(sURL, sTitle) {
-        sURL = encodeURI(sURL);
-        try {
-            window.external.addFavorite(sURL, sTitle);
-        } catch (e) {
-            try {
-                window.sidebar.addPanel(sTitle, sURL, "");
-            } catch (e) {
-                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
-            }
-        }
-    }
     //设为首页
     function SetHome(url) {
         if (document.all) {

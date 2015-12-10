@@ -14,20 +14,21 @@ include(ROOT_PATH . '/eccore/ecmall.php');
 /* 定义配置信息 */
 ecm_define(ROOT_PATH . '/data/config.inc.php');
 
-if(empty($_SERVER['HTTP_USER_AGENT'])){
-    define('ECMALL_WAP', 0);
-}
-else{
-    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-    $uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile|android)/i";
-
-    if ((preg_match($uachar, $ua))) {
-//        define('ECMALL_WAP', 1);
-        define('ECMALL_WAP', 0);
-    } else {
-        define('ECMALL_WAP', 0);
-    }
-}
+define('ECMALL_WAP', 0);
+//if(empty($_SERVER['HTTP_USER_AGENT'])){
+//    define('ECMALL_WAP', 0);
+//}
+//else{
+//    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+//    $uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile|android)/i";
+//
+//    if ((preg_match($uachar, $ua))) {
+////        define('ECMALL_WAP', 1);
+//        define('ECMALL_WAP', 0);
+//    } else {
+//        define('ECMALL_WAP', 0);
+//    }
+//}
 
 
 ECMall::startup(array(

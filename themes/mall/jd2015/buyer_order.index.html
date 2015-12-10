@@ -82,7 +82,7 @@
                         <!--{elseif $order.seller_info.im_msn}-->
                         <a target="_blank" href="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee={$order.seller_info.im_msn|escape}"><img src="http://messenger.services.live.com/users/{$order.seller_info.im_msn|escape}/presenceimage/" alt="im_msn" align="absMiddle" /></a>
                         <!--{else}-->
-                        <a target="_blank" href="{url app=message&act=send&to_id=$order.buyer_id}" class="email"></a>
+                        <a target="_blank" href="{url app=message&act=send&to_id=$order.seller_id}" class="email"></a>
                         <!--{/if}-->
                         &nbsp;<a href="{url app=customer_message&type=2&store_id=$order.seller_id}" target="_blank">投诉此店铺</a>
                     </p>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="txt-info fleft">
                                 <div class="txt">
-                                    <a href="{url app=seller_order&act=view&order_id=$order.order_id}" target="_blank">{$goods.goods_name}</a>
+                                    <a href="{url app=buyer_order&act=view&order_id=$order.order_id}" target="_blank">{$goods.goods_name}</a>
                                 </div>
                             </div>
                         </td>

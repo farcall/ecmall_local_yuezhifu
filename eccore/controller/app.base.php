@@ -34,6 +34,7 @@ class BaseApp extends Object
         if ($action && $action{0} != '_' && method_exists($this, $action))
         {
             $this->_curr_action  = $action;
+
             $this->_run_action();            //运行动作
         }
         else

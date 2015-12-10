@@ -23,6 +23,8 @@ class Find_passwordApp extends MallbaseApp
      */
     function index()
     {
+        $this->mobile();
+        return;
        if(!IS_POST)
        {
            $this->import_resource('jquery.plugins/jquery.validate.js');

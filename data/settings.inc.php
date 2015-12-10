@@ -140,7 +140,7 @@ return array (
   'email_id' => '1466353813',
   'email_pass' => '600gou',
   'email_test' => '435795@qq.com',
-  'epay_trade_charges_ratio' => 0.1,
+  'epay_trade_charges_ratio' => 0.08,
   'epay_alipay_enabled' => '1',
   'epay_chinabank_enabled' => '1',
   'epay_tenpay_enabled' => '1',

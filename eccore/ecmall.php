@@ -43,6 +43,7 @@ class ECMall {
     /* 启动 */
 
      static function startup($config = array()) {
+
          ini_set("display_errors",1);
         /* 加载初始化文件 */
         require(ROOT_PATH . '/eccore/controller/app.base.php');     //基础控制器类
@@ -477,7 +478,6 @@ function &db() {
     static $db = null;
     if ($db === null) {
         $cfg = parse_url(DB_CONFIG);
-
         if ($cfg['scheme'] == 'mysql') {
             if (empty($cfg['pass'])) {
                 $cfg['pass'] = '';
@@ -494,6 +494,7 @@ function &db() {
 
             $charset = (CHARSET == 'utf-8') ? 'utf8' : CHARSET;
             $db = new cls_mysql();
+
             $db->cache_dir = ROOT_PATH . '/temp/query_caches/';
             $db->connect($cfg['host'] . ':' . $cfg['port'], $cfg['user'], $cfg['pass'], $cfg['path'], $charset);
         } else {

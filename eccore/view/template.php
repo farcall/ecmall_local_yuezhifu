@@ -92,7 +92,6 @@ class ecsTemplate
 
         $this->_checkfile = false;
         $out = $this->fetch($filename, $cache_id);
-
         if (strpos($out, $this->_echash) !== false)
         {
             $k = explode($this->_echash, $out);

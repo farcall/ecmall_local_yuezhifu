@@ -2,7 +2,7 @@
 
 return array (
   'SITE_URL' => 'http://600.com',
-  'DB_CONFIG' => 'mysql://root:root@localhost:3306/fangou',
+  'DB_CONFIG' => 'mysql://root:root@127.0.0.1:3306/fangou',
   'DB_PREFIX' => 'ecm_',
   'LANG' => 'sc-utf-8',
   'COOKIE_DOMAIN' => '',
@@ -16,8 +16,8 @@ return array (
   'ENABLED_SUBDOMAIN' => 0,
   'SUBDOMAIN_SUFFIX' => '',
   'SESSION_TYPE' => 'mysql',
-  'SESSION_MEMCACHED' => 'localhost:11211',
-  'CACHE_MEMCACHED' => 'localhost:11211',
+  'SESSION_MEMCACHED' => '127.0.0.1:11211',
+  'CACHE_MEMCACHED' => '127.0.0.1:11211',
 );
 
 ?>
