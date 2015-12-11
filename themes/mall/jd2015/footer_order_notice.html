@@ -11,49 +11,56 @@
 <div class="order_notice">
 </div>
 
+
+
 <script language="javascript">
     <!--{if $visitor.user_id}-->
-    setInterval("load_order_information()",5000);
-    <!--{/if}-->
-    function load_order_information()
-    {
-        $.getJSON('index.php?app=default&act=ajaxorder', function(result) {
-            if (result) {
-                if(result.order_log_num > 0){
-                    var i = 0;
-                    var data = result['list'];
-                    $(".order_notice").html('');
-                    for (i = 0; i < result.order_log_num; i++){
-                        var html = '';
-                        html += '<div class="order_notice_detail" id="order_log_'+data[i]['log_id']+'"><div class="order_notice_top"><span>'+data[i]['notice']+'</span><a href="javascript:void()"  onclick="view_order_log(\''+data[i]['url']+'\',\''+data[i]['log_id']+'\');" target="_blank">查看</a><a href="javascript:del_order_log(\''+data[i]['log_id']+'\')">忽略</a></div><div class="order_notice_bottom"><a href="javascript:void()"  onclick="view_order_log(\''+data[i]['url']+'\',\''+data[i]['log_id']+'\');" target="_blank">'+data[i]['title']+'</a></div></div>';
-                        html += '<audio id="music" src="{res file=tishi.mp3}"></audio>';
-                        $(".order_notice").append(html);
+        var count = 0;
+        setInterval("load_order_information()",5000);
+        <!--{/if}-->
+        function load_order_information()
+        {
+
+            $.getJSON('index.php?app=default&act=ajaxorder', function(result) {
+                if (result) {
+                    if(result.order_log_num > 0){
+                        var i = 0;
+                        var data = result['list'];
+                        $(".order_notice").html('');
+                        for (i = 0; i < result.order_log_num; i++){
+                            var html = '';
+                            html += '<div class="order_notice_detail" id="order_log_'+data[i]['log_id']+'"><div class="order_notice_top"><span>'+data[i]['notice']+'</span><a href="javascript:void()"  onclick="view_order_log(\''+data[i]['url']+'\',\''+data[i]['log_id']+'\');" target="_blank">查看</a><a href="javascript:del_order_log(\''+data[i]['log_id']+'\')">忽略</a></div><div class="order_notice_bottom"><a href="javascript:void()"  onclick="view_order_log(\''+data[i]['url']+'\',\''+data[i]['log_id']+'\');" target="_blank">'+data[i]['title']+'</a></div></div>';
+                            if(count == 0){
+                                html += '<audio id="music" src="{res file=tishi.mp3}" autoplay="autoplay"></audio>';
+                                count++;
+                            }
+                            $(".order_notice").append(html);
+                        }
                     }
                 }
-            }
-        });
-    }
-    
-    function del_order_log(log_id)
-    {
-        var tr = $('#order_log_' + log_id);
-        $.getJSON('index.php?app=default&act=ajaxorderdrop&log_id=' + log_id, function(result) {
-            if(result.done=='true'){
-                tr.remove();
-                load_order_information();
-            }else{
-                tr.remove();
-                load_order_information();
-            }
-        });
-    }
-    
-    function view_order_log(url,log_id)
-    {
-        var tr = $('#order_log_' + log_id);
-        tr.remove();
-		window.location.href = url;
-        //window.open(url);
-    }
-    
+            });
+        }
+
+        function del_order_log(log_id)
+        {
+            var tr = $('#order_log_' + log_id);
+            $.getJSON('index.php?app=default&act=ajaxorderdrop&log_id=' + log_id, function(result) {
+                if(result.done=='true'){
+                    tr.remove();
+                    load_order_information();
+                }else{
+                    tr.remove();
+                    load_order_information();
+                }
+            });
+        }
+
+        function view_order_log(url,log_id)
+        {
+            var tr = $('#order_log_' + log_id);
+            tr.remove();
+            window.location.href = url;
+            //window.open(url);
+        }
+
 </script>

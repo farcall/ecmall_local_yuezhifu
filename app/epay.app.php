@@ -359,6 +359,34 @@ class EpayApp extends MemberbaseApp {
         $this->assign('logs', $logs);
         $this->display('epay.duihuanlogall.html');
     }
+
+    /**
+     * 作用:金币明细
+     * 系统赠送或兑换转出
+     * Created by QQ:710932
+     */
+    function jinbimingxi(){
+        $user_id = $this->visitor->get('user_id');
+
+        $page = $this->_get_page(50);
+        $jinbi_log_mod = &m('fanli_jinbi_log');
+        $logs = $jinbi_log_mod->find(array(
+            'conditions' => "status=1 and user_id=".$user_id,
+            'order'      => 'id desc',
+            'fields'     => '',
+            'limit'      => $page['limit'],
+            'count'      => true,
+        ));
+        $page['item_count'] = $jinbi_log_mod->getCount();
+        $this->_format_page($page);
+        $this->assign('page_info', $page);
+
+        /* 当前用户中心菜单 */
+        $this->_curitem('epay');
+        $this->_curmenu('金币明细');
+        $this->assign('logs', $logs);
+        $this->display('epay.jinbimingxi.html');
+    }
 //余额转帐
     function out() {
         $to_user = trim($_POST['to_user']);
@@ -645,6 +673,10 @@ class EpayApp extends MemberbaseApp {
             array(
                 'name'  => '金币兑换记录',
                 'url'   => 'index.php?app=epay&act=duihuanlogall',
+            ),
+            array(
+                'name' =>'金币明细',
+                'url' =>'index.php?app=epay&act=jinbimingxi',
             ),
         );
         return $menus;

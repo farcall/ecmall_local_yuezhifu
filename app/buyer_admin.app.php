@@ -80,6 +80,9 @@ class Buyer_adminApp extends MemberApp {
         $this->assign('jinbi_jindou',$fanli->getJinbiAndJinbi($my_user_id));
         /*dong-未用金豆-获奖励金币结束*/
 
+        /*消费总金额*/
+        $this->assign('xiaofeizongjine',$this->_xiaofeizongjine($user['user_id']));
+
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));
 
@@ -87,6 +90,16 @@ class Buyer_adminApp extends MemberApp {
         $this->_curitem('overview');
         $this->_config_seo('title', Lang::get('member_center'));
         $this->display('member.index.html');
+    }
+
+    /**
+     * 作用:消费总金额
+     * Created by QQ:710932
+     */
+    function _xiaofeizongjine($user_id){
+        $order_mod = &m('order');
+        $zongjine = $order_mod->getOne("select sum(goods_amount) from ecm_order where buyer_id=$user_id and status=40");
+        return $zongjine;
     }
 
     function _get_member_role() {

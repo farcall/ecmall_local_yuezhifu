@@ -107,8 +107,9 @@ class fanli{
         ));
 
         $jinbi_jindou = array(
-            'yiyongjindou' => $jindou_data['consume']>0?ceil($jindou_data['consume']):0,
-            'weiyongjindou'=> $jindou_data['unused']>0?floor($jindou_data['unused']):0,
+            'total'=>$jindou_data['total']>0?floor($jindou_data['total']):0,
+            'consume' => $jindou_data['consume']>0?ceil($jindou_data['consume']):0,
+            'unused'=> $jindou_data['unused']>0?floor($jindou_data['unused']):0,
             'jinbi'=>$jindou_data['jinbi']>0?$jindou_data['jinbi']:0,
         );
 

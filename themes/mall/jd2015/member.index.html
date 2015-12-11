@@ -20,13 +20,15 @@
                     <dd>{sprintf lang=you_have_pm var1=new_message}</dd>
                     <br/>
                     <dd style="line-height:25px;">
-                        <!--{foreach from=$epay item=val}-->
-                        金币:<em>{$jinbi_jindou.jinbi}</em>个<br/>
-                        <!--消耗金豆<em>{$jinbi_jindou.yiyongjindou}</em>个<br/>-->
-                        金豆:<em>{$jinbi_jindou.weiyongjindou}</em>个<br/>
-                        账户余额:<em>{$val.money}</em>{$lang.yuan}<br/>
-                        冻结资金:<em>{$val.money_dj}</em>{$lang.yuan}
+                        消费总金额: <em>{$xiaofeizongjine}元</em><br/>
 
+                        <!--{foreach from=$epay item=val}-->
+                        金币: <em>{$jinbi_jindou.jinbi}</em>个<br/>
+                        历史赠送金豆: <em>{$jinbi_jindou.total}个</em><br/>
+                        <!--消耗金豆<em>{$jinbi_jindou.consume}</em>个<br/>-->
+                        待赠送金豆: <em>{$jinbi_jindou.unused}</em>个<br/>
+                        账户余额: <em>{$val.money}</em>{$lang.yuan}<br/>
+                        申请提现的金额: <em>{$val.money_dj}</em>{$lang.yuan}
                         <br/><span class="epay_btn"><a href="{url app=epay&act=withdraw}">{$lang.tixian}</a></span><span class="epay_btn epay_btn_white"><a href="{url app=epay&act=czlist}">{$lang.chongzhi}</a></span>
                         <!--{/foreach}-->
                     </dd>
@@ -55,13 +57,6 @@
                                     <span>{sprintf lang=order_for_pay_remind var1=buyer_stat.pending}</span>
                                     <span>{sprintf lang=order_for_confirm_remind var1=buyer_stat.shipped}</span>
                                     <span>{sprintf lang=order_for_evaluate_remind var1=buyer_stat.finished}</span>
-                                </dd>
-                            </dl>
-                            <dl class="clearfix">
-                                <dt>{$lang.groupbuy_remind}{$lang.colon}</dt>
-                                <dd>
-                                    <span>{sprintf lang=groupbuy_for_finished_remind var1=buyer_stat.groupbuy_finished}</span>
-                                    <span>{sprintf lang=groupbuy_for_canceled_remind var1=buyer_stat.groupbuy_canceled}</span>
                                 </dd>
                             </dl>
                         </div>
