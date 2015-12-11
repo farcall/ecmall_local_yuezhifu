@@ -23,6 +23,7 @@
                         <th width="10%">金币流向</th>
                         <th width="10%">类型</th>
                         <th width="10%">金币数</th>
+                        <th width="10%">剩余金币</th>
                         <th width="10%" align="center">{$lang.zhuangtai}</th>
                     </tr>
                     <!--{/if}-->
@@ -31,14 +32,14 @@
                         <td align="center">{$log.add_time|date:Y-m-d H:i}</td>
                         {if $log.flow=='in'}
                             <td align="center">平台赠送</td>
-                             <td align="center">增加</td>
+                            <td align="center">增加</td>
                             <td align="center">+{$log.jinbi}</td>
                             {else}
                             <td align="center">提现转出</td>
                             <td align="center">减少</td>
                             <td align="center">-{$log.jinbi}</td>
                         {/if}
-
+                        <td align="center">{$log.total}</td>
                          <td align="center"><!--{if $log.status==0}-->未完成<!--{else}-->已完成<!--{/if}--></td>
                      </tr>
                     <!--{foreachelse}-->

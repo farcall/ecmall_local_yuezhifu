@@ -289,6 +289,7 @@ class EpayApp extends MemberbaseApp {
                 'user_id'=>$user_id,
                 'user_name'=>$user_name,
                 'jinbi'=>$to_money,
+                'total'=>$fanli_jindou_data['jinbi']-$to_money,
                 'flow'=>'out',
                 'add_time'=>gmtime(),
                 'status'=>1,

@@ -109,7 +109,6 @@ class FanliApp extends BackendApp{
         $confirmfanli = $_GET['confirmfanli']>0?$_GET['confirmfanli']:$theoryfanli;
 
 
-
         $members = $this->mod_fanli_jindou->find(array(
             'fields' => 'user_name,user_id,floor(total) as total,ceil(consume) as consume,floor(unused) as unused,jinbi',
             'conditions' => "unused>=1",
@@ -144,6 +143,7 @@ class FanliApp extends BackendApp{
                 'user_id'=>$v['user_id'],
                 'user_name'=>$v['user_name'],
                 'jinbi'=>floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100,
+                'total'=>$v['jinbi']+floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100,
                 'flow'=>'in',
                 'add_time'=>$add_time,
                 'status'=>1,
