@@ -670,10 +670,10 @@ class EpayApp extends MemberbaseApp {
                 'name'  => '金币兑换为可用资金(钱)',
                 'url'   => 'index.php?app=epay&act=jinbi2money',
             ),
-            array(
-                'name'  => '金币兑换记录',
-                'url'   => 'index.php?app=epay&act=duihuanlogall',
-            ),
+//            array(
+//                'name'  => '金币兑换记录',
+//                'url'   => 'index.php?app=epay&act=duihuanlogall',
+//            ),
             array(
                 'name' =>'金币明细',
                 'url' =>'index.php?app=epay&act=jinbimingxi',

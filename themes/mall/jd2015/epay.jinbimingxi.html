@@ -32,11 +32,11 @@
                         {if $log.flow=='in'}
                             <td align="center">平台赠送</td>
                              <td align="center">增加</td>
-                            <td align="center">-{$log.jinbi}</td>
+                            <td align="center">+{$log.jinbi}</td>
                             {else}
                             <td align="center">提现转出</td>
                             <td align="center">减少</td>
-                            <td align="center">+{$log.jinbi}</td>
+                            <td align="center">-{$log.jinbi}</td>
                         {/if}
 
                          <td align="center"><!--{if $log.status==0}-->未完成<!--{else}-->已完成<!--{/if}--></td>
