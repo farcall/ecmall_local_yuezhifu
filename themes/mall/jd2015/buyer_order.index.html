@@ -129,7 +129,7 @@
                                 <a href="{url app=refund&act=view&refund_id=$goods.refund_id}" class="gray">退款关闭</a>
                                 <!--{elseif $goods.refund_status}-->
                                 <a href="{url app=refund&act=view&refund_id=$goods.refund_id}" style="color:#ff6600">退款中</a>
-                                <!--{elseif $order.status==20 || $order.status==30|| $order.status==40}-->
+                                <!--{elseif $order.status==20 || $order.status==30}-->
                                 <a href="{url app=refund&act=add&order_id=$order.order_id&goods_id=$goods.goods_id&spec_id=$goods.spec_id}">退款/退货</a>
                                 <!--{/if}-->
                                 <br/><a href="{url app=customer_message&type=3&goods_id=$goods.goods_id}" target="_blank">投诉此商品</a>
