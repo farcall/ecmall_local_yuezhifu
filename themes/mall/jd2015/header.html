@@ -104,13 +104,12 @@
             <!--{foreach from=$navs.middle item=nav}-->
             <li class="each float-left inline-block"><a class="{if !$index and $nav.link eq $current_url}current{/if}" href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}{if $nav.hot==1}<span class="absolute block"></span>{/if}</a></li>
             <!--{/foreach}-->
-<li id="treasure"><a
-        style="float:right;width:140px;height:40px;cursor:pointer;display:block;margin-top:2px;position:relative;z-index:2;"
-        href="#"
-        target="_blank" title="" clstag="h|keycount|2015|07a" fclog="9348.100234.231232.1.2_955_6216"><em
-        style="float:left;width:140px;height:40px;background:url(//img10.360buyimg.com/da/jfs/t1942/206/1448410312/7687/9d3abae3/565e4cfcN25029059.jpg) no-repeat;">
-    &nbsp;</em></a></li>
 
+            <li id="treasure">
+                <a style="float:right;width:105px;height:40px;" href="#" target="_blank">
+                    <img src="{res file=images/yifenzhong.gif}" width="105px" height="40px"/>
+                </a>
+            </li>
 </ul>
 </div>
 </div>

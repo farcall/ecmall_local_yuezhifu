@@ -947,8 +947,6 @@ class Seller_orderApp extends StoreadminbaseApp {
                 return;
             }
 
-
-
             $goods_type = & gt('xianxia');
             $order_type = & ot('xianxia');
             $xxid = $order_type->submit_order($order_xianxia_data);
@@ -994,6 +992,8 @@ class Seller_orderApp extends StoreadminbaseApp {
         $this->_curmenu('线下做单');
         $this->_config_seo('title', Lang::get('member_center') . ' - 线下做单');
 
+
+        $this->assign('epay_trade_charges_ratio',Conf::get('epay_trade_charges_ratio'));
         $this->display('seller_order.xianxia.html');
     }
     //自动收货

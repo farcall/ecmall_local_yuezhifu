@@ -20,8 +20,6 @@
                                $("#telephone").attr('value','');
                                $("label[for='telephone']").removeClass("validate_right").attr('innerText','*');
                                $("label[for='name']").removeClass("validate_right").attr('innerText','*');
-
-
                            }
                         }
                     });
@@ -37,6 +35,14 @@
             },
             success: function(label) {
                 label.addClass('validate_right').text('OK!');
+                if($(label).parent().find('input').attr('name') == 'money'){
+                    var ratio = "{$epay_trade_charges_ratio}";
+                    var money = $('#money').val();
+                    var yongjin = ratio*money;
+                    $('#yongjin').text(yongjin);
+                    $('#tixing').show();
+                }
+
             },
             onkeyup: false,
             rules: {
@@ -163,7 +169,15 @@
                                     <th>总金额:</th>
                                     <td>
                                         <input type="text" class="text width_normal" id="money" name="money" title="请输入总金额,单位元,精准到0.01元"/>
-                                       <label style="color: red">*</label>
+                                        <label style="color: red">*</label>
+                                    </td>
+                                </tr>
+
+                                <tr id="tixing" style="display: none;">
+                                    <th>佣金提醒:</th>
+                                    <td>
+                                        <label style="color: #008000">本订单您需要为平台支付佣金<em style="color: red" id="yongjin">125</em>元(平台佣金比例{$epay_trade_charges_ratio})</label><br/>
+
                                     </td>
                                 </tr>
 
