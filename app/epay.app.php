@@ -181,6 +181,7 @@ class EpayApp extends MemberbaseApp {
                 )
             ));
 
+            $this->assign('phone_mob',$this->visitor->get('user_name'));
             $this->display('epay.withdraw.html');
         } else {
             if (Conf::get('msg_enabled') && $_SESSION['MobileConfirmCode'] != $_POST['confirm_code']) {
