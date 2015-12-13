@@ -165,7 +165,8 @@ class FanliApp extends BackendApp{
         import('mobile_msg.lib');
         $mobile_msg = new Mobile_msg();
         foreach ($members as $k => $v) {
-            $msgtext = '恭喜,众盈商城今日给您赠送金币:'.floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
+            $zengsong = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
+            $msgtext = '您在商城购买产品,今日赠送的金币为:'.$zengsong.'请注意查收';
             $to_mobile = trim($v['user_name']);
             if($mobile_msg->isMobile($to_mobile)){
                  $mobile_msg->send_msg($v['user_id'],$v['user_name'],$to_mobile,$msgtext);

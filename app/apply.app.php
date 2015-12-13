@@ -151,6 +151,13 @@ class ApplyApp extends MallbaseApp {
                             'seller_name' => $data['store_name'],
                         ));
 
+                        //开店成功发送短信通知
+                        /*买家申请退款给卖家发送短信通知*/
+                        import('mobile_msg.lib');
+                        $mobile_msg = new Mobile_msg();
+                        $result = $mobile_msg->send_msg_self('kdsuccess',  $this->visitor->get('user_name'),'');
+
+
                     $this->_hook('after_opening', array('user_id' => $store_id));
 
                     $this->show_message('store_opened', 'index', 'index.php');

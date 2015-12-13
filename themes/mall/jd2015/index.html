@@ -1,7 +1,11 @@
 {include file=header.html}
 
 
-
+<style type="text/css">
+    #register{
+        width:62px;height:25px;display: block;text-align: center;background:#F40;line-height:25px;color:#fff;font-size:12px;float:left;border-radius: 1px;margin-left:15px;
+    }
+</style>
 <div  id="main" class="w-full">
     <div id="page-home" class="w-full mb20">
         <div class="col-1 relative w">
@@ -18,9 +22,9 @@
                         </dd>
                     </dl>
                     <!--{if !$visitor.user_id}-->
-                    <a href="{url app=member&act=login&ret_url=$ret_url}">登录</a>
-                    <a href="{url app=member&act=register&ret_url=$ret_url}" class="register">注册</a>
-                    <a href="{url app=apply}">用户开店</a>
+                    <a href="{url app=member&act=login&ret_url=$ret_url}" id="register" >登录</a>
+                    <a href="{url app=member&act=register&ret_url=$ret_url}" id="register" >注册</a>
+                    <a href="{url app=apply}" id="register" >商家开店</a>
                     <!--{else}-->
                     <a href="{url app=member}">{$visitor.user_name|escape}</a>
                     <a href="{url app=member&act=logout}"  class="register">{$lang.logout}</a>

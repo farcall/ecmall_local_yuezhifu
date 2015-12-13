@@ -131,7 +131,7 @@ return array (
   'site_region' => '山东省临沂市',
   'site_address' => '山东省临沂市讯鸟电商大厦',
   'site_postcode' => '276300',
-  'site_phone_tel' => '4000003945',
+  'site_phone_tel' => '400-1820-600',
   'site_email' => '435795@qq.com',
   'email_type' => '1',
   'email_host' => 'smtp.qq.com',

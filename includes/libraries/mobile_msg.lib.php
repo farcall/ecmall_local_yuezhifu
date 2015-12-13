@@ -28,9 +28,9 @@ class Mobile_msg {
         /**
          * 检测是否有权限
          */
-        if (!$this->check_functions($msg, $type)) {
-            return FALSE;
-        }
+//        if (!$this->check_functions($msg, $type)) {
+//            return FALSE;
+//        }
 
         $user_id = $order_info['seller_id'];
         $user_name = $order_info['seller_name'];
@@ -43,7 +43,7 @@ class Mobile_msg {
         } else if ($type == 'buy') {
             //买家下单向卖家发送短信提示
             $to_mobile = $msg['mobile'];
-            $smsText = "您收到了来自买家" . $order_info['buyer_name'] . "的订单，订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
+            $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
         } else if ($type == 'send') {
             //卖家发货向买家发送短信提示
             $mod_order_extm = & m('orderextm');
@@ -76,22 +76,48 @@ class Mobile_msg {
     }
 
     /**
+     * @param $type发送类型
+     * @param $to_mobile接收方手机
+     * @param $smsText发送内容
+     *
+     * @return bool 失败:0,成功:发送条数
+     * 作用:系统给会员发送系统信息
+     * Created by QQ:710932
+     */
+    function send_msg_self($type,$to_mobile,$smsText){
+
+        //txsuccess kdsuccess refund
+        if($type == 'txsuccess'){
+            $smsText = '您的提现已成功,请及时关注到账信息.';
+        }else if($type == 'kdsuccess'){
+            $smsText = '您申请的众盈店铺已经审核通过,请及时完善您的个人信息.';
+        }
+
+        if($this->isMobile($to_mobile)){
+            $result = $this->send_msg(0, 'admin', $to_mobile, $smsText);
+        }else{
+            $result = 0;
+        }
+
+        return $result;
+    }
+    /**
      * 系统发送短信，包含 注册   修改手机号  等信息
      */
     function send_msg_system($type, $to_mobile) {
         $mcode = $this->make_code();
         if ($type == 'register') {
             //注册发送短信的内容
-            $smsText = "您的注册验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
+            $smsText = "短信注册验证码为:" . $mcode . ".请在注册页面中输入并完成验证.如非本人操作,请忽略.";
         } else if ($type == 'change') {
             //修改发送的短信内容
             $smsText = "您的修改验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
         } else if ($type == 'find') {
             //找回密码发送的短信内容
-            $smsText = "您的找回密码验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
+            $smsText = "您现在正在申请找回密码,验证码为:" . $mcode . ".为了您的账户安全,请勿泄露于他人.";
         }else if($type == 'tixian'){
             //提现申请验证短信
-            $smsText = "您的申请提现验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
+            $smsText = "申请提现验证码为:" . $mcode . ".为了保障您的资产安全,切勿泄露于他人.";
         }
         //存入session 做认证
         unset($_SESSION['MobileConfirmCode']);
