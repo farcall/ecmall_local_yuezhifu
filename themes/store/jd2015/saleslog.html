@@ -9,7 +9,7 @@
         </tr>
         <!--{foreach from=$sales_list item=sales}-->
         <tr>
-            <td>{if $sales.anonymous}***{else}{$sales.buyer_name|escape}{/if}<img src="{$sales.buyer_credit_image}" title="{$sales.buyer_credit_value}" /></td>
+            <td>{if $sales.anonymous}***{else}{$sales.buyer_name|truncate:5:"---"}{/if}<img src="{$sales.buyer_credit_image}" title="{$sales.buyer_credit_value}" /></td>
             <td>{$sales.price|price}</td>
             <td>{$sales.quantity} <span class="fontColor5">{if $sales.specification}{$lang.left_bracket}{$sales.specification|escape}{$lang.right_bracket}{/if}</span></td>
             <td>{$sales.add_time|date}</td>

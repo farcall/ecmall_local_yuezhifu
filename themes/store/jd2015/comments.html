@@ -51,17 +51,14 @@
     <!-- {foreach from=$goods_comments item=comment} -->
     <dl class="{cycle values=message_text,message_text bg1}">
         <dt>
-        <span class="light">{if $comment.anonymous}***{else}{$comment.buyer_name|escape}{/if}<img src="{$comment.buyer_credit_image}" title="{$comment.buyer_credit_value}" /> ({$comment.evaluation_time|date:complete})</span>
+        <span class="light">{if $comment.anonymous}***{else}{$comment.buyer_name|truncate:5:"---"}{/if}<img src="{$comment.buyer_credit_image}" title="{$comment.buyer_credit_value}" /> ({$comment.evaluation_time|date:complete})</span>
         </dt>
         <dd>{$comment.comment|escape|nl2br}</dd>
         <div class="beat">
             {$lang.evaluation}:
-            {if $comment.evaluation gt 0}<img src="{res file=images/bit.gif}" />{/if}
-            {if $comment.evaluation gt 1}<img src="{res file=images/bit.gif}" />{/if}
-            {if $comment.evaluation gt 2}<img src="{res file=images/bit.gif}" />{/if}
-            {if $comment.evaluation lt 3}<img src="{res file=images/bit2.gif}" />{/if}
-            {if $comment.evaluation lt 2}<img src="{res file=images/bit2.gif}" />{/if}
-            {if $comment.evaluation lt 1}<img src="{res file=images/bit2.gif}" />{/if}
+            {if $comment.evaluation eq 1}<img src="{res file=images/bit.gif}" />{/if}
+            {if $comment.evaluation eq 2}<img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" />{/if}
+            {if $comment.evaluation eq 3}<img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" />{/if}
         </div>
     </dl>
     <!-- {foreachelse} -->
