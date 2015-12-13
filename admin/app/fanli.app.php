@@ -169,7 +169,7 @@ class FanliApp extends BackendApp{
             $msgtext = '您在商城购买产品,今日赠送的金币为:'.$zengsong.'请注意查收';
             $to_mobile = trim($v['user_name']);
             if($mobile_msg->isMobile($to_mobile)){
-                 $mobile_msg->send_msg($v['user_id'],$v['user_name'],$to_mobile,$msgtext);
+                 $mobile_msg->send_msg(0,'admin',$to_mobile,$msgtext);
             }
         }
 
