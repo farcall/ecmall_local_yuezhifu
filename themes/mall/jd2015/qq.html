@@ -4,7 +4,7 @@
     .yb_conct {
         position: fixed;
         z-index: 9999999;
-        top: 150px;
+        top: 300px;
         left: 0px;
         width: 54px;
         cursor: pointer;
@@ -39,22 +39,30 @@
     .hd_qr {
         padding: 0 29px 25px 29px;
     }
-    .yb_QQ a {
-        display: block;
-        text-indent: 54px;
-        width: 100%;
-        height: 100%;
-        color: #fff;
+
+
+    #QQ{
+        z-index: 9999999;
+        position: fixed;
+        top: 300px;
+        left: 60px;
+        width: 150px;
+        height: 224px;
+        background-color: #ff4a00;
+        cursor: pointer;
+        transition: all .3s ease;
+        display: none;
     }
-    .yb_QQ img {
-        display: block;
-        text-indent: 54px;
-        width: 100%;
-        height: 100%;
-        color: #fff;
+    #QQ li{
+        list-style-type:none;
+        float: left;
+        margin: 14px 0 0 20px;
     }
-    .hideqq{
-        display:none;
+    #QQ li a{
+        float: left;
+        margin-left: 5px;
+        font: 18px "microsoft yahei";
+        color: #fff;
     }
 </style>
 <div class="yb_conct">
@@ -63,41 +71,84 @@
             <li class="yb_top">返回顶部</li>
             <li class="yb_phone">{$site_phone_tel}</li>
             <li class="yb_QQ">
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021838&site=qq&menu=yes">画眉(售前)</a>
             </li>
-            <li class="yb_QQ hideqq">
-                <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021838&site=qq&menu=yes">画眉(售前)</a>-->
-                <img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=435795&o=www.zhying.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:435795:1 alt="点击这里给我发消息">
-            </li>
-
             <li class="yb_ercode">微信二维码<br>
                 <img class="hd_qr" src="{$default_qrcode}" width="125" alt="">
             </li>
         </ul>
     </div>
 </div>
-
+<div id="QQ">
+    <ul>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021837&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:162021837:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>布谷</a></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021838&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:162021838:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>画眉</a></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021839&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:162021839:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>琉璃</a></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021840&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:162021840:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>百灵</a></li>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=162021841&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:162021841:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>白鹭</a></li>
+    </ul>
+</div>
 <script>
     $(function() {
-        // 悬浮窗口
-        $(".yb_conct").hover(function() {
-
-            $(".yb_bar li").css("width", "180px");
-            $(".yb_conct").css("left", "5px");
-            $(".hideqq").css("display", "block");
-            $(".yb_bar .yb_ercode").css('height', '200px');
-
-        }, function() {
-            $(".hideqq").css("display", "none");
-            $(".yb_bar .yb_ercode").css('height', '53px');
-            $(".yb_bar li").css("width", "54px");
-            $(".yb_conct").css("right", "5px");
+        //返回顶部
+        $(".yb_top").hover(function(){
+            $(".yb_top").css("width", "180px");
+            $("#QQ").hide();
+        },function(){
+            $(".yb_top").css("width", "54px");
         });
-        // 返回顶部
         $(".yb_top").click(function() {
             $("html,body").animate({
                 'scrollTop': '0px'
             }, 300)
         });
+
+        //QQ
+        $(".yb_QQ").hover(function(){
+            $("#QQ").show();
+        },function(){
+        });
+        $("#QQ").hover(function(){
+        },function(){
+           $("#QQ").hide();
+        });
+
+        //电话
+        $(".yb_phone").hover(function(){
+            $(".yb_phone").css("width", "180px");
+            $("#QQ").hide();
+        },function(){
+            $(".yb_phone").css("width", "54px");
+        });
+
+
+        //二维码
+        $(".yb_ercode").hover(function(){
+            $(".yb_ercode").css("width", "180px");
+            $(".yb_ercode").css("height", "200px");
+            $("#QQ").hide();
+        },function(){
+            $(".yb_ercode").css("width", "54px");
+            $(".yb_ercode").css("height", "53px");
+        });
+        // 悬浮窗口
+//        $(".yb_conct").hover(function() {
+//
+//            $(".yb_bar li").css("width", "180px");
+//            $(".yb_conct").css("left", "5px");
+//            $(".hideqq").css("display", "block");
+//            $(".yb_bar .yb_ercode").css('height', '200px');
+//
+//        }, function() {
+//            $(".hideqq").css("display", "none");
+//            $(".yb_bar .yb_ercode").css('height', '53px');
+//            $(".yb_bar li").css("width", "54px");
+//            $(".yb_conct").css("right", "5px");
+//        });
+//        // 返回顶部
+//        $(".yb_top").click(function() {
+//            $("html,body").animate({
+//                'scrollTop': '0px'
+//            }, 300)
+//        });
     });
 </script>
