@@ -176,7 +176,7 @@ class Mobile_msg {
         if ($res > 0) {
             // user_id = 0 user_name = admin  表示为系统发送,短信的条数不做操作
             if ($user_id != 0) {
-                $this->_msg_mod->edit('user_id=' . $user_id, 'num=num-1');
+          //      $this->_msg_mod->edit('user_id=' . $user_id, 'num=num-1');
             }
             return TRUE;
         } else {
