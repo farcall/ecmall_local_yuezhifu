@@ -1063,12 +1063,12 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'promotion_manage',
                 'icon' => 'ico9',
             );
-            $menu['im_market']['submenu']['msg'] = array(
-                'text' => Lang::get('msg'),
-                'url' => 'index.php?app=msg',
-                'name' => 'msg',
-                'icon' => 'ico3',
-            );
+//            $menu['im_market']['submenu']['msg'] = array(
+//                'text' => Lang::get('msg'),
+//                'url' => 'index.php?app=msg',
+//                'name' => 'msg',
+//                'icon' => 'ico3',
+//            );
             $menu['im_market']['submenu']['template'] = array(
                 'text' => Lang::get('template'),
                 'url' => 'index.php?app=template',
