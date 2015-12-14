@@ -338,9 +338,9 @@ class Buyer_orderApp extends MemberbaseApp {
             
             
             //卖家确认收货 发送短信给卖家
-            import('mobile_msg.lib');
-            $mobile_msg = new Mobile_msg();
-            $mobile_msg->send_msg_order($order_info,'check');
+//            import('mobile_msg.lib');
+//            $mobile_msg = new Mobile_msg();
+//            $mobile_msg->send_msg_order($order_info,'check');
             
             
             $this->pop_warning('ok','','index.php?app=buyer_order&act=evaluate&order_id='.$order_id);;
