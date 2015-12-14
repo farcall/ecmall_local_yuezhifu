@@ -18,7 +18,7 @@ add_spec h2 { padding-left: 10px; }
 var SPEC = {$goods.spec_json};
 
 
-function add_uploadedfile(file_data)
+function divSwfuploadContainer(file_data)
 {
     if(file_data.instance == 'goods_image'){
         $('#goods_images').append('<li ectype="handle_pic" file_id="'+ file_data.file_id +'" thumbnail="{$site_url}/'+ file_data.thumbnail +'"><input type="hidden" value="'+ file_data.file_id +'" name="goods_file_id[]"/><div class="pic"><img src="{$site_url}/'+ file_data.thumbnail +'" width="55" height="55" alt="" /><div ectype="handler" class="bg"><p class="operation"><span class="cut_in" ectype="set_cover" ecm_title="{$lang.set_cover}"></span><span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span></p></div></div></li>');

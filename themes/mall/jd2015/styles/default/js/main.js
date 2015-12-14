@@ -57,8 +57,10 @@ $(function() {
 
     $('.header_cart').hover(function() {
         $(this).addClass('active');
+        $('#treasure').hide();
     }, function() {
         $(this).removeClass('active');
+        $('#treasure').show();
     });
 
     $('.channel .ju-ele-nav').hover(function() {

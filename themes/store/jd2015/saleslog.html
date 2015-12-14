@@ -13,12 +13,14 @@
             <td>{$sales.price|price}</td>
             <td>{$sales.quantity} <span class="fontColor5">{if $sales.specification}{$lang.left_bracket}{$sales.specification|escape}{$lang.right_bracket}{/if}</span></td>
             <td>{$sales.add_time|date}</td>
-            <td>{if $sales.evaluation gt 0}<img src="{res file=images/bit.gif}" />{/if}
-                {if $sales.evaluation gt 1}<img src="{res file=images/bit.gif}" />{/if}
-                {if $sales.evaluation gt 2}<img src="{res file=images/bit.gif}" />{/if}
-                {if $sales.evaluation lt 3}<img src="{res file=images/bit2.gif}" />{/if}
-                {if $sales.evaluation lt 2}<img src="{res file=images/bit2.gif}" />{/if}
-                {if $sales.evaluation lt 1}<img src="{res file=images/bit2.gif}" />{/if} </td>
+            <td>{if $sales.evaluation eq 0}{/if}
+                {if $sales.evaluation eq 1}<img src="{res file=images/bit.gif}" />{/if}
+                {if $sales.evaluation eq 2}<img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" /><img src="{res file=images/bit.gif}" />{/if}
+                {if $sales.evaluation eq 3}<img src="{res file=images/bit.gif}" />
+                <img src="{res file=images/bit.gif}" />
+                <img src="{res file=images/bit.gif}" />
+                <img src="{res file=images/bit.gif}" />
+                <img src="{res file=images/bit.gif}" />{/if}
         </tr>
         <!--{foreachelse}-->
         <tr>

@@ -1,9 +1,51 @@
 {include file=member.header.html}
+{$images_upload}
+{$editor_upload}
+{$build_editor}
+<style>
+    .box_arr .table_btn { width: 222px; }
+    .box_arr .table_btn a { float: left; }
+    .box_arr .table_btn a.disable_spec { background: url({res file=images/member/btn.gif}) repeat 0 -1018px; float: right; }
+    .add_spec .add_link { color:#919191; }
+    .add_spec .add_link:hover { color:red; }
+    add_spec h2 { padding-left: 10px; }
+    .width7{ width: 250px;}
+    .f_l{ float:left; }
+    .mls_id { width: 0; filter: alpha(opacity=0);opacity: 0; }
+</style>
 <style>
     .borline td { padding:10px 0px; }
     .ware_list th { text-align:left; }
 </style>
 <script type="text/javascript">
+
+
+    function add_uploadedfile(file_data)
+    {
+        if(file_data.instance == 'goods_image'){
+            $('#goods_images').append('<li ectype="handle_pic" file_id="'+ file_data.file_id +'" thumbnail="{$site_url}/'+ file_data.thumbnail +'"><input type="hidden" value="'+ file_data.file_id +'" name="goods_file_id[]"/><div class="pic"><img src="{$site_url}/'+ file_data.thumbnail +'" width="55" height="55" alt="" /><div ectype="handler" class="bg"><p class="operation"><span class="cut_in" ectype="set_cover" ecm_title="{$lang.set_cover}"></span><span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span></p></div></div></li>');
+            trigger_uploader();
+            if($('#big_goods_image').attr('src') == '{$goods.default_goods_image}'){
+                set_cover(file_data.file_id);
+            }
+            if(GOODS_SWFU.getStats().files_queued == 0){
+                window.setTimeout(function(){
+                    $('#uploader').hide();
+                    $('#open_uploader').find('.show').attr('class','hide');
+                },4000);
+            }
+        }else if(file_data.instance == 'desc_image'){
+            $('#desc_images').append('<li file_name="'+ file_data.file_name +'" file_path="'+ file_data.file_path +'" ectype="handle_pic" file_id="'+ file_data.file_id +'"><input type="hidden" name="desc_file_id[]" value="'+ file_data.file_id +'"><div class="pic" style="z-index: 2;"><img src="{$site_url}/'+ file_data.file_path +'" width="50" height="50" alt="'+ file_data.file_name +'" /></div><div ectype="handler" class="bg" style="z-index: 3;display:none"><img src="{$site_url}/'+ file_data.file_path +'" width="50" height="50" alt="'+ file_data.file_name +'" /><p class="operation"><a href="javascript:void(0);" class="cut_in" ectype="insert_editor" ecm_title="{$lang.insert_editor}"></a><span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span></p><p class="name">'+ file_data.file_name +'</p></div></li>');
+            trigger_uploader();
+            if(EDITOR_SWFU.getStats().files_queued == 0){
+                window.setTimeout(function(){
+                    $('#editor_uploader').hide();
+                },5000);
+            }
+        }
+    }
+
+
     $(document).ready(function() {
         $('#name').bind('blur', null
                 ,  function(){
@@ -25,7 +67,6 @@
                     });
 
                 });
-
 
         $("#xianxia_form").validate({
             errorPlacement: function (error, element) {
@@ -92,36 +133,6 @@
         })
     });
 </script>
-
-<script type="text/javascript">
-    $('#xianxia_form').validate({
-        rules : {
-            pingzheng : {
-                accept   : 'gif|jpe?g|png'
-            }
-        },
-        messages : {
-            pingzheng  : {
-                accept   : '图片格式不正确'
-            }
-        }
-    });
-    $(function(){
-        $('input[ectype="change_avatar"]').change(function(){
-            var src = getFullPath($(this)[0]);
-            $('img[ectype="avatar"]').attr('src', src);
-            $('input[ectype="change_avatar"]').removeAttr('name');
-            $(this).attr('name', 'pingzheng');
-
-            var file = this.files[0];
-            var r = new FileReader();
-            r.readAsDataURL(file);
-            $(r).load(function() {
-                $('.photo img').attr('src',this.result);
-            })
-        });
-    });
-</script>
 <div class="content">
     {include file=member.menu.html}
     <div id="right">
@@ -131,16 +142,59 @@
             <div class="public">
                 <form method="post" enctype="multipart/form-data" id="xianxia_form">
                     <div class="information">
-                        <!--消费清单-->
-                        <div class="photo width13">
-                            <p><img src="{$site_url}/data/system/qingshangchuanjiaoyipingzheng.png" width="120" height="120" alt="" ectype="avatar" /></p>
-                            <b>
-                                <span class="file1"><input type="file" ectype="change_avatar" name="pingzheng1" /></span>
-                                <span class="file2"><input type="file" ectype="change_avatar" name="pingzheng2" /></span>
+                        <div class="pic_list">
+                            <div class="big_pic"><img id="big_goods_image" src="{$goods.default_goods_image}" width="300" height="300" alt="" /></div>
+                            <div class="small_pic">
+                                <ul id="goods_images">
+                                    <!--{foreach from=$goods_images item=goods_iamge}-->
+                                    <li ectype="handle_pic" file_id="{$goods_iamge.file_id}" thumbnail="{$site_url}/{$goods_iamge.thumbnail}">
+                                        <input type="hidden" name="goods_file_id[]" value="{$goods_iamge.file_id}">
+                                        <div class="pic">
+                                            <img src="{$site_url}/{$goods_iamge.thumbnail}" width="55" height="55" />
+                                            <div ectype="handler" class="bg">
+                                                <p class="operation">
+                                                    <span class="cut_in" ectype="set_cover" ecm_title="{$lang.set_cover}"></span>
+                                                    <span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--{/foreach}-->
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="upload_btn">
+                                <div class="upload" id="open_uploader"><b class="hide">上传交易凭证</b></div>
+                                <div class="upload_con" id="uploader" style="display:none">
+                                    <div class="upload_con_top"></div>
+                                    <div class="upload_wrap">
 
-                                <div class="txt">上传凭证</div>
-                            </b>
+                                        <ul>
+                                            <li class="btn1">
+                                                <div id="divSwfuploadContainer">
+                                                    <div id="divButtonContainer">
+                                                        <span id="spanButtonPlaceholder"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li><iframe src="index.php?app=comupload&act=view_iframe&id={$id}&belong={$belong}&instance=goods_image" width="86" height="30" scrolling="no" frameborder="0"></iframe></li>
+                                            <li id="open_remote" class="btn2">{$lang.rem_upload}</li>
+                                        </ul>
+                                        <div id="remote" class="upload_file" style="display:none">
+                                            <iframe src="index.php?app=comupload&act=view_remote&id={$id}&belong={$belong}&instance=goods_image" width="272" height="39" scrolling="no" frameborder="0"></iframe>
+                                        </div>
+                                        <div id="goods_upload_progress"></div>
+                                        <div class="upload_txt">
+                                            <span>{$lang.note_for_upload}</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="upload_con_bottom"></div>
+                                </div>
+                            </div>
                         </div>
+
+
                         <div class="info individual">
                             <table><!--会员名-->
                                 <tr>

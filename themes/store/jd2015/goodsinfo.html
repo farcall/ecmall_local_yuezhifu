@@ -268,6 +268,19 @@ var goodsspec = new goodsspec(specs, specQty, defSpec);
                     <a href="{url app=store&id=$store.store_id}" target="_blank">进入店铺</a>
                     <a href="javascript:collect_store({$store.store_id})" style="margin-left:10px;">收藏店铺</a>
                 </div>
+                <div class="content" style="padding-left: 9px">
+                    <!--{if $store.pre_connects}-->
+                        <!--{foreach from=$store.pre_connects item=pre_connect name=fe_pre_connect}-->
+                                {if $pre_connect.type eq '1'}
+                                <a target="_blank"
+                                   href="http://wpa.qq.com/msgrd?v=3&uin={$pre_connect.num|escape}&site=qq&menu=yes"><img border="0"
+                                                                                                                          src="http://wpa.qq.com/pa?p=2:{$pre_connect.num|escape}:51"
+                                                                                                                          alt="点击这里给我发消息"
+                                                                                                                          title="点击这里给我发消息"/></a>
+                                {/if}
+                        <!-- {/foreach} -->
+                    <!--{/if}-->
+                </div>
             </div>
             
 

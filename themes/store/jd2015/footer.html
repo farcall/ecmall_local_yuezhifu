@@ -30,34 +30,34 @@
             © {$icp_number}<br>
             Copyright&nbsp;©&nbsp;2004-2015&nbsp;&nbsp;zhying.com.com&nbsp;版权所有<br>合作平台：<a
                 target="_blank" href="https://pay.weixin.qq.com/index.php">微信支付</a>&nbsp;&nbsp;<a href="http://www.alipay.com/"
-                                                                                       target="_blank">支付宝</a>&nbsp;&nbsp;<a
+                                                                                                  target="_blank">支付宝</a>&nbsp;&nbsp;<a
                 href="https://www.wangyin.com/" target="_blank">网银在线</a></div>
 
         <div class="authentication">
-            <a target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026">
+            <a target="_blank" href="#">
                 <img width="103" height="32" alt="经营性网站备案中心"
                      src="http://img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png"
                      class="err-product">
             </a>
 
             <a target="_blank" id="urlknet" tabindex="-1"
-               href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005">
+               href="#">
                 <img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')"
                      oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站"
                      src="http://img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png"
                      class="err-product">
             </a>
-            <a target="_blank" href="http://www.bj.cyberpolice.cn/index.do">
+            <a target="_blank" href="#">
                 <img width="103" height="32" alt="朝阳网络警察"
                      src="http://img11.360buyimg.com/da/jfs/t559/186/1172042286/2795/7d90b036/54b8874bN694454a5.png"
                      class="err-product">
             </a>
-            <a target="_blank" href="https://search.szfw.org/cert/l/CX20120111001803001836">
+            <a target="_blank" href="#">
                 <img width="103" height="32"
                      src="http://img11.360buyimg.com/da/jfs/t451/173/1189513923/1992/ec69b14a/54b8875fNad1e0c4c.png"
                      class="err-product">
             </a>
-            <a target="_blank" href="http://jubao.china.cn:13225/reportform.do">
+            <a target="_blank" href="#">
                 <img width="185" height="32"
                      src="http://img10.360buyimg.com/da/jfs/t520/303/1151687373/1180/2f8340fc/54b8863dN8d2c61ec.png"
                      class="err-product">
@@ -80,42 +80,12 @@
                     </div>
                 </div>
             </div>
-            <div class="mui-mbar-tab mui-mbar-tab-asset" style="top: 300px;">
-                <div class="mui-mbar-tab-logo mui-mbar-tab-logo-asset"></div>
-                <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="{url app=member}">我的资产</a>
 
-                    <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
-                </div>
-            </div>
-            <div class="mui-mbar-tab mui-mbar-tab-brand" style="top: 350px;">
-                <div class="mui-mbar-tab-logo mui-mbar-tab-logo-brand"></div>
-                <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="{url app=my_favorite&type=store}">收藏的店铺</a>
 
-                    <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
-                </div>
-            </div>
-            <div class="mui-mbar-tab mui-mbar-tab-foot" style="top: 400px;">
-                <div class="mui-mbar-tab-logo mui-mbar-tab-logo-foot"></div>
-                <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="{url app=my_favorite}">收藏的产品</a>
-
-                    <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
-                </div>
-            </div>
-            <div class="mui-mbar-tab mui-mbar-tab-favor" style="top: 450px;">
-                <div class="mui-mbar-tab-logo mui-mbar-tab-logo-favor"></div>
-                <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="{url app=history}">我看过的</a>
-
-                    <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
-                </div>
-            </div>
             <div class="mui-mbar-tab mui-mbar-tab-top" style="bottom: 200px;" id="gotop">
                 <div class="mui-mbar-tab-logo mui-mbar-tab-logo-top"></div>
                 <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="javascript:scroll(0,0)">返回顶部</a>
+                    <a href="javascript:scrool(0,0)">返回顶部</a>
 
                     <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
                 </div>
@@ -126,14 +96,6 @@
                     <div class="mui-mbarp-qrcode-hd">
                         <img src="{$default_qrcode}" width="140" height="140">
                     </div>
-                </div>
-            </div>
-            <div class="mui-mbar-tab mui-mbar-tab-ue" style="bottom: 300px;">
-                <div class="mui-mbar-tab-logo mui-mbar-tab-logo-ue"></div>
-                <div class="mui-mbar-tab-tip" style="right: 35px;  display: none;">
-                    <a href="{url app=customer_message&type=1}">用户反馈</a>
-
-                    <div class="mui-mbar-arr mui-mbar-tab-tip-arr">◆</div>
                 </div>
             </div>
         </div>
@@ -149,10 +111,16 @@
                 $(this).removeClass("mui-mbar-tab-hover");
                 $(this).find('.mui-mbar-tab-tip').fadeOut(500);
             });
+
+            $('.mui-mbar-tab-logo-top').click(function(){
+                $('body,html').animate({scrollTop:0},10);
+                return false;
+            });
         });
 
     </script>
 </div>
+
 
 </body>
 </html>

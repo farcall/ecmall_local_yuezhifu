@@ -44,7 +44,7 @@
  *
  */
 /* page-home */
-#page-home .col-1{height:0px;z-index:100;}
+#page-home .col-1{height:0px;z-index:10;}
 #page-home .col-1 .left{left:0px;top:0px;width:210px;position:absolute;background:#fff;}
 #page-home .col-1 .right{right:0px;top:0px;width:250px;height:465px;position:absolute;background:#fff;overflow: hidden;}
 #page-home .col-2{z-index:99;}
