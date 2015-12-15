@@ -27,6 +27,12 @@ $(function(){
             owner_name: {
                 required: true
             },
+            owner_card: {
+                required: true,
+                number:true,
+                minlength:15,
+                maxlength:18
+            },
             store_name: {
                 required: true,
                 remote : {
@@ -47,9 +53,11 @@ $(function(){
                 checkTel:true
             },
             image_1: {
+                required: true,
                 accept: "jpg|jpeg|png|gif"
             },
             image_2: {
+                required: true,
                 accept: "jpg|jpeg|png|gif"
             },
             image_3: {
@@ -63,6 +71,12 @@ $(function(){
             owner_name: {
                 required: '{$lang.input_owner_name}'
             },
+            owner_card: {
+                required: '请输入身份证号',
+                number:'必须为15到18位的有效数字',
+                minlength:'身份证号不能小于15位',
+                maxlength:'身份证号不能大于18位'
+            },
             store_name: {
                 required: '{$lang.input_store_name}',
                 remote: '{$lang.name_exist}',
@@ -74,9 +88,11 @@ $(function(){
                 checkTel: '{$lang.phone_tel_error}'
             },
             image_1: {
+                required:'请上传身份证复印件',
                 accept: '{$lang.select_valid_image}'
             },
             image_2: {
+                required:'请上传工商营业执照',
                 accept: '{$lang.select_valid_image}'
             },
             image_3: {
