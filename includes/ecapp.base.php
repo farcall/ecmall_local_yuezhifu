@@ -90,6 +90,7 @@ define('BELONG_GOODS',      2);
 define('BELONG_STORE',      3);
 define('BELONG_COUPON',     4);
 define('BELONG_GROUPBUY',   5);
+define('BELONG_XIANXIAPINGZHENG',   6);
 
 /* 二级域名开关 */
 !defined('ENABLED_SUBDOMAIN') && define('ENABLED_SUBDOMAIN', 0);

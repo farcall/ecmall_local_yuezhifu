@@ -1002,7 +1002,7 @@ class MemberbaseApp extends MallbaseApp {
             );
             $menu['im_seller']['submenu']['order_xianxia'] = array(
                 'text' => '线下做单',
-                'url' => 'index.php?app=seller_order&act=xianxia',
+                'url' => 'index.php?app=seller_xianxiaorder',
                 'name' => '线下做单',
                 'icon' => 'ico10',
             );

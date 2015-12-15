@@ -52,6 +52,15 @@ class UploadedfileModel extends BaseModel
             'refer_key'     => 'item_id',
             'reverse'       => 'has_uploadedfile',
         ),
+
+        // 一个文件只能属于一个线下订单
+        'belongs_to_order_xianxia_image' => array(
+            'model'         => 'order_xianxia_image',
+            'type'          => BELONGS_TO,
+            'foreign_key'   => 'file_id',
+            'dependent'     => true,
+            'reverse'       => 'has_uploadedfile',
+        ),
     );
 
     /* 统计某店铺已使用空间（单位：字节） */

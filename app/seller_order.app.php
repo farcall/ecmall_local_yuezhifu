@@ -7,7 +7,9 @@
  *    @usage    none
  */
 class Seller_orderApp extends StoreadminbaseApp {
-
+    var $_order_xianxia_image_mod;
+    var $_uploadedfile_mod;
+    var $_store_id;
     function __construct() {
         $this->Seller_orderApp();
     }
@@ -15,10 +17,14 @@ class Seller_orderApp extends StoreadminbaseApp {
     function Seller_orderApp() {
         parent::__construct();
         $this->clear_seller_logs();
+        $this->_store_id = intval($this->visitor->get('manage_store'));
         $this->mod_epay = & m('epay');
         $this->mod_epaylog = & m('epaylog');
         $this->mod_msg = & m('msg');
         $this->mod_msglog = & m('msglog');
+        $this->_uploadedfile_mod = & m('uploadedfile');
+        $this->_order_xianxia_image_mod = &m('order_xianxia_image');
+
     }
     
     //标识发货记录  清除operator_type='buyer'
@@ -445,9 +451,9 @@ class Seller_orderApp extends StoreadminbaseApp {
 
             
             //发送短信给买家订单已发货通知 
-            import('mobile_msg.lib');
-            $mobile_msg = new Mobile_msg();
-            $mobile_msg->send_msg_order($order_info,'send');
+//            import('mobile_msg.lib');
+//            $mobile_msg = new Mobile_msg();
+//            $mobile_msg->send_msg_order($order_info,'send');
             
             
             $new_data = array(
@@ -807,10 +813,6 @@ class Seller_orderApp extends StoreadminbaseApp {
                 'name' => '线下订单审核中',
                 'url' => 'index.php?app=seller_order&amp;type=shenhe',
             ),
-            array(
-                'name' => '线下做单',
-                'url' => 'index.php?app=seller_order&amp;act=xianxia',
-            ),
         );
         return $array;
     }
@@ -869,6 +871,76 @@ class Seller_orderApp extends StoreadminbaseApp {
         return;
     }
 
+    function uploadpingzheng(){
+        foreach ($_FILES as $k => $file) {
+            if ($file['error'] == UPLOAD_ERR_NO_FILE) { // 没有文件被上传
+                echo ecm_json_encode(array(
+                    'result'=>'fail',
+                    'msg'=>'没有文件上传',
+                ));
+            }
+            import('uploader.lib');             //导入上传类
+            $uploader = new Uploader();
+            $uploader->allowed_type(IMAGE_FILE_TYPE); //限制文件类型
+            $uploader->addFile($file); //上传logo
+            if (!$uploader->file_info()) {
+                echo ecm_json_encode(array(
+                    'result'=>'fail',
+                    'msg'=>$uploader->get_error(),
+                ));
+            }
+            /* 指定保存位置的根目录 */
+            $uploader->root_dir(ROOT_PATH);
+
+            /* 上传 */
+            $imgname = $uploader->random_filename();
+            if ($file_path = $uploader->save('data/files/mall/pingzheng', $imgname)) {   //保存到指定目录，并以指定文件名$ad_id存储
+
+                echo ecm_json_encode(array(
+                    'result'=>'success',
+                    'path'=>$file_path,
+                ));
+            } else {
+                echo ecm_json_encode(array(
+                    'result'=>'fail',
+                    'msg'=>$uploader->get_error(),
+                ));
+            }
+        }
+
+        return true;
+    }
+
+
+
+    function drop_image() {
+        $id = empty($_GET['id']) ? 0 : intval($_GET['id']);
+        $uploadedfile = $this->_uploadedfile_mod->get(array(
+            'conditions' => "f.file_id = '$id' AND f.store_id = '{$this->_store_id}'",
+            'join' => 'belongs_to_order_xianxia_image',
+            'fields' => 'order_xianxia_image.image_url, order_xianxia_image.thumbnail, order_xianxia_image.image_id, f.file_id',
+        ));
+        if ($uploadedfile) {
+            $this->_uploadedfile_mod->drop($id);
+            if ($this->_order_xianxia_image_mod->drop($uploadedfile['image_id'])) {
+                // 删除文件
+                if (file_exists(ROOT_PATH . '/' . $uploadedfile['image_url'])) {
+                    @unlink(ROOT_PATH . '/' . $uploadedfile['image_url']);
+                }
+                if (file_exists(ROOT_PATH . '/' . $uploadedfile['thumbnail'])) {
+                    @unlink(ROOT_PATH . '/' . $uploadedfile['thumbnail']);
+                }
+
+                $this->json_result($id);
+                return;
+            }
+            $this->json_result($id);
+            return;
+        }
+        $this->json_error(Lang::get('no_image_droped'));
+    }
+
+
     /**
      * 作用:线下
      * Created by QQ:710932
@@ -917,6 +989,7 @@ class Seller_orderApp extends StoreadminbaseApp {
                 return;
             }
 
+
             //应当支付的佣金
             $model_setting = &af('settings');
             $setting = $model_setting->getAll(); //载入系统设置数据
@@ -958,7 +1031,6 @@ class Seller_orderApp extends StoreadminbaseApp {
         }
 
 
-
         $this->assign('member',$member);
         $this->assign('store',$store);
 
@@ -978,6 +1050,10 @@ class Seller_orderApp extends StoreadminbaseApp {
                     'attr' => '',
                 ),
                 array(
+                    'path' => 'xianxia_pingzheng.js',
+                    'attr' => 'charset="utf-8"',
+                ),
+                array(
                     'path' => 'jquery.plugins/jquery.validate.js',
                     'attr' => '',
                 ),
@@ -985,13 +1061,42 @@ class Seller_orderApp extends StoreadminbaseApp {
             'style' => 'jquery.ui/themes/ui-lightness/jquery.ui.css',
         ));
 
+
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), 'index.php?app=member', LANG::get('order_manage'), 'index.php?app=seller_order', LANG::get('order_list'));
-
         /* 当前用户中心菜单 */
         $this->_curmenu('线下做单');
         $this->_config_seo('title', Lang::get('member_center') . ' - 线下做单');
 
+
+        /* 取得游离状的图片 */
+        $order_images = array();
+        $uploadfiles = $this->_uploadedfile_mod->find(array(
+            'join' => 'belongs_to_order_xianxia_image',
+            'conditions' => "belong=" . BELONG_XIANXIAPINGZHENG . " AND item_id=0 AND store_id=" . store_id,
+            'order' => 'add_time ASC'
+        ));
+        foreach ($uploadfiles as $key => $uploadfile) {
+            $order_images[$key] = $uploadfile;
+        }
+
+        $this->assign('order_images', $order_images);
+
+
+        /* 商品图片批量上传器 */
+        $this->assign('images_upload', $this->_build_upload(array(
+            'obj' => 'GOODS_SWFU',
+            'belong' => BELONG_XIANXIAPINGZHENG,
+            'item_id' => 0,
+            'button_text' => Lang::get('bat_upload'),
+            'progress_id' => 'goods_upload_progress',
+            'upload_url' => 'index.php?app=swfupload&instance=order_images',
+            'if_multirow' => 1,
+        )));
+
+
+        $this->assign("id", 0);
+        $this->assign("belong", BELONG_XIANXIAPINGZHENG);
 
         $this->assign('epay_trade_charges_ratio',Conf::get('epay_trade_charges_ratio'));
         $this->display('seller_order.xianxia.html');

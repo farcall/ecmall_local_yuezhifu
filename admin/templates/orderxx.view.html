@@ -28,9 +28,7 @@
                     <p><b>{$goods.goods_name|escape} :</b> <span class="red_common">{$goods.specification|escape}</span></p>
                     <p><b>{$lang.price} :</b> <span class="red_common">{$goods.price|price}</span></p>
                     <p><b>{$lang.quantity} :</b> {$goods.quantity}</p>
-                    <br/>
-                    <img alt="{$lang.goods_pic}" src="{$goods.goods_image}" />
-                </li>
+                    </li>
                 <li>
                     <form id="log_form">
                         <p>
@@ -50,6 +48,18 @@
         <div class="clear"></div>
     </div>
     
+    <div class="order_form">
+        
+        <ul>
+            <!--{foreach from=$order_image item=image}-->
+            <li>
+                <img src="../{$image.image_url}" alt=""/>
+            </li>
+            <!--{/foreach}-->
+        </ul>
+        
+        <div class="clear"></div>
+    </div>
 
 
     <div class="order_form">

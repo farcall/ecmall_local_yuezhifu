@@ -456,6 +456,13 @@ class OrderApp extends BackendApp
         $this->assign($order_detail['data']);
 
         if($_GET['xx'] == 1){
+            $mod_order_image = &m('order_xianxia_image');
+            $order_image_data = $mod_order_image->find(array(
+                'conditions' => 'order_id='.$order_id,
+                'fields'     => 'image_url,thumbnail',
+            ));
+
+            $this->assign('order_image',$order_image_data);
             $this->display('orderxx.view.html');
         }
         else{

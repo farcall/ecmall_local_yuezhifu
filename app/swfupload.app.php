@@ -17,6 +17,7 @@ class SwfuploadApp extends StoreadminbaseApp
     var $mod_uploadedfile; //上传文件模型
     var $mod_goods; //商品模型
     var $mod_goods_image; //商品相册模型
+    var $mod_order_xianxia_image;   //线下交易凭证相册模型
     var $item_id = 0; // 所属模型的ID
     var $save_path; // 储存路径
     var $store_id; // 店铺ID
@@ -80,11 +81,14 @@ class SwfuploadApp extends StoreadminbaseApp
             break;
             case BELONG_GOODS :     $this->save_path = 'data/files/store_' . $this->store_id . '/goods_' . (time() % 200);
             break;
+            case BELONG_XIANXIAPINGZHENG: $this->save_path = 'data/files/store_' . $this->store_id . '/xianxiapingzheng';
+            break;
         }
 
         $this->mod_uploadedfile = &m('uploadedfile');
         $this->mod_goods = &m('goods');
         $this->mod_goods_image = &m('goodsimage');
+        $this->mod_order_xianxia_image = &m('order_xianxia_image');
     }
     function index()
     {
@@ -317,8 +321,26 @@ class SwfuploadApp extends StoreadminbaseApp
                 return false;
             }
             $ret_info = array_merge($ret_info, array('thumbnail' => $thumbnail));
-        }
+        }else if($this->instance == 'order_images'){    //如果是上传线下交易凭证图片
+            /* 生成缩略图 */
+            $thumbnail = dirname($file_path) . '/small_' . basename($file_path);
+            make_thumb(ROOT_PATH . '/' . $file_path, ROOT_PATH .'/' . $thumbnail, THUMB_WIDTH, THUMB_HEIGHT, THUMB_QUALITY);
 
+            /* 更新商品相册 */
+            $data = array(
+                'order_id'   => $this->item_id,
+                'image_url'  => $file_path,
+                'thumbnail'  => $thumbnail,
+                'sort_order' => 255,
+                'file_id'    => $file_id,
+            );
+            if (!$this->mod_order_xianxia_image->add($data))
+            {
+                $this->json_error($this->mod_order_xianxia_image->get_error());
+                return false;
+            }
+            $ret_info = array_merge($ret_info, array('thumbnail' => $thumbnail));
+        }
         /* 返回客户端 */
         $ret_info = array_merge($ret_info, array(
             'file_id'   => $file_id,

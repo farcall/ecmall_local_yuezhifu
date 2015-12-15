@@ -108,6 +108,10 @@ class ComuploadApp extends StoreadminbaseApp
                 {
                     $dirname = 'data/files/store_' . $this->visitor->get('manage_store').'/coupon';
                 }
+                elseif ($this->belong == BELONG_XIANXIAPINGZHENG)
+                {
+                    $dirname = 'data/files/store_' . $this->visitor->get('manage_store').'/xianxiapingzheng';
+                }
                 
                 $filename  = $uploader->random_filename();
                 $file_path = $uploader->save($dirname, $filename);
@@ -151,6 +155,27 @@ class ComuploadApp extends StoreadminbaseApp
                     }
                     $data['thumbnail'] = $thumbnail;
 
+                }
+                else if($this->instance == 'order_images'){    //如果是上传线下交易凭证图片
+                    /* 生成缩略图 */
+                    $thumbnail = dirname($file_path) . '/small_' . basename($file_path);
+                    make_thumb(ROOT_PATH . '/' . $file_path, ROOT_PATH .'/' . $thumbnail, THUMB_WIDTH, THUMB_HEIGHT, THUMB_QUALITY);
+
+                    /* 更新线下订单相册 */
+                    $mod_order_image = &m('order_xianxia_image');
+                    $data = array(
+                        'order_id'   => $this->item_id,
+                        'image_url'  => $file_path,
+                        'thumbnail'  => $thumbnail,
+                        'sort_order' => 255,
+                        'file_id'    => $file_id,
+                    );
+                    if (!$mod_order_image->add($data))
+                    {
+                        $this->json_error($mod_order_image->get_error());
+                        return false;
+                    }
+                    $data['thumbnail'] = $thumbnail;
                 }
 
                 $data['instance'] = $this->instance;
@@ -250,7 +275,10 @@ class ComuploadApp extends StoreadminbaseApp
                 {
                     $dirname = 'data/files/store_' . $this->visitor->get('manage_store').'/coupon';
                 }
-
+                elseif ($this->belong == BELONG_XIANXIAPINGZHENG)
+                {
+                    $dirname = 'data/files/store_' . $this->visitor->get('manage_store').'/xianxiapingzheng';
+                }
                 $filename  = $uploader->random_filename();
                 $new_url = $dirname . '/' . $filename . '.' . substr($remote_url, strrpos($remote_url, '.')+1);
                 ecm_mkdir(ROOT_PATH . '/' . $dirname);
@@ -304,6 +332,27 @@ class ComuploadApp extends StoreadminbaseApp
                     }
                     $data['thumbnail'] = $thumbnail;
 
+                }
+                else if($this->instance == 'order_images'){    //如果是上传线下交易凭证图片
+                    /* 生成缩略图 */
+                    $thumbnail = dirname($new_url) . '/small_' . basename($new_url);
+                    make_thumb(ROOT_PATH . '/' . $new_url, ROOT_PATH .'/' . $thumbnail, THUMB_WIDTH, THUMB_HEIGHT, THUMB_QUALITY);
+
+                    /* 更新线下订单相册 */
+                    $mod_order_image = &m('order_xianxia_image');
+                    $data = array(
+                        'order_id'   => $this->id,
+                        'image_url'  => $new_url,
+                        'thumbnail'  => $thumbnail,
+                        'sort_order' => 255,
+                        'file_id'    => $file_id,
+                    );
+                    if (!$mod_order_image->add($data))
+                    {
+                        $this->json_error($mod_order_image->get_error());
+                        return false;
+                    }
+                    $data['thumbnail'] = $thumbnail;
                 }
 
                 $data['instance'] = $this->instance;

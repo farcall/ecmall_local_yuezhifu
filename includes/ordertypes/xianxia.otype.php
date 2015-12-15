@@ -111,7 +111,6 @@ class XianxiaOrder extends BaseOrder {
                 'goods_name' => $goods_name,
                 'price' => $money,
                 'specification'=>'',
-                'goods_image' =>$pingzheng,
             );
 
 
@@ -158,7 +157,7 @@ class XianxiaOrder extends BaseOrder {
         $epay_data['money'] = $epay_data['money']-$yongjin;
         $epay_mod->edit('user_id='.$seller_userid,$epay_data);
 
-        return $xxid;
+        return $order_id;
     }
 
 }
