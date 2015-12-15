@@ -534,6 +534,84 @@ class EpayApp extends MemberbaseApp {
         }
     }
 
+    function bank_edit(){
+        if(!IS_POST){
+            $bank_id = isset($_GET['bank_id'])?$_GET['bank_id']:0;
+
+            $card = $this->mod_epay_bank->get($bank_id);
+            if(!isset($card)){
+                $this->show_warning('该卡不存在');
+                return;
+            }
+            if($card['user_id'] != $this->visitor->get('user_id')){
+                $this->show_warning('请不要非法操作');
+                return;
+            }
+
+
+            $this->_curitem('epay');
+            $this->_curmenu('编辑银卡信息');
+            $this->assign('bank_inc', $this->_get_bank_inc());
+            $this->assign('card', $card);
+            $this->display('epay.bank_edit.html');
+        }else{
+            $bank_id = isset($_GET['bank_id'])?$_GET['bank_id']:0;
+
+            $card = $this->mod_epay_bank->get($bank_id);
+            if(!isset($card)){
+                $this->show_warning('该卡不存在');
+                return;
+            }
+            if($card['user_id'] != $this->visitor->get('user_id')){
+                $this->show_warning('请不要非法操作');
+                return;
+            }
+
+            $short_name = trim($_POST['short_name']);
+            $account_name = trim($_POST['account_name']);
+            $bank_type = trim($_POST['bank_type']);
+            $bank_num = trim($_POST['bank_num']);
+
+            if (empty($short_name)) {
+                $this->show_warning('short_name_error');
+                return;
+            }
+            if (empty($bank_num)) {
+                $this->show_warning('num_empty');
+                return;
+            }
+            if (empty($account_name) || strlen($account_name) < 6 || strlen($account_name) > 30) {
+                $this->show_warning('account_name_error');
+                return;
+            }
+            if (!in_array($bank_type, array('debit', 'credit'))) {
+                $this->show_warning('type_error');
+                return;
+            }
+            $bank_name = $this->_get_bank_name($short_name);
+            if (empty($bank_name)) {
+                $this->show_warning('bank_name_error');
+                return;
+            }
+
+            $data = array(
+                'user_id' => $this->visitor->get('user_id'),
+                'bank_name' => $bank_name,
+                'short_name' => strtoupper($short_name),
+                'account_name' => $account_name,
+                'open_bank' => trim($_POST['open_bank']),
+                'bank_type' => $bank_type,
+                'bank_num' => $bank_num,
+            );
+
+            if (!$this->mod_epay_bank->edit($card['bank_id'],$data)) {
+                $this->show_warning('add_error');
+                return;
+            }
+            $this->show_message('修改成功', 'back_list', 'index.php?app=epay&act=withdraw');
+        }
+    }
+
     function bank_add() {
         if (!IS_POST) {
             $this->_curitem('epay');
