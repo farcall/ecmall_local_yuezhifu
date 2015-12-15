@@ -17,7 +17,8 @@ return array (
   'time_format_simple' => 'Y-m-d',
   'time_format_complete' => 'Y-m-d H:i:s',
   'price_format' => '¥%s',
-  'statistics_code' => '',
+  'statistics_code' => '<script language="javascript" type="text/javascript" src="http://js.users.51.la/18711938.js"></script>
+<noscript><a href="http://www.51.la/?18711938" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18711938.asp" style="border:none" /></a></noscript>',
   'sitemap_enabled' => true,
   'sitemap_frequency' => 1,
   'rewrite_enabled' => false,
