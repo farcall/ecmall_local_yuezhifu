@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>众盈商城消费满100返40</title>
+    <link type="text/css" href="{res file=css/weiui/weui.min.css}" rel="stylesheet"/>
+    <script type="text/javascript" src="{lib file=jquery.js}" charset="utf-8"></script>
+    {$_head_tags}
+</head>
+
+<script type="text/javascript">
+    $(function() {
+
+        var canSend = true;
+        var time = 60;
+        var dtime = 60;
+        $("#sendsms").bind('click', function() {
+            var btn = $(this);
+            if (!canSend)
+                return;
+            var sendaddress = $('#phone_mob').val();
+            var fhm = $("[for='phone_mob']").text();
+            if (fhm != '' && fhm != "OK!") {
+                alert("请输入正确的手机号码！");
+                return;
+            }
+            if (fhm == '' && $('#phone_mob').val() == "") {
+                alert("请输入正确的手机号码！");
+                return;
+            }
+            canSend = false;
+            $.ajax({
+                type: "get",
+                url: "index.php?app=member&act=send_code&type=register",
+                data: {
+                    mobile: function() {
+                        return sendaddress;
+                    }
+                },
+                success: function(msg) {
+                    var hander = setInterval(function() {
+                        if (time <= 0) {
+                            canSend = true;
+                            clearInterval(hander);
+                            btn.val("重新发送验证码");
+                            btn.removeAttr("disabled");
+                            time = dtime;
+                        } else {
+                            canSend = false;
+                            btn.attr({
+                                "disabled": "disabled"
+                            });
+                            btn.val(time + "秒后可重新发送");
+                            time--;
+                        }
+                    }, 1000);
+                    if (msg) {
+                        alert("短信已发送至:" + sendaddress + " 请注意查收！");
+                    } else {
+                        canSend = true;
+                        alert("短信发送失败，请检查手机号码是否正确！");
+                    }
+                }
+            });
+        });
+
+
+    });
+</script>
+
+<body>
+<div class="content">
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <img src="{$site_logo}" alt=""/>
+            </div>
+        </div>
+        
+        <form name="" id="register_form" method="post" action="">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="username" id="phone_mob" name="phone_mob" placeholder="请输入您的手机号码">
+                </div>
+            </div>
+
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="password"  id="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="password_confirm" id="password_confirm" placeholder="请重复输入密码">
+                </div>
+            </div>
+
+
+            <div class="weui_btn_area">
+                <!--<a class="weui_btn weui_btn_plain_primary" id="sendsms" href="javascript:">免费发送短信验证码</a>-->
+                <input type="button" class="weui_btn weui_btn_primary" id="sendsms" value="{$lang.send_code}"/>
+
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="confirm_code" id="confirm_code" placeholder="请输入验证码">
+                </div>
+            </div>
+
+
+            <div class="weui_btn_area">
+                <input type="submit" name="Submit"value="立即注册"class="weui_btn weui_btn_primary"title="立即注册" />
+                <input type="hidden" name="ret_url" value="{$ret_url}" />
+            </div>
+
+            <div class="weui_cells weui_cells_checkbox">
+
+                <label class="weui_cell weui_check_label" for="s11">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check"  id="s11" name="agree" value="1" checked="checked">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{$lang.i_have_read} <a href="{url app=article&act=system&code=eula}" target="_blank">{$lang.mall_eula}</a></span>
+                    </div>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

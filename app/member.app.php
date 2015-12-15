@@ -213,6 +213,19 @@ class MemberApp extends MemberbaseApp {
                 'script' => 'jquery.plugins/jquery.validate.js,jquery.plugins/poshy_tip/jquery.poshytip.js',
                 'style' => 'jquery.plugins/poshy_tip/tip-yellowsimple/tip-yellowsimple.css')
             );
+
+
+
+            if(!empty($_SERVER['HTTP_USER_AGENT'])){
+                $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+                $uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile|android)/i";
+
+                if ((preg_match($uachar, $ua))) {
+                   $this->display('member.register.mobile.html');
+                    return;
+                }
+            }
+
             $this->display('member.register.html');
         } else {
             if (!$_POST['agree']) {
