@@ -177,8 +177,8 @@
 .jd2015_floor2 .mc .ks-switchable-content .ks-active{position: relative;float: left;width: 990px;height: 474px;overflow: hidden;}
 .jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list{width: 990px;height: 474px;overflow: hidden;}
 .jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li{float: left;width: 165px;height: 230px;padding: 6px 15.8px 0;border-bottom: 1px solid #ededed;border-right: 1px solid #ededed;overflow: hidden;}
-.jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_img{height: 140px;margin-bottom: 4px;text-align: center;padding-top: 15px;}
-.jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_title{overflow: hidden;height:34px;margin-bottom: 3px;line-height: 17px;}
+.jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_img{height: 165px;margin-bottom: 4px;text-align: center;padding-top: 1px;}
+.jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_title{overflow: hidden;margin-bottom: 3px;line-height: 17px;}
 .jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_title a{color: #666;}
 .jd2015_floor2 .mc .ks-switchable-content .ks-active .goods_list li .p_price{font-size: 15px;font-family: Verdana;color: #E4393C;}
 
