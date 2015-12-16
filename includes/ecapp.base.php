@@ -5,7 +5,7 @@ define('IMAGE_FILE_TYPE', 'gif|jpg|jpeg|png'); // 图片类型，上传图片时
 define('SIZE_GOODS_IMAGE', '2097152');   // 商品大小限制2M
 define('SIZE_STORE_LOGO', '20480');      // 店铺LOGO大小限制2OK
 define('SIZE_STORE_BANNER', '1048576');  // 店铺BANNER大小限制1M
-define('SIZE_STORE_CERT', '409600');     // 店铺证件执照大小限制400K
+define('SIZE_STORE_CERT', '2097152');     // 店铺证件执照大小限制2M
 define('SIZE_STORE_PARTNER', '102400');  // 店铺合作伙伴图片大小限制100K
 define('SIZE_CSV_TAOBAO', '2097152');     // 淘宝助理CSV大小限制2M
 
