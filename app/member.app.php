@@ -580,13 +580,13 @@ class MemberApp extends MemberbaseApp {
                 'url' => 'index.php?app=member&amp;act=location',
             ),
         );
-        if (Conf::get('msg_enabled'))
-        {
-            $submenus[] = array(
-                'name' => 'edit_mobile',
-                'url' => 'index.php?app=member&amp;act=mobile',
-            );
-        }
+//        if (Conf::get('msg_enabled'))
+//        {
+//            $submenus[] = array(
+//                'name' => 'edit_mobile',
+//                'url' => 'index.php?app=member&amp;act=mobile',
+//            );
+//        }
         if ($this->_feed_enabled) {
             $submenus[] = array(
                 'name' => 'feed_settings',
