@@ -349,7 +349,7 @@ return array(
     'friendly_remind' => '友情提示：',
     'close' => '关闭',
     'colon' => '：',
-    'note_for_upload' => '支持JPEG和静态的GIF格式图片，不支持GIF动画图片，上传图片大小不能超过2M.浏览文件时可以按住ctrl或shift键多选',
+    'note_for_upload' => '支持JPEG和静态的GIF格式图片，不支持GIF动画图片，上传图片大小不能超过2M.图片尺寸300x300,浏览文件时可以按住ctrl或shift键多选',
     'uploadedfile' => '上传文件',
     'close_store_notice' => '关闭店铺通知',
     'your_store_is_closed' => '您的店铺已被关闭，原因是：%s',
