@@ -39,7 +39,7 @@
                     <!--{foreach from=$messages item=message name=v}-->
                     <tr <!--{if $smarty.foreach.v.last}-->class="line_bold"<!--{else}-->class="line"<!--{/if}-->>
                         <td class="align2"><!--{if $smarty.get.act neq 'announcepm'}--><input type="checkbox" class="checkitem" value="{$message.msg_id}"/><!--{/if}--></td>
-                        <td class="width13"><img class="makesmall" max_width="48" max_height="48" src="{$message.user_info.portrait}" /><span class="user_name">{$message.user_info.user_name}</span></td>
+                        <td class="width14"><img class="makesmall" max_width="48" max_height="48" src="{$message.user_info.portrait}" /><span class="user_name">{$message.user_info.user_name}</span></td>
                         <td <!--{if $message.new eq 1}-->class="link2 font_bold"<!--{else}-->class="link2"<!--{/if}-->>{$message.content|truncate:110}</td>
                         <td class="align2 color1 width8">{$message.last_update|date:Y-m-d H:i}</td>
                         <td class="width8">
