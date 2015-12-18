@@ -169,7 +169,7 @@ class Seller_xianxiaorderApp extends StoreadminbaseApp {
         $order_images = array();
         $uploadfiles = $this->_uploadedfile_mod->find(array(
             'join' => 'belongs_to_order_xianxia_image',
-            'conditions' => "belong=" . BELONG_XIANXIAPINGZHENG . " AND item_id=0 AND store_id=" . store_id,
+            'conditions' => "belong=" . BELONG_XIANXIAPINGZHENG . " AND item_id=0 AND store_id=" . $store_id,
             'order' => 'add_time ASC'
         ));
         foreach ($uploadfiles as $key => $uploadfile) {
