@@ -114,11 +114,18 @@ class Seller_adminApp extends MemberApp {
 
         $this->assign('system_notice', $this->_get_system_notice('seller_admin'));
 
+        /*消费总金额*/
+        $this->assign('xiaofeizongjine',$this->_xiaofeizongjine($user['user_id']));
+
         /*dong-未用金豆-获奖励金币开始*/
         import('fanli.lib');
         $fanli = new fanli();
         $this->assign('jinbi_jindou',$fanli->getJinbiAndJinbi($my_user_id));
         /*dong-未用金豆-获奖励金币结束*/
+
+        /*申请提现金额*/
+        $tixian = $this->mod_epaylog->getOne("select sum(money) from ecm_epaylog where user_id=$my_user_id and states=70 and complete=0");
+        $this->assign('tixian',$tixian);
 
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));

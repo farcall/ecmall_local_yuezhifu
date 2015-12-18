@@ -86,6 +86,10 @@ class Buyer_adminApp extends MemberApp {
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));
 
+        /*申请提现金额*/
+        $tixian = $this->mod_epaylog->getOne("select sum(money) from ecm_epaylog where user_id=$my_user_id and states=70 and complete=0");
+        $this->assign('tixian',$tixian);
+
         /* 当前用户中心菜单 */
         $this->_curitem('overview');
         $this->_config_seo('title', Lang::get('member_center'));
@@ -99,7 +103,7 @@ class Buyer_adminApp extends MemberApp {
     function _xiaofeizongjine($user_id){
         $order_mod = &m('order');
         $zongjine = $order_mod->getOne("select sum(goods_amount) from ecm_order where buyer_id=$user_id and status=40");
-        return $zongjine;
+        return isset($zongjine)?$zongjine:0;
     }
 
     function _get_member_role() {
