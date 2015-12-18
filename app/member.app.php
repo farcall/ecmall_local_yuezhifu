@@ -9,7 +9,7 @@
 class MemberApp extends MemberbaseApp {
 
     var $_feed_enabled = false;
-
+    var $mod_epaylog;
     function __construct() {
         $this->MemberApp();
     }
@@ -21,6 +21,7 @@ class MemberApp extends MemberbaseApp {
         $this->assign('feed_enabled', $this->_feed_enabled);
         //余额支付 
         $this->epay_mod = & m('epay');
+        $this->mod_epaylog = &m('epaylog');
     }
 
     /**
@@ -30,7 +31,7 @@ class MemberApp extends MemberbaseApp {
     function _xiaofeizongjine($user_id){
         $order_mod = &m('order');
         $zongjine = $order_mod->getOne("select sum(goods_amount) from ecm_order where buyer_id=$user_id and status=40");
-        return $zongjine;
+        return isset($zongjine)?$zongjine:0;
     }
 
     function index() {
@@ -144,6 +145,11 @@ class MemberApp extends MemberbaseApp {
 
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('overview'));
+
+
+        /*申请提现金额*/
+        $tixian = $this->mod_epaylog->getOne("select sum(money) from ecm_epaylog where user_id=$my_user_id and states=70 and complete=0");
+        $this->assign('tixian',$tixian);
 
         /* 当前用户中心菜单 */
         $this->_curitem('overview');
