@@ -27,7 +27,9 @@ class Epay {
 
         $order_sn = EPAY_TRADE_CHARGES . date('YmdHis',gmtime()+8*3600).rand(1000,9999);
         //卖家当前信息
-        $seller_epay = $this->_epay_mod->get($order_info['seller_id']);
+        $seller_epay = $this->_epay_mod->get(array(
+            'conditions' => 'user_id='.$order_info['seller_id'],
+        ));
 
 
         $add_epaylog = array(
