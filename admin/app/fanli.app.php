@@ -138,12 +138,15 @@ class FanliApp extends BackendApp{
         import('fanli.lib');
         $fanli=new fanli();
 
+        $lastfanlizhichu = 0;
+
         //保存ecm_fanli_jinbi
         foreach ($members  as $k => $v) {
             $userMaxJinbi = $this->maxfanli($members[$k]['unused'],$jindou2maxjinbi);
             $userConfirmFanli = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
             $userConfirmFanli = $userConfirmFanli>$userMaxJinbi?$userMaxJinbi:$userConfirmFanli;
 
+            $lastfanlizhichu+=$userConfirmFanli;
 
             $jinbi_data = array(
                 'operate_id' =>$operate_id,
@@ -167,6 +170,9 @@ class FanliApp extends BackendApp{
             $fanli->consumeJindouAndSaveJinbi($jinbi_info);
         }
 
+
+        //更新实际上返利支出的额度
+         $this->mod_fanli_operate->edit($operate_id,'fanli='.$lastfanlizhichu);
 
         //发送奖励通知
         import('mobile_msg.lib');
