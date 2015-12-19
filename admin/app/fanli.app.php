@@ -102,6 +102,8 @@ class FanliApp extends BackendApp{
         $fanliSetting = $this->mod_fanli_setting->get(array(
             'order' => 'add_time desc',
         ));
+
+        $jindou2maxjinbi = $fanliSetting['jindou2maxjinbi'];
         /*平台抽成*抽成用于返利的比例*/
         $theoryfanli = $thisTimeCut*$fanliSetting['chouchenguse_fanli_ratio'];
 
@@ -138,12 +140,17 @@ class FanliApp extends BackendApp{
 
         //保存ecm_fanli_jinbi
         foreach ($members  as $k => $v) {
+            $userMaxJinbi = $this->maxfanli($members[$k]['unused'],$jindou2maxjinbi);
+            $userConfirmFanli = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
+            $userConfirmFanli = $userConfirmFanli>$userMaxJinbi?$userMaxJinbi:$userConfirmFanli;
+
+
             $jinbi_data = array(
                 'operate_id' =>$operate_id,
                 'user_id'=>$v['user_id'],
                 'user_name'=>$v['user_name'],
-                'jinbi'=>floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100,
-                'total'=>$v['jinbi']+floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100,
+                'jinbi'=>$userConfirmFanli,
+                'total'=>$v['jinbi']+$userConfirmFanli,
                 'flow'=>'in',
                 'add_time'=>$add_time,
                 'status'=>1,
@@ -165,7 +172,10 @@ class FanliApp extends BackendApp{
         import('mobile_msg.lib');
         $mobile_msg = new Mobile_msg();
         foreach ($members as $k => $v) {
-            $zengsong = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
+            $userMaxJinbi = $this->maxfanli($members[$k]['unused'],$jindou2maxjinbi);
+            $userConfirmFanli = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
+            $zengsong = $userConfirmFanli>$userMaxJinbi?$userMaxJinbi:$userConfirmFanli;
+
             $msgtext = '您在商城购买的产品，今日赠送的金币数量为:'.$zengsong.'请注意查收';
             $to_mobile = trim($v['user_name']);
             if($mobile_msg->isMobile($to_mobile)){
@@ -175,6 +185,20 @@ class FanliApp extends BackendApp{
 
         $this->show_message('分配成功');
     }
+
+
+
+    /**
+     * @param $unused_jindou  金豆数
+     * @param $jindou2maxjinbi  一个金豆最多可兑换的金币数
+     * 作用:计算X个金豆最多可兑换的金币数,在计算返利是否超出额度前做校验用
+     * Created by QQ:710932
+     */
+    function maxfanli($jindouCount,$jindou2maxjinbi)
+    {
+        return $jindouCount*$jindou2maxjinbi;
+    }
+
     function _preview(){
         //所有成员的未用金豆之和
         $totalJindouCount = $this->getUnusedTotalCounts();
@@ -194,8 +218,11 @@ class FanliApp extends BackendApp{
         $fanliSetting = $this->mod_fanli_setting->get(array(
             'order' => 'add_time desc',
         ));
-        $theoryfanli = $todayCut*$fanliSetting['chouchenguse_fanli_ratio'];
 
+        //一个金豆最多可兑换的金币数
+        $jindou2maxjinbi = $fanliSetting['jindou2maxjinbi'];
+
+        $theoryfanli = $todayCut*$fanliSetting['chouchenguse_fanli_ratio'];
         //计算返利资金
         $confirmfanli = $_GET['confirmfanli']>0?$_GET['confirmfanli']:$theoryfanli;
 
@@ -213,8 +240,12 @@ class FanliApp extends BackendApp{
         $this->assign('page_info', $page);   //将分页信息传递给视图，用于形成分页条
 
         foreach ($pageMember  as $k => $v) {
-            $pageMember[$k]['theoryjinbi'] = floor($theoryfanli*$pageMember[$k]['unused']/$totalJindouCount*100)/100;
-            $pageMember[$k]['previewjinbi'] = floor($confirmfanli*$pageMember[$k]['unused']/$totalJindouCount*100)/100;
+            $userMaxJinbi = $this->maxfanli($pageMember[$k]['unused'],$jindou2maxjinbi);
+            $userTheryFanli = floor($theoryfanli*$pageMember[$k]['unused']/$totalJindouCount*100)/100;
+            $userConfirmFanli = floor($confirmfanli*$pageMember[$k]['unused']/$totalJindouCount*100)/100;
+
+            $pageMember[$k]['theoryjinbi'] =  $userMaxJinbi>$userTheryFanli?$userTheryFanli:$userMaxJinbi;
+            $pageMember[$k]['previewjinbi'] =  $userMaxJinbi>$userConfirmFanli?$userConfirmFanli:$userMaxJinbi;
         }
 
         $this->assign('confirmfanli',$confirmfanli);
