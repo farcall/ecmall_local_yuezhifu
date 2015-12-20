@@ -1,0 +1,97 @@
+{include file="header.html"}
+<div id="rightTop">
+    <p>本地服务频道管理</p>
+    <ul class="subnav">
+        <li><span>店铺管理</span></li>
+        <li><a class="btn1" href="index.php?app=chanel_bendichanpin&amp;act=add">新增店铺</a></li>
+        <!--<li><a class="btn1" href="index.php?app=chanel_bendichanpin&amp;act=setting">频道配置</a></li>-->
+    </ul>
+</div>
+
+
+<div class="groupbuy red">
+    <div class="title">
+        前台排序规则：
+    </div>
+    <ul>
+        <li>优先级从高到底</li>
+        <li>隐藏的不显示</li>
+        <li>推荐的优先显示</li>
+        <li>排序数字越小越靠前</li>
+        <li>最新编辑的优先显示</li>
+    </ul>
+</div>
+
+<div class="mrightTop">
+    <div class="fontl">
+        <form method="get">
+            <div class="left">
+                <input type="hidden" name="app" value="chanel_bendichanpin" />
+                <input type="hidden" name="act" value="index" />
+                店铺(公司)名称:
+                <input class="queryInput" type="text" name="store_name" value="{$query.store_name|escape}" />
+                <input type="submit" class="formbtn" value="{$lang.query}" />
+            </div>
+            <!--{if $filtered}-->
+            <a class="left formbtn1" href="index.php?app=chanel_bendichanpin&act=index">撤销检索</a>
+            <!--{/if}-->
+        </form>
+    </div>
+</div>
+<div class="tdare">
+    <table width="100%" cellspacing="0" class="dataTable">
+        <tr class="tatr1">
+            <td width="50" class="firstCell"><input type="checkbox" class="checkall" />ID</td>
+            <td align="center">店铺名称</td>
+            <td align="center">添加时间</td>
+            <td align="center">编辑时间</td>
+            <td align="center">排序</td>
+            <td align="center">是否推荐</td>
+            <td align="center">状态</td>
+            <td align="handler">操作</td>
+        </tr>
+        <!--{foreach from=$store_list item=store}-->
+        <tr class="tatr2">
+            <td class="firstCell"><input value="{$store.id}" class='checkitem' type="checkbox" />{$store.id}</td>
+            <td align="center">{$store.store_name}</td>
+            <td align="center">{$store.add_time|date:complete}</td>
+            <td align="center">{$store.edit_time|date:complete}</td>
+            <td align="center">{$store.sort}</td>
+
+            {if $store.recommended == 1}
+            <td align="center" class="red">推荐</td>
+            {else}
+            <td align="center">未推荐</td>
+            {/if}
+
+            {if $store.state == 1}
+            <td align="center">显示</td>
+            {else}
+            <td align="center" class="red">隐藏</td>
+            {/if}
+
+            <td class="center" style="width:200px;"><a href="index.php?app=chanel_bendichanpin&amp;act=edit&amp;id={$store.id}">编辑</a> | <a name="drop" href="javascript:drop_confirm('删除确认', 'index.php?app=chanel_bendichanpin&amp;act=drop_bendichanpin&amp;id={$store.id}');">删除</a> </td>
+        </tr>
+        <!--{/foreach}-->
+        <!--{if !$store_list}-->
+        <tr class="no_data">
+            <td colspan="10">{$lang.no_data}</td>
+        </tr>
+        <!--{/if}-->
+    </table>
+    <!--{if $store_list}-->
+    <div id="dataFuncs">
+        <div class="pageLinks">
+            {include file=page.bottom.html}
+        </div>
+        <div id="batchAction" class="left paddingT15">
+            &nbsp;&nbsp;
+            <input class="formbtn batchButton" type="button" value="{$lang.drop}" name="id" uri="index.php?app=chanel_bendichanpin&act=drop" presubmit="confirm('{$lang.drop_confirm}');" />
+            <a href="index.php?app=chanel_bendichanpin&amp;act=add" class="formbtn add_btn">新增</a>
+            &nbsp;&nbsp;
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--{/if}-->
+</div>
+{include file="footer.html"}

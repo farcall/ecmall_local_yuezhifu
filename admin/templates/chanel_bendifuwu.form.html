@@ -1,0 +1,263 @@
+{include file="header.html"}
+<script type="text/javascript">
+    $(function(){
+        $('#store_form').validate({
+            errorPlacement: function(error, element){
+                $(element).next('.field_notice').hide();
+                $(element).after(error);
+            },
+            success       : function(label){
+                label.addClass('right').text('OK!');
+            },
+            onkeyup    : false,
+            rules : {
+                store_name : {
+                    required : true
+                },
+                store_url:{
+                    required : true,
+                    url:true
+                },
+                introduce : {
+                    required : true
+                },
+                introduce_bg:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+
+                big_image:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+
+
+                goods1_url:{
+                    required : true,
+                    url:true
+                },
+                goods2_url:{
+                    required : true,
+                    url:true
+                },
+                goods3_url:{
+                    required : true,
+                    url:true
+                },
+                goods4_url:{
+                    required : true,
+                    url:true
+                },
+
+                goods1_image:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+                goods2_image:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+                goods3_image:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+                goods4_image:{
+                    {if $store == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+
+                sort : {
+                    number   : true
+                },
+            },
+            messages : {
+                store_name : {
+                    required : '不能为空'
+                },
+                store_url:{
+                    required : '不能为空',
+                    url:'请输入完整的url地址'
+                },
+                introduce : {
+                    required : '不能为空'
+                },
+
+                introduce_bg:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+
+                big_image:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+                goods1_url:{
+                    required : '不能为空',
+                    url:'请输入完整的url地址'
+                },
+                goods2_url:{
+                    required : '不能为空',
+                    url:'请输入完整的url地址'
+                },
+                goods3_url:{
+                    required : '不能为空',
+                    url:'请输入完整的url地址'
+                },
+                goods4_url:{
+                    required : '不能为空',
+                    url:'请输入完整的url地址'
+                },
+
+                goods1_image:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+                goods2_image:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+                goods3_image:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+                goods4_image:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+
+                sort : {
+                    number   : '{$lang.number_only}'
+                }
+            }
+        });
+    });
+</script>
+
+
+<div id="rightTop">
+    <p>本地服务频道管理</p>
+    <ul class="subnav">
+        <li><a class="btn1" href="index.php?app=chanel_bendifuwu&amp;act=index">店铺管理</a></li>
+        <li><span>新增店铺</span></li>
+    </ul>
+</div>
+
+
+<div class="info">
+    <form method="post" enctype="multipart/form-data" id="store_form">
+        <table class="infoTable">
+            <tr>
+                <th class="paddingT15">
+                   公司(店铺)名称:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput" id="store_name" type="text" name="store_name" value="{$store.store_name|escape}" /> <label class="field_notice">请输入您的店铺名称</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    公司链接:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput" id="store_url" type="text" name="store_url" value="{$store.store_url|escape}" /> <label class="field_notice">公司链接</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    介绍:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <textarea class="text width_long" name="introduce" id="introduce">{$store.introduce}</textarea>
+                    <label class="field_notice">推荐:不要超过50字</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    商家logo:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableFile2" id="store_logo" type="file" name="store_logo" value="{$store.store_logo}"/>
+                    <label class="field_notice">尺寸:131x55</label>
+                </td>
+            </tr>
+
+            {if $store.store_logo}
+                <tr>
+                    <th class="paddingT15">
+                    </th>
+                    <td class="paddingT15 wordSpacing5">
+                        <img src="{$store.store_logo}" class="makesmall" max_width="120" max_height="90" />
+                    </td>
+                </tr>
+            {/if}
+
+
+            <tr>
+                <th class="paddingT15">
+                    右侧大图:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableFile2" id="banner" type="file" name="banner" value="{$store.banner}"/>
+                    <label class="field_notice">尺寸:670x250</label>
+                </td>
+            </tr>
+
+            {if $store.banner}
+            <tr>
+                <th class="paddingT15">
+                </th>
+                <td class="paddingT15 wordSpacing5">
+                    <img src="{$store.banner}" class="makesmall" max_width="120" max_height="90" />
+                </td>
+            </tr>
+            {/if}
+
+
+            <tr>
+                <th class="paddingT15">
+                    是否推荐:</th>
+                <td class="paddingT15 wordSpacing5">
+                    {if $store and $store.recommended == 0}
+
+                    <label><input type="radio" name="recommended" value="1">&nbsp;是</label>
+                    <label><input type="radio" name="recommended" value="0" checked="true">&nbsp;否</label>
+                    {else}
+                    <label><input type="radio" name="recommended" value="1" checked="true">&nbsp;是</label>
+                    <label><input type="radio" name="recommended" value="0" >&nbsp;否</label>
+                    {/if}
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    是否显示(状态):</th>
+                <td class="paddingT15 wordSpacing5">
+                    {if $store and $store.state == 0}
+                    <label><input type="radio" name="state" value="1">&nbsp;是</label>
+                    <label><input type="radio" name="state" value="0" checked="true">&nbsp;否</label>
+                    {else}
+                        <label><input type="radio" name="state" value="1" checked="true">&nbsp;是</label>
+                        <label><input type="radio" name="state" value="0">&nbsp;否</label>
+                    {/if}
+
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    排序:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="sort" id="sort" type="text" name="sort" value="{if $store.sort}{$store.sort|trim}{else}255{/if}" />
+                    <label class="field_notice">更新排序</label>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td class="ptb20">
+                    <input class="formbtn" type="submit" name="Submit" value="提交" />
+                    <input class="formbtn" type="reset" name="Submit2" value="重置" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{include file="footer.html"}

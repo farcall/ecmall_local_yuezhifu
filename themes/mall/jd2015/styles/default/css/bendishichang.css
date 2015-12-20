@@ -1,0 +1,691 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+.clearfix:after,.col-extra:after,.col-sub:after,.layout:after,.main-wrap:after,.tb-module:after {
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.col-extra,.col-main,.col-sub {
+    float: left;
+    min-height: 1px
+}
+
+.layout {
+    width: 990px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.grid-0,.grid-0 .col-main {
+    width: 100%
+}
+
+.grid-1 .col-main {
+    width: 100%
+}
+
+@media screen and (min-width:1100px) {
+    .layout {
+        width: 1100px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .grid-0,.grid-0 .col-main {
+        width: 100%
+    }
+
+    .grid-1 .col-main {
+        width: 100%
+    }
+}
+
+.layout-grid-0 {
+    width: 100%
+}
+
+
+
+.act-20151212-image-title .img-title {
+    width: 990px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center
+}
+
+.act-20151212-image-title .img-title a {
+    display: block;
+    background: url(//img.alicdn.com/tps/i2/T1ty2QFNNXXXc6Yc2r-1-1.gif) top left
+}
+
+.act-20151212-image-title .module-inner a {
+    background: rgba(212,212,212,.5)
+}
+
+@font-face {
+    font-family:iconfontshoppcqy;src:url(//at.alicdn.com/t/font_1446779567_4049895.eot);src:url(//at.alicdn.com/t/font_1446779567_4049895.eot?#iefix) format('embedded-opentype'),url(//at.alicdn.com/t/font_1446779567_4049895.woff) format('woff'),url(//at.alicdn.com/t/font_1446779567_4049895.ttf) format('truetype'),url(//at.alicdn.com/t/font_1446779567_4049895.svg#iconfont) format('svg')
+}
+
+.act-20151212-shop .listview-item a {
+    display: block
+}
+
+.act-20151212-shop .clearfix {
+    zoom: 1;
+    clear: both
+}
+
+.act-20151212-shop .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+.act-20151212-shop .module-wrap {
+    width: 100%
+}
+
+.act-20151212-shop .module-wrap .mod-wrap {
+    width: 990px;
+    padding: 0 10px;
+    margin: 0 auto
+}
+
+.act-20151212-shop .dataText {
+    display: none
+}
+
+.act-20151212-shop .listview-items {
+    width: 1000px;
+    margin-left: -10px
+}
+
+.act-20151212-shop .listview-items .listview-item {
+    width: 238px;
+    height: 368px;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: #fff
+}
+
+.act-20151212-shop .listview-items .listview-item a {
+    text-decoration: none
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-show-wrap {
+    height: 238px;
+    width: 238px;
+    overflow: hidden;
+    position: relative
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-show-wrap img {
+    height: 100%
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-show-wrap .shop-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#99000000', endColorstr='#99000000');
+    background: rgba(0,0,0,.6)
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-show-wrap :root .shop-name {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#00000000', endColorstr='#00000000')
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-content {
+    width: 238px;
+    height: 123px;
+    text-align: center;
+    background-color: #fff
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-content .shop-logo-wrap {
+    height: 30px;
+    width: 60px;
+    overflow: hidden;
+    padding-top: 12px;
+    margin: 0 auto 12px;
+    background-color: #fff;
+    text-align: center
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-content .shop-logo-wrap img {
+    height: 100%
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-content .shop-title {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    line-height: 14px;
+    font-weight: 100;
+    font-family: SimSun;
+    width: 190px;
+    height: 14px
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-content .shop-declaration {
+    display: block;
+    font-size: 16px;
+    height: 16px;
+    line-height: 1;
+    color: #fc3342;
+    font-weight: 600;
+    font-family: tahoma "Microsoft YaHei";
+    width: 238px;
+    white-space: nowrap
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-btn {
+    width: 226px;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    font-size: 12px;
+    background-color: #fc3342;
+    color: #fff;
+    margin: 15px 6px 6px;
+    vertical-align: middle
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-btn .iconfont {
+    font-family: iconfontshoppcqy;
+    font-style: normal;
+    margin-left: 5px
+}
+
+.act-20151212-shop .listview-items .listview-item .shop-btn:hover span {
+    text-decoration: underline
+}
+
+.act-20151212-shop .listview-items .listview-item .abtest-shop-btn {
+    border-radius: 14px
+}
+
+.act-20151212-shop .listview-items .listview-item .enter-shop {
+    display: none
+}
+
+.act-20151212-shop .longPic .listview-item {
+    height: 376px
+}
+
+.act-20151212-shop .longPic .listview-item .shop-show-wrap {
+    height: 253px
+}
+
+.act-20151212-shop .onePit li:first-child {
+    width: 486px;
+    height: 368px;
+    overflow: visible;
+    background: 0 0;
+    vertical-align: bottom
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-banner-img {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    right: 0
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act {
+    position: absolute;
+    z-index: 3;
+    top: 98px;
+    right: 8px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.text-links-5-6 {
+    width: 104px;
+    top: 102px;
+    right: 15px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.text-links-5-6 .nav-act-item {
+    width: 104px;
+    height: 36px;
+    line-height: 36px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.text-links-2-4 .nav-act-item {
+    height: 50px;
+    line-height: 50px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-4-6 {
+    width: 149px;
+    padding-top: 3px;
+    background-color: #fbee0a;
+    clear: both;
+    overflow: hidden;
+    right: 11px;
+    top: 90px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-4-6 .abtest-nav-act-item {
+    width: 70px;
+    height: 70px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    float: left
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-4-6 .abtest-nav-act-item span {
+    width: 70px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-2-3 {
+    right: 11px;
+    width: 76px;
+    padding-top: 3px;
+    background-color: #fbee0a;
+    top: 94px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-2-3 .abtest-nav-act-item {
+    width: 70px;
+    height: 70px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    float: left
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act.pic-links-2-3 .abtest-nav-act-item span {
+    width: 70px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .nav-act-item {
+    width: 107px;
+    height: 30px;
+    vertical-align: top;
+    color: #400205;
+    margin-bottom: 3px;
+    text-decoration: none;
+    position: relative;
+    background-color: #fe0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .nav-act-item span {
+    color: #400205;
+    width: 100%;
+    text-align: center
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .nav-act-item:hover {
+    background-color: #400205!important;
+    text-decoration: none
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .nav-act-item:hover span {
+    color: #fff
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item {
+    margin-left: 4px;
+    width: 106px;
+    height: 84px;
+    text-align: center;
+    vertical-align: top;
+    margin-bottom: 4px;
+    font-size: 12px;
+    position: relative;
+    background-color: #eaeaea
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item img {
+    width: 100%;
+    height: 100%
+}
+
+.act-20151212-shop .onePit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item span {
+    background-color: #300;
+    filter: alpha(opacity=80);
+    -moz-opacity: .8;
+    -khtml-opacity: .8;
+    opacity: .8;
+    color: #fff;
+    width: 106px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden
+}
+
+.act-20151212-shop a,.act-20151212-shop a:hover {
+    text-decoration: none
+}
+
+.act-20151212-shop .onePit .longPic,.act-20151212-shop .onePit .longPic li:first-child .nav-banner-img {
+    width: 255px;
+    height: 405px
+}
+
+.act-20151212-shop .onePit .squarePic,.act-20151212-shop .onePit .squarePic li:first-child .nav-banner-img {
+    width: 244px;
+    height: 342px
+}
+
+.act-20151212-shop .twoPit .longPic {
+    width: 482px;
+    height: 405px
+}
+
+.act-20151212-shop .twoPit .longPic li:first-child .nav-banner-img {
+    width: 482px;
+    height: 417px
+}
+
+.act-20151212-shop .twoPit .squarePic {
+    width: 406px;
+    height: 342px
+}
+
+.act-20151212-shop .twoPit .squarePic li:first-child .nav-banner-img {
+    width: 406px;
+    height: 352px
+}
+
+.act-20151212-shop .twoPit li:first-child {
+    width: 486px;
+    overflow: visible;
+    background: 0 0;
+    vertical-align: bottom
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    position: relative
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-banner-img {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act {
+    position: absolute;
+    z-index: 3;
+    top: 65px;
+    right: 14px;
+    width: 226px;
+    margin-left: -4px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.text-links-13-18 {
+    width: 219px;
+    right: 15px;
+    top: 102px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.text-links-13-18 .nav-act-item {
+    width: 70px;
+    height: 30px;
+    margin-left: 3px;
+    margin-bottom: 3px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.text-links-7-12 {
+    width: 214px;
+    right: 15px;
+    top: 102px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.text-links-7-12 .nav-act-item {
+    width: 104px;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 3px;
+    margin-bottom: 3px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-9-18 {
+    width: 298px;
+    right: 11px;
+    padding-top: 3px;
+    background-color: #fbee0a;
+    top: 93px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-9-18 .abtest-nav-act-item {
+    width: 56px;
+    height: 56px;
+    margin-left: 3px;
+    margin-bottom: 3px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-9-18 .abtest-nav-act-item span {
+    width: 56px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-5-8 {
+    right: 11px;
+    width: 295px;
+    padding-top: 3px;
+    background-color: #fbee0a;
+    top: 130px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-5-8 .abtest-nav-act-item {
+    width: 70px;
+    height: 70px;
+    margin-left: 3px;
+    margin-bottom: 3px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-5-8 .abtest-nav-act-item span {
+    width: 70px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-4 {
+    right: 11px;
+    width: 222px;
+    padding-top: 3px;
+    background-color: #fbee0a;
+    top: 125px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-4 .abtest-nav-act-item {
+    width: 70px;
+    height: 70px;
+    margin-left: 3px;
+    margin-bottom: 3px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act.pic-links-4 .abtest-nav-act-item span {
+    width: 70px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .nav-act-item {
+    float: left;
+    margin-left: 4px;
+    width: 107px;
+    height: 30px;
+    vertical-align: top;
+    color: #400205;
+    background-color: #fe0;
+    margin-bottom: 4px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .nav-act-item span {
+    color: #400205;
+    width: 100%;
+    text-align: center
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .nav-act-item:hover {
+    background-color: #400205!important
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .nav-act-item:hover span {
+    color: #fff
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item {
+    float: left;
+    margin-left: 4px;
+    width: 106px;
+    height: 84px;
+    text-align: center;
+    vertical-align: top;
+    margin-bottom: 4px;
+    font-size: 12px;
+    position: relative;
+    background-size: contain
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item img {
+    width: 100%;
+    height: 100%
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .abtest-nav-act-item span {
+    background-color: #300;
+    filter: alpha(opacity=80);
+    -moz-opacity: .8;
+    -khtml-opacity: .8;
+    opacity: .8;
+    color: #fff;
+    width: 106px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .item_7 {
+    width: 70px;
+    height: 62px
+}
+
+.act-20151212-shop .twoPit li:first-child .nav-banner .nav-list-act .item_7 span {
+    width: 70px
+}
+
+.act-20151212-shop .btn_nvzhuang {
+    background-color: #c80068
+}
+
+.act-20151212-shop .btn_nanzhuang {
+    background-color: #0028bd
+}
+
+.act-20151212-shop .btn_nvxienanxie {
+    background-color: #6900a2
+}
+
+.act-20151212-shop .btn_meizhuang {
+    background-color: #ff4eb5
+}
+
+.act-20151212-shop .btn_yundong {
+    background-color: #0095e0
+}
+
+.act-20151212-shop .btn_xiangbao {
+    background-color: #c80068
+}
+
+.act-20151212-shop .btn_neiyi {
+    background-color: #1292eb
+}
+
+.act-20151212-shop .btn_zhubao {
+    background-color: #953500
+}
+
+.act-20151212-shop .btn_tongzhuang {
+    background-color: #a038c7
+}
+
+.act-20151212-shop .btn_muying {
+    background-color: #ff4eb5
+}
+
+.act-20151212-shop .btn_shuma {
+    background-color: #002fb5
+}
+
+.act-20151212-shop .btn_jiadian {
+    background-color: #ed5614
+}
+
+.act-20151212-shop .btn_jiaju {
+    background-color: #bc5c00
+}
+
+.act-20151212-shop .btn_jiazhuang {
+    background-color: #075fd1
+}
+
+.act-20151212-shop .btn_baihuo {
+    background-color: #e27a00
+}
+
+.act-20151212-shop .btn_meishi {
+    background-color: #15943e
+}
+
+.act-20151212-shop .btn_qichepeijian {
+    background-color: #0025bd
+}
+
+.act-20151212-shop .btn_quanqiugou {
+    background-color: #573ead
+}
+
+.act-20151212-shop .btn_zhongguozhizao {
+    background-color: #a9001d
+}
+
+.act-20151212-shop .btn_paimaihui {
+    background-color: #780090
+}
+
+.act-20151212-shop .btn_default {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#4CFFFFFF', endColorstr='#4CFFFFFF');
+    background: rgba(255,255,255,.3)
+}

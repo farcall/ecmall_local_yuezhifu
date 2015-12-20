@@ -1,0 +1,176 @@
+{include file="header.html"}
+<script type="text/javascript">
+    $(function(){
+        $('#shichang_form').validate({
+            errorPlacement: function(error, element){
+                $(element).next('.field_notice').hide();
+                $(element).after(error);
+            },
+            success       : function(label){
+                label.addClass('right').text('OK!');
+            },
+            onkeyup    : false,
+            rules : {
+                name : {
+                    required : true
+                },
+                introduce : {
+                    required : true
+                },
+                introduce_bg:{
+                    {if $shichang == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+
+                banner:{
+                    {if $shichang == null} required : true, {/if}
+                    accept  : 'gif|png|jpe?g'
+                },
+                sort : {
+                    number   : true
+                },
+            },
+            messages : {
+                name : {
+                    required : '不能为空'
+                },
+                introduce : {
+                    required : '不能为空'
+                },
+
+                introduce_bg:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+
+                banner:{
+                    required : '不能为空',
+                    accept : '只接受gif|png|jpe?g类型'
+                },
+                sort : {
+                    number   : '{$lang.number_only}'
+                }
+            }
+        });
+    });
+</script>
+
+
+<div id="rightTop">
+    <p>本地市场管理</p>
+    <ul class="subnav">
+        <li><a class="btn1" href="index.php?app=chanel_bendishichang&id={$shichang.id}&act=index">市场管理</a></li>
+        <li><span>新增市场</span></li>
+    </ul>
+</div>
+
+
+<div class="info">
+    <form method="post" enctype="multipart/form-data" id="shichang_form">
+        <table class="infoTable">
+            <tr>
+                <th class="paddingT15">
+                   市场名称:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableInput" id="name" type="text" name="name" value="{$shichang.name|escape}" /> <label class="field_notice">请输入您的店铺名称</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    顶部banner:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableFile2" id="banner" type="file" name="banner" value="{$shichang.banner}"/>
+                    <label class="field_notice">尺寸:131x55</label>
+                </td>
+            </tr>
+
+            {if $shichang.banner}
+            <tr>
+                <th class="paddingT15">
+                </th>
+                <td class="paddingT15 wordSpacing5">
+                    <img src="{$shichang.banner}" class="makesmall" max_width="120" max_height="90" />
+                </td>
+            </tr>
+            {/if}
+
+
+            <tr>
+                <th class="paddingT15">
+                    介绍:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <textarea class="text width_long" name="introduce" id="introduce">{$shichang.introduce}</textarea>
+                    <label class="field_notice">推荐:不要超过150字</label>
+                </td>
+            </tr>
+
+
+            <tr>
+                <th class="paddingT15">
+                    简介背景图:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="infoTableFile2" id="introduce_bg" type="file" name="introduce_bg" value="{$shichang.introduce_bg}"/>
+                    <label class="field_notice">尺寸:486x376</label>
+                </td>
+            </tr>
+
+            {if $shichang.introduce_bg}
+            <tr>
+                <th class="paddingT15">
+                </th>
+                <td class="paddingT15 wordSpacing5">
+                    <img src="{$shichang.introduce_bg}" class="makesmall" max_width="120" max_height="90" />
+                </td>
+            </tr>
+            {/if}
+
+
+            <tr>
+                <th class="paddingT15">
+                    是否推荐:</th>
+                <td class="paddingT15 wordSpacing5">
+                    {if $shichang and $shichang.recommended == 0}
+
+                    <label><input type="radio" name="recommended" value="1">&nbsp;是</label>
+                    <label><input type="radio" name="recommended" value="0" checked="true">&nbsp;否</label>
+                    {else}
+                    <label><input type="radio" name="recommended" value="1" checked="true">&nbsp;是</label>
+                    <label><input type="radio" name="recommended" value="0" >&nbsp;否</label>
+                    {/if}
+                </td>
+            </tr>
+
+            <tr>
+                <th class="paddingT15">
+                    是否显示(状态):</th>
+                <td class="paddingT15 wordSpacing5">
+                    {if $shichang and $shichang.state == 0}
+                    <label><input type="radio" name="state" value="1">&nbsp;是</label>
+                    <label><input type="radio" name="state" value="0" checked="true">&nbsp;否</label>
+                    {else}
+                        <label><input type="radio" name="state" value="1" checked="true">&nbsp;是</label>
+                        <label><input type="radio" name="state" value="0">&nbsp;否</label>
+                    {/if}
+
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">
+                    排序:</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input class="sort" id="sort" type="text" name="sort" value="{if $shichang.sort}{$shichang.sort|trim}{else}255{/if}" />
+                    <label class="field_notice">更新排序</label>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td class="ptb20">
+                    <input class="formbtn" type="submit" name="Submit" value="提交" />
+                    <input class="formbtn" type="reset" name="Submit2" value="重置" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{include file="footer.html"}

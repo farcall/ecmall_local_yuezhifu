@@ -1,0 +1,143 @@
+{include file=header.html}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".w-full .float-left").hover(function(){
+            $(".col-1 .left").show();
+        },function(){
+        });
+
+        $('.col-1 .left').hover(function(){
+        },function(){
+            $(".col-1 .left").hide();
+
+        });
+    });
+</script>
+
+
+<style>
+    #main {
+    background-color: #fc3343;
+    background-image: none;
+    background-repeat: repeat;
+    background-position: 0 0
+}</style>
+
+
+
+
+<div  id="main" class="w-full">
+    <div id="page-home" class="w-full mb20">
+        <div class="col-1 relative w">
+            <div class="left" area="col-1-left" widget_type="area" style="display: none">
+                <!--{widgets page=channel_bendishichang area=col-1-left}-->
+            </div>
+        </div>
+        <div class="col-2" area="col-2" widget_type="area">
+            <!--{widgets page=channel_bendishichang area=col-2}-->
+        </div>
+        <div class="col-3 w" area="col-3" widget_type="area">
+            <!--{widgets page=channel_bendishichang area=col-3}-->
+        </div>
+
+
+
+        <div class="col-5 w">
+                <div class="shichang_list" style="width: 1000px;margin: 0 auto">
+                    <!--{foreach from=$shichang_list item=shichang}-->
+                    <div class="shichang" style="margin-top: 60px;">
+                        <div class="shichang_nav">
+                            <!-- container -->
+                            <div class="grid-0">
+                                <!-- col -->
+                                <div class="col col-main">
+                                    <div class="main-wrap J_Region">
+                                        <!--module -->
+                                        <div class="act-20151212-image-title J_Module" >
+                                            <div class="module-wrap">
+                                                <div style="height: px;width:990px;padding-top:10px;padding-bottom:10px;background-color: " class="img-title J_Title theme-mod-wrap-bg  ">
+
+                                                    <a href="#" target="_blank">
+                                                        <img src="{$shichang.banner}" alt="{$shichang.name}">
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--module -->
+                                    </div>
+
+                                </div>
+                                <!--col -->
+
+                            </div>
+                            <!-- container -->
+
+                        </div>
+                        <div class="shichang_stores">
+                            <div class="grid-0">
+                                <div class="act-20151212-shop" style="margin:0 auto">
+                                    <div class="module-wrap J_tb_lazyload">
+                                        <div class="mod-wrap theme-mod-wrap-bg">
+                                            <ul class="listview-items  longPic twoPit J_dynamic clearfix">
+                                                <li class="listview-item">
+                                                    <div class="nav-banner">
+
+                                                        <a href="#" target="_blank">
+                                                            <img class="nav-banner-img" src="{$shichang.introduce_bg}" width="486px"  height="376px" title="{$shichang.name}" alt="{$shichang.name}">
+                                                        </a>
+
+                                                        <div class="nav-list-act long text-links-13-18">
+                                                            <p style="color: #fff;font-size: 14px;height: 14px;line-height:150%;margin: 0;" >
+                                                                {$shichang.introduce}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <!--{foreach from=$shichang.stores item=store}-->
+                                                <li class="listview-item">
+                                                    <a href="{$store.url}" target="_blank">
+                                                        <div class="shop-show-wrap img-placeholder">
+                                                            <img alt="" src="{$store.big_image}" width="238px" height="238px">
+                                                            <p class="shop-name" title="{$store.big_image_title}">{$store.big_image_title}</p>
+                                                        </div>
+                                                        <div class="shop-content">
+                                                            <div class="shop-logo-wrap">
+                                                                <img alt="{$store.name}" src="{$store.store_logo}">
+                                                            </div>
+                                                            <span class="shop-declaration">{$store.store_logo_title}</span>
+
+                                                            <div class="shop-btn grad-red theme-hover" style="display: block;">
+                                                                <span>{$store.button_title}</span><i class="iconfont"></i>
+                                                            </div>
+                                                            <div class="shop-btn enter-shop theme-hover" style="display: none;">
+                                                                <span>进入店铺</span><i class="iconfont"></i>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <!--{/foreach}-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--{/foreach}-->
+
+                <div class="page" style="margin-top: 10px;margin-right:10px;">
+                    <p class="position2 clearfix">
+                        {include file=member.page.bottom.html}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{include file=footer.html}

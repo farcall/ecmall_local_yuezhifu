@@ -1505,10 +1505,21 @@ form label.validate_right { padding-left:12px; background:transparent url(../ima
 
 
 
-
-
-
 /*********************************  以上为购物车到交易完成结束的页面代码，如果没有必要（除了修改宽度高度等），不要修改上面的代码 ---- 结束 *******************/
 
 
+/*本地产品 begin*/
+.channel_bendichanpin_floor1 .mt{height: 36px;overflow: visible;position: relative;}
+.channel_bendichanpin_floor1 .mt h2{position: relative;padding-left: 40px;color: #333;float: left;display: inline;line-height: 30px;font-size: 20px;}
+.channel_bendichanpin_floor1{height: 368px; margin-top: 25px;}
+.channel_bendichanpin_floor1 ul {height: 368px;width: 1200px;margin-left: 5px;}
+.channel_bendichanpin_floor1 ul li{float: left;margin-right: 0px;width: 240px;display: block;}
+.channel_bendichanpin_floor1 ul li a{display: block;}
+.channel_bendichanpin_floor1 ul li a img{width:231px;height: 340px;}
+/*本地产品 end*/
 
+
+/*本地市场 begin*/
+.bendiintroduce{width: 910px;margin: 0 auto;padding-top: 40px;padding-bottom: 40px}
+.bendiintroduce p{text-indent: 2em;font-size: 16px;color: #ffffff}
+/*本地市场 end*/

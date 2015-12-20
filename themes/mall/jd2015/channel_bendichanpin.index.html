@@ -1,0 +1,79 @@
+{include file=header.html}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".w-full .float-left").hover(function(){
+            $(".col-1 .left").show();
+        },function(){
+        });
+
+        $('.col-1 .left').hover(function(){
+        },function(){
+            $(".col-1 .left").hide();
+
+        });
+    });
+</script>
+
+
+<div  id="main" class="w-full">
+    <div id="page-home" class="w-full mb20">
+        <div class="col-1 relative w">
+            <div class="left" area="col-1-left" widget_type="area" style="display: none">
+                <!--{widgets page=channel_bendichanpin area=col-1-left}-->
+            </div>
+        </div>
+        <div class="col-2" area="col-2" widget_type="area">
+            <!--{widgets page=channel_bendichanpin area=col-2}-->
+        </div>
+        <div class="col-3 w" area="col-3" widget_type="area">
+            <!--{widgets page=channel_bendichanpin area=col-3}-->
+        </div>
+
+        <div class="col-4 w" area="col-4" widget_type="area">
+            <div class="chanel_bendichanpin_floor2 w clearfix">
+                <div class="store_list">
+                    <ul>
+                        <!--{foreach from=$store_list item=store}-->
+                        <li>
+                            <div class="store">
+                                <h1 class="title">{$store.store_name}</h1>
+                                <div class="content" >
+                                    <div class="left">
+                                        <a href="{$store.store_url}">
+                                            <img src="{$store.introduce_bg}" alt="" height="348px" width="190px"/>
+                                        </a>
+                                        <div class="introduce">
+                                           <h1>企业简介:</h1>
+                                            <p>{$store.introduce}</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="mid">
+                                        <a href="{$store.store_url}"><img src="{$store.big_image}" alt="" width="546px" height="348px"/></a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="{$store.goods1_url}" class="img4"><img src="{$store.goods1_image}" alt="" height="174px" width="230px"/></a>
+                                        <a href="{$store.goods2_url}" class="img4"><img src="{$store.goods2_image}" alt="" height="174px" width="230px"/></a>
+                                        <a href="{$store.goods3_url}" class="img4"><img src="{$store.goods3_image}" alt="" height="174px" width="230px"/></a>
+                                        <a href="{$store.goods4_url}" class="img4"><img src="{$store.goods4_image}" alt="" height="174px" width="230px"/></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                        <!--{/foreach}-->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page" style="margin-top: 10px">
+                <p class="position2 clearfix">
+                    {include file=member.page.bottom.html}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{include file=footer.html}

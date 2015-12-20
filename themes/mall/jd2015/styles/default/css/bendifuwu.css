@@ -1,0 +1,27 @@
+.storelist {width: 1098px;background-color: RGB(245,245,245);margin: 15px auto;overflow:hidden;}
+.storelist .content {width: 1070px;margin: 10px auto;}
+.storelist ul li{width: 1070px;height: 250px; margin: 10px auto;background-color: red}
+.storelist .content ul li .left{height:250px; width:400px;background-color: RGB(255,255,255);float: left;text-align: center;}
+.storelist .content ul li .left img{width: 131px;height: 55px;margin: 5px auto;display: inline-block}
+.storelist .content ul li .left h3{font-size: 16px;color: #001b34}
+.storelist .content ul li .left p{font-size: 14px;margin-top: 15px;/*text-align: left*/}
+.storelist .content ul li .left .button{
+    height: 48px;
+    width: 140px;
+    display: inline-block;
+    border: 1px solid #DD2727;
+    line-height: 48px;
+    text-align: center;
+    font-size: 14px;
+    color: #DD2727;
+    background: transparent;
+    border-radius: 2px;
+    -o-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    outline: 0;
+    cursor: pointer;
+    margin-top: 40px;
+}
+.storelist .content ul li .right{height:250px;width:670px;float: right}
