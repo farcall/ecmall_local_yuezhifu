@@ -68,9 +68,10 @@ $(function(){
       <tr>
         <th class="paddingT15">{$lang.uploaded_image}:</th>
         <td class="paddingT15 wordSpacing5">
-          {if $store.image_1}<a href="{$site_url}/{$store.image_1}" target="_blank">{$lang.view}</a>{/if}
-          {if $store.image_2}<a href="{$site_url}/{$store.image_2}" target="_blank">{$lang.view}</a>{/if}
-          {if $store.image_3}<a href="{$site_url}/{$store.image_3}" target="_blank">{$lang.view}</a>{/if}        </td>
+          {if $store.image_1} <img src="{$site_url}/{$store.image_1}" alt="" height="300px" width="auto"/>{/if}
+          {if $store.image_2}<img src="{$site_url}/{$store.image_2}" alt="" height="300px" width="auto"/>{/if}
+          {if $store.image_3} <img src="{$site_url}/{$store.image_3}" alt="" height="300px" width="auto"/>{/if}
+        </td>
       </tr>
       <tr>
         <th class="paddingT15" valign="top">{$lang.reject_reason}:</th>
