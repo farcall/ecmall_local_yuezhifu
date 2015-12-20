@@ -994,6 +994,12 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'my_goods',
                 'icon' => 'ico8',
             );
+            $menu['im_seller']['submenu']['add_goods'] = array(
+                'text' => '新增商品',
+                'url' => 'index.php?app=my_goods&act=add',
+                'name' => 'add_goods',
+                'icon' => 'ico8',
+            );
             $menu['im_seller']['submenu']['order_manage'] = array(
                 'text' => Lang::get('order_manage'),
                 'url' => 'index.php?app=seller_order',

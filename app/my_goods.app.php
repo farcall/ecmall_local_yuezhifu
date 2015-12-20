@@ -429,7 +429,7 @@ class My_goodsApp extends StoreadminbaseApp {
 
             /* 当前页面信息 */
             $this->_curlocal(LANG::get('member_center'), 'index.php?app=member', LANG::get('my_goods'), 'index.php?app=my_goods', LANG::get('goods_add'));
-            $this->_curitem('my_goods');
+            $this->_curitem('add_goods');
             $this->_curmenu('goods_add');
             $this->_config_seo('title', Lang::get('member_center') . ' - ' . Lang::get('goods_add'));
 
