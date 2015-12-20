@@ -42,8 +42,10 @@
                         <dl class="clearfix">
                             <dt>卡类型</dt>
                             <dd>
-                                <label><input type="radio" name="bank_type" value="debit" {if $smarty.get.bank_type eq 'debit' || $card.bank_type eq 'debit'} checked="checked" {/if} />储蓄卡（借记卡）</label>
-                                <label><input type="radio" name="bank_type" value="credit" {if $smarty.get.bank_type eq 'credit' || $card.bank_type eq 'credit'} checked="checked" {/if} />信用卡（贷记卡）</label>
+                                <label><input type="radio" name="bank_type" value="debit" checked="checked"/>储蓄卡（借记卡）</label>
+
+                                <!--<label><input type="radio" name="bank_type" value="debit" {if $smarty.get.bank_type eq 'debit' || $card.bank_type eq 'debit'} checked="checked" {/if} />储蓄卡（借记卡）</label>-->
+                                <!--<label><input type="radio" name="bank_type" value="credit" {if $smarty.get.bank_type eq 'credit' || $card.bank_type eq 'credit'} checked="checked" {/if} />信用卡（贷记卡）</label>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
