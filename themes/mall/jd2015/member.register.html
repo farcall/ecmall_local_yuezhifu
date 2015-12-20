@@ -128,6 +128,8 @@
         var time = 60;
         var dtime = 60;
         $("#sendsms").bind('click', function() {
+            $("#sendsms").css('background','#FF008A');
+            $("#sendsms").css('color','#FFFFFF');
             var btn = $(this);
             if (!canSend)
                 return;
@@ -154,6 +156,8 @@
                     var hander = setInterval(function() {
                         if (time <= 0) {
                             canSend = true;
+                            $("#sendsms").css('background','#f4f4f4');
+                            $("#sendsms").css('color','#333');
                             clearInterval(hander);
                             btn.val("重新发送验证码");
                             btn.removeAttr("disabled");
