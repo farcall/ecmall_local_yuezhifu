@@ -847,6 +847,13 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'overview',
                     'icon' => 'ico1',
                 ),
+                'epay' => array(
+                    'text' => Lang::get('epay'),
+                    'url' => 'index.php?app=epay&act=logall',
+                    'name' => 'epay',
+                    'icon' => 'ico13',
+                ),
+
 //                'refer'  => array(
 //                    'text'  => Lang::get('refer'),
 //                    'url'   => 'index.php?app=refer',
@@ -883,18 +890,12 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'message',
                     'icon' => 'ico3',
                 ),
-                'friend' => array(
-                    'text' => Lang::get('friend'),
-                    'url' => 'index.php?app=friend',
-                    'name' => 'friend',
-                    'icon' => 'ico4',
-                ),
-                'epay' => array(
-                    'text' => Lang::get('epay'),
-                    'url' => 'index.php?app=epay&act=logall',
-                    'name' => 'epay',
-                    'icon' => 'ico13',
-                ),
+//                'friend' => array(
+//                    'text' => Lang::get('friend'),
+//                    'url' => 'index.php?app=friend',
+//                    'name' => 'friend',
+//                    'icon' => 'ico4',
+//                ),
 
             ),
         );
