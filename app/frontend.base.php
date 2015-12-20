@@ -988,16 +988,22 @@ class MemberbaseApp extends MallbaseApp {
                 'submenu' => array(),
             );
 
-            $menu['im_seller']['submenu']['my_goods'] = array(
-                'text' => Lang::get('my_goods'),
-                'url' => 'index.php?app=my_goods',
-                'name' => 'my_goods',
-                'icon' => 'ico8',
-            );
             $menu['im_seller']['submenu']['add_goods'] = array(
                 'text' => '新增商品',
                 'url' => 'index.php?app=my_goods&act=add',
                 'name' => 'add_goods',
+                'icon' => 'ico8',
+            );
+            $menu['im_seller']['submenu']['order_xianxia'] = array(
+                'text' => '线下做单',
+                'url' => 'index.php?app=seller_xianxiaorder',
+                'name' => '线下做单',
+                'icon' => 'ico10',
+            );
+            $menu['im_seller']['submenu']['my_goods'] = array(
+                'text' => Lang::get('my_goods'),
+                'url' => 'index.php?app=my_goods',
+                'name' => 'my_goods',
                 'icon' => 'ico8',
             );
             $menu['im_seller']['submenu']['order_manage'] = array(
@@ -1006,12 +1012,7 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'order_manage',
                 'icon' => 'ico10',
             );
-            $menu['im_seller']['submenu']['order_xianxia'] = array(
-                'text' => '线下做单',
-                'url' => 'index.php?app=seller_xianxiaorder',
-                'name' => '线下做单',
-                'icon' => 'ico10',
-            );
+
             $menu['im_seller']['submenu']['my_category'] = array(
                 'text' => Lang::get('my_category'),
                 'url' => 'index.php?app=my_category',

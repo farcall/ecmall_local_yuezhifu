@@ -166,7 +166,7 @@ return array(
 //            ),
         ),
     ),
-//	// 聚划算
+	// 聚划算
 //    'ju' => array(
 //        'text' => Lang::get('ju'),
 //        'default' => 'jutemplate',
@@ -189,6 +189,41 @@ return array(
 //            ),
 //        ),
 //    ),
+
+    //本地产品
+    'bendichanpin'=>array(
+        'text'=>'本地产品',
+        'default'=>'index',
+        'children'=>array(
+            'index'=>array(
+                'text'=>'商铺列表',
+                'url'=>'index.php?app=chanel_bendichanpin',
+            ),
+        ),
+    ),
+
+    //本地服务
+    'bendifuwu'=>array(
+        'text'=>'本地服务',
+        'default'=>'index',
+        'children'=>array(
+            'index'=>array(
+                'text'=>'商铺列表',
+                'url'=>'index.php?app=chanel_bendifuwu',
+            ),
+        ),
+    ),
+    //本地市场
+    'bendishichang'=>array(
+        'text'=>'本地市场',
+        'default'=>'index',
+        'children'=>array(
+            'index'=>array(
+                'text'=>'市场管理',
+                'url'=>'index.php?app=chanel_bendishichang',
+            ),
+        ),
+    ),
     // 店铺
     'store' => array(
         'text' => Lang::get('store'),
@@ -265,7 +300,8 @@ return array(
         ),
         
     ),
-    
+
+
     // 网站
     'website' => array(
         'text' => Lang::get('website'),
