@@ -86,14 +86,15 @@ $(function(){
                 checkTel: '{$lang.phone_tel_error}'
             },
             image_1: {
-                required:'请上传身份证复印件',
+                required:'请上传身份证正面',
                 accept: '{$lang.select_valid_image}'
             },
             image_2: {
-                required:'请上传工商营业执照',
+                required:'请上传身份证反面',
                 accept: '{$lang.select_valid_image}'
             },
             image_3: {
+                required:'请上传工商营业执照',
                 accept: '{$lang.select_valid_image}'
             },
             notice: {
@@ -175,19 +176,26 @@ $(function(){
                 <td class="padding3"><span class="fontColor3">*</span> <span class="field_notice">{$lang.input_tel}</span></td>
               </tr>
               <tr>
-                 <th>{$lang.upload_image}{$lang.colon}</th>
+                 <th>身份证正面:</th>
                  <td><input type="file" name="image_1" />
                        {if $store.image_1}<p class="d_inline"><a href="{$site_url}/{$store.image_1}" target="_blank">{$lang.view}</a></p>{/if}
                  </td>
                  <td><span class="field_notice">{$lang.note_for_image}</span></td>
               </tr>
               <tr>
-                 <th>{$lang.upload_permit}{$lang.colon}</th>
+                 <th>身份证反面:</th>
                  <td><input type="file" name="image_2" />
                      {if $store.image_2}<p class="d_inline"><a href="{$site_url}/{$store.image_2}" target="_blank">{$lang.view}</a></p>{/if}
                  </td>
                  <td><span class="field_notice">{$lang.note_for_image}</span></td>
               </tr>
+             <tr>
+                 <th>工商营业执照:</th>
+                 <td><input type="file" name="image_3" />
+                     {if $store.image_3}<p class="d_inline"><a href="{$site_url}/{$store.image_3}" target="_blank">{$lang.view}</a></p>{/if}
+                 </td>
+                 <td><span class="field_notice">{$lang.note_for_image}</span></td>
+             </tr>
               <tr>
                  <td colspan="2" class="warning"><p><input type="checkbox"{if $store} checked="checked"{/if} name="notice" value="1" id="warning" /> <label for="warning">{$lang.notice}</label></p></td>
                  <td class="padding3"></td>
