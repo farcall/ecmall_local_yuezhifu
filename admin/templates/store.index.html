@@ -49,6 +49,7 @@
       <td><span ectype="order_by" fieldname="store_name">{$lang.store_name}</span></td>
       <td><span ectype="order_by" fieldname="region_id">{$lang.region}</span></td>
       <td><span ectype="order_by" fieldname="sgrade">{$lang.sgrade}</span></td>
+        <td class="table-center"><span ectype="order_by" fieldname="add_time">请求开店时间</span></td>
       <td class="table-center"><span ectype="order_by" fieldname="add_time">{$lang.end_time}</span></td>
       <td class="table-center"><span ectype="order_by" fieldname="state">{$lang.state}</span></td>
       <!--{if !$smarty.get.wait_verify}-->
@@ -64,7 +65,8 @@
       <td>{$store.user_name|escape} | {$store.owner_name|escape}</td>
       <td>{$store.store_name|escape}</td>
       <td>{$store.region_name|escape}</td>
-      <td>{$store.sgrade}</td>
+        <td>{$store.sgrade}</td>
+        <td class="table-center">{$store.add_time|date}</td>
       <td class="table-center">{$store.end_time|date}</td>
       <td class="table-center">{$store.state}</td>
       <!--{if !$smarty.get.wait_verify}-->
