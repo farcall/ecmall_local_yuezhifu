@@ -381,7 +381,8 @@ class FrontendApp extends ECBaseApp {
             $integral=new Integral();
             $integral->change_integral_login($user_id);
             
-            $this->show_message(Lang::get('login_successed') . $synlogin, 'back_before_login', rawurldecode($_POST['ret_url']), 'enter_member_center', 'index.php?app=member');
+            //$this->show_message(Lang::get('login_successed') . $synlogin, 'back_before_login', rawurldecode($_POST['ret_url']), 'enter_member_center', 'index.php?app=member');
+            $this->show_message(Lang::get('login_successed') . $synlogin, '会员中心', 'index.php?app=buyer_admin');
         }
     }
 
@@ -847,13 +848,6 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'overview',
                     'icon' => 'ico1',
                 ),
-                'epay' => array(
-                    'text' => Lang::get('epay'),
-                    'url' => 'index.php?app=epay&act=logall',
-                    'name' => 'epay',
-                    'icon' => 'ico13',
-                ),
-
 //                'refer'  => array(
 //                    'text'  => Lang::get('refer'),
 //                    'url'   => 'index.php?app=refer',
@@ -890,12 +884,18 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'message',
                     'icon' => 'ico3',
                 ),
-//                'friend' => array(
-//                    'text' => Lang::get('friend'),
-//                    'url' => 'index.php?app=friend',
-//                    'name' => 'friend',
-//                    'icon' => 'ico4',
-//                ),
+                'friend' => array(
+                    'text' => Lang::get('friend'),
+                    'url' => 'index.php?app=friend',
+                    'name' => 'friend',
+                    'icon' => 'ico4',
+                ),
+                'epay' => array(
+                    'text' => Lang::get('epay'),
+                    'url' => 'index.php?app=epay&act=logall',
+                    'name' => 'epay',
+                    'icon' => 'ico13',
+                ),
 
             ),
         );
@@ -989,18 +989,6 @@ class MemberbaseApp extends MallbaseApp {
                 'submenu' => array(),
             );
 
-            $menu['im_seller']['submenu']['add_goods'] = array(
-                'text' => '新增商品',
-                'url' => 'index.php?app=my_goods&act=add',
-                'name' => 'add_goods',
-                'icon' => 'ico8',
-            );
-            $menu['im_seller']['submenu']['order_xianxia'] = array(
-                'text' => '线下做单',
-                'url' => 'index.php?app=seller_xianxiaorder',
-                'name' => '线下做单',
-                'icon' => 'ico10',
-            );
             $menu['im_seller']['submenu']['my_goods'] = array(
                 'text' => Lang::get('my_goods'),
                 'url' => 'index.php?app=my_goods',
@@ -1013,7 +1001,12 @@ class MemberbaseApp extends MallbaseApp {
                 'name' => 'order_manage',
                 'icon' => 'ico10',
             );
-
+            $menu['im_seller']['submenu']['order_xianxia'] = array(
+                'text' => '线下做单',
+                'url' => 'index.php?app=seller_xianxiaorder',
+                'name' => '线下做单',
+                'icon' => 'ico10',
+            );
             $menu['im_seller']['submenu']['my_category'] = array(
                 'text' => Lang::get('my_category'),
                 'url' => 'index.php?app=my_category',
