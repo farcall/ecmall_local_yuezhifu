@@ -266,8 +266,8 @@ class OrderApp extends ShoppingbaseApp {
             $model_goodsstatistics->edit($goods_ids, 'orders=orders+1');
 
             /* 到收银台付款 */
-            
-            
+
+
             //买家下单发送短信给卖家
             import('mobile_msg.lib');
             $mobile_msg = new Mobile_msg();

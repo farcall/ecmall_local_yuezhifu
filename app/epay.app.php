@@ -783,6 +783,10 @@ class EpayApp extends MemberbaseApp {
             return;
         }
         if ($_POST) {//检测是否提交
+            import('file_lock.lib');
+            $lock = new file_lock(dirname(dirname(__FILE__)) . "/FileLock.lock");
+            $lock->writeLock();
+
             $buyer_name = $epay['user_name']; //用户名
             $buyer_zf_pass = $epay['zf_pass']; //支付密码
             $buyer_old_money = $epay['money']; //当前用户的原始金钱
@@ -798,23 +802,27 @@ class EpayApp extends MemberbaseApp {
             $seller_money_dj = $seller_row['money_dj']; //卖家的原始冻结金钱
             //检测支付密码
             if (empty($zf_pass)) {
+                $lock->unlock();
                 $this->show_warning('cuowu_zhifumimabunengweikong');
                 return;
             }
             $md5zf_pass = md5($zf_pass);
             if ($epay['zf_pass'] != $md5zf_pass) {
+                $lock->unlock();
                 $this->show_warning('cuowu_zhifumimayanzhengshibai');
                 return;
             }
 
             //检测余额是否足够
             if ($buyer_old_money < $order_money) {   //检测余额是否足够 开始
+                $lock->unlock();
                 $this->show_warning('cuowu_zhanghuyuebuzu', 'lijichongzhi', 'index.php?app=epay&act=czlist'
                 );
                 return;
             } //检测余额是否足够 结束
             //金额是否相同
             if ($post_money != $order_money) {   //检测密保相符 开始
+                $lock->unlock();
                 $this->show_warning('fashengcuowu_jineshujukeyi');
                 return;
             } //金额是否相同 结束
@@ -830,7 +838,13 @@ class EpayApp extends MemberbaseApp {
                 $seller_array = array(
                     'money_dj' => $seller_money_dj + $order_money,
                 );
+
+
+
                 $seller_edit = $this->mod_epay->edit('user_id=' . $seller_id, $seller_array);
+
+
+
                 //买家添加日志
                 $buyer_log_text = Lang::get('goumaishangpin_dianzhu') . $seller_name;
                 $buyer_add_array = array(
@@ -880,15 +894,19 @@ class EpayApp extends MemberbaseApp {
                 //$edit_data['status']    =   ORDER_ACCEPTED;//定义 为 20 待发货
                 //$mod_orderel->edit($order_id, $edit_data);//直接更改为 20 待发货
                 //支付成功
-                $this->show_message('zhifu_chenggong', 'sanmiaohouzidongtiaozhuandaodingdanliebiao', 'index.php?app=buyer_order', 'chankandingdan', 'index.php?app=buyer_order', 'guanbiyemian', 'index.php?app=epay&act=exits'
-                );
+                $this->show_message('zhifu_chenggong', 'sanmiaohouzidongtiaozhuandaodingdanliebiao', 'index.php?app=buyer_order', 'chankandingdan', 'index.php?app=buyer_order', 'guanbiyemian', 'index.php?app=epay&act=exits');
                 //定义SESSION值
                 $_SESSION['session_order_sn'] = $order_order_sn;
+                $lock->unlock();
             }//检测SESSION为空 执行完毕
             else {//检测SESSION为空 否则//检测SESSION为空 否则 开始
                 $this->show_warning('jinggao_qingbuyaochongfushuaxinyemian');
                 return;
             }//检测SESSION为空 否则 结束
+
+
+
+
         } else {
             /* 外部提供订单号 */
             $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
