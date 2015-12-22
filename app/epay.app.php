@@ -106,7 +106,7 @@ class EpayApp extends MemberbaseApp {
     //在线充值
     function czlist() {
         $user_id = $this->visitor->get('user_id');
-        $this->_curitem('epay');
+        $this->_curitem('czlist');
         $this->_curmenu('epay_czlist');
 
         $this->assign('epay_alipay_enabled', Conf::get('epay_alipay_enabled'));
@@ -496,7 +496,7 @@ class EpayApp extends MemberbaseApp {
         if (!$_POST) {//检测是否提交
             $this->assign('epay', $epay);
             /* 当前用户中心菜单 */
-            $this->_curitem('epay');
+            $this->_curitem('editpassword');
             $this->_curmenu('epay_editpassword');
             $this->display('epay.editpassword.html');
             return;
@@ -731,33 +731,27 @@ class EpayApp extends MemberbaseApp {
                 'url'   => 'index.php?app=epay&act=logall',
             ),
             array(
-                'name'  => 'epay_czlist',
-                'url'   => 'index.php?app=epay&act=czlist',
+                'name' =>'金币明细',
+                'url' =>'index.php?app=epay&act=jinbimingxi',
             ),
             array(
-                'name'  => 'epay_out',
-                'url'   => 'index.php?app=epay&act=out',
-            ),
-            array(
-                'name'  => 'epay_editpassword',
-                'url'   => 'index.php?app=epay&act=editpassword',
+                'name'  => '金币兑换人民币',
+                'url'   => 'index.php?app=epay&act=jinbi2money',
             ),
             array(
                 'name'  => 'epay_withdraw',
                 'url'   => 'index.php?app=epay&act=withdraw',
             ),
             array(
-                'name'  => '金币兑换为可用资金(钱)',
-                'url'   => 'index.php?app=epay&act=jinbi2money',
+                'name'  => 'epay_out',
+                'url'   => 'index.php?app=epay&act=out',
             ),
+
 //            array(
 //                'name'  => '金币兑换记录',
 //                'url'   => 'index.php?app=epay&act=duihuanlogall',
 //            ),
-            array(
-                'name' =>'金币明细',
-                'url' =>'index.php?app=epay&act=jinbimingxi',
-            ),
+
         );
         return $menus;
     }

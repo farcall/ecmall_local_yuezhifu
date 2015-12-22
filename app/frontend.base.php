@@ -848,6 +848,13 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'overview',
                     'icon' => 'ico1',
                 ),
+                'epay' => array(
+                    'text' => Lang::get('epay'),
+                    'url' => 'index.php?app=epay&act=logall',
+                    'name' => 'epay',
+                    'icon' => 'ico13',
+                ),
+
 //                'refer'  => array(
 //                    'text'  => Lang::get('refer'),
 //                    'url'   => 'index.php?app=refer',
@@ -872,30 +879,36 @@ class MemberbaseApp extends MallbaseApp {
                     'name' => 'my_profile',
                     'icon' => 'ico2',
                 ),
-                'my_third_login' => array(
-                    'text' => Lang::get('my_third_login'),
-                    'url' => 'index.php?app=my_third_login',
-                    'name' => 'my_third_login',
-                    'icon' => 'ico12',
+                'editpassword' => array(
+                    'text' => '修改支付密码',
+                    'url' => 'index.php?app=epay&act=editpassword',
+                    'name' => 'editpassword',
+                    'icon' => 'ico2',
                 ),
-                'message' => array(
-                    'text' => Lang::get('message'),
-                    'url' => 'index.php?app=message&act=newpm',
-                    'name' => 'message',
-                    'icon' => 'ico3',
+                'czlist' => array(
+                    'text' => '在线充值',
+                    'url' => 'index.php?app=epay&act=czlist',
+                    'name' => 'czlist',
+                    'icon' => 'ico2',
                 ),
-                'friend' => array(
-                    'text' => Lang::get('friend'),
-                    'url' => 'index.php?app=friend',
-                    'name' => 'friend',
-                    'icon' => 'ico4',
-                ),
-                'epay' => array(
-                    'text' => Lang::get('epay'),
-                    'url' => 'index.php?app=epay&act=logall',
-                    'name' => 'epay',
-                    'icon' => 'ico13',
-                ),
+//                'my_third_login' => array(
+//                    'text' => Lang::get('my_third_login'),
+//                    'url' => 'index.php?app=my_third_login',
+//                    'name' => 'my_third_login',
+//                    'icon' => 'ico12',
+//                ),
+//                'message' => array(
+//                    'text' => Lang::get('message'),
+//                    'url' => 'index.php?app=message&act=newpm',
+//                    'name' => 'message',
+//                    'icon' => 'ico3',
+//                ),
+//                'friend' => array(
+//                    'text' => Lang::get('friend'),
+//                    'url' => 'index.php?app=friend',
+//                    'name' => 'friend',
+//                    'icon' => 'ico4',
+//                ),
 
             ),
         );
