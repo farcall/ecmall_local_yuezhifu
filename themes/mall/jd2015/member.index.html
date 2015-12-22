@@ -11,25 +11,22 @@
             <div class="info clearfix">
                 <dl class="col-1 fleft">
                     <dt>
-                    <span>{$lang.welcome}</span><strong>{$user.user_name|escape}</strong>
+                    <span>{$lang.welcome}</span><strong>{$user.user_name|escape}</strong>   <span>{$lang.last_login}{$lang.colon}{$user.last_login|date:complete}</span><span>{$lang.last_ip}{$lang.colon}{$user.last_ip}</span>
                     </dt>
-                    <dd>
-                        <span>{$lang.last_login}{$lang.colon}{$user.last_login|date:complete}</span>
-                        <span>{$lang.last_ip}{$lang.colon}{$user.last_ip}</span>
-                    </dd>
+
                     <dd>{sprintf lang=you_have_pm var1=new_message}</dd>
                     <br/>
                     <dd style="line-height:25px;">
-                        消费总金额: <em>{$xiaofeizongjine}元</em><br/>
+                        <span class="mingxi">消费总金额: <em>{$xiaofeizongjine}元</em></span>
 
                         <!--{foreach from=$epay item=val}-->
-                        金币: <em>{$jinbi_jindou.jinbi}</em>个<br/>
-                        历史赠送金豆: <em>{$jinbi_jindou.total}个</em><br/>
-                        <!--消耗金豆<em>{$jinbi_jindou.consume}</em>个<br/>-->
-                        待赠送金豆: <em>{$jinbi_jindou.unused}</em>个<br/>
-                        账户余额: <em>{$val.money}</em>{$lang.yuan}<br/>
-                        冻结金额: <em>{$val.money_dj}</em>{$lang.yuan}<br/>
-                        申请提现金额: <em>{$tixian}</em>{$lang.yuan} <br/>
+                        <span class="mingxi">金豆总数: <em>{$jinbi_jindou.total}个</em></span>
+                        <span class="mingxi">账户余额: <em>{$val.money}</em>{$lang.yuan}</span>
+                        <span class="mingxi">已消耗金豆<em>{$jinbi_jindou.consume}</em>个</span>
+                        <span class="mingxi">冻结资金: <em>{$val.money_dj}</em>{$lang.yuan}</span>
+                        <span class="mingxi">未消耗金豆: <em>{$jinbi_jindou.unused}</em>个</span>
+                        <span class="mingxi">申请提现: <em>{$tixian}</em>{$lang.yuan} </span>
+                        <span class="mingxi">可用/可提现金额: <em>{$jinbi_jindou.jinbi}</em>个</span>
                         <br/><span class="epay_btn"><a href="{url app=epay&act=withdraw}">{$lang.tixian}</a></span><span class="epay_btn epay_btn_white"><a href="{url app=epay&act=czlist}">{$lang.chongzhi}</a></span>
                         <!--{/foreach}-->
                     </dd>
@@ -44,6 +41,10 @@
                 <!--{/if}-->
             </div>
         </div>
+
+
+
+
 
         <div class="platform clearfix">
             <div class="col-1">
@@ -79,19 +80,19 @@
                                     <span>{sprintf lang=order_for_ship_remind var1=seller_stat.accepted}</span>
                                 </dd>
                             </dl>
-                            <dl class="clearfix">
-                                <dt>{$lang.groupbuy_remind}{$lang.colon}</dt>
-                                <dd>
-                                    <span>{sprintf lang=groupbuy_for_end_remind var1=seller_stat.groupbuy_end}</span>
-                                </dd>
-                            </dl>
+                            <!--<dl class="clearfix">-->
+                                <!--<dt>{$lang.groupbuy_remind}{$lang.colon}</dt>-->
+                                <!--<dd>-->
+                                    <!--<span>{sprintf lang=groupbuy_for_end_remind var1=seller_stat.groupbuy_end}</span>-->
+                                <!--</dd>-->
+                            <!--</dl>-->
                         </div>
-                        <div class="extra">
-                            <span>{$lang.store_grade}{$lang.colon}{$sgrade.grade_name}</span>
-                            <span>{$lang.expire_time}{$lang.colon}<!--{if $sgrade.add_time}-->{sprintf lang=leaving_day var1=sgrade.add_time}<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
-                            <span>{$lang.goods_put}{$lang.colon}{$sgrade.goods.used}/<!--{if $sgrade.goods.total}-->{$sgrade.goods.total}<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
-                            <span>{$lang.space_use}{$lang.colon}{$sgrade.space.used}M/<!--{if $sgrade.space.total}-->{$sgrade.space.total}M<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
-                        </div>
+                        <!--<div class="extra">-->
+                            <!--<span>{$lang.store_grade}{$lang.colon}{$sgrade.grade_name}</span>-->
+                            <!--<span>{$lang.expire_time}{$lang.colon}&lt;!&ndash;{if $sgrade.add_time}&ndash;&gt;{sprintf lang=leaving_day var1=sgrade.add_time}&lt;!&ndash;{else}&ndash;&gt;{$lang.no_limit}&lt;!&ndash;{/if}&ndash;&gt;</span>-->
+                            <!--<span>{$lang.goods_put}{$lang.colon}{$sgrade.goods.used}/&lt;!&ndash;{if $sgrade.goods.total}&ndash;&gt;{$sgrade.goods.total}&lt;!&ndash;{else}&ndash;&gt;{$lang.no_limit}&lt;!&ndash;{/if}&ndash;&gt;</span>-->
+                            <!--<span>{$lang.space_use}{$lang.colon}{$sgrade.space.used}M/&lt;!&ndash;{if $sgrade.space.total}&ndash;&gt;{$sgrade.space.total}M&lt;!&ndash;{else}&ndash;&gt;{$lang.no_limit}&lt;!&ndash;{/if}&ndash;&gt;</span>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <!--{/if}-->
@@ -105,7 +106,7 @@
                             <!--{else}-->
                             {$lang.not_seller}{$lang.colon}<a href="{$_member_menu.overview.url}" title="{$_member_menu.overview.text}">{$_member_menu.overview.text}</a>
                             <!--{/if}-->
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <!--{/if}-->

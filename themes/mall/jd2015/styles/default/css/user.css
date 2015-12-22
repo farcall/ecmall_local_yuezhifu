@@ -121,6 +121,12 @@ select{border:1px solid #A7A6AA; height:22px;padding:1px; line-height:22px;margi
 .profile .info dt,.profile .info dd{margin-bottom:6px;}
 .profile .info dd span{margin-right:20px;}
 .profile .info dd em{color:#f60}
+.profile .info dd .mingxi {
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
+}
+
 .profile .col-1{width:480px;}
 .profile .col-1 dt{margin-bottom:20px;}
 .profile .col-1 strong{ font-weight:700px; font-size:20px;margin-right:15px}
@@ -138,6 +144,7 @@ select{border:1px solid #A7A6AA; height:22px;padding:1px; line-height:22px;margi
 .platform .box .dealt{padding:9px}
 .platform .box .dealt .list{border:1px #FFE8C2 solid; background:#FEFEDA;}
 .platform .box .dealt .list h4{font-size:12px; line-height:26px;}
+
 
 .platform .box-notice{width:730px;}
 .platform .box-notice dl{width:550px;}
