@@ -61,8 +61,8 @@ if ($verify_result) {//验证成功
 
     if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
         
-        $time = time()-8*6400;
-        
+      //  $time = time()-8*6400;
+        $time = gmtime();
         $dingdan = $out_trade_no;
         $mod_epay = & m('epay');
         $mod_epaylog = & m('epaylog');
