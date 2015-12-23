@@ -38,6 +38,9 @@ class DefaultApp extends BackendApp
         $ms =& ms();
         //$this->assign('new', $ms->pm->check_new($this->visitor->get('user_id')));
 
+        //一天动态
+        $this->assign('news_in_a_day', $this->_get_news_in_a_day());
+
         // 一周动态
         $this->assign('news_in_a_week', $this->_get_news_in_a_week());
 
@@ -90,6 +93,18 @@ class DefaultApp extends BackendApp
         $menu = include(APP_ROOT . '/includes/menu.inc.php');
 
         return $menu;
+    }
+
+    function _get_news_in_a_day(){
+        $a_day_ago = gmtime() - 1 * 24 * 3600;
+        $user_mod =& m('member');
+        return array(
+            'new_user_qty'  => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "member WHERE reg_time > '$a_day_ago'"),
+            'new_store_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$a_day_ago' AND state = 1"),
+            'new_apply_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$a_day_ago' AND state = 0"),
+            'new_goods_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "goods WHERE add_time > '$a_day_ago' AND if_show = 1 AND closed = 0"),
+            'new_order_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE finished_time > '$a_day_ago' AND status = '" . ORDER_FINISHED . "'"),
+        );
     }
 
     function _get_news_in_a_week()

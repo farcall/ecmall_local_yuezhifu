@@ -21,6 +21,25 @@
     </ul>
 </dd>
 <!--{/if}-->
+
+<dt>一天动态</dt>
+<dd>
+    <table>
+        <tr>
+            <th>{$lang.new_user_qty}:</th>
+            <td class="td">{$news_in_a_day.new_user_qty}</td>
+            <th>{$lang.new_store_qty}:</th>
+            <td class="td">{$news_in_a_day.new_store_qty}/{$news_in_a_day.new_apply_qty}</td>
+        </tr>
+        <tr>
+            <th>{$lang.new_goods_qty}:</th>
+            <td class="td">{$news_in_a_day.new_goods_qty}</td>
+            <th>{$lang.new_order_qty}:</th>
+            <td class="td">{$news_in_a_day.new_order_qty}</td>
+        </tr>
+    </table>
+</dd>
+
 <dt>{$lang.news_in_a_week}</dt>
 <dd>
     <table>
