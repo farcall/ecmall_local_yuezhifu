@@ -34,7 +34,7 @@
 #footer {text-align: left;border-top: 0;margin: 0;padding: 0;height: auto;clear: both;background: #fff;position: relative;}
 
 #service-2014 {margin-bottom: 20px;}
-#service-2014 .slogen {position: relative;height: 54px;padding: 20px 0;margin-bottom: 14px;background: #F5F5F5;text-align: center;}
+#service-2014 .slogen {position: relative;height: 54px;padding: 20px 0;margin-bottom: 14px;background: #F5F5F5;text-align: center;background-image: url(/themes/mall/jd2015/styles/default/images/footer_banner.jpg);background-repeat:repeat;background-position:center 0;}
 #service-2014 .slogen .item {display: inline-block;position: absolute;left: 50%;top: 20px;width: 302px;height: 54px;text-align: left;vertical-align: middle;font: 400 18px/50px "microsoft yahei";}
 #service-2014 .slogen .item b {padding: 0 10px;font-size: 24px;color: #C81623;}
 #service-2014 .slogen .fore1 {margin-left: -604px;}
