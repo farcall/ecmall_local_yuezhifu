@@ -39,10 +39,11 @@ class DefaultApp extends BackendApp
         //$this->assign('new', $ms->pm->check_new($this->visitor->get('user_id')));
 
         //一天动态
-        $this->assign('news_in_a_day', $this->_get_news_in_a_day());
+        $this->assign('news_in_a_day', $this->_get_news_of_days(1));
 
         // 一周动态
-        $this->assign('news_in_a_week', $this->_get_news_in_a_week());
+        $this->assign('news_in_a_week', $this->_get_news_of_days(7));
+
 
         // 统计信息
         $stats = $this->_get_stats();
@@ -95,15 +96,22 @@ class DefaultApp extends BackendApp
         return $menu;
     }
 
-    function _get_news_in_a_day(){
-        $a_day_ago = gmtime() - 1 * 24 * 3600;
+    /**
+     * @param $days天数
+     *
+     * @return array
+     * 作用:
+     * Created by QQ:710932
+     */
+    function _get_news_of_days($days){
+        $days_ago = gmtime() - $days * 24 * 3600;
         $user_mod =& m('member');
         return array(
-            'new_user_qty'  => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "member WHERE reg_time > '$a_day_ago'"),
-            'new_store_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$a_day_ago' AND state = 1"),
-            'new_apply_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$a_day_ago' AND state = 0"),
-            'new_goods_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "goods WHERE add_time > '$a_day_ago' AND if_show = 1 AND closed = 0"),
-            'new_order_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE finished_time > '$a_day_ago' AND status = '" . ORDER_FINISHED . "'"),
+            'new_user_qty'  => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "member WHERE reg_time > '$days_ago'"),
+            'new_store_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$days_ago' AND state = 1"),
+            'new_apply_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "store WHERE add_time > '$days_ago' AND state = 0"),
+            'new_goods_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "goods WHERE add_time > '$days_ago' AND if_show = 1 AND closed = 0"),
+            'new_order_qty' => $user_mod->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE finished_time > '$days_ago' AND status = '" . ORDER_FINISHED . "'"),
         );
     }
 
