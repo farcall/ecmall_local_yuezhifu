@@ -47,6 +47,7 @@
       <td width="20" class="firstCell"><input type="checkbox" class="checkall" /></td>
       <td>{$lang.owner_user_name} | {$lang.owner_real_name}</td>
       <td><span ectype="order_by" fieldname="store_name">{$lang.store_name}</span></td>
+        <td><span ectype="order_by" fieldname="fuwuzhuanyuan_name">服务专员</span></td>
       <td><span ectype="order_by" fieldname="region_id">{$lang.region}</span></td>
       <td><span ectype="order_by" fieldname="sgrade">{$lang.sgrade}</span></td>
         <td class="table-center"><span ectype="order_by" fieldname="add_time">请求开店时间</span></td>
@@ -63,7 +64,9 @@
     <tr class="tatr2">
       <td class="firstCell"><input type="checkbox" class="checkitem" value="{$store.store_id}" /></td>
       <td>{$store.user_name|escape} | {$store.owner_name|escape}</td>
+
       <td>{$store.store_name|escape}</td>
+        <td>{$store.fuwuzhuanyuan_name|escape}</td>
       <td>{$store.region_name|escape}</td>
         <td>{$store.sgrade}</td>
         <td class="table-center">{$store.add_time|date}</td>

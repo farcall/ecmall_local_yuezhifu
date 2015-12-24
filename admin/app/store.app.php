@@ -205,6 +205,7 @@ class StoreApp extends BackendApp
                 return;
             }
             $data = array(
+                'fuwuzhuanyuan_name'   => $_POST['fuwuzhuanyuan_name'],
                 'store_id'     => $user_id,
                 'store_name'   => $_POST['store_name'],
                 'owner_name'   => $_POST['owner_name'],
@@ -318,6 +319,7 @@ class StoreApp extends BackendApp
             }
 
             $data = array(
+                'fuwuzhuanyuan_name'   => $_POST['fuwuzhuanyuan_name'],
                 'store_name'   => $_POST['store_name'],
                 'owner_name'   => $_POST['owner_name'],
                 'owner_card'   => $_POST['owner_card'],

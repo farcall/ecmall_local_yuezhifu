@@ -1004,6 +1004,18 @@ return array (
         'img_cate_id_8' => '0',
       ),
     ),
+    '_widget_586' => 
+    array (
+      'options' => 
+      array (
+        'ad_image_url' => 'data/files/mall/template/201506300629028030.png',
+        'ad_link_url' => '',
+        'ad_width' => '1200',
+        'ad_height' => '',
+        'ad_border' => '',
+        'ad_margin' => '0 0 20px 0',
+      ),
+    ),
   ),
 );
 

@@ -98,6 +98,7 @@ class ApplyApp extends MallbaseApp {
 
                     $store_id = $this->visitor->get('user_id');
                     $data = array(
+                        'fuwuzhuanyuan_name'=>$_POST['fuwuzhuanyuan_name'],
                         'store_id' => $store_id,
                         'store_name' => $_POST['store_name'],
                         'owner_name' => $_POST['owner_name'],

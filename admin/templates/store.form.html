@@ -81,6 +81,11 @@ $(function(){
 <div class="info">
   <form method="post" enctype="multipart/form-data" id="store_form">
     <table class="infoTable">
+    <tr>
+        <th class="paddingT15">服务专员:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="fuwuzhuanyuan_name" type="text" id="fuwuzhuanyuan_name" value="{$store.fuwuzhuanyuan_name|escape}" /></td>
+    </tr>
+
       {if $smarty.get.act eq "add"}
       <tr>
         <th class="paddingT15">{$lang.owner_user_name}:</th>

@@ -113,6 +113,11 @@ $(function(){
    <div class="content border border-t-0 padding10 apply2">
       <form method="post" enctype="multipart/form-data" id="apply_form">
          <table>
+             <tr>
+                 <th>服务专员</th>
+                 <td class="width7"><input type="text" class="input border" name="fuwuzhuanyuan_name" value="{$store.fuwuzhuanyuan_name|escape}"/></td>
+                 <td class="padding3"><span class="field_notice">请输入您的服务专员名</span></td>
+             </tr>
            <tr>
               <th>{$lang.owner_name}{$lang.colon}</th>
               <td class="width7"><input type="text" class="input border" name="owner_name" value="{$store.owner_name|escape}"/></td>
