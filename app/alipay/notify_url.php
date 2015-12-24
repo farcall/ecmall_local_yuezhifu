@@ -58,11 +58,10 @@ if ($verify_result) {//验证成功
     
     $total_fee = $_POST['total_fee'];   //获取总价格
 
-
     if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
         
-      //  $time = time()-8*6400;
         $time = gmtime();
+        
         $dingdan = $out_trade_no;
         $mod_epay = & m('epay');
         $mod_epaylog = & m('epaylog');
@@ -84,6 +83,7 @@ if ($verify_result) {//验证成功
             'money' => $new_money,
         );
         $mod_epay->edit('user_id=' . $user_id, $edit_money);
+
         //修改记录
         $edit_epaylog = array(
             'add_time' => $time,
@@ -91,112 +91,99 @@ if ($verify_result) {//验证成功
             'complete' => 1,
             'states' => 61,
         );
+
         $mod_epaylog->edit('order_sn=' . '"' . $dingdan . '"', $edit_epaylog);
-        
-        
-        
-        
-                //---------------------  以下是判断  是否启用 自动付款----------------------
-                
-                $mod_order = & m('order');
-                    //根据用户返回的 order_sn 判断是否为订单
-                $order_info = $mod_order->get('order_sn=' . $dingdan);
 
-                if (!empty($order_info)) {
-                    //如果存在订单号  则自动付款
-                    $order_id = $order_info['order_id'];
+            //---------------------  以下是判断  是否启用 自动付款----------------------
+
+            $mod_order = & m('order');
+                //根据用户返回的 order_sn 判断是否为订单
+            $order_info = $mod_order->get('order_sn=' . $dingdan);
+
+            if (!empty($order_info)) {
+                //如果存在订单号  则自动付款
+                $order_id = $order_info['order_id'];
 
 
-                    $row_epay = $mod_epay->get("user_id='$user_id'");
-                    $buyer_name = $row_epay['user_name']; //用户名
-                    $buyer_old_money = $row_epay['money']; //当前用户的原始金钱
+                $row_epay = $mod_epay->get("user_id='$user_id'");
+                $buyer_name = $row_epay['user_name']; //用户名
+                $buyer_old_money = $row_epay['money']; //当前用户的原始金钱
 //从定单中 读取卖家信息
-                    $row_order = $mod_order->get("order_id='$order_id'");
-                    $order_order_sn = $row_order['order_sn']; //定单号
-                    $order_seller_id = $row_order['seller_id']; //定单里的 卖家ID
-                    $order_money = $row_order['order_amount']; //定单里的 最后定单总价格
+                $row_order = $mod_order->get("order_id='$order_id'");
+                $order_order_sn = $row_order['order_sn']; //定单号
+                $order_seller_id = $row_order['seller_id']; //定单里的 卖家ID
+                $order_money = $row_order['order_amount']; //定单里的 最后定单总价格
 //读取卖家SQL
-                    $seller_row = $mod_epay->get("user_id='$order_seller_id'");
-                    $seller_id = $seller_row['user_id']; //卖家ID 
-                    $seller_name = $seller_row['user_name']; //卖家用户名
-                    $seller_money_dj = $seller_row['money_dj']; //卖家的原始冻结金钱
+                $seller_row = $mod_epay->get("user_id='$order_seller_id'");
+                $seller_id = $seller_row['user_id']; //卖家ID
+                $seller_name = $seller_row['user_name']; //卖家用户名
+                $seller_money_dj = $seller_row['money_dj']; //卖家的原始冻结金钱
 //检测余额是否足够
-                    if ($buyer_old_money < $order_money) {   //检测余额是否足够 开始
-                        return;
-                    }
+                if ($buyer_old_money < $order_money) {   //检测余额是否足够 开始
+                    return;
+                }
 
 
 //扣除买家的金钱
-                    $buyer_array = array(
-                        'money' => $buyer_old_money - $order_money,
-                    );
-                    $mod_epay->edit('user_id=' . $user_id, $buyer_array);
+                $buyer_array = array(
+                    'money' => $buyer_old_money - $order_money,
+                );
+                $mod_epay->edit('user_id=' . $user_id, $buyer_array);
 
 //更新卖家的冻结金钱	
-                    $seller_array = array(
-                        'money_dj' => $seller_money_dj + $order_money,
-                    );
-                    $seller_edit = $mod_epay->edit('user_id=' . $seller_id, $seller_array);
+                $seller_array = array(
+                    'money_dj' => $seller_money_dj + $order_money,
+                );
+                $seller_edit = $mod_epay->edit('user_id=' . $seller_id, $seller_array);
 
 
 
 //买家添加日志
-                    $buyer_log_text = '购买商品店铺' . $seller_name;
-                    $buyer_add_array = array(
-                        'user_id' => $user_id,
-                        'user_name' => $buyer_name,
-                        'order_id' => $order_id,
-                        'order_sn ' => $order_order_sn,
-                        'to_id' => $seller_id,
-                        'to_name' => $seller_name,
-                        'add_time' => $time,
-                        'type' => 20,
-                        'money_flow' => 'outlay',
-                        'money' => $order_money,
-                        'log_text' => $buyer_log_text,
-                        'states' => 20,
-                    );
-                    $mod_epaylog->add($buyer_add_array);
+                $buyer_log_text = '购买商品店铺' . $seller_name;
+                $buyer_add_array = array(
+                    'user_id' => $user_id,
+                    'user_name' => $buyer_name,
+                    'order_id' => $order_id,
+                    'order_sn ' => $order_order_sn,
+                    'to_id' => $seller_id,
+                    'to_name' => $seller_name,
+                    'add_time' => $time,
+                    'type' => 20,
+                    'money_flow' => 'outlay',
+                    'money' => $order_money,
+                    'log_text' => $buyer_log_text,
+                    'states' => 20,
+                );
+                $mod_epaylog->add($buyer_add_array);
 //卖家添加日志
-                    $seller_log_text = '出售商品买家' . $buyer_name;
-                    $seller_add_array = array(
-                        'user_id' => $seller_id,
-                        'user_name' => $seller_name,
-                        'order_id' => $order_id,
-                        'order_sn ' => $order_order_sn,
-                        'to_id' => $user_id,
-                        'to_name' => $buyer_name,
-                        'add_time' => $time,
-                        'type' => 30,
-                        'money_flow' => 'income',
-                        'money' => $order_money,
-                        'log_text' => $seller_log_text,
-                        'states' => 20,
-                    );
-                    $mod_epaylog->add($seller_add_array);
+                $seller_log_text = '出售商品买家' . $buyer_name;
+                $seller_add_array = array(
+                    'user_id' => $seller_id,
+                    'user_name' => $seller_name,
+                    'order_id' => $order_id,
+                    'order_sn ' => $order_order_sn,
+                    'to_id' => $user_id,
+                    'to_name' => $buyer_name,
+                    'add_time' => $time,
+                    'type' => 30,
+                    'money_flow' => 'income',
+                    'money' => $order_money,
+                    'log_text' => $seller_log_text,
+                    'states' => 20,
+                );
+                $mod_epaylog->add($seller_add_array);
 //改变定单为 已支付等待卖家确认  status10改为20
-                    $payment_code = "zjgl";
+                $payment_code = "zjgl";
 //更新定单状态
-                    $order_edit_array = array(
-                        'payment_name' => '余额支付',
-                        'payment_code' => $payment_code,
-                        'pay_time' => $time,
-                        'out_trade_sn' => $order_sn,
-                        'status' => 20, //20就是 待发货了
-                    );
-                    $mod_order->edit($order_id, $order_edit_array);
-                }
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                $order_edit_array = array(
+                    'payment_name' => '余额支付',
+                    'payment_code' => $payment_code,
+                    'pay_time' => $time,
+                    'out_trade_sn' => $order_sn,
+                    'status' => 20, //20就是 待发货了
+                );
+                $mod_order->edit($order_id, $order_edit_array);
+            }
     }
 
     //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
