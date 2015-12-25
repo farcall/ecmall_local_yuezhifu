@@ -16,7 +16,7 @@ return array(
             ),
             'dingdanshenhe'=>array(
                 'text'=>'订单审核',
-                'url'=>'http://600.com/admin/index.php?app=order&act=index&field=seller_name&search_name=&status=31',
+                'url'=>'index.php?app=order&act=index&field=seller_name&search_name=&status=31',
             ),
             'jinrifenpei'=>array(
                 'text'=>'今日分配',
@@ -28,7 +28,7 @@ return array(
             ),
             'shujuku'=>array(
                 'text'=>'数据库',
-                'url'=>'http://600.com/admin/index.php?app=db&act=backup',
+                'url'=>'index.php?app=db&act=backup',
             ),
         ),
     ),
