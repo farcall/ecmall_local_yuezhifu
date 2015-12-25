@@ -1273,5 +1273,58 @@ class EpayApp extends MemberbaseApp {
             $this->show_message('chongzhi_chenggong_jineyiruzhang', 'guanbiyemian', 'index.php?app=epay&act=logall');
         }
     }
+
+    //找回支付密码
+    function findpass(){
+        if(!IS_POST) {
+            $user_id = $this->visitor->get('user_id');
+
+            $mod_member = &m('member');
+            $member_info = $mod_member->get_info($user_id);
+            $this->assign('phone_mob', $member_info['phone_mob']);
+
+            $this->import_resource(array(
+                'script' => 'jquery.plugins/jquery.validate.js',
+            ));
+
+            $this->display('find_zhifupassword.html');
+            return;
+        }else{
+            $phone_mob = trim($_POST['phone_mob']);
+            $user_id = $this->visitor->get('user_id');
+            $mod_member = &m('member');
+            $member_info = $mod_member->get_info($user_id);
+
+            if($phone_mob != $member_info['phone_mob']){
+                $this->show_warning('请勿非法提交!');
+                return;
+            }
+
+            if(trim($_POST['zf_pass']) != trim($_POST['zf_pass2'])){
+                $this->show_warning('密码与确认密码请保持一致');
+                return;
+            }
+
+            if (Conf::get('msg_enabled') && $_SESSION['MobileConfirmCode'] != $_POST['confirm_code']) {
+                $this->show_warning('验证码错误');
+                return;
+            }
+
+
+            //修改支付密码
+            if($this->mod_epay->edit('user_id='.$user_id,array(
+                'zf_pass'=>md5($_POST['zf_pass']),
+            )) ==false)
+            {
+                $this->show_warning('新支付密码设置失败,请重新设置');
+                return;
+            }
+
+            $this->show_message('恭喜,新支付密码设置成功');
+            return;
+
+        }
+
+    }
 }
 ?>
