@@ -175,27 +175,32 @@ ul,ol{
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDseller_email" />
-                        <span>必填</span>
+                        <span>必填
+</span>
                     </dd>
                     <dt>商户订单号：</dt>
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDout_trade_no" />
-                        <span>商户网站订单系统中唯一订单号，必填</span>
+                        <span>商户网站订单系统中唯一订单号，必填
+</span>
                     </dd>
                     <dt>订单名称：</dt>
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDsubject" />
-                        <span>必填</span>
+                        <span>必填
+</span>
                     </dd>
                     <dt>付款金额：</dt>
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDtotal_fee" />
-                        <span>必填</span>
+                        <span>必填
+</span>
                     </dd>
-                    <dt>订单描述：</dt>
+                    <dt>订单描述
+：</dt>
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDbody" />
@@ -205,7 +210,8 @@ ul,ol{
                     <dd>
                         <span class="null-star">*</span>
                         <input size="30" name="WIDshow_url" />
-                        <span>需以http://开头的完整路径，例如：http://www.xxx.com/myorder.html</span>
+                        <span>需以http://开头的完整路径，例如：http://www.xxx.com/myorder.html
+</span>
                     </dd>
 					<dt></dt>
                     <dd>
