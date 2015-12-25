@@ -6,6 +6,16 @@
 $(function(){
 	$(".btn-batch input[name='sellectAll']").click(function(){
 		$(".goods-each .select input[name='s"+$(this).val()+"']").attr("checked",$(this).attr("checked"));
+        var name = this.name;
+        var checked = 0;
+        $(".goods-each .select input").each(function(){
+            srg = $(this).val().split(":");
+            change_status(srg[1], srg[0]);
+            checked++;
+        });
+        if(!checked) {
+            alert('你未选择任何项');
+        }
 	});
 	$(".btn-batch a").click(function(){
 		var name = this.name;
