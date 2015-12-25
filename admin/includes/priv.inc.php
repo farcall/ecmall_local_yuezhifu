@@ -53,7 +53,7 @@ $menu_data = array
         'partner'      => 'partner|all',//合作伙伴
         'navigation'   => 'navigation|all',//页面导航
         'db'           => 'db|all',//数据库
-        'groupbuy'     => 'groupbuy|all',//团购
+//        'groupbuy'     => 'groupbuy|all',//团购
         'consulting'   => 'consulting|all',//咨询
         'share_link'   => 'share|all',//分享管理
         'supply_demand'=> 'supply_demand|all',
@@ -61,9 +61,21 @@ $menu_data = array
 
     'external' => array
     (
-        'plugin' => 'plugin|all',//插件管理
-        'module'   => 'module|all',//模块管理
+//        'plugin' => 'plugin|all',//插件管理
+//        'module'   => 'module|all',//模块管理
         'widget'   => 'widget|all',//挂件管理
+    ),
+    'chanel_bendichanpin'=>array
+    (
+         'chanel_bendichanpin' =>'chanel_bendichanpin|all',//本地产品管理
+    ),
+    'chanel_bendifuwu'=>array
+    (
+        'chanel_bendifuwu' =>'chanel_bendifuwu|all',//本地产品管理
+    ),
+    'chanel_bendishichang'=>array
+    (
+        'chanel_bendishichang' =>'chanel_bendishichang|all',//本地产品管理
     ),
     'clear_cache' =>array
     (

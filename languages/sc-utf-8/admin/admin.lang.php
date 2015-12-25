@@ -68,6 +68,11 @@ return array(
     'im_msn' => 'MSN',
     'system_manager' => '系统管理员',
     'input_user_name' => '首先输入您要添加的管理员会员名',
+
+    'chanel_bendichanpin'=>'本地产品',
+    'chanel_bendifuwu'=>'本地服务',
+    'chanel_bendishichang'=>'本地市场',
+
 );
 
 ?>
