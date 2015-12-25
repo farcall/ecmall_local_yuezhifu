@@ -18,13 +18,12 @@ class Mobile_msg {
         }
     }
 
-
     /**
      * 关于订单的短信发送,此发送需要扣除卖家的短信条数
      */
     function send_msg_order($order_info, $type) {
-        $msg = $this->_msg_mod->get("user_id=" . $order_info['seller_id']);
-
+        $mod_member = &m('member');
+        $seller_info = $mod_member->get_info($order_info['seller_id']);
         /**
          * 检测是否有权限
          */
@@ -38,11 +37,11 @@ class Mobile_msg {
 
         if ($type == 'check') {
             //买家确认收货向卖家发送短信提示
-            $to_mobile = $msg['mobile'];
+            $to_mobile = $seller_info['phone_mob'];
             $smsText = "您的订单：" . $order_info['order_sn'] . "，买家" . $order_info['buyer_name'] . "已经确定！"; //内容
         } else if ($type == 'buy') {
             //买家下单向卖家发送短信提示
-            $to_mobile = $msg['mobile'];
+            $to_mobile = $seller_info['phone_mob'];
             $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
         } else if ($type == 'send') {
             //卖家发货向买家发送短信提示
@@ -54,10 +53,50 @@ class Mobile_msg {
         } else {
             return FALSE;
         }
-        
+
         $result = $this->send_msg($user_id, $user_name, $to_mobile, $smsText);
         return $result;
     }
+//
+//    /**
+//     * 关于订单的短信发送,此发送需要扣除卖家的短信条数
+//     */
+//    function send_msg_order($order_info, $type) {
+//        $msg = $this->_msg_mod->get("user_id=" . $order_info['seller_id']);
+//
+//        /**
+//         * 检测是否有权限
+//         */
+////        if (!$this->check_functions($msg, $type)) {
+////            return FALSE;
+////        }
+//
+//        $user_id = $order_info['seller_id'];
+//        $user_name = $order_info['seller_name'];
+//
+//
+//        if ($type == 'check') {
+//            //买家确认收货向卖家发送短信提示
+//            $to_mobile = $msg['mobile'];
+//            $smsText = "您的订单：" . $order_info['order_sn'] . "，买家" . $order_info['buyer_name'] . "已经确定！"; //内容
+//        } else if ($type == 'buy') {
+//            //买家下单向卖家发送短信提示
+//            $to_mobile = $msg['mobile'];
+//            $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
+//        } else if ($type == 'send') {
+//            //卖家发货向买家发送短信提示
+//            $mod_order_extm = & m('orderextm');
+//            $row_order_extm = $mod_order_extm->get("order_id=" . $order_info['order_id']);
+//            $to_mobile = $row_order_extm['phone_mob'];
+//
+//            $smsText = "您的订单：" . $order_info['order_sn'] . ",卖家：" . $order_info['seller_name'] . "已经发货，请及时查收！"; //内容
+//        } else {
+//            return FALSE;
+//        }
+//
+//        $result = $this->send_msg($user_id, $user_name, $to_mobile, $smsText);
+//        return $result;
+//    }
 
     /**
      * 卖家后台 发送短信
@@ -246,7 +285,7 @@ class Mobile_msg {
         $arr = array();
         $arr[] = 'buy'; //来自买家下单通知   
         $arr[] = 'send'; //卖家发货通知买家   
-        $arr[] = 'check'; //来自买家确认通知   
+        $arr[] = 'check'; //来自买家确认通知
         return $arr;
     }
 

@@ -892,6 +892,13 @@ class EpayApp extends MemberbaseApp {
                 //定义SESSION值
                 $_SESSION['session_order_sn'] = $order_order_sn;
                 $lock->unlock();
+                //todo 买家已付款成功,短信通知卖家发货
+
+                //买家下单发送短信给卖家
+                import('mobile_msg.lib');
+                $mobile_msg = new Mobile_msg();
+                $mobile_msg->send_msg_order($row_order,'buy');
+
             }//检测SESSION为空 执行完毕
             else {//检测SESSION为空 否则//检测SESSION为空 否则 开始
                 $this->show_warning('jinggao_qingbuyaochongfushuaxinyemian');

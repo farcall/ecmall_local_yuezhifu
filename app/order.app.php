@@ -268,10 +268,6 @@ class OrderApp extends ShoppingbaseApp {
             /* 到收银台付款 */
 
 
-            //买家下单发送短信给卖家
-            import('mobile_msg.lib');
-            $mobile_msg = new Mobile_msg();
-            $mobile_msg->send_msg_order($order_info,'buy');
             
             
             header('Location:index.php?app=cashier&order_id=' . $order_id);
