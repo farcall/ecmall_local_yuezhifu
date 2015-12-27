@@ -72,7 +72,7 @@ return array(
     'chanel_bendichanpin'=>'本地产品',
     'chanel_bendifuwu'=>'本地服务',
     'chanel_bendishichang'=>'本地市场',
-
+    'chanel_bendishichang'=>'本地市场_商家',
 );
 
 ?>

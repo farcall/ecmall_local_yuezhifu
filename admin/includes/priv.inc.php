@@ -77,6 +77,10 @@ $menu_data = array
     (
         'chanel_bendishichang' =>'chanel_bendishichang|all',//本地产品管理
     ),
+    'chanel_bendishichang_store'=>array
+    (
+        'chanel_bendishichang_store' =>'chanel_bendishichang_store|all',//本地产品管理
+    ),
     'clear_cache' =>array
     (
         'clear_cache' => 'clear_cache|all',//清空缓存
