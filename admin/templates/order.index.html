@@ -23,10 +23,10 @@ $(function(){
                     <option value="">{$lang.search_status}</option>
                     {html_options options=$order_status_list selected=$query.status}
                 </select>
-                {$lang.add_time_from}:<input class="queryInput2" type="text" value="{$query.add_time_from}" id="add_time_from" name="add_time_from" class="pick_date" />
-                {$lang.add_time_to}:<input class="queryInput2" type="text" value="{$query.add_time_to}" id="add_time_to" name="add_time_to" class="pick_date" />
-                {$lang.order_amount_from}:<input class="queryInput2" type="text" value="{$query.order_amount_from}" name="order_amount_from" />
-                {$lang.order_amount_to}:<input class="queryInput2" type="text" style="width:60px;" value="{$query.order_amount_to}" name="order_amount_to" class="pick_date" />
+                {$lang.add_time_from}:<input class="queryInput" type="text" value="{$query.add_time_from}" id="add_time_from" name="add_time_from" class="pick_date" />
+                {$lang.add_time_to}:<input class="queryInput" type="text" value="{$query.add_time_to}" id="add_time_to" name="add_time_to" class="pick_date" />
+                {$lang.order_amount_from}:<input class="queryInput" type="text" value="{$query.order_amount_from}" name="order_amount_from" />
+                {$lang.order_amount_to}:<input class="queryInput" type="text" style="width:60px;" value="{$query.order_amount_to}" name="order_amount_to" class="pick_date" />
                 <input type="submit" class="formbtn" value="{$lang.query}" onclick="$('[name=act]').val('index');"/>
                 <input type="submit" class="formbtn" value="导出" onclick="$('[name=act]').val('export');" />
             </div>
