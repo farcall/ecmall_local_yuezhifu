@@ -124,10 +124,14 @@ var goodsspec = new goodsspec(specs, specQty, defSpec);
                 </div>
 
                 <div class="detail_action">
-                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-                        <span class="bds_more">分享该商品</span>
+                    <div class="bdsharebuttonbox" style="float: left;margin-left: 16px">
+                        <a href="#" class="bds_more" data-cmd="more"> </a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
                     </div>
-                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6780915" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=390773"></script>
+
                     <span class="favorite_area"><a id="js_add_fav_btn" href="javascript:collect_goods({$goods.goods_id});" class="">收藏该商品</a></span>
                 </div>
             </div>
