@@ -24,7 +24,7 @@ class Channel_bendishichangAPP extends MallbaseApp{
         $conditions = ' and state=1';
 
 
-        $page = $this->_get_page(2);   //获取分页信息
+        $page = $this->_get_page(7);   //获取分页信息
         $shichangs=$this->mod_bendishichang->find(array(
             'conditions' => '1=1' . $conditions,
             'limit'         => $page['limit'],
