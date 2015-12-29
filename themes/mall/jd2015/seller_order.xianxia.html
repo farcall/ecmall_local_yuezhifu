@@ -58,6 +58,14 @@
                 var error_td = element.parent('td');
                 error_td.find('label').hide();
                 error_td.append(error);
+
+                if($(element).attr('name') == 'money'){
+                    var ratio = "{$epay_trade_charges_ratio}";
+                    var money = $('#money').val();
+                    var yongjin = ratio*money;
+                    $('#yongjin').text(yongjin);
+                    $('#tixing').show();
+                }
             },
             success: function(label) {
                 label.addClass('validate_right').text('OK!');
