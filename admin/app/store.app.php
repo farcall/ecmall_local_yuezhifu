@@ -47,7 +47,7 @@ class StoreApp extends BackendApp
         }
         else
         {
-            $sort  = 'store_id';
+            $sort  = 'add_time';
             $order = 'desc';
         }
 
