@@ -1,0 +1,67 @@
+{include file="header.html"}
+
+<dl id="rightCon">
+
+<!--{if $remind_info}-->
+<dt>{$lang.remind_info}</dt>
+<dd>
+    <ul>
+        <!--{foreach from=$remind_info item=remind}-->
+        <li>{$remind}</li>
+        <!--{/foreach}-->
+    </ul>
+</dd>
+<!--{/if}-->
+
+<dt>今日运营:开始时间{$day_begin_time|date}</dt>
+<dd>
+    <table>
+        <tr>
+            <th>成交总金额:</th>
+
+            <td class="td">{if $a_day_report.total_jine eq ''}0{else}{$a_day_report.total_jine}{/if}元</td>
+            <th>成交笔数:</th>
+            <td class="td">{if $a_day_report.total_count eq ''}0{else}{$a_day_report.total_count}{/if}笔</td>
+        </tr>
+        <tr>
+            <th>线上成交总金额:</th>
+            <td class="td">{if $a_day_report.xianshang_jine eq ''}0{else}{$a_day_report.xianshang_jine}{/if}元</td>
+            <th>线上成交笔数:</th>
+            <td class="td">{if $a_day_report.xianshang_count eq ''}0{else}{$a_day_report.xianshang_count}{/if}笔</td>
+        </tr>
+        <tr>
+            <th>线下成交总金额:</th>
+            <td class="td">{if $a_day_report.xianxia_jine eq ''}0{else}{$a_day_report.xianxia_jine}{/if}元</td>
+            <th>线下成交笔数:</th>
+            <td class="td">{if $a_day_report.xianxia_count eq ''}0{else}{$a_day_report.xianxia_count}{/if}笔</td>
+        </tr>
+    </table>
+</dd>
+
+    <dt>本月运营开始时间{$month_begin_time|date}</dt>
+    <dd>
+        <table>
+            <tr>
+                <th>成交总金额:</th>
+
+                <td class="td">{if $a_month_report.total_jine eq ''}0{else}{$a_month_report.total_jine}{/if}元</td>
+                <th>成交笔数:</th>
+                <td class="td">{if $a_month_report.total_count eq ''}0{else}{$a_month_report.total_count}{/if}笔</td>
+            </tr>
+            <tr>
+                <th>线上成交总金额:</th>
+                <td class="td">{if $a_month_report.xianshang_jine eq ''}0{else}{$a_month_report.xianshang_jine}{/if}元</td>
+                <th>线上成交笔数:</th>
+                <td class="td">{if $a_month_report.xianshang_count eq ''}0{else}{$a_month_report.xianshang_count}{/if}笔</td>
+            </tr>
+            <tr>
+                <th>线下成交总金额:</th>
+                <td class="td">{if $a_month_report.xianxia_jine eq ''}0{else}{$a_month_report.xianxia_jine}{/if}元</td>
+                <th>线下成交笔数:</th>
+                <td class="td">{if $a_month_report.xianxia_count eq ''}0{else}{$a_month_report.xianxia_count}{/if}笔</td>
+            </tr>
+        </table>
+    </dd>
+
+</dl>
+{include file="footer.html"}

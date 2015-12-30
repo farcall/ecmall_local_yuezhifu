@@ -92,6 +92,47 @@ class StoreApp extends BackendApp
 
         $this->display('store.index.html');
     }
+
+    /**
+     * 作用:查看商家报表
+     * Created by QQ:710932
+     */
+    function report(){
+        //TODO 商家报表
+        $id = empty($_GET['id']) ? 0 : intval($_GET['id']);
+
+        $dayTimeStamp = gmstr2time(date('Y-m-d', time()));
+        $monthTimeStamp = gmstr2time(date("Y-m-d",mktime(0, 0 , 0,date("m"),1,date("Y"))));
+
+        $this->assign('day_begin_time',$dayTimeStamp);
+        $this->assign('month_begin_time',$monthTimeStamp);
+        $this->assign('a_day_report',$this->get_store_report($dayTimeStamp,$id));
+        $this->assign('a_month_report',$this->get_store_report($monthTimeStamp,$id));
+
+        $this->display('store.report.html');
+    }
+
+    /**
+     * @param $begintime报表生成时间
+     * @param $store_id店铺
+     * 作用:
+     * Created by QQ:710932
+     */
+    function get_store_report($begintime,$store_id){
+        $mod_order = &m('order');
+        //$where = 'status=40 and seller_id='.$store_id.' and ((finished_time>'.$begintime.' and auto_finished_time=0 ) or (auto_finished_time >'.$begintime.' and auto_finished_time<'.gmtime().'))';
+        $where = 'status=40 and seller_id='.$store_id.' and finished_time>'.$begintime;
+        return array(
+            'total_count'  => $mod_order->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE $where"),
+            'total_jine' => $mod_order->getOne("SELECT sum(order_amount) FROM " . DB_PREFIX . "order WHERE $where"),
+            'xianxia_count' => $mod_order->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE $where and type='xianxia'"),
+            'xianxia_jine' => $mod_order->getOne("SELECT sum(order_amount) FROM " . DB_PREFIX . "order WHERE $where and type='xianxia'"),
+            'xianshang_count' => $mod_order->getOne("SELECT COUNT(*) FROM " . DB_PREFIX . "order WHERE $where and type='material'"),
+            'xianshang_jine' => $mod_order->getOne("SELECT sum(order_amount) FROM " . DB_PREFIX . "order WHERE $where and type='material'"),
+        );
+
+    }
+
     function test()
     {
         if (!IS_POST)
