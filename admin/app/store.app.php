@@ -289,6 +289,37 @@ class StoreApp extends BackendApp
         }
     }
 
+
+    /* 上传图片 */
+
+    function _upload_image($store_id) {
+        import('uploader.lib');
+        $uploader = new Uploader();
+        $uploader->allowed_type(IMAGE_FILE_TYPE);
+        $uploader->allowed_size(SIZE_STORE_CERT); // 400KB
+
+        $data = array();
+        for ($i = 1; $i <= 3; $i++) {
+            $file = $_FILES['image_' . $i];
+            if ($file['error'] == UPLOAD_ERR_OK) {
+                if (empty($file)) {
+                    continue;
+                }
+                $uploader->addFile($file);
+                if (!$uploader->file_info()) {
+                    $this->_error($uploader->get_error());
+                    return false;
+                }
+
+                $uploader->root_dir(ROOT_PATH);
+                $dirname = 'data/files/mall/application';
+                $filename = 'store_' . $store_id . '_' . $i;
+                $data['image_' . $i] = $uploader->save($dirname, $filename);
+            }
+        }
+        return $data;
+    }
+
     function edit()
     {
         $id = empty($_GET['id']) ? 0 : intval($_GET['id']);
@@ -376,6 +407,16 @@ class StoreApp extends BackendApp
                 'recommended'  => $_POST['recommended'],
                 'domain'       => $domain,
             );
+
+            $image = $this->_upload_image($id);
+            if ($this->has_error()) {
+                $this->show_warning($this->get_error());
+
+                return;
+            }
+
+            $data=array_merge($data, $image);
+
             $data['state'] == STORE_CLOSED && $data['close_reason'] = $_POST['close_reason'];
             $certs = array();
             isset($_POST['autonym']) && $certs[] = 'autonym';

@@ -189,9 +189,10 @@ $(function(){
       <tr>
         <th class="paddingT15">{$lang.uploaded_image}:</th>
         <td class="paddingT15 wordSpacing5">
-          {if $store.image_1}<a href="{$site_url}/{$store.image_1}" target="_blank">{$lang.view}</a>{/if}
-          {if $store.image_2}<a href="{$site_url}/{$store.image_2}" target="_blank">{$lang.view}</a>{/if}
-          {if $store.image_3}<a href="{$site_url}/{$store.image_3}" target="_blank">{$lang.view}</a>{/if}        </td>
+            {if $store.image_1}<img src="{$site_url}/{$store.image_1}" alt="" width="100" height="100" /> <label>身份证正面</label>{else}<input class="infoTableFile2" type="file" name="image_1" id="image_1" /><label>请上传身份证正面</label>{/if}
+            {if $store.image_2}<img src="{$site_url}/{$store.image_2}" alt="" width="100" height="100" /> <label>身份证反面</label>{else}<br/><br/><input class="infoTableFile2" type="file" name="image_2" id="image_2" /><label>请上传身份证反面</label>{/if}
+            {if $store.image_3}<img src="{$site_url}/{$store.image_3}" alt="" width="100" height="100" /> <label>工商营业执照</label>{else}<br/><br/><input class="infoTableFile2" type="file" name="image_3" id="image_3" /><label>请上传工商营业执照</label>{/if}
+          </td>
       </tr>
       <!--{/if}-->
       <tr>
