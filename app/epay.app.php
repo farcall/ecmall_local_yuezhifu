@@ -1043,7 +1043,7 @@ class EpayApp extends MemberbaseApp {
                     $v_md5info = strtoupper(md5($text));
                     ?>
                     <body onLoad="javascript:document.CHINABLANK_FORM.submit()">
-                        <form method="post" name="CHINABLANK_FORM" action="https://pay3.chinabank.com.cn/PayGate">
+                        <form method="post" name="CHINABLANK_FORM" action="https://tmapi.jdpay.com/PayGate">
                             <input type="hidden" name="v_mid"         value="<?php echo $v_mid; ?>"/>
                             <input type="hidden" name="v_oid"         value="<?php echo $v_oid; ?>"/>
                             <input type="hidden" name="v_amount"      value="<?php echo $cz_money; ?>"/>
