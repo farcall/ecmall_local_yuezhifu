@@ -551,7 +551,7 @@ class EpayApp extends MemberbaseApp {
 
             $this->_curitem('epay');
             $this->_curmenu('编辑银卡信息');
-            $this->assign('bank_inc', $this->_get_bank_inc());
+            $this->assign('bank_inc', $this->_get_bank_inc('alipaybank'));
             $this->assign('card', $card);
             $this->display('epay.bank_edit.html');
         }else{
@@ -616,7 +616,7 @@ class EpayApp extends MemberbaseApp {
         if (!IS_POST) {
             $this->_curitem('epay');
             $this->_curmenu('epay_add_bank');
-            $this->assign('bank_inc', $this->_get_bank_inc());
+            $this->assign('bank_inc', $this->_get_bank_inc('alipaybank'));
             $this->display('epay.bank_form.html');
         } else {
             $short_name = trim($_POST['short_name']);

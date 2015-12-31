@@ -16,7 +16,7 @@
                                     <ul class="ui-list-icons clearfix">
                                         <!--{foreach from=$bank_inc item=bank key=key name=fe_bank}-->
                                         <li>
-                                            <input type="radio" name="short_name" id="{$key}" value="{$key}" {if $smarty.foreach.fe_bank.first}checked="checked" {/if} {if $smarty.get.short_name eq $key} checked="checked" {/if}  />
+                                            <input type="radio" name="short_name" id="{$key}" value="{$key}"  {if $smarty.foreach.fe_bank.first}checked="checked" {/if} {if $smarty.get.short_name eq $key} checked="checked" {/if} />
                                             <label class="  icon-box current " for="{$key}" >
                                                 <span class="icon-cashier icon-cashier-{$key}" title="{$bank}">&nbsp;</span>
                                             </label>
@@ -27,17 +27,24 @@
                             </dl>
                         <dl class="clearfix">
                             <dt>卡 号</dt>
-                            <dd><input type="text" name="bank_num" class="text width_normal" value="{$card.bank_num}" /></dd>
+                            <dd>
+                                <input type="text" name="bank_num" class="text width_normal" value="{$card.bank_num}" />
+                                <span class="gray">如果是支付宝则填写支付宝账号</span>
+                            </dd>
+
                         </dl>
                         <dl class="clearfix">
                             <dt>户 名</dt>
-                            <dd><input type="text" name="account_name" class="text width_normal" value="{$card.account_name}" /></dd>
+                            <dd>
+                                <input type="text" name="account_name" class="text width_normal" value="{$card.account_name}" />
+                                <span class="gray">如果是支付宝则填写支付宝账号绑定姓名</span>
+                            </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt>开户支行</dt>
                             <dd>
                                 <input type="text" name="open_bank" class="text width_normal" value="{$card.open_bank}" />
-                                <span class="gray">示例：XXX银行XXX支行</span>
+                                <span class="gray">示例：XXX银行XXX支行(如果是支付宝则填写支付宝)</span>
                             </dd>
                         </dl>
                         <dl class="clearfix">
