@@ -71,6 +71,9 @@
             <td>{$val.add_time|date:y-m-d H:i}</td>        
             <td><!--{if $val.add_time}-->{$val.add_time|date:y-m-d H:i}<!--{else}-->{$lang.tx_weishenhe}<!--{/if}--></td>
             <td class="table_center">
+                <!--{if $val.states==72}-->
+                <img src="templates/style/images/positive_enabled.gif">
+                <!--{/if}-->
                 <!--{if $val.states==71}-->
                 <img src="templates/style/images/positive_enabled.gif">
                 <!--{/if}-->
@@ -80,7 +83,9 @@
             </td>
             <td>{$val.to_id}</td>  
             <td class="handler">
-                <!--{if $val.states==70}-->
+                <!--{if $val.states==72}-->
+                <font color="#FF0000">已驳回</font>
+                <!--{elseif $val.states==70}-->
                 <a href="index.php?app=epay&act=tx_view&user_id={$val.user_id}&log_id={$val.id}">{$lang.tx_xq_shenhe}</a>
                 <!--{else}-->
                 {$lang.tx_yishenhe}

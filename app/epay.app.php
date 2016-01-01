@@ -76,6 +76,7 @@ class EpayApp extends MemberbaseApp {
             EPAY_OUT => Lang::get('epay_out'), //账户转出
             EPAY_CZ => Lang::get('epay_cz'), //账户充值
             EPAY_TX => Lang::get('epay_tx'), //账户提现
+            EPAY_TX_REFUSE=>'账户提现被驳回',//提现被驳回
             EPAY_REFUND_IN => Lang::get('epay_refund_in'), //账户退款收入,通常为买家退款成功 得到退款
             EPAY_REFUND_OUT => Lang::get('epay_refund_out'), //账户退款收入,通常为卖家退款成功 扣除退款
             EPAY_TUIJIAN_BUYER => Lang::get('epay_tuijian_buyer'),  // 用户推荐注册,注册者购买产品，推荐人会获得佣金，店铺会损失佣金。

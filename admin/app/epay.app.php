@@ -344,7 +344,8 @@ class EpayApp extends BackendApp {
         $this->assign('filtered', $conditions ? 1 : 0); //是否有查询条件
         $this->assign('tx_status_list', array(
             70 => Lang::get('tx_weishenhe'), //未审核
-            71 => Lang::get('tx_yishenhe'), //已审核
+            71 => '已转账', //已通过
+            72 => '已驳回',
         ));
         $this->assign('page_info', $page);
         $this->assign('index', $index);
@@ -359,6 +360,8 @@ class EpayApp extends BackendApp {
         $user_id = $_GET['user_id'];
         $order_id = trim($_POST['order_id']);
         $tx_money = trim($_POST['money']);
+        $isSucc =  trim($_POST['isSucc']);
+        $fail_log = trim($_POST['fail_log']);
         $add_time = gmtime();
         if (!IS_POST) {
             if (empty($log_id) or empty($user_id)) {
@@ -370,28 +373,67 @@ class EpayApp extends BackendApp {
             $this->display('epay.tx_view.html');
             return;
         } else {
+            if($isSucc == 1){
+                $money_row = $this->mod_epay->getrow("select money_dj from " . DB_PREFIX . "epay where user_id='$user_id'");
+                $row_money_dj = $money_row['money_dj'];
 
-            $money_row = $this->mod_epay->getrow("select money_dj from " . DB_PREFIX . "epay where user_id='$user_id'");
-            $row_money_dj = $money_row['money_dj'];
+                if ($row_money_dj < $tx_money) {
+                    $this->show_warning('feifacanshu');
+                    return;
+                }
 
-            if ($row_money_dj < $tx_money) {
-                $this->show_warning('feifacanshu');
-                return;
+                $new_money_dj = $row_money_dj - $tx_money;
+                $new_money = array(
+                    'money_dj' => $new_money_dj,
+                );
+                $this->mod_epay->edit('user_id=' . $user_id, $new_money); //读取所有数据库
+
+                $edit_log = array(
+                    'add_time' => $add_time,
+                    'states' => 71, //改变状态为已审核(审核成功)
+                    'to_id' => $order_id,
+                    'complete'=>'1'
+                );
+                $this->mod_epaylog->edit('id=' . $log_id, $edit_log);
+            }
+            else{
+                $money_row = $this->mod_epay->getrow("select money_dj,money from " . DB_PREFIX . "epay where user_id='$user_id'");
+                $row_money_dj = $money_row['money_dj'];
+                $row_money = $money_row['money'];
+
+                if ($row_money_dj < $tx_money) {
+                    $this->show_warning('feifacanshu');
+                    return;
+                }
+
+                $new_money_dj = $row_money_dj - $tx_money;
+                $new_money = $row_money + $tx_money;
+                $new_money = array(
+                    'money_dj' => $new_money_dj,
+                    'money' =>$new_money,
+                );
+                $this->mod_epay->edit('user_id=' . $user_id, $new_money); //读取所有数据库
+
+                $edit_log = array(
+                    'add_time' => $add_time,
+                    'states' => 72, //改变状态为已审核(提现失败)
+                    'complete'=>'1'
+                );
+                $this->mod_epaylog->edit('id=' . $log_id, $edit_log);
+
+
+
+                $epaylog_data = $this->mod_epaylog->get_info($log_id);
+                $epaylog_data['type']= EPAY_TX_REFUSE;
+                $epaylog_data['states'] = EPAY_TX_REFUSE+1;//完成
+                $epaylog_data['money_flow'] = 'income';//完成
+                $epaylog_data['complete'] = 1;
+                $epaylog_data['log_text'] = "提现被拒绝:$fail_log";
+                $epaylog_data['add_time'] = gmtime();
+                unset($epaylog_data['id']);
+                $this->mod_epaylog->add($epaylog_data);
             }
 
-            $new_money_dj = $row_money_dj - $tx_money;
-            $new_money = array(
-                'money_dj' => $new_money_dj,
-            );
-            $this->mod_epay->edit('user_id=' . $user_id, $new_money); //读取所有数据库
-
-            $edit_log = array(
-                'add_time' => $add_time,
-                'states' => 71, //改变状态为已审核	
-                'to_id' => $order_id,
-                'complete'=>'1'
-            );
-            $this->mod_epaylog->edit('id=' . $log_id, $edit_log);
         }
 
         /*会员提现成功*/

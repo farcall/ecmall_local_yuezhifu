@@ -1,4 +1,19 @@
 {include file="header.html"}
+<script type="text/javascript">
+    $(function() {
+              /* 全选 */
+            $('#tx_succ').click(function () {
+                $('#order_id').show();
+                $('#fail_log').hide();
+            });
+            $('#tx_fail').click(function () {
+                $('#order_id').hide();
+                $('#fail_log').show();
+            });
+        }
+    )
+
+</script>
 <div id="rightTop">
     <ul class="subnav" style="margin:0;">
         <li><a class="btn1" href="index.php?app=epay">{$lang.epay_user}</a></li>
@@ -28,17 +43,28 @@
                 <td class="paddingT15 wordSpacing5">{$epaylog.add_time|date:Y-m-d H:i:s}</td>
             </tr>
             <tr>
-                <th class="paddingT15">{$lang.tx_xq_zhuanzhangchenggongjiaoyihao}</th>
+                <th class="paddingT15">状态:</th>
                 <td class="paddingT15 wordSpacing5">
-                    <input name="order_id" type="text" id="order_id" value="{$epaylog.order_id}" size="60" />
+                    <input id="tx_succ" type="radio" name="isSucc" value="1" checked="checked"> <label for="tx_succ">同意</label>
+                    <input id="tx_fail" type="radio" name="isSucc" value="0"> <label for="tx_fail">驳回</label>
                 </td>
             </tr>
             <tr>
-                <th class="paddingT15">{$lang.log_text}</th>
+                <th class="paddingT15">{$lang.tx_xq_zhuanzhangchenggongjiaoyihao}(或者提现失败原因)</th>
+                <td class="paddingT15 wordSpacing5">
+                    <input name="order_id" type="text" id="order_id" value="{$epaylog.order_id}" size="100" />
+                    <input name="fail_log" type="text" id="fail_log" value="" size="100"  style="display: none;"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="paddingT15">{$lang.log_text}:</th>
                 <td class="paddingT15 wordSpacing5">
                     {$epaylog.log_text}
                 </td>
             </tr>
+
+
+
             <tr>
                 <th></th>
                 <td class="ptb20">
