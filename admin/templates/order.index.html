@@ -44,8 +44,9 @@ $(function(){
         <!--{if $orders}-->
         <tr class="tatr1">
             <td width="15%" class="firstCell"><span ectype="order_by" fieldname="seller_id">{$lang.store_name}</span></td>
-            <td width="15%"><span ectype="order_by" fieldname="order_sn">{$lang.order_sn}</span></td>
-            <td width="15%"><span ectype="order_by" fieldname="add_time">{$lang.add_time}</span></td>
+            <td width="10%"><span ectype="order_by" fieldname="order_sn">{$lang.order_sn}</span></td>
+            <td width="10%"><span ectype="order_by" fieldname="add_time">{$lang.add_time}</span></td>
+            <td width="10%"><span ectype="order_by" fieldname="pay_time">{$lang.pay_time}</span></td>
             <td width="10%"><span ectype="order_by" fieldname="buyer_name">{$lang.buyer_name}</span></td>
             <td width="15%"><span ectype="order_by" fieldname="order_amount">{$lang.order_amount}</span></td>
             <td>{$lang.payment_name}</td>
@@ -58,6 +59,7 @@ $(function(){
             <td class="firstCell">{$order.seller_name|escape}</td>
             <td>{$order.order_sn}&nbsp;&nbsp;<!--{if $order.extension eq 'groupbuy'}-->[{$lang.groupbuy}]<!--{/if}--></td>
             <td>{$order.add_time|date:complete}</td>
+            <td>{$order.pay_time|date:complete}</td>
             <td>{$order.buyer_name|escape}</td>
             <td>{$order.order_amount|price}</td>
             <td>{$order.payment_name|escape|default:-}</td>
