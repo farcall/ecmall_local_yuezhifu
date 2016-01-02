@@ -10,26 +10,26 @@
          <dt class="float-left strong">{$sgrade.grade_name}</dt>
          <dd class="float-left">
             <p>{$lang.goods_limit}{$lang.colon}<span>{$sgrade.goods_limit}</span></p>
-            <p>{$lang.space_limit}{$lang.colon}<span>{$sgrade.space_limit}</span></p>
-            <p>{$lang.skin_limit}{$lang.colon}<span>{$sgrade.skin_limit}</span></p>
+            <!--<p>{$lang.space_limit}{$lang.colon}<span>{$sgrade.space_limit}</span></p>-->
+            <!--<p>{$lang.skin_limit}{$lang.colon}<span>{$sgrade.skin_limit}</span></p>-->
             <p>{$lang.charge}{$lang.colon}<span>{$sgrade.charge}</span></p>
             <p>{$lang.need_confirm}{$lang.colon}<span><!--{if $sgrade.need_confirm}-->{$lang.yes}<!--{else}-->{$lang.no}<!--{/if}--></span></p>
          </dd>
-         <dd class="float-left">
-            <p>{$lang.add_use}{$lang.colon}</p>
-            <p>
-               <!--{foreach from=$sgrade.functions item=functions key=k name=v}-->
-               <!--{if $domain && $k eq 'subdomain'}-->
-               <span>{$lang.domain}</span>
-               <!--{else}-->
-               <span>{$lang.$k}</span>
-               <!--{/if}-->
-               <!--{if !$smarty.foreach.v.last}-->
-               <!--{/if}-->
-               <!--{/foreach}-->
-            </p>
-         </dd>
-         <dd class="float-left">{$sgrade.description}</dd>
+         <!--<dd class="float-left">-->
+            <!--<p>{$lang.add_use}{$lang.colon}</p>-->
+            <!--<p>-->
+               <!--&lt;!&ndash;{foreach from=$sgrade.functions item=functions key=k name=v}&ndash;&gt;-->
+               <!--&lt;!&ndash;{if $domain && $k eq 'subdomain'}&ndash;&gt;-->
+               <!--<span>{$lang.domain}</span>-->
+               <!--&lt;!&ndash;{else}&ndash;&gt;-->
+               <!--<span>{$lang.$k}</span>-->
+               <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+               <!--&lt;!&ndash;{if !$smarty.foreach.v.last}&ndash;&gt;-->
+               <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+               <!--&lt;!&ndash;{/foreach}&ndash;&gt;-->
+            <!--</p>-->
+         <!--</dd>-->
+         <dd class="float-left center" style="font-size: 25px;width: 40%;color: red;">{$sgrade.description}</dd>
          <dd class="float-left"><a href="{url app=apply&step=2&id=$sgrade.grade_id}" class="btn-apply fs14 strong fff center">{$lang.soon_open}</a></dd>
       </dl>
       <!--{/foreach}-->
