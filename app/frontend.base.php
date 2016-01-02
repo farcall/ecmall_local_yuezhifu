@@ -381,8 +381,8 @@ class FrontendApp extends ECBaseApp {
             $integral=new Integral();
             $integral->change_integral_login($user_id);
             
-            //$this->show_message(Lang::get('login_successed') . $synlogin, 'back_before_login', rawurldecode($_POST['ret_url']), 'enter_member_center', 'index.php?app=member');
-            $this->show_message(Lang::get('login_successed') . $synlogin, '会员中心', 'index.php?app=buyer_admin');
+            $this->show_message(Lang::get('login_successed') . $synlogin, 'back_before_login', rawurldecode($_POST['ret_url']), 'enter_member_center', 'index.php?app=member');
+//            $this->show_message(Lang::get('login_successed') . $synlogin, '会员中心', 'index.php?app=buyer_admin');
         }
     }
 
