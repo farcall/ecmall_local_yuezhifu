@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="http://zhying.com/">
+    <base href="http://www.zhying.com/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>商城首页 - 众盈zhying.com--上众盈，就够了</title>
     <meta name="description" content="众盈商城是由山东迅鸟网络科技有限公司旗下临沂六百电子商务有限公司运营、由知名天使投资人领投的B2B2C电子商务网站，是一家以地域O2O为主兼具零售购物的综合性平台。众盈商城是由迅鸟电商汇聚国内知名电商团队历经5年创建的全新模式的电商交易平台。">
@@ -12,15 +12,18 @@
 
     <link type="text/css" href="http://zhying.com/themes/mall/jd2015/styles/default/css/header.css" rel="stylesheet">
     <link type="text/css" href="http://zhying.com/themes/mall/jd2015/styles/default/css/footer.css" rel="stylesheet">
-
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
-
+    <link rel="stylesheet" href="2015/css/yifenzhong.css"/>
+    <!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>-->
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="2015/js/yifenzhong.js" charset="utf-8"></script>
     <script type="text/javascript" language="Javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.js"></script>
 
 
     <title></title>
 
     <style>
+        .main_banner{background:#FE8431; padding-bottom: 15px;padding-top: 2px}
+        .videos{background:#FE8431;}
         .bg{text-align: center;}
         .bg img{display:block; margin:0 auto; border:0; padding:0; background:#ffffff;}
     </style>
@@ -28,7 +31,7 @@
     <div id="header" class="w-full">
         <div class="shop-t w clearfix pb10 mb5 mt5">
             <div class="logo">
-                <a href="http://zhying.com" title="众盈zhying.com--上众盈，就够了"><img alt="众盈zhying.com--上众盈，就够了" src="data/files/mall/settings/site_logo.jpg"></a>
+                <a href="http://zhying.com" title="众盈zhying.com--上众盈，就够了"><img alt="众盈zhying.com--上众盈，就够了" src="http://www.zhying.com/data/files/mall/settings/site_logo.jpg"></a>
             </div>
             <div class="top-search">
                 <div class="top-search-box clearfix">
@@ -75,9 +78,6 @@
                 </li>
 
                 <li class="each float-left inline-block"><a href="http://zhying.com">首页</a></li>
-                <li class="each float-left inline-block"><a class="" href="index.php?app=search&amp;act=store&amp;keyword=&amp;region_id=256" target="_blank">本地商家</a></li>
-                <li class="each float-left inline-block"><a class="" href="http://zhying.com/2015/lvmeng.html" target="_blank">沂蒙绿盟</a></li>
-                <li class="each float-left inline-block"><a class="" href="http://zhying.com/2015/linyi.html" target="_blank">临沂批发市场</a></li>
                 <li class="each float-left inline-block"><a class="current" target="_blank">一分钟了解众盈</a></li>
                 <li class="each float-left inline-block"><a class="" href="index.php?app=article&amp;act=view&amp;article_id=33" target="_blank">赠送政策</a></li>
                 <li class="each float-left inline-block"><a class="" href="index.php?app=article&amp;act=view&amp;article_id=28" target="_blank">购物流程</a></li>
@@ -89,18 +89,85 @@
 </head>
 
 <body>
+<div class="main_banner">
+<div class="main_banner_wrap">
+    <canvas id="myCanvas" width="150" height="150"></canvas>
+    <div class="main_banner_box" id="m_box">
+        <a href="javascript:void(0)" class="banner_btn js_pre">
+            <span class="banner_btn_arrow"><i></i></span>
+        </a>
+        <a href="javascript:void(0)" class="banner_btn btn_next js_next">
+            <span class="banner_btn_arrow"><i></i></span>
+        </a>
+        <ul>
+            <li id="imgCard0">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk1NDY4MA==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p style="bottom:0">01众盈商城用户注册</p>
+            </li>
+            <li id="imgCard1">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk1NTUwOA==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>02众盈商城商家开店</p>
+            </li>
+            <li id="imgCard2">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2MjQ5Ng==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;" ></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>03众盈商城店铺设置客服设置地理位置设置</p>
+            </li>
+            <li id="imgCard3">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2MzI3Mg==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>04众盈商城商品管理</p>
+            </li>
+            <li id="imgCard4">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2NTIzMg==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>05众盈商城线下做单</p>
+            </li>
+            <li id="imgCard5">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2NzI0OA==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>06众盈商城退款售后</p>
+            </li>
+            <li id="imgCard6">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2OTIxMg==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>07众盈商城运费模板</p>
+            </li>
+            <li id="imgCard7">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk2OTYzMg==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>08众盈商城买家购物流程</p>
+            </li>
+            <li id="imgCard8">
+                <a href="http://v.youku.com/v_show/id_XMTQyODk3MDEzNg==.html?from=y1.7-1.2" target="_blank"><span style="opacity:0.4;"></span></a>
+                <img src="http://www.zhying.com/data/files/mall/template/201512261119441803.jpg" alt="">
+                <p>09众盈商城卖家发货</p>
+            </li>
+        </ul>
+        <!--火狐倒影图层-->
+        <p id="rflt"></p>
+        <!--火狐倒影图层-->
+    </div>
+    <!--序列号按钮-->
+    <div class="btn_list">
+        <span class="curr"></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
+</div>
 
 <div class="bg">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_01.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_02.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_03.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_04.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_05.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_06.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_07.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_08.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_09.jpg" alt="" width="100%">
-    <img src="/2015/image/yifenzhong/grey.gif" data-original="/2015/image/yifenzhong/1_10.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_01.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_02.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_03.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_04.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_05.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_06.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_07.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_08.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_09.jpg" alt="" width="100%">
+    <img src="2015/image/grey.gif" data-original="2015/image/yifenzhong/1_10.jpg" alt="" width="100%">
 
 </div>
 
@@ -131,10 +198,6 @@
             Copyright&nbsp;©&nbsp;2004-2015&nbsp;&nbsp;zhying.com&nbsp;版权所有<br>合作平台：<a target="_blank" href="https://pay.weixin.qq.com/index.php">微信支付</a>&nbsp;&nbsp;<a href="http://www.alipay.com/" target="_blank">支付宝</a>&nbsp;&nbsp;<a href="https://www.wangyin.com/" target="_blank">网银在线</a></div>
 
         <div class="authentication">
-            <a target="_blank" href="#">
-                <img width="103" height="32" alt="经营性网站备案中心" data-original="http://img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png" class="err-product">
-            </a>
-
             <a target="_blank" id="urlknet" tabindex="-1" href="#">
                 <img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="http://img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png" class="err-product">
             </a>
