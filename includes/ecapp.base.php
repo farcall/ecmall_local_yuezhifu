@@ -1029,6 +1029,32 @@ EOT;
     }
 
     /**
+     *    使用编辑器
+     *
+     *    @author    Dong QQ:435795
+     *    @param     array $params
+     *    @return    string
+     */
+    function _build_editor_ueditor($params = array()){
+        $editor_id = isset($params['editor_id']) ?  $params['editor_id'] : 'description';
+        /* 输出 */
+        $ueditor_js = '<script type="text/javascript" src="{lib file="UEditor/ueditor.all.min.js"}"></script>';
+        $config_js = '<script type="text/javascript" src="{lib file="UEditor/ueditor.config.js"}"></script>';
+        $str = <<<EOT
+//    <!-- 配置文件 -->
+    {$config_js}
+    <!-- 编辑器源码文件 -->
+    {$ueditor_js}
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('$editor_id');
+    </script>
+EOT;
+
+        return $this->_view->fetch('str:' . $str);;
+    }
+
+    /**
      *    使用swfupload
      *
      *    @author    Hyber

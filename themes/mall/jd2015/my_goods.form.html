@@ -374,51 +374,7 @@ $(function(){
                                     {$goods.description|escape}
                                     </textarea>
                                     </div>
-                                    <div style=" position: relative; top: 10px; z-index: 5;"><a class="btn3" id="open_editor_uploader">{$lang.uploadedfile}</a>
-                                        <div class="upload_con" id="editor_uploader" style="display:none">
-                                            <div class="upload_con_top"></div>
-                                            <div class="upload_wrap">
 
-                                                <ul>
-                                                    <li>
-                                                        <div id="divSwfuploadContainer">
-                                                            <div id="divButtonContainer">
-                                                                <span id="editor_upload_button"></span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li><iframe src="index.php?app=comupload&act=view_iframe&id={$id}&belong={$belong}&instance=desc_image" width="86" height="30" scrolling="no" frameborder="0"></iframe></li>
-                                                    <li id="open_editor_remote" class="btn2">{$lang.rem_upload}</li>
-                                                </ul>
-                                                <div id="editor_remote" class="upload_file" style="display:none">
-                                                <iframe src="index.php?app=comupload&act=view_remote&id={$id}&belong={$belong}&instance=desc_image" width="272" height="39" scrolling="no" frameborder="0"></iframe>
-                                                </div>
-                                                <div id="editor_upload_progress"></div>
-                                                <div class="upload_txt">
-                                                    <span>{$lang.note_for_upload}</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="upload_con_bottom"></div>
-                                        </div>
-                                    </div>
-                                    <ul id="desc_images" class="preview">
-                                        <!--{foreach from=$desc_images item=desc_image}-->
-                                        <li ectype="handle_pic" file_name="{$desc_image.file_name|escape}" file_path="{$desc_image.file_path}" file_id="{$desc_image.file_id}">
-                                        <input type="hidden" name="desc_file_id[]" value="{$desc_image.file_id}">
-                                            <div class="pic">
-                                            <img src="{$site_url}/{$desc_image.file_path}" width="50" height="50" alt="{$desc_image.file_name|escape}" title="{$desc_image.file_name|escape}" /></div>
-                                            <div ectype="handler" class="bg">
-                                            <img src="{$site_url}/{$desc_image.file_path}" width="50" height="50" alt="{$desc_image.file_name|escape}" title="{$desc_image.file_name|escape}" />
-                                                <p class="operation">
-                                                    <a class="cut_in" ectype="insert_editor" href="javascript:void(0);" ecm_title="{$lang.insert_editor}"></a>
-                                                    <span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span>
-                                                </p>
-                                                <p title="{$desc_image.file_name|escape}" class="name">{$desc_image.file_name|escape}</p>
-                                            </div>
-                                        </li>
-                                        <!--{/foreach}-->
-                                    </ul>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="issuance"><input type="submit" class="btn" value="{$lang.submit}" /></div>

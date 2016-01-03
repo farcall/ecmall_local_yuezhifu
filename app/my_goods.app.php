@@ -485,10 +485,14 @@ class My_goodsApp extends StoreadminbaseApp {
             ));
 
             /* 所见即所得编辑器 */
-            extract($this->_get_theme());
-            $this->assign('build_editor', $this->_build_editor(array(
-                        'name' => 'description',
-                        'content_css' => SITE_URL . "/themes/store/{$template_name}/styles/{$style_name}" . '/shop.css', // for preview
+//            extract($this->_get_theme());
+//            $this->assign('build_editor', $this->_build_editor(array(
+//                        'name' => 'description',
+//                        'content_css' => SITE_URL . "/themes/store/{$template_name}/styles/{$style_name}" . '/shop.css', // for preview
+//            )));
+
+            $this->assign('build_editor', $this->_build_editor_ueditor(array(
+            'editor_id'=>'description',
             )));
 
             $this->display('my_goods.form.html');
@@ -669,10 +673,13 @@ class My_goodsApp extends StoreadminbaseApp {
             )));
 
             /* 所见即所得编辑器 */
-            extract($this->_get_theme());
-            $this->assign('build_editor', $this->_build_editor(array(
-                        'name' => 'description',
-                        'content_css' => SITE_URL . "/themes/store/{$template_name}/styles/{$style_name}" . '/shop.css', // for preview
+//            extract($this->_get_theme());
+//            $this->assign('build_editor', $this->_build_editor(array(
+//                        'name' => 'description',
+//                        'content_css' => SITE_URL . "/themes/store/{$template_name}/styles/{$style_name}" . '/shop.css', // for preview
+//            )));
+            $this->assign('build_editor', $this->_build_editor_ueditor(array(
+                'editor_id'=>'description',
             )));
 
             //  初始化商品属性  sku tyioocom 
