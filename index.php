@@ -23,8 +23,7 @@ define('ECMALL_WAP', 0);
 //    $uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile|android)/i";
 //
 //    if ((preg_match($uachar, $ua))) {
-////        define('ECMALL_WAP', 1);
-//        define('ECMALL_WAP', 0);
+//        define('ECMALL_WAP', 1);
 //    } else {
 //        define('ECMALL_WAP', 0);
 //    }
