@@ -65,7 +65,11 @@ $(function(){
             <td>{$order.payment_name|escape|default:-}</td>
             {if $order.status ne 31}
                 <td>{$order.status|modifier:order_status}</td>
-                <td><a href="index.php?app=order&amp;act=view&amp;id={$order.order_id}">{$lang.view}</a></td>
+                {if $order.type eq 'xianxia'}
+                    <td><a href="index.php?app=order&amp;act=view&amp;id={$order.order_id}&xx=1">{$lang.view}</a></td>
+                {else}
+                    <td><a href="index.php?app=order&amp;act=view&amp;id={$order.order_id}">{$lang.view}</a></td>
+                {/if}
             {else}
                 <td style="color: red">审核中</td>
                 <td>

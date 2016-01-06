@@ -29,6 +29,7 @@
                     <p><b>{$lang.price} :</b> <span class="red_common">{$goods.price|price}</span></p>
                     <p><b>{$lang.quantity} :</b> {$goods.quantity}</p>
                     </li>
+                <!--{if $order.status==31}-->
                 <li>
                     <form id="log_form">
                         <p>
@@ -41,6 +42,7 @@
                     </form>
 
                 </li>
+                <!--{/if}-->
             </ul>
 
         </div>
@@ -53,7 +55,7 @@
         <ul>
             <!--{foreach from=$order_image item=image}-->
             <li>
-                <img src="../{$image.image_url}" alt=""/>
+                <img src="../{$image.image_url}" alt="" width="500px" height="auto"/>
             </li>
             <!--{/foreach}-->
         </ul>
@@ -62,11 +64,12 @@
     </div>
 
 
+
     <div class="order_form">
         <h1>{$lang.order_status}</h1>
         <ul>
             <li><b>{$lang.order_sn}:</b>{$order.order_sn}{if $order.extension eq 'groupbuy'}[{$lang.groupbuy}]{/if}&nbsp;&nbsp;&nbsp;<!--{if $order.group_id}-->[<a href="{$site_url}/index.php?app=groupbuy&id={$order.group_id}" target="_blank">{$lang.groupbuy_detail}</a>]<!--{/if}--></li>
-            <li><b>{$lang.order_status}:</b> 等待审核中</li>
+            <li><b>{$lang.order_status}:</b> <!--{if $order.status==31}-->等待审核中<!--{else}-->交易完成<!--{/if}--></li>
             <li><b>{$lang.order_amount}:</b> <span class="red_common">{$order.order_amount|price}</span>({$lang.preference}:{$order.discount|price})</li>
         </ul>
         <div class="clear"></div>
