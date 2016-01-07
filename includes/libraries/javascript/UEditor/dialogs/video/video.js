@@ -732,7 +732,7 @@
                     var responseText = (ret._raw || ret),
                         json = utils.str2json(responseText);
                     if (json.state == 'SUCCESS') {
-                        uploadVideoList.push({
+                        uploadVideoList[$file.index()] = ({
                             'url': json.url,
                             'type': json.type,
                             'original':json.original
