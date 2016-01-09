@@ -284,7 +284,7 @@ class Chanel_bendichanpinAPP extends BackendApp{
         if($imagedata['goods3_image'] != null){
             $data['goods3_image'] = $imagedata['goods3_image'];
         }
-        if($imagedata['introduce_bg'] != null){
+        if($imagedata['goods4_image'] != null){
             $data['goods4_image'] = $imagedata['goods4_image'];
         }
 
