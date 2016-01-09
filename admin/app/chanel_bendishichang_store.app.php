@@ -280,11 +280,11 @@ class Chanel_bendishichang_storeAPP extends BackendApp{
         $data = $this->check_data();
 
         $imagedata = $this->_upload_allimage($store_id);
-        if($imagedata['introduce_bg'] != null){
-            $data['introduce_bg'] = $imagedata['introduce_bg'];
+        if($imagedata['big_image'] != null){
+            $data['big_image'] = $imagedata['big_image'];
         }
-        if($imagedata['banner'] != null){
-            $data['banner'] = $imagedata['banner'];
+        if($imagedata['store_logo'] != null){
+            $data['store_logo'] = $imagedata['store_logo'];
         }
 
         $data['edit_time'] = gmtime();
