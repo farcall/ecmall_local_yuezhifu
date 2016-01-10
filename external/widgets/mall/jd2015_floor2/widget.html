@@ -8,24 +8,24 @@
             <li class="ks-active">
                 <a href="javascript:;">{$widget_data.model_name1}</a>
             </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name2}</a>
-            </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name3}</a>
-            </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name4}</a>
-            </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name5}</a>
-            </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name6}</a>
-            </li>
-            <li class>
-                <a href="javascript:;">{$widget_data.model_name7}</a>
-            </li>
+            {if $widget_data.model_name2 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name2}</a> </li>
+            {/if}
+            {if $widget_data.model_name3 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name3}</a> </li>
+            {/if}
+            {if $widget_data.model_name4 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name4}</a> </li>
+            {/if}
+            {if $widget_data.model_name5 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name5}</a> </li>
+            {/if}
+            {if $widget_data.model_name6 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name6}</a> </li>
+            {/if}
+            {if $widget_data.model_name7 != ""}
+            <li class> <a href="javascript:;">{$widget_data.model_name7}</a> </li>
+            {/if}
         </ul>
     </div>
 
