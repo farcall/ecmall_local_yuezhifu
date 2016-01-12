@@ -19,7 +19,7 @@ return array(
     'addto_cart_successed' => '添加到购物车成功。',
     'drop_item_successed' => '从购物车中删除成功。',
     'update_item_successed' => '更新数量成功。',
-    'goods_already_in_cart' => '该商品已经在购物车中了',
+    'goods_already_in_cart' => '该商品已经在购物车中了,请到购物车中修改',
     'cart_empty_notice' => '您的购物车是空的，您可以',
     'choice_goods' => '选购商品',
     'view_orders' => '查看订单',
