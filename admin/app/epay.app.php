@@ -437,13 +437,10 @@ class EpayApp extends BackendApp {
         }
 
         /*会员提现成功*/
-        import('mobile_msg.lib');
-        $mobile_msg = new Mobile_msg();
         $user_name = $this->mod_epay->get(array(
             'conditions' => 'user_id='.$user_id,
             'fields'     => 'user_name'
         ));
-        $result = $mobile_msg->send_msg_self('txsuccess', $user_name,'');
         $this->show_message('shenhechenggong', 'fanhuiliebiao', 'index.php?app=epay&act=txlog');
     }
 

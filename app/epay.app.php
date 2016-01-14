@@ -834,11 +834,7 @@ class EpayApp extends MemberbaseApp {
                     'money_dj' => $seller_money_dj + $order_money,
                 );
 
-
-
                 $seller_edit = $this->mod_epay->edit('user_id=' . $seller_id, $seller_array);
-
-
 
                 //买家添加日志
                 $buyer_log_text = Lang::get('goumaishangpin_dianzhu') . $seller_name;
@@ -882,7 +878,7 @@ class EpayApp extends MemberbaseApp {
                     'payment_name' => Lang::get('epay_name'),
                     'payment_code' => $payment_code,
                     'pay_time' => gmtime(),
-                    'out_trade_sn' => $order_sn,
+                    'out_trade_sn' => $order_order_sn,
                     'status' => 20, //20就是 待发货了
                 );
                 $this->mod_order->edit($order_id, $order_edit_array);
@@ -893,9 +889,8 @@ class EpayApp extends MemberbaseApp {
                 //定义SESSION值
                 $_SESSION['session_order_sn'] = $order_order_sn;
                 $lock->unlock();
-                //todo 买家已付款成功,短信通知卖家发货
 
-                //买家下单发送短信给卖家
+                //买家已付款成功,短信通知卖家发货
                 import('mobile_msg.lib');
                 $mobile_msg = new Mobile_msg();
                 $mobile_msg->send_msg_order($row_order,'buy');
@@ -1324,6 +1319,7 @@ class EpayApp extends MemberbaseApp {
                 'zf_pass'=>md5($_POST['zf_pass']),
             )) ==false)
             {
+                //如果新密码与老密码相同时也会失败
                 $this->show_warning('新支付密码设置失败,请重新设置');
                 return;
             }

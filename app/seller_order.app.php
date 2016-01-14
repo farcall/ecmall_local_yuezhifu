@@ -1188,11 +1188,6 @@ class Seller_orderApp extends StoreadminbaseApp {
         import('integral.lib');
         $integral = new Integral();
         $integral->change_integral_buy($order_info['buyer_id'], $order_info['goods_amount']);
-
-        //卖家确认收货 发送短信给卖家
-        import('mobile_msg.lib');
-        $mobile_msg = new Mobile_msg();
-        $mobile_msg->send_msg_order($order_info, 'check');
     }
     
     /**

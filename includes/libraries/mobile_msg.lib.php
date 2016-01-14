@@ -24,79 +24,25 @@ class Mobile_msg {
     function send_msg_order($order_info, $type) {
         $mod_member = &m('member');
         $seller_info = $mod_member->get_info($order_info['seller_id']);
-        /**
-         * 检测是否有权限
-         */
-//        if (!$this->check_functions($msg, $type)) {
-//            return FALSE;
-//        }
 
         $user_id = $order_info['seller_id'];
         $user_name = $order_info['seller_name'];
 
-
-        if ($type == 'check') {
-            //买家确认收货向卖家发送短信提示
-            $to_mobile = $seller_info['phone_mob'];
-            $smsText = "您的订单：" . $order_info['order_sn'] . "，买家" . $order_info['buyer_name'] . "已经确定！"; //内容
-        } else if ($type == 'buy') {
+        if ($type == 'buy') {
             //买家下单向卖家发送短信提示
             $to_mobile = $seller_info['phone_mob'];
-            $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
-        } else if ($type == 'send') {
-            //卖家发货向买家发送短信提示
-            $mod_order_extm = & m('orderextm');
-            $row_order_extm = $mod_order_extm->get("order_id=" . $order_info['order_id']);
-            $to_mobile = $row_order_extm['phone_mob'];
-
-            $smsText = "您的订单：" . $order_info['order_sn'] . ",卖家：" . $order_info['seller_name'] . "已经发货，请及时查收！"; //内容
-        } else {
+          //  $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
+            $smsText = "您好，您有一单新交易！买家：【 .".$order_info['buyer_name']."】，请及时登录商城后台处理。";
+        }
+        else
+        {
             return FALSE;
         }
 
         $result = $this->send_msg($user_id, $user_name, $to_mobile, $smsText);
         return $result;
     }
-//
-//    /**
-//     * 关于订单的短信发送,此发送需要扣除卖家的短信条数
-//     */
-//    function send_msg_order($order_info, $type) {
-//        $msg = $this->_msg_mod->get("user_id=" . $order_info['seller_id']);
-//
-//        /**
-//         * 检测是否有权限
-//         */
-////        if (!$this->check_functions($msg, $type)) {
-////            return FALSE;
-////        }
-//
-//        $user_id = $order_info['seller_id'];
-//        $user_name = $order_info['seller_name'];
-//
-//
-//        if ($type == 'check') {
-//            //买家确认收货向卖家发送短信提示
-//            $to_mobile = $msg['mobile'];
-//            $smsText = "您的订单：" . $order_info['order_sn'] . "，买家" . $order_info['buyer_name'] . "已经确定！"; //内容
-//        } else if ($type == 'buy') {
-//            //买家下单向卖家发送短信提示
-//            $to_mobile = $msg['mobile'];
-//            $smsText = "买家:" . $order_info['buyer_name'] . "在您店铺拍下一单产品，请及时发货。订单号为：" . $order_info['order_sn'] . "，请及时处理！"; //内容
-//        } else if ($type == 'send') {
-//            //卖家发货向买家发送短信提示
-//            $mod_order_extm = & m('orderextm');
-//            $row_order_extm = $mod_order_extm->get("order_id=" . $order_info['order_id']);
-//            $to_mobile = $row_order_extm['phone_mob'];
-//
-//            $smsText = "您的订单：" . $order_info['order_sn'] . ",卖家：" . $order_info['seller_name'] . "已经发货，请及时查收！"; //内容
-//        } else {
-//            return FALSE;
-//        }
-//
-//        $result = $this->send_msg($user_id, $user_name, $to_mobile, $smsText);
-//        return $result;
-//    }
+
 
     /**
      * 卖家后台 发送短信
@@ -126,10 +72,8 @@ class Mobile_msg {
     function send_msg_self($type,$to_mobile,$smsText){
 
         //txsuccess kdsuccess refund
-        if($type == 'txsuccess'){
-            $smsText = '您的提现已成功,请及时关注到账信息.';
-        }else if($type == 'kdsuccess'){
-            $smsText = '您申请的众盈店铺已经审核通过,请及时完善您的个人信息.';
+        if($type == 'kdsuccess'){
+            $smsText = '恭喜您申请的店铺已经审核通过，请及时上传产品，并完善您的店铺信息。祝商祺！客服电话：400-1820-600 www.zhying.com';
         }
 
         if($this->isMobile($to_mobile)){
@@ -147,16 +91,16 @@ class Mobile_msg {
         $mcode = $this->make_code();
         if ($type == 'register') {
             //注册发送短信的内容
-            $smsText = "短信注册验证码为:" . $mcode . ".请在注册页面中输入并完成验证.如非本人操作,请忽略.";
+            $smsText = "您申请注册验证码为：【".$mcode."】，请在注册页面中输入并完成验证。如非本人操作，请忽略。";
         } else if ($type == 'change') {
             //修改发送的短信内容
-            $smsText = "您的修改验证码是:" . $mcode . ".请不要把验证码泄露给其他人.";
+            $smsText = "您现在正在修改支付密码，验证码为：【".$mcode."】 为了您的账户安全，请勿泄露于他人。";
         } else if ($type == 'find') {
             //找回密码发送的短信内容
-            $smsText = "您现在正在申请找回密码,验证码为:" . $mcode . ".为了您的账户安全,请勿泄露于他人.";
+            $smsText = "您现在正在申请找回密码，验证码为：【" . $mcode . "】 为了您的账户安全，请勿泄露于他人";
         }else if($type == 'tixian'){
             //提现申请验证短信
-            $smsText = "申请提现验证码为:" . $mcode . ".为了保障您的资产安全,切勿泄露于他人.";
+            $smsText = "您正在申请提现验证码为：【".$mcode."】，为了保障您的资产安全，切勿泄露于他人。";
         }
         //存入session 做认证
         unset($_SESSION['MobileConfirmCode']);
@@ -198,7 +142,10 @@ class Mobile_msg {
      */
     function send_msg($user_id, $user_name, $to_mobile, $smsText) {
         //发送短信
-        $url = 'http://utf8.sms.webchinese.cn/?Uid=' . SMS_UID . '&Key=' . SMS_KEY . '&smsMob=' . $to_mobile . '&smsText=' . $smsText;
+//        $url = 'http://utf8.sms.webchinese.cn/?Uid=' . SMS_UID . '&Key=' . SMS_KEY . '&smsMob=' . $to_mobile . '&smsText=' . $smsText;
+       // $url = 'http://120.26.69.248/msg/HttpSendSM?account='.SMS_UID.'&pswd='.SMS_KEY.'&mobile='.$to_mobile.'&msg='.$smsText;
+       // $url = 'http://120.26.69.248/msg/HttpSendSM?account=001122&pswd=Sd123456&mobile=18705397012&msg=中文输入法，临沂盒子信息科技有限公司';
+        $url = 'http://120.26.69.248/msg/HttpSendSM?account='.SMS_UID.'&pswd='.SMS_KEY.'&mobile='.$to_mobile.'&msg='.urlencode($smsText).'';
         $res = $this->Sms_Get($url);
 
         $add_msglog = array(
@@ -283,8 +230,8 @@ class Mobile_msg {
      */
     function get_functions() {
         $arr = array();
-        $arr[] = 'buy'; //来自买家下单通知   
-        $arr[] = 'send'; //卖家发货通知买家   
+        $arr[] = 'buy'; //来自买家下单通知
+        $arr[] = 'send'; //卖家发货通知买家
         $arr[] = 'check'; //来自买家确认通知
         return $arr;
     }

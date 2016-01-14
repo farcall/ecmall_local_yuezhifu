@@ -182,7 +182,7 @@ class FanliApp extends BackendApp{
             $userConfirmFanli = floor($confirmfanli*$members[$k]['unused']/$totalJindouCount*100)/100;
             $zengsong = $userConfirmFanli>$userMaxJinbi?$userMaxJinbi:$userConfirmFanli;
 
-            $msgtext = '您在商城购买的产品，今日赠送的金币数量为:'.$zengsong.'请注意查收';
+            $msgtext = '今日赠送的金币数量为：'.$zengsong.'，请登录平台查看！www.zhying.com 如有问题请联系客服电话：400-1820-600';
             $to_mobile = trim($v['user_name']);
             if($mobile_msg->isMobile($to_mobile)){
                  $mobile_msg->send_msg(0,'admin',$to_mobile,$msgtext);

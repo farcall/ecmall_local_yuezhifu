@@ -231,12 +231,6 @@ class RefundApp extends MemberbaseApp {
                 ));
 
                 /*买家申请退款给卖家发送短信通知*/
-                import('mobile_msg.lib');
-                $mobile_msg = new Mobile_msg();
-                $type = 'refund';
-                $to_mobile = $order['seller_name'];
-                $smsText = '买家：'.$order['buyer_name'].'申请退款，请及时联系沟通并登录后台处理。';
-                $result = $mobile_msg->send_msg_self($type, $to_mobile,$smsText);
 
                 $this->show_message('add_ok', 'back_list', 'index.php?app=refund');
             }
