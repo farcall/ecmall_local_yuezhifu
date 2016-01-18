@@ -1,304 +1,312 @@
 <div class="jd2015_floor jd2015_floor2 w mb20 tab_{$widget_data.model_id}">
-    <div class="mt">
-        <h2>
-            <i>{$widget_data.num_name}</i>
-            {$widget_data.model_name}
-        </h2>
-        <ul class="ks-switchable-nav">
-            <li class="ks-active">
-                <a href="javascript:;">{$widget_data.model_name1}</a>
+<div class="mt">
+    <h2>
+        <i>{$widget_data.num_name}</i>
+        {$widget_data.model_name}
+    </h2>
+    <ul class="ks-switchable-nav" id="tab_nav_{$widget_data.model_id}">
+        <li class="ks-active">
+            <a href="javascript:;">{$widget_data.model_name1}</a>
+        </li>
+        {if $widget_data.model_name2 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name2}</a> </li>
+        {/if}
+        {if $widget_data.model_name3 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name3}</a> </li>
+        {/if}
+        {if $widget_data.model_name4 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name4}</a> </li>
+        {/if}
+        {if $widget_data.model_name5 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name5}</a> </li>
+        {/if}
+        {if $widget_data.model_name6 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name6}</a> </li>
+        {/if}
+        {if $widget_data.model_name7 != ""}
+        <li class> <a href="javascript:;">{$widget_data.model_name7}</a> </li>
+        {/if}
+    </ul>
+</div>
+
+<div class="mc">
+<div class="side">
+    <div class="side_t">
+        <a href="{$widget_data.ad1_link_url}" target="_blank">
+            <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$widget_data.ad1_image_url}" width="213" height="475">
+        </a>
+        <ul class="themes">
+            <li>
+                <a href="{$widget_data.sub_title_name1_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name1}</span>
+                </a>
             </li>
-            {if $widget_data.model_name2 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name2}</a> </li>
-            {/if}
-            {if $widget_data.model_name3 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name3}</a> </li>
-            {/if}
-            {if $widget_data.model_name4 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name4}</a> </li>
-            {/if}
-            {if $widget_data.model_name5 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name5}</a> </li>
-            {/if}
-            {if $widget_data.model_name6 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name6}</a> </li>
-            {/if}
-            {if $widget_data.model_name7 != ""}
-            <li class> <a href="javascript:;">{$widget_data.model_name7}</a> </li>
-            {/if}
+            <li>
+                <a href="{$widget_data.sub_title_name2_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name2}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$widget_data.sub_title_name3_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name3}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$widget_data.sub_title_name4_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name4}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$widget_data.sub_title_name5_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name5}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$widget_data.sub_title_name6_link_url}" target="_blank">
+                    <span>{$widget_data.sub_title_name6}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="keywords">
+            <li>
+                <!--{foreach from=$widget_data.cates_1 item=cate name=fe_cate}-->
+                <!--{if $smarty.foreach.fe_cate.iteration le 10}-->
+                <a href="{url app=search&cate_id=$cate.cate_id}" target="_blank">{$cate.cate_name}</a>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </li>
         </ul>
     </div>
+</div>
 
-    <div class="mc">
-        <div class="side">
-            <div class="side_t">
-                <a href="{$widget_data.ad1_link_url}" target="_blank">
-                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$widget_data.ad1_image_url}" width="213" height="475">
+<div class="ks-switchable-content" id="tab_content_{$widget_data.model_id}">
+<div class="ks-active">
+    <div class="pic_list">
+
+        <div class="block_2">
+            <div class="fore2">
+                <a href="{$options.ad2_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad2_image_url}">
                 </a>
-                <ul class="themes">
-                    <li>
-                        <a href="{$widget_data.sub_title_name1_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name1}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$widget_data.sub_title_name2_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name2}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$widget_data.sub_title_name3_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name3}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$widget_data.sub_title_name4_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name4}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$widget_data.sub_title_name5_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name5}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$widget_data.sub_title_name6_link_url}" target="_blank">
-                            <span>{$widget_data.sub_title_name6}</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="keywords">
-                    <li>
-                        <!--{foreach from=$widget_data.cates_1 item=cate name=fe_cate}-->
-                        <!--{if $smarty.foreach.fe_cate.iteration le 10}-->
-                        <a href="{url app=search&cate_id=$cate.cate_id}" target="_blank">{$cate.cate_name}</a>
-                        <!--{/if}-->
-                        <!--{/foreach}-->
-                    </li>
-                </ul>
+            </div>
+            <div class="fore2">
+                <a href="{$options.ad3_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad3_image_url}">
+                </a>
+            </div>
+            <div class="fore2">
+                <a href="{$options.ad4_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad4_image_url}">
+                </a>
+            </div>
+        </div>
+        <div class="inner_sides2 carousel-{$widget_data.model_id}">
+            <a href="javascript:;" class="ctrl prev">&lt;</a>
+            <a href="javascript:;" class="ctrl next">&gt;</a>
+            <div class="ks-switchable-nav">
+                <a href="javascript:;" class="ks-active"></a>
+                <a href="javascript:;" class=""></a>
+                <a href="javascript:;" class=""></a>
+                <a href="javascript:;" class=""></a>
+            </div>
+            <div class="ks-switchable-content">
+                <a href="{$options.ad5_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad5_image_url}">
+                </a>
+                <a href="{$options.ad6_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad6_image_url}">
+                </a>
+                <a href="{$options.ad7_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad7_image_url}">
+                </a>
+                <a href="{$options.ad8_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad8_image_url}">
+                </a>
+            </div>
+        </div>
+        <div class="block_2">
+            <div class="fore2">
+                <a href="{$options.ad9_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad9_image_url}">
+                </a>
+            </div>
+            <div class="fore2">
+                <a href="{$options.ad10_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad10_image_url}">
+                </a>
+            </div>
+            <div class="fore2">
+                <a href="{$options.ad11_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad11_image_url}">
+                </a>
             </div>
         </div>
 
-        <div class="ks-switchable-content">
-            <div class="ks-active">
-                 <div class="pic_list">
-
-                    <div class="block_2">
-                        <div class="fore2">
-                            <a href="{$options.ad2_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad2_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad3_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad3_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad4_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad4_image_url}">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="inner_sides2 carousel-{$widget_data.model_id}">
-                         <a href="javascript:;" class="ctrl prev">&lt;</a>
-                         <a href="javascript:;" class="ctrl next">&gt;</a>
-                         <div class="ks-switchable-nav">
-                             <a href="javascript:;" class="ks-active"></a>
-                             <a href="javascript:;" class=""></a>
-                             <a href="javascript:;" class=""></a>
-                             <a href="javascript:;" class=""></a>
-                         </div>
-                         <div class="ks-switchable-content">
-                             <a href="{$options.ad5_link_url}" target="_blank">
-                                 <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad5_image_url}">
-                             </a>
-                             <a href="{$options.ad6_link_url}" target="_blank">
-                                 <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad6_image_url}">
-                             </a>
-                             <a href="{$options.ad7_link_url}" target="_blank">
-                                 <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad7_image_url}">
-                             </a>
-                             <a href="{$options.ad8_link_url}" target="_blank">
-                                 <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad8_image_url}">
-                             </a>
-                         </div>
-                     </div>
-                     <div class="block_2">
-                        <div class="fore2">
-                            <a href="{$options.ad9_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad9_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad10_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad10_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad11_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad11_image_url}">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="block_2">
-                        <div class="fore2">
-                            <a href="{$options.ad12_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad12_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad13_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad13_image_url}">
-                            </a>
-                        </div>
-                        <div class="fore2">
-                            <a href="{$options.ad14_link_url}" target="_blank">
-                                <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad14_image_url}">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                  <ul class="goods_list">
-                <!-- {foreach from=$widget_data.goods_list_2 item=goods name=fe_goods} -->
-                <li>
-                <div class="p_img">
-                <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                <img src="{$goods.default_image}" width="165" height="165">
+        <div class="block_2">
+            <div class="fore2">
+                <a href="{$options.ad12_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad12_image_url}">
                 </a>
-                </div>
-                <div class="p_title">
-                <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                </div>
-                <div class="p_price">
-                {$goods.price|price}
-                </div>
-                </li>
-                <!-- {/foreach} -->
-                </ul>
-                </textarea>
             </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                <ul class="goods_list">
-                    <!-- {foreach from=$widget_data.goods_list_3 item=goods name=fe_goods} -->
-                    <li>
-                        <div class="p_img">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                                <img src="{$goods.default_image}" width="165" height="165">
-                            </a>
-                        </div>
-                        <div class="p_title">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                        </div>
-                        <div class="p_price">
-                            {$goods.price|price}
-                        </div>
-                    </li>
-                    <!-- {/foreach} -->
-                </ul>
-                </textarea>
+            <div class="fore2">
+                <a href="{$options.ad13_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad13_image_url}">
+                </a>
             </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                <ul class="goods_list">
-                    <!-- {foreach from=$widget_data.goods_list_4 item=goods name=fe_goods} -->
-                    <li>
-                        <div class="p_img">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                                <img src="{$goods.default_image}" width="165" height="165">
-                            </a>
-                        </div>
-                        <div class="p_title">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                        </div>
-                        <div class="p_price">
-                            {$goods.price|price}
-                        </div>
-                    </li>
-                    <!-- {/foreach} -->
-                </ul>
-                </textarea>
-            </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                <ul class="goods_list">
-                    <!-- {foreach from=$widget_data.goods_list_5 item=goods name=fe_goods} -->
-                    <li>
-                        <div class="p_img">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                                <img src="{$goods.default_image}" width="165" height="165">
-                            </a>
-                        </div>
-                        <div class="p_title">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                        </div>
-                        <div class="p_price">
-                            {$goods.price|price}
-                        </div>
-                    </li>
-                    <!-- {/foreach} -->
-                </ul>
-                </textarea>
-            </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                <ul class="goods_list">
-                    <!-- {foreach from=$widget_data.goods_list_6 item=goods name=fe_goods} -->
-                    <li>
-                        <div class="p_img">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                                <img src="{$goods.default_image}" width="165" height="165">
-                            </a>
-                        </div>
-                        <div class="p_title">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                        </div>
-                        <div class="p_price">
-                            {$goods.price|price}
-                        </div>
-                    </li>
-                    <!-- {/foreach} -->
-                </ul>
-                </textarea>
-            </div>
-            <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
-                <ul class="goods_list">
-                    <!-- {foreach from=$widget_data.goods_list_7 item=goods name=fe_goods} -->
-                    <li>
-                        <div class="p_img">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
-                                <img src="{$goods.default_image}" width="165" height="165">
-                            </a>
-                        </div>
-                        <div class="p_title">
-                            <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
-                        </div>
-                        <div class="p_price">
-                            {$goods.price|price}
-                        </div>
-                    </li>
-                    <!-- {/foreach} -->
-                </ul>
-                </textarea>
+            <div class="fore2">
+                <a href="{$options.ad14_link_url}" target="_blank">
+                    <img src="https://s.tbcdn.cn/s.gif" data-ks-lazyload="{$options.ad14_image_url}">
+                </a>
             </div>
         </div>
+
     </div>
 </div>
-<script>
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 600">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_2 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_3 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_4 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_5 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_6 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+<div class="ks-active" style="display:none;">
+    <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
+        <ul class="goods_list">
+            <!-- {foreach from=$widget_data.goods_list_7 item=goods name=fe_goods} -->
+            <li>
+                <div class="p_img">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+                        <img src="{$goods.default_image}" width="165" height="165">
+                    </a>
+                </div>
+                <div class="p_title">
+                    <a href="{url app=goods&id=$goods.goods_id}" target="_blank">{$goods.goods_name|truncate:42:""}</a>
+                </div>
+                <div class="p_price">
+                    {$goods.price|price}
+                </div>
+            </li>
+            <!-- {/foreach} -->
+        </ul>
+    </textarea>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
     KISSY.ready(function(S) {
         var tabs = new S.Tabs('.tab_{$widget_data.model_id}', {
             aria: false
-        });
-    });
+        })
+       });
 </script>
-<script>
+
+<script type="text/javascript">
     KISSY.use("switchable", function(S) {
         var tiny_slide = new S.Carousel('.carousel-{$widget_data.model_id}', {
             steps: 1,
@@ -310,26 +318,43 @@
             disableBtnCls: 'disable',
             interval: 3,
             aria: false,
-            autoplay: true,
+            autoplay: false,
             lazyDataType: 'img-src' //延迟加载图片？
         });
     });
 </script>
-<script>
-    KISSY.use('datalazyload', function(S, DataLazyload) {
-        var d = new DataLazyload(
-                [
-                    document.getElementsByClassName('tab_{$widget_data.model_id}')
-                ],
+
+
+<script type="text/javascript">
+    KISSY.use('datalazyload',function (S,DataLazyload) {
+        var $ = S.all;
+        var DOM = S.DOM;
+        var D =  new DataLazyload(
+                DOM.get(".tab_{$widget_data.model_id}"),
                 {
                     mod: "manual", // 延迟模式。默认为 auto manual
                     placeholder:"http://a.tbcdn.cn/s.gif",
-                    diff: {
-                        bottom: 150,
-                        top: -250
-                    }
+                    left:20, // pre load 50px outside left edge of viewport or specified container
+                    right:30, // pre load 50px outside right edge of viewport or specified container
+                    top:50, // pre load 50px outside top edge of viewport or specified container
+                    bottom:60 // pre load 50px outside bottom edge of viewport or specified container
+
                 }
         );
-//        console.log(d.getElements());
+
+
+        var container = $("#tab_content_{$widget_data.model_id}");
+        var mods = $("#tab_content_{$widget_data.model_id} .ks-active");
+        S.all("#tab_nav_{$widget_data.model_id} a").each(function (a, index) {
+
+            a.on("mouseenter", function (e) {
+                e.halt();
+            });
+            a.on("click", function (e) {
+                D.refresh();
+            });
+        });
     });
+
+
 </script>

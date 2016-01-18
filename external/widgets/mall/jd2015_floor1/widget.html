@@ -4,7 +4,7 @@
             <i>{$widget_data.num_name}</i>
             {$widget_data.model_name}
         </h2>
-        <ul class="ks-switchable-nav">
+        <ul class="ks-switchable-nav" id="tab_nav_{$widget_data.model_id}">
             <li class="ks-active">
                 <a href="javascript:;">{$widget_data.model_name1}</a>
             </li>
@@ -89,7 +89,7 @@
                 </ul>
             </div>
         </div>
-        <div class="ks-switchable-content">
+        <div class="ks-switchable-content" id="tab_content_{$widget_data.model_id}">
             <div class="ks-active">
                 <div class="pic_list">
                     <div class="block_1">
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                    <!-- {foreach from=$widget_data.goods_list_2 item=goods name=fe_goods} -->
                     <li>
@@ -182,7 +182,7 @@
 
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                     <!-- {foreach from=$widget_data.goods_list_3 item=goods name=fe_goods} -->
                     <li>
@@ -203,7 +203,7 @@
                 </textarea>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                     <!-- {foreach from=$widget_data.goods_list_4 item=goods name=fe_goods} -->
                     <li>
@@ -224,7 +224,7 @@
                 </textarea>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                     <!-- {foreach from=$widget_data.goods_list_5 item=goods name=fe_goods} -->
                     <li>
@@ -245,7 +245,7 @@
                 </textarea>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                    <!-- {foreach from=$widget_data.goods_list_6 item=goods name=fe_goods} -->
                     <li>
@@ -266,7 +266,7 @@
                 </textarea>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                     <!-- {foreach from=$widget_data.goods_list_7 item=goods name=fe_goods} -->
                     <li>
@@ -287,7 +287,7 @@
                 </textarea>
             </div>
             <div class="ks-active" style="display:none;">
-                <textarea class="ks-datalazyload-custom">
+                <textarea class="ks-datalazyload" style="visibility: hidden;height: 474">
                 <ul class="goods_list">
                     <!-- {foreach from=$widget_data.goods_list_8 item=goods name=fe_goods} -->
                     <li>
@@ -336,20 +336,34 @@
     });
 </script>
 
-<script>
-    KISSY.use('datalazyload', function(S, DataLazyload) {
-        var d = new DataLazyload(
-                [
-                    document.getElementsByClassName('tab_{$widget_data.model_id}')
-                ],
+<script type="text/javascript">
+    KISSY.use('datalazyload',function (S,DataLazyload) {
+        var $ = S.all;
+        var DOM = S.DOM;
+        var D =  new DataLazyload(
+                DOM.get(".tab_{$widget_data.model_id}"),
                 {
                     mod: "manual", // 延迟模式。默认为 auto manual
                     placeholder:"http://a.tbcdn.cn/s.gif",
-                    diff: {
-                        bottom: 150,
-                        top: -250
-                    }
+                    left:20, // pre load 50px outside left edge of viewport or specified container
+                    right:30, // pre load 50px outside right edge of viewport or specified container
+                    top:50, // pre load 50px outside top edge of viewport or specified container
+                    bottom:60 // pre load 50px outside bottom edge of viewport or specified container
                 }
         );
+
+
+        var container = $("#tab_content_{$widget_data.model_id}");
+        var mods = $("#tab_content_{$widget_data.model_id} .ks-active");
+        S.all("#tab_nav_{$widget_data.model_id} a").each(function (a, index) {
+            a.on("mouseenter", function (e) {
+                e.halt();
+            });
+            a.on("click", function (e) {
+                D.refresh();
+            });
+        });
     });
+
+
 </script>
