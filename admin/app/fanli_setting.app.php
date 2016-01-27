@@ -26,7 +26,7 @@ class Fanli_settingApp extends BackendApp{
 
     function index(){
         if(IS_POST){
-            if(empty($_POST['chouchenguse_fanli_ratio']) or empty($_POST['line2jindou']) or empty($_POST['online2jindou']) or empty($_POST['jindou2maxjinbi'])){
+            if($_POST['chouchenguse_fanli_ratio']<0 or $_POST['line2jindou']<0 or $_POST['online2jindou']<0 or $_POST['jindou2maxjinbi']<0){
                 $this->show_warning('参数错误');
                 return;
             }
