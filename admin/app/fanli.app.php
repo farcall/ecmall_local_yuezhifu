@@ -83,6 +83,15 @@ class FanliApp extends BackendApp{
      */
     function _submit(){
         //todo 立即提交
+        $fanliSetting = $this->mod_fanli_setting->get(array(
+            'order' => 'add_time desc',
+        ));
+        $jindou2maxjinbi = $fanliSetting['jindou2maxjinbi'];
+        if($jindou2maxjinbi == 0){
+            $this->show_warning('金豆转金币数量为0,提交失败');
+            return;
+        }
+
         //所有成员的未用金豆之和
         $totalJindouCount = $this->getUnusedTotalCounts();
         if($totalJindouCount == 0){
