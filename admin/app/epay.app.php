@@ -401,10 +401,6 @@ class EpayApp extends BackendApp {
                 $row_money_dj = $money_row['money_dj'];
                 $row_money = $money_row['money'];
 
-                if ($row_money_dj < $tx_money) {
-                    $this->show_warning('feifacanshu');
-                    return;
-                }
 
                 $new_money_dj = $row_money_dj - $tx_money;
                 $new_money = $row_money + $tx_money;
@@ -420,8 +416,6 @@ class EpayApp extends BackendApp {
                     'complete'=>'1'
                 );
                 $this->mod_epaylog->edit('id=' . $log_id, $edit_log);
-
-
 
                 $epaylog_data = $this->mod_epaylog->get_info($log_id);
                 $epaylog_data['type']= EPAY_TX_REFUSE;
