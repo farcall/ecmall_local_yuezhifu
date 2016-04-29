@@ -131,6 +131,18 @@ class OrderApp extends BackendApp
 
         /*线下订单order_xianxia修改*/
         $order_xianxia_mod = &m('order_xianxia');
+
+
+        $order_xianxia = $order_xianxia_mod->get(array(
+            'order_id='.$order_id,
+        ));
+
+        //如果订单已审核 请不要重复审核
+        if(($order_xianxia['status'] == ORDER_SHENHE_CANCELED) or ($order_xianxia['status'] == ORDER_SHENHE_CANCELED)){
+            $this->show_warning("订单已审核，请不要重复审核");
+            return;
+        }
+
         $order_xianxia_result = $order_xianxia_mod->edit('order_id='.$order_id,array(
             'admin'=>$this->visitor->_get_detail('user_name'),
             'shenhe_time'=>gmtime(),
@@ -142,7 +154,6 @@ class OrderApp extends BackendApp
         ));
 
         /*卖家佣金从冻结资金中扣除*/
-
         $epay_mod = &m('epay');
         $epay_data = $epay_mod->get(array(
             'conditions'=>'user_id='.$order_xianxia_data['seller_userid'],
@@ -209,6 +220,19 @@ class OrderApp extends BackendApp
 
         /*线下订单order_xianxia修改*/
         $order_xianxia_mod = &m('order_xianxia');
+
+        $order_xianxia = $order_xianxia_mod->get(array(
+            'order_id='.$order_id,
+        ));
+
+
+        //如果订单已审核 请不要重复审核
+        if(($order_xianxia['status'] == ORDER_SHENHE_CANCELED) or ($order_xianxia['status'] == ORDER_SHENHE_CANCELED)){
+            $this->show_warning("订单已审核，请不要重复审核");
+            return;
+        }
+
+
         $order_xianxia_result = $order_xianxia_mod->edit('order_id='.$order_id,array(
             'admin'=>$this->visitor->_get_detail('user_name'),
             'shenhe_time'=>gmtime(),
