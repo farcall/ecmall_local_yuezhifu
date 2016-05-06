@@ -3,7 +3,7 @@
 return array(
     //核心运营
     'meiriyunying'=>array(
-        'text'=>'每日运营',
+        'text'=>'运营中心',
         'default'=>'jinrifenpei',
         'children'=>array(
 //            'cmd'=>array(
@@ -29,6 +29,10 @@ return array(
             'shujuku'=>array(
                 'text'=>'数据库',
                 'url'=>'index.php?app=db&act=backup',
+            ),
+            'proxy_manage'=>array(
+                'text'=>'代理管理',
+                'url'=>'index.php?app=proxy',
             ),
         ),
     ),
@@ -198,29 +202,6 @@ return array(
             'index'=>array(
                 'text'=>'商铺列表',
                 'url'=>'index.php?app=chanel_bendichanpin',
-            ),
-        ),
-    ),
-
-    //本地服务
-    'bendifuwu'=>array(
-        'text'=>'本地服务',
-        'default'=>'index',
-        'children'=>array(
-            'index'=>array(
-                'text'=>'商铺列表',
-                'url'=>'index.php?app=chanel_bendifuwu',
-            ),
-        ),
-    ),
-    //本地市场
-    'bendishichang'=>array(
-        'text'=>'本地市场',
-        'default'=>'index',
-        'children'=>array(
-            'index'=>array(
-                'text'=>'市场管理',
-                'url'=>'index.php?app=chanel_bendishichang',
             ),
         ),
     ),
@@ -411,6 +392,30 @@ return array(
 //            ),
 //        ),
 //    ),
+
+
+    //本地服务
+    'bendifuwu'=>array(
+        'text'=>'本地服务',
+        'default'=>'index',
+        'children'=>array(
+            'index'=>array(
+                'text'=>'商铺列表',
+                'url'=>'index.php?app=chanel_bendifuwu',
+            ),
+        ),
+    ),
+    //本地市场
+    'bendishichang'=>array(
+        'text'=>'本地市场',
+        'default'=>'index',
+        'children'=>array(
+            'index'=>array(
+                'text'=>'市场管理',
+                'url'=>'index.php?app=chanel_bendishichang',
+            ),
+        ),
+    ),
     // 扩展
     'extend' => array(
         'text' => Lang::get('extend'),

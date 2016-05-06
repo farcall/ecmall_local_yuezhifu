@@ -14,6 +14,7 @@ class SearchApp extends MallbaseApp {
     /* 搜索商品 */
 
     function index() {
+
         //  过滤非法参数
         if (!$this->_check_query_param_by_props()) {
             header('Location: index.php');
@@ -74,15 +75,17 @@ class SearchApp extends MallbaseApp {
             'limit' => $page['limit'],
         ));
 
+
         if (!$goods_list) {
             $goods_list = $goods_mod->get_list(array(
                 'conditions' => 'if_show=1 AND closed=0 ',
                 'order' => 'add_time desc',
-                'fields' => 's.praise_rate,s.im_qq,s.,',
-                'limit' => 45,im_ww
+                'fields' => 's.praise_rate,s.im_qq,s.im_ww,',
+                'limit' => 45,
             ));
             $this->assign('goods_list_order', 1);
         }
+
 
         $goods_list = $this->_format_goods_list($goods_list);
         $this->assign('goods_list', $goods_list);

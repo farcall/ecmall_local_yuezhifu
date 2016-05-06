@@ -195,7 +195,7 @@ class FrontendApp extends ECBaseApp {
             /* 推荐产品 */
             $goods_mod = & m('goods');
             $conditions = 'mall_recommended = 1';
-            $conditions .= $city_wheresql;
+            $conditions = $city_wheresql;
             $wap_recommended_goods = $goods_mod->get_list(
                     array(
                         'conditions' => $conditions,
