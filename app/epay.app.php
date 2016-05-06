@@ -102,8 +102,6 @@ class EpayApp extends MemberbaseApp {
         $this->display('epay.logall.html');
     }
 
-
-
     //在线充值
     function czlist() {
         $user_id = $this->visitor->get('user_id');
@@ -123,8 +121,6 @@ class EpayApp extends MemberbaseApp {
 
         $this->display('epay.czlist.html');
     }
-
-
 
     /**
      * 提现发送验证码
@@ -412,7 +408,8 @@ class EpayApp extends MemberbaseApp {
         $this->assign('logs', $logs);
         $this->display('epay.jinbimingxi.html');
     }
-//余额转帐
+
+    //余额转帐
     function out() {
         $to_user = trim($_POST['to_user']);
         $to_money = trim($_POST['to_money']);
@@ -510,7 +507,6 @@ class EpayApp extends MemberbaseApp {
             }
         }
     }
-
 
     //修改支付密码
     function editpassword() {
@@ -1060,7 +1056,7 @@ class EpayApp extends MemberbaseApp {
                     $text = $cz_money . $v_moneytype . $v_oid . $v_mid . $v_url . $key; #md5加密拼凑串,注意顺序不能变
                     $v_md5info = strtoupper(md5($text));
                     $remark1 = "";
-                    $remark2 = '[url:='.SITE_URL.'/index.php?app=epay&act=chinabank_return_notify_url]';
+                    $remark2 = '[url:='.SITE_URL.'/index.php?app=epay_chinabank&act=chinabank_return_notify_url]';
                     ?>
                     <body onLoad="javascript:document.CHINABLANK_FORM.submit()">
                         <form method="post" name="CHINABLANK_FORM" action="https://tmapi.jdpay.com/PayGate">
@@ -1125,18 +1121,7 @@ class EpayApp extends MemberbaseApp {
         }
     }
 
-    function writelog($txt){
-        $myfile = fopen("app/newfile1.txt", "a") or die("Unable to open file!");
-        fwrite($myfile, $txt);
-        fclose($myfile);
-    }
 
-
-    function chinabank_return_notify_url(){
-        $this->writelog("laile");
-
-        echo "error";
-    }
 
     function chinabank_return_url() {
         $user_id = $this->visitor->get('user_id');
