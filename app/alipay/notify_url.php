@@ -92,9 +92,7 @@ if ($verify_result) {//验证成功
             'states' => 61,
         );
         $mod_epaylog->edit('order_sn=' . '"' . $dingdan . '"', $edit_epaylog);
-        
-        
-        
+
         
                 //---------------------  以下是判断  是否启用 自动付款----------------------
                 
