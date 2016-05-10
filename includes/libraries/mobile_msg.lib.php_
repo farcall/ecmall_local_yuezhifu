@@ -1,5 +1,4 @@
 <?php
-require_once 'ChuanglanSmsHelper/ChuanglanSmsApi.php';
 
 class Mobile_msg {
 
@@ -142,11 +141,13 @@ class Mobile_msg {
      * @return boolean
      */
     function send_msg($user_id, $user_name, $to_mobile, $smsText) {
-        $clapi  = new ChuanglanSmsApi();
-        $result = $clapi->sendSMS($to_mobile, $smsText,'true');
-        $result = $clapi->execResult($result);
+        //发送短信
+//        $url = 'http://utf8.sms.webchinese.cn/?Uid=' . SMS_UID . '&Key=' . SMS_KEY . '&smsMob=' . $to_mobile . '&smsText=' . $smsText;
+       // $url = 'http://120.26.69.248/msg/HttpSendSM?account='.SMS_UID.'&pswd='.SMS_KEY.'&mobile='.$to_mobile.'&msg='.$smsText;
+       // $url = 'http://120.26.69.248/msg/HttpSendSM?account=001122&pswd=Sd123456&mobile=18705397012&msg=中文输入法，临沂盒子信息科技有限公司';
+        $url = 'http://120.26.69.248/msg/HttpSendSM?account='.SMS_UID.'&pswd='.SMS_KEY.'&mobile='.$to_mobile.'&msg='.urlencode($smsText).'';
+        $res = $this->Sms_Get($url);
 
-        $res = $result[1]==0?1:0;
         $add_msglog = array(
             'user_id' => $user_id,
             'user_name' => $user_name,
@@ -158,11 +159,14 @@ class Mobile_msg {
         
         $this->_msglog_mod->add($add_msglog);
 
-
-        if($result[1]==0){
-            return true;
-        }else{
-            return false;
+        if ($res > 0) {
+            // user_id = 0 user_name = admin  表示为系统发送,短信的条数不做操作
+            if ($user_id != 0) {
+          //      $this->_msg_mod->edit('user_id=' . $user_id, 'num=num-1');
+            }
+            return TRUE;
+        } else {
+            return FALSE;
         }
     }
 

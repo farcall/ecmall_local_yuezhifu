@@ -202,9 +202,9 @@ class EpayApp extends MemberbaseApp {
             ));
 
             if(!empty($epaylog_data)){
-                if((gmtime()-$epaylog_data['add_time']) < 1*24*60*60 ){
+                if((gmtime()-$epaylog_data['add_time']) < 1*12*60*60 ){
                     date_default_timezone_set('Asia/Chongqing');
-                    $this->show_warning('24小时内只能提现一次，您上次提现时间是'.date("Y-m-d H:i:s", $epaylog_data['add_time']+8*3600));
+                    $this->show_warning('12小时内只能提现一次，您上次提现时间是'.date("Y-m-d H:i:s", $epaylog_data['add_time']+8*3600));
                     return;
                 }
             }
