@@ -1,117 +1,151 @@
 {include file="fanli/header.html"}
-
 <!-- Main content -->
 <section class="content">
-
-
-    <div class="row info">
-        <div class="col-md-6 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{$total_amount}元</h3>
-                    <p>历史销售额</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-card"></i>
-                </div>
-            </div>
-        </div><!-- ./col -->
-        <div class="col-md-6 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>{$count}个</h3>
-                    <p>店铺数量</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-social-yen"></i>
-                </div>
-            </div>
-        </div><!-- ./col -->
-
-    </div>
-
     <div class="row">
-        <div class="col-md-6 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{$yongjin}元</h3>
-                    <p>佣金</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-card"></i>
-                </div>
-            </div>
-        </div><!-- ./col -->
-        <div class="col-md-6 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>{$dailifei}元</h3>
-                    <p>代理奖励</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-social-yen"></i>
-                </div>
-            </div>
-        </div><!-- ./col -->
+        <div class="col-md-6">
 
-    </div>
+            <div class="box">
+                <div class="box-body  table-responsive no-padding">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 80px">地区ID</th>
+                            <th>地区名称</th>
+                            <th>店铺数量</th>
+                            <th>销售额</th>
+                            <th>操作</th>
+                        </tr>
 
-    <div class="row">
-            <div class="col-md-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3 class="info-box-number" id="show_shijiedu">地区:{$area}</h3>
 
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion ion-checkmark-circled"></i>
-                    </div>
+                        {foreach from=$regions item=region}
+                            <tr>
+                                <td>{$region.region_id}</td>
+                                <th>{$region.region_name}</th>
+                                <th>{$region.count}</th>
+                                <th>{$region.amount}</th>
+                                <td>
+                                    <a href="index.php?app=proxy&act=region&id={$region.region_id}">查看明细</a>
+                                </td>
+                            </tr>
+                        {/foreach}
+
+
+                    </table>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="small-box bg-blue">
-                    <div class="inner">
-                        <p>比如:枣庄、罗庄区、苍山县、兰山区等</p>
-                        <p>具体请参阅:<br/>
-                            http://www.zhying.com/index.php?app=my_address <br/>
-                            中的三级关联</p>
-                    </div>
-                </div>
             </div>
         </div>
 
-    <div class="row">
-        <div class="col-md-6" id="querenfenpei">
-            <div class="box box-info">
-                <div class="box-content">
-                    <form method="post">
-                        <div class="box-body">
-                            <input type="hidden" name="app" value="proxy"/>
-                            <input type="hidden" name="act" value="index"/>
-                            <div class="form-group has-success">
-                                <br/>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="area" name="area"  style="font-size: x-large;">
-                                    <label class="input-group-addon" for="area">请输入地区(县城)</label>
-                                </div>
-                            </div>
-                            <button type="submit" name="method" value="submit" class="btn  btn-warning btn-lg pull-right"> 立即提交 <span class="ion-paper-airplane"></span></button>
+        <div class="col-md-6">
+            <div class="row info">
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>{$total_amount}元</h3>
+
+                            <p>历史销售额</p>
                         </div>
-                    </form>
+                        <div class="icon">
+                            <i class="ion ion-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>{$count}个</h3>
 
+                            <p>店铺数量</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-yen"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>{$yongjin}元</h3>
+
+                            <p>佣金</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>{$dailifei}元</h3>
+
+                            <p>代理奖励</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-yen"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3 class="info-box-number" id="show_shijiedu">地区:{$area}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion ion-checkmark-circled"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6" id="querenfenpei">
+                    <div class="box box-info">
+                        <div class="box-contenty">
+                            <form method="post">
+                                <div class="box-body">
+                                    <input type="hidden" name="app" value="proxy"/>
+                                    <input type="hidden" name="act" value="index"/>
+
+                                    <div class="form-group has-success">
+                                        <br/>
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="area" name="area"
+                                                   style="font-size: x-large;">
+                                            <label class="input-group-addon" for="area">请输入地区(县城)</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" name="method" value="submit"
+                                            class="btn  btn-warning btn-lg pull-right"> 立即提交 <span
+                                            class="ion-paper-airplane"></span></button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
+
 
 </section><!-- /.content -->
-
 
 
 {include file="fanli/footer.html"}
