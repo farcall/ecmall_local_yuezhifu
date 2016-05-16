@@ -83,6 +83,14 @@
         var canSend = true;
         var time = 60;
         var dtime = 60;
+
+        $("#sendsms").click(function(){
+            htmlobj=$.ajax({url:"index.php?app=member&act=send_code&type=change",async:false});
+
+            console.log(htmlobj.responseText);
+        });
+
+        return;
         $("#sendsms").bind('click', function() {
             var btn = $(this);
             if (!canSend)
