@@ -1,0 +1,49 @@
+{include file="header.html"}
+{include file="left.html"}
+<div class="content-wrapper">
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box">
+                <div class="box-body  table-responsive no-padding">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 80px">店铺ID</th>
+                            <th>店铺名称</th>
+                            <th>店主名称</th>
+                            <th>联系电话</th>
+                            <th>开店时间</th>
+                            <th>服务专员</th>
+                            <th>销售额</th>
+                            <th>操作</th>
+                        </tr>
+
+
+                        {foreach from=$stores item=store}
+                            <tr>
+                                <th>{$store.store_id}</th>
+                                <th>{$store.store_name}</th>
+                                <th>{$store.owner_name}</th>
+                                <th>{$store.tel}</th>
+                                <th>{$store.add_time|date:complete}</th>
+                                <th>{$store.fuwuzhuanyuan_name}</th>
+                                <th>{$store.amount}</th>
+                                <th><a href="proxy/index.php?app=default&act=store&id={$store.store_id}">订单明细</a></th>
+                            </tr>
+                        {/foreach}
+
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section><!-- /.content -->
+</div>
+
+{include file="footer.html"}

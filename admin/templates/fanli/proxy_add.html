@@ -1,0 +1,49 @@
+{include file="fanli/header.html"}
+<!-- Main content -->
+<section class="content">
+
+
+    <div class="row">
+        <div class="col-md-3" id="querenfenpei">
+            <div class="box box-info">
+                <div class="box-contenty">
+                    <form method="post">
+                        <div class="box-body">
+                            <input type="hidden" name="app" value="proxy"/>
+                            <input type="hidden" name="act" value="add"/>
+
+                            <div class="form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="region_name" name="region_name"
+                                           style="font-size: x-large;">
+                                    <label class="input-group-addon" for="region_name">请输入县级代理区域</label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="user_name" name="user_name"
+                                           style="font-size: x-large;">
+                                    <label class="input-group-addon" for="user_name">请输入绑定会员账号</label>
+                                </div>
+                            </div>
+
+
+                            <button type="submit" name="method" value="submit"
+                                    class="btn  btn-warning btn-lg pull-right"> 立即提交 <span
+                                    class="ion-paper-airplane"></span></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section><!-- /.content -->
+
+
+{include file="fanli/footer.html"}

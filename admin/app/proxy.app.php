@@ -76,6 +76,63 @@ class ProxyApp extends BackendApp{
     }
 
     /**
+     * 作用:增加代理
+     * Created by QQ:710932
+     */
+    function add(){
+        if(IS_POST){
+            $member_mod = &m('member');
+
+            $region_name = trim($_POST['region_name']);
+            $user_name = trim($_POST['user_name']);
+
+            $user_data = $member_mod->get(array(
+                'conditions' => "user_name = '$user_name'",
+            ));
+
+            if(empty($user_data)){
+                $this->show_warning('对不起,会员账号不存在，请先注册账号');
+                return;
+            }
+
+            $region_data = $this->_region_mod->get(array(
+                'conditions' => "region_name = '$region_name'",
+            ));
+
+            if(empty($region_data)){
+                $this->show_warning('代理库中没有该区域!');
+                return;
+            }
+
+
+            $proxy = &m('proxy')->get(array(
+                'conditions' => "region_name = '$region_name'",
+            ));
+            if(!empty($proxy)){
+                $this->show_warning("该区域已存在代理，请不要重复提交");
+                return;
+            }
+
+            $result = &m('proxy')->add(array(
+                'user_id'=>$user_data['user_id'],
+                'user_name'=>$user_data['user_name'],
+                'region_id'=>$region_data['region_id'],
+                'region_name'=>$region_data['region_name'],
+                'create_time'=>gmtime(),
+            ));
+
+            if(empty($result)){
+                $this->show_warning('代理添加失败');
+                return;
+            }
+
+            $this->show_message("代理添加成功");
+        }
+        else{
+            $this->display("fanli/proxy_add.html");
+        }
+    }
+    /**
      * 作用:查看店铺下的所有订单
      * Created by QQ:710932
      */

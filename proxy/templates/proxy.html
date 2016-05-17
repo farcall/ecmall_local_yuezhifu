@@ -1,0 +1,126 @@
+{include file="header.html"}
+{include file="left.html"}
+<!-- Main content -->
+        <div class="content-wrapper">
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="box">
+                <div class="box-body  table-responsive no-padding">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 80px">地区ID</th>
+                            <th>地区名称</th>
+                            <th>店铺数量</th>
+                            <th>销售额</th>
+                            <th>操作</th>
+                        </tr>
+
+
+                        {foreach from=$regions item=region}
+                            <tr>
+                                <td>{$region.region_id}</td>
+                                <th>{$region.region_name}</th>
+                                <th>{$region.count}</th>
+                                <th>{$region.amount}</th>
+                                <td>
+                                    <a href="proxy/index.php?app=default&act=region&id={$region.region_id}">查看明细</a>
+                                </td>
+                            </tr>
+                        {/foreach}
+
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row info">
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>{$total_amount}元</h3>
+
+                            <p>历史销售额</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>{$count}个</h3>
+
+                            <p>店铺数量</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-yen"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>{$yongjin}元</h3>
+
+                            <p>佣金</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-md-6 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>{$dailifei}元</h3>
+
+                            <p>代理奖励</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-yen"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3 class="info-box-number" id="show_shijiedu">地区:{$area}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion ion-checkmark-circled"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section><!-- /.content -->
+
+        </div>
+{include file="footer.html"}

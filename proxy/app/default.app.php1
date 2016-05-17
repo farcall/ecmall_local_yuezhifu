@@ -1,0 +1,22 @@
+<?php
+/**
+ *    默认控制器
+ *
+ *    @author    Garbin
+ *    @usage    none
+ */
+class DefaultApp extends BackendApp
+{
+    /**
+     *    后台首页
+     *
+     *    @author    Garbin
+     *    @return    void
+     */
+    function index()
+    {
+
+        $this->display('proxy.html');
+    }
+}
+?>

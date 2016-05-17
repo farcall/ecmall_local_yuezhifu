@@ -6,10 +6,6 @@ return array(
         'text'=>'运营中心',
         'default'=>'jinrifenpei',
         'children'=>array(
-//            'cmd'=>array(
-//                'text'=>'核心数据',
-//                'url'=>'index.php?app=fanli_cmd&act=index'
-//            ),
             'tixianshenhe'=>array(
                 'text'=>'提现审核',
                 'url'=>'index.php?app=epay&act=txlog&status=70'
@@ -34,6 +30,11 @@ return array(
                 'text'=>'代理管理',
                 'url'=>'index.php?app=proxy',
             ),
+            'proxy_add'=>array(
+                'text'=>'新增代理',
+                'url'=>'index.php?app=proxy&act=add',
+            ),
+
         ),
     ),
 

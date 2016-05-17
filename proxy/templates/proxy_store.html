@@ -1,0 +1,49 @@
+{include file="header.html"}
+{include file="left.html"}
+
+<div class="content-wrapper">
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box">
+                <div class="box-body  table-responsive no-padding">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 80px">订单ID</th>
+                            <th>订单SN</th>
+                            <th>操作员</th>
+                            <th>买家ID</th>
+                            <th>买家</th>
+                            <th>订单金额</th>
+                            <th>完成时间</th>
+                        </tr>
+
+
+                        {foreach from=$orders item=order}
+                            <tr>
+                                <th>{$order.order_id}</th>
+                                <th>{$order.order_sn}</th>
+                                <th>{$order.seller_name}</th>
+                                <th>{$order.buyer_id}</th>
+                                <th>{$order.buyer_name}</th>
+                                <th>{$order.order_amount}</th>
+                                <th>{$order.finished_time|date:complete}</th>
+                            </tr>
+                        {/foreach}
+
+
+                    </table>
+                </div>
+            </div>
+            {include file="page.bottom.html"}
+
+        </div>
+    </div>
+
+
+</section><!-- /.content -->
+</div>
+
+{include file="footer.html"}

@@ -4,6 +4,8 @@
     <option name="skippedFunctions">
       <list>
         <option value="SearchApp-&gt;_get_group_by_info" />
+        <option value="DefaultApp-&gt;index" />
+        <option value="BaseApp-&gt;_run_action" />
       </list>
     </option>
   </component>
