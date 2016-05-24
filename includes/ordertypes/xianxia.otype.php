@@ -89,9 +89,9 @@ class XianxiaOrder extends BaseOrder {
 
         if (!$base_info) {
             /* 基本信息验证不通过 */
-
             return 0;
         }
+
 
         /*插入订单信息*/
         $order_model = & m('order');
@@ -100,8 +100,17 @@ class XianxiaOrder extends BaseOrder {
         if (!$order_id) {
             /* 插入基本信息失败 */
             $this->_error('create_order_failed');
-
             return 0;
+        }else{
+
+            /*修改卖家金额 冻结佣金*/
+            $epay_mod = &m('epay');
+            $epay_data = $epay_mod->get(array(
+                'conditions'=>'user_id='.$seller_userid,
+            ));
+            $epay_data['money_dj'] = $epay_data['money_dj']+$yongjin;
+            $epay_data['money'] = $epay_data['money']-$yongjin;
+            $epay_mod->edit('user_id='.$seller_userid,$epay_data);
         }
 
 
@@ -146,16 +155,6 @@ class XianxiaOrder extends BaseOrder {
         $consignee_info['order_id'] = $order_id;
         $order_extm_model = & m('orderextm');
         $order_extm_model->add($consignee_info);
-
-
-        /*修改卖家金额 冻结佣金*/
-        $epay_mod = &m('epay');
-        $epay_data = $epay_mod->get(array(
-            'conditions'=>'user_id='.$seller_userid,
-        ));
-        $epay_data['money_dj'] = $epay_data['money_dj']+$yongjin;
-        $epay_data['money'] = $epay_data['money']-$yongjin;
-        $epay_mod->edit('user_id='.$seller_userid,$epay_data);
 
         return $order_id;
     }
