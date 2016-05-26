@@ -184,7 +184,7 @@ class OrderApp extends BackendApp
             'money'=>$order_xianxia_data['yongjin'],
             'money_flow'=>'outlay',
             'complete'=>1,
-            'log_text'=>'扣除线下交易佣金:买家('.$order_xianxia_data['buyer_name'].'),价格('.$order_xianxia_data['money'].')',
+            'log_text'=>'线下交易成功:买家('.$order_xianxia_data['buyer_name'].'),佣金('.$order_xianxia_data['yongjin'].'),剩余冻结资金('.$epay_data['money_dj'].'),余额('.$epay_data['money'].')',
             'add_time'=>gmtime(),
         ));
 
