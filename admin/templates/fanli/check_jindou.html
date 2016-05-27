@@ -1,0 +1,63 @@
+{include file="fanli/header.html"}
+
+
+<!-- Main content -->
+<section class="content">
+<!-- Main row -->
+<div class="row">
+    <section class="col-md-8 connectedSortable">
+
+        <div class="row">
+            <div id="fenpeiliebiao" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">每日运营情况</h3>
+                    </div>
+
+                    <div class="box-body  table-responsive no-padding">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th style="width: 80px">用户ID</th>
+                                <th>用户名</th>
+                                <th>资金差</th>
+                                <th>收入</th>
+                                <th>提现</th>
+                                <th>销售额度</th>
+                                <th>消费额度</th>
+                                <th>理论金豆</th>
+                                <th>实际金豆</th>
+                                <th>在线充值</th>
+                                <th>管理员充值</th>
+                                <th>注册时间</th>
+                            </tr>
+                            {foreach from=$members item=member}
+                            <tr>
+                                <td>{$member.user_id}</td>
+                                <th>{$member.user_name}</th>
+                                <th>{$member.zijincha}</th>
+                                <th>{$member.shouru}</th>
+                                <td>{$member.tixian}</td>
+                                <th>{$member.xiaoshou}</th>
+                                <th>{$member.xiaofei}</th>
+                                <th>{$member.lilunjindou}</th>
+                                <th>{$member.shijijindou}</th>
+                                <th>{$member.onlinechongzhi}</th>
+                                <th>{$member.adminchongzhi}</th>
+                                <th>{$member.reg_time}</th>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {include file="fanli/page.bottom.html"}
+    </section>
+</div><!-- /.row (main row) -->
+</section><!-- /.content -->
+
+
+
+{include file="fanli/footer.html"}

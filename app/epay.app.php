@@ -425,6 +425,8 @@ class EpayApp extends MemberbaseApp {
 
     //余额转帐
     function out() {
+        echo '资金转移接口已关闭';
+        return;
         $to_user = trim($_POST['to_user']);
         $to_money = trim($_POST['to_money']);
         $user_id = $this->visitor->get('user_id');
@@ -775,10 +777,10 @@ class EpayApp extends MemberbaseApp {
                 'name'  => 'epay_withdraw',
                 'url'   => 'index.php?app=epay&act=withdraw',
             ),
-            array(
-                'name'  => 'epay_out',
-                'url'   => 'index.php?app=epay&act=out',
-            ),
+//            array(
+//                'name'  => 'epay_out',
+//                'url'   => 'index.php?app=epay&act=out',
+//            ),
 
 //            array(
 //                'name'  => '金币兑换记录',
@@ -991,7 +993,8 @@ class EpayApp extends MemberbaseApp {
                     $bank_name = "支付宝";
             }
 
-            $log_text = $this->visitor->get('user_name') . "充值" . $cz_money . Lang::get('yuan');
+            $member_epay = $this->mod_epay->get("user_id='$user_id'");
+            $log_text = $this->visitor->get('user_name') . "当前余额(".$member_epay['money'].")"."充值" . $cz_money . Lang::get('yuan');
 
 
             if (!$_POST['order_sn']) {
@@ -1190,17 +1193,12 @@ class EpayApp extends MemberbaseApp {
                     $this->mod_epaylog->edit('order_sn=' . '"' . $v_oid . '"', $edit_epaylog);
 
 
-
-
-
-
                     //根据用户返回的 order_sn 判断是否为订单
                     $order_info = $this->mod_order->get('order_sn='.$v_oid);
 
                     if (!empty($order_info)) {
                         //如果存在订单号  则自动付款
                         $order_id = $order_info['order_id'];
-
 
                         $row_epay = $this->mod_epay->get("user_id='$user_id'");
                         $buyer_name = $row_epay['user_name']; //用户名
