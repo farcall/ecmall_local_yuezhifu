@@ -13,7 +13,7 @@ return array(
     'note_for_store_name' => '请控制在20个字以内',
     'region' => '所在地区',
     'upload_image' => '上传证件',
-    'note_for_image' => '支持格式jpg,jpeg,png,gif，请保证图片清晰且文件大小不超过600K',
+    'note_for_image' => '支持格式jpg,jpeg,png,gif，请保证图片清晰且文件大小不超过2M',
     'upload_permit' => '上传执照',
     'sgrade' => '选择等级',
     'select' => '选择',
