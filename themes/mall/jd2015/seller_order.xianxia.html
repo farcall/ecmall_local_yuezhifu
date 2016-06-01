@@ -19,7 +19,7 @@
     function add_uploadedfile(file_data)
     {
         if(file_data.instance == 'order_images'){
-            $('#order_images').append('<li ectype="handle_pic" file_id="'+ file_data.file_id +'" thumbnail="{$site_url}/'+ file_data.thumbnail +'"><input type="hidden" value="'+ file_data.file_id +'" name="order_file_id[]"/><div class="pic"><img src="{$site_url}/'+ file_data.thumbnail +'" width="55" height="55" alt="" /><div ectype="handler" class="bg"><p class="operation"><span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span></p></div></div></li>');
+            $('#order_images').append('<li ectype="handle_pic" file_id="'+ file_fdata.file_id +'" thumbnail="{$site_url}/'+ file_data.thumbnail +'"><input type="hidden" value="'+ file_data.file_id +'" name="order_file_id[]"/><div class="pic"><img src="{$site_url}/'+ file_data.thumbnail +'" width="55" height="55" alt="" /><div ectype="handler" class="bg"><p class="operation"><span class="delete" ectype="drop_image" ecm_title="{$lang.drop}"></span></p></div></div></li>');
             trigger_uploader();
             if(ORDER_SWFU.getStats().files_queued == 0){
                 window.setTimeout(function(){
@@ -63,6 +63,7 @@
                     var ratio = "{$epay_trade_charges_ratio}";
                     var money = $('#money').val();
                     var yongjin = ratio*money;
+
                     $('#yongjin').text(yongjin);
                     $('#tixing').show();
                 }
@@ -188,6 +189,9 @@
 
 
                         <div class="info individual">
+
+                            <input type="hidden" name="token" value="<?php echo $_SESSION['token']?>">
+
                             <table><!--会员名-->
                                 <tr>
                                     <th>会员名:</th>
@@ -218,7 +222,6 @@
                                         <label style="color: red">*</label>
                                     </td>
                                 </tr>
-
                                 <tr id="tixing" style="display: none;">
                                     <th>佣金提醒:</th>
                                     <td>

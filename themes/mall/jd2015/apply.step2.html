@@ -97,6 +97,7 @@ $(function(){
                 required:'请上传工商营业执照',
                 accept: '{$lang.select_valid_image}'
             },
+
             notice: {
                 required: '{$lang.check_notice}'
             }
@@ -195,12 +196,21 @@ $(function(){
                  <td><span class="field_notice">{$lang.note_for_image}</span></td>
               </tr>
              <tr>
-                 <th>工商营业执照:</th>
+                 <th>工商执照:</th>
                  <td><input type="file" name="image_3" />
                      {if $store.image_3}<p class="d_inline"><a href="{$site_url}/{$store.image_3}" target="_blank">{$lang.view}</a></p>{/if}
                  </td>
                  <td><span class="field_notice">{$lang.note_for_image}</span></td>
              </tr>
+             <tr>
+                 <th>商家门头:</th>
+                 <td><input type="file" name="image_4" />
+                     {if $store.image_4}<p class="d_inline"><a href="{$site_url}/{$store.image_4}" target="_blank">{$lang.view}</a></p>{/if}
+                 </td>
+                 <td><span class="field_notice">{$lang.note_for_image}</span></td>
+                 <td><span class="field_notice">门店外景照片（店名和地址需清晰可见</span></td>
+             </tr>
+
               <tr>
                  <td colspan="2" class="warning"><p><input type="checkbox"{if $store} checked="checked"{/if} name="notice" value="1" id="warning" /> <label for="warning">{$lang.notice}</label></p></td>
                  <td class="padding3"></td>
