@@ -299,7 +299,7 @@ class StoreApp extends BackendApp
         $uploader->allowed_size(SIZE_STORE_CERT); // 400KB
 
         $data = array();
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $file = $_FILES['image_' . $i];
             if ($file['error'] == UPLOAD_ERR_OK) {
                 if (empty($file)) {

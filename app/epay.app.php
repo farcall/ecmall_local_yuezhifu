@@ -103,7 +103,7 @@ class EpayApp extends MemberbaseApp {
     }
 
     //在线充值
-    function czlist() {
+    function  czlist() {
         $user_id = $this->visitor->get('user_id');
         $this->_curitem('czlist');
         $this->_curmenu('epay_czlist');
@@ -195,21 +195,6 @@ class EpayApp extends MemberbaseApp {
                 return;
             }
 
-            //18小时之内只能提现一次
-            $epaylog_data = $this->mod_epaylog->get(array(
-                'conditions' => "type=".EPAY_TX." and user_id=".$this->visitor->get('user_id'),
-                'order' => 'add_time DESC',
-            ));
-
-            if(!empty($epaylog_data)){
-                if((gmtime()-$epaylog_data['add_time']) < 1*18*60*60 ){
-                    date_default_timezone_set('Asia/Chongqing');
-                    $this->show_warning('18小时内只能提现一次，您上次提现时间是'.date("Y-m-d H:i:s", $epaylog_data['add_time']+8*3600));
-                    return;
-                }
-            }
-
-
             /**
              *上一次提现申请没有处理之前不能申请
              */
@@ -222,6 +207,24 @@ class EpayApp extends MemberbaseApp {
                 $this->show_warning('对不起，您提现时间为'.date("Y-m-d H:i:s", $check_epaylog['add_time']+8*3600).'的请求还未处理，请处理完毕之后再申请提现！');
                 return;
             }
+            
+            
+            //24小时之内只能提现一次
+            $epaylog_data = $this->mod_epaylog->get(array(
+                'conditions' => "type=".EPAY_TX." and states=71 and user_id=".$this->visitor->get('user_id'),
+                'order' => 'add_time DESC',
+            ));
+
+            if(!empty($epaylog_data)){
+                if((gmtime()-$epaylog_data['add_time']) < 1*24*60*60 ){
+                    date_default_timezone_set('Asia/Chongqing');
+                    $this->show_warning('24小时内只能提现一次，您上次提现时间是'.date("Y-m-d H:i:s", $epaylog_data['add_time']+8*3600));
+                    return;
+                }
+            }
+
+
+ 
 
             $money_row = $this->mod_epay->getrow("select * from " . DB_PREFIX . "epay where user_id='$user_id'");
 
@@ -994,7 +997,7 @@ class EpayApp extends MemberbaseApp {
             }
 
             $member_epay = $this->mod_epay->get("user_id='$user_id'");
-            $log_text = $this->visitor->get('user_name') . "当前余额(".$member_epay['money'].")"."充值" . $cz_money . Lang::get('yuan');
+            $log_text = $this->visitor->get('user_name') . "充值前余额:".$member_epay['money']."元".",本次充值:" . $cz_money . Lang::get('yuan');
 
 
             if (!$_POST['order_sn']) {

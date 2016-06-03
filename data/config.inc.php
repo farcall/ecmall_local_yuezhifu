@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'SITE_URL' => 'http://600.com',
-  'DB_CONFIG' => 'mysql://root:root@127.0.0.1:3306/fangou',
+  'SITE_URL' => 'http://www.600.com',
+  'DB_CONFIG' => 'mysql://root:lianqiao@127.0.0.1:3306/fangou',
   'DB_PREFIX' => 'ecm_',
   'LANG' => 'sc-utf-8',
   'COOKIE_DOMAIN' => '',
