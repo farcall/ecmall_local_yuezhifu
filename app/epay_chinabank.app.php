@@ -61,8 +61,8 @@ class Epay_chinabankApp extends MallbaseApp
                 if (empty($row_epay_log) || $row_epay_log['complete'] == '1') {
                     $this->writelog('已经完成');
                     echo 'ok';
+                    return;
                 }
-
                 //获取用户的余额
                 $user_id = $row_epay_log['user_id'];
                 $row_epay = $this->mod_epay->get("user_id='$user_id'");
@@ -107,6 +107,7 @@ class Epay_chinabankApp extends MallbaseApp
                     //检测余额是否足够
                     if ($buyer_old_money < $order_money) {   //检测余额是否足够 开始
                         echo 'ok';
+                        return;
                     }
 
 
@@ -171,10 +172,12 @@ class Epay_chinabankApp extends MallbaseApp
                 }
             }
             echo 'ok';
+            return;
         }
 
         $this->writelog('md5错误');
         echo 'error';
+        return;
     }
 
     function chinabank_return_notify_url11()
