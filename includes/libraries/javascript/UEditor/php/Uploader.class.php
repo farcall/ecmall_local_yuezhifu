@@ -72,6 +72,8 @@ class Uploader
      */
     private function upFile()
     {
+      //  file_put_contents('test.txt', print_r($_FILES, 1));
+
         $file = $this->file = $_FILES[$this->fileField];
         if (!$file) {
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_NOT_FOUND");

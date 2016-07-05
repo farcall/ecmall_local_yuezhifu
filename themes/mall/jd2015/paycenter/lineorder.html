@@ -1,0 +1,121 @@
+{include file="paycenter/header.html"}
+
+{include file="paycenter/left.html"}
+
+<link rel="stylesheet" type="text/css" href="{res file=webuploader/css/webuploader.css}"/>
+<link rel="stylesheet" type="text/css" href="{res file=webuploader/css/style.css}"/>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section>
+        <div class="row">
+            <div class="col-md-4">
+
+                <div id="wrapper">
+                    <div id="container">
+                        <!--头部，相册选择和格式选择-->
+                        <div id="uploader">
+                            <div class="queueList">
+                                <div id="dndArea" class="placeholder">
+                                    <div id="filePicker"></div>
+                                    <p>或将线下交易凭证照片拖到这里</p>
+                                </div>
+                            </div>
+                            <div class="statusBar" style="display:none;">
+                                <div class="progress">
+                                    <span class="text">0%</span>
+                                    <span class="percentage"></span>
+                                </div>
+                                <div class="info"></div>
+                                <div class="btns">
+                                    <div id="filePicker2"></div>
+                                    <div class="uploadBtn">开始上传</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-md-8">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">线下做单</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" action="index.php?app=lineorder" method="post"
+                          enctype="multipart/form-data" id="line_form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="buyer_name" class="col-sm-2 control-label">买家用户名</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="buyer_name" id="buyer_name"
+                                           placeholder="买家用户名"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_name" class="col-sm-2 control-label">产品名称</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="goods_name" id="goods_name"
+                                           placeholder="产品名称"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="money" class="col-sm-2 control-label">订单总金额</label>
+
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="money" id="money"
+                                           placeholder="本次订单总金额"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seller_username" class="col-sm-2 control-label">卖家经手人</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seller_username" id="seller_username"
+                                           placeholder="卖家经手人"/>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="seller_phone" class="col-sm-2 control-label">经手人联系电话</label>
+
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="seller_phone" id="seller_phone"
+                                           placeholder="经手人联系电话"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" name="line_image" id="line_image"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-right">提交</button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+
+
+        </div>
+    </section>
+</div>
+
+
+{include file="paycenter/footer.html"}
+
+<!--<script type="text/javascript" src="{res file=webuploader/js/jquery.js}"></script>-->
+<script type="text/javascript" src="{res file=webuploader/js/webuploader.js}"></script>
+<script type="text/javascript" src="{res file=webuploader/js/upload.js}"></script>

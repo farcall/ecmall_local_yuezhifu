@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  *    资金管理控制器
@@ -411,7 +411,7 @@ class EpayApp extends BackendApp {
                 $this->mod_epay->edit('user_id=' . $user_id, $new_money); //读取所有数据库
 
                 $edit_log = array(
-                    'add_time' => $add_time,
+                 //   'add_time' => $add_time,
                     'states' => 72, //改变状态为已审核(提现失败)
                     'complete'=>'1'
                 );
@@ -482,6 +482,112 @@ class EpayApp extends BackendApp {
 
             $this->show_message('setting_successed');
         }
+    }
+
+
+
+    function export_txlog()
+    {
+        $search_options = array(
+            'user_name' => Lang::get('user_name'),
+            'order_sn' => Lang::get('order_sn'),
+        );
+        /* 默认搜索的字段是操作名 */
+        $field = 'user_name';
+        array_key_exists($_GET['field'], $search_options) && $field = $_GET['field'];
+        $conditions = $this->_get_query_conditions(array(array(
+            'field' => $field, //按用户名,店铺名,支付方式名称进行搜索
+            'equal' => 'LIKE',
+            'name' => 'search_name',
+        ), array(
+            'field' => 'states',
+            'equal' => '=',
+            'name' => 'status',
+            'type' => 'numeric',
+        ), array(
+            'field' => 'add_time',
+            'name' => 'add_time_from',
+            'equal' => '>=',
+            'handler' => 'gmstr2time',
+        ), array(
+            'field' => 'add_time',
+            'name' => 'add_time_to',
+            'equal' => '<=',
+            'handler' => 'gmstr2time_end',
+        ), array(
+            'field' => 'money',
+            'name' => 'order_amount_from',
+            'equal' => '>=',
+            'type' => 'numeric',
+        ), array(
+            'field' => 'money',
+            'name' => 'order_amount_to',
+            'equal' => '<=',
+            'type' => 'numeric',
+        ),
+        ));
+//        $page = $this->_get_page(10);
+        $index = $this->mod_epaylog->find(array(
+            'conditions' => 'type='.EPAY_TX . $conditions,
+//            'limit' => $page['limit'],
+            'order' => "id desc",
+//            'count' => true
+        ));
+
+
+
+        //正则表达式拆分提现信息
+        //15653954865 申请提现金额200元开户银行:中国建设银行,开户行地址:银雀山路,户名:胡文涛,卡号:6217002290005033211
+        //开户银行  开户行地址  户名  卡号
+        $lang_title = array(
+            'order_sn'          => '订单号',
+            'user_name'         => '会员名称',
+            'money'             => '提现金额',
+            'add_time' 			=> '申请时间',
+            'bank'          => '开户银行',
+            'bank_address'  =>  '开户银行地址',
+            'bank_name'    =>'持卡人姓名',
+            'bank_card'     =>'卡号',
+            'to_id'             => '转账单号',
+        );
+
+        /* xls文件数组 */
+        $record_xls = $record_value = array();
+
+        $folder = 'draw_'.local_date('YmdHis', gmtime());
+
+        $record_xls[]  = $lang_title;
+        foreach($index as $key=>$record)
+        {
+            $record_value['order_sn']	    = $record['order_sn'];
+            $record_value['user_name']   	= $record['user_name'];
+            $record_value['money']			= $record['money'];
+            $record_value['add_time']     	= local_date('Y-m-d H:i:s',$record['add_time']);
+            // $record_value['log_text']       =$record['log_text'];
+            //log_text通过正则拆分˚
+
+            $log_text = $record['log_text'];
+            $kaihuyinhang = strpos($log_text,"开户银行:");
+            $kaihuhangdizhi = strpos($log_text,",开户行地址:");
+            $huming = strpos($log_text,",户名:");
+            $kahao = strpos($log_text,",卡号:");
+
+
+
+            $record_value['bank'] = substr($log_text,$kaihuyinhang+strlen("开户银行:"),($kaihuhangdizhi-$kaihuyinhang-strlen("开户银行:"))).'<br>';
+            $record_value['bank_address'] = substr($log_text,$kaihuhangdizhi+strlen(",开户行地址:"),($huming-$kaihuhangdizhi-strlen(",开户行地址:"))).'<br>';
+            $record_value['bank_name'] = substr($log_text,$huming+strlen(",户名:"),($kahao-$huming-strlen(",户名:"))).'<br>';
+            $record_value['bank_card'] = substr($log_text,$kahao+strlen(",卡号:"),($kahao+strlen(",卡号:"))).'<br>';
+
+            $record_value['to_id']			= $record['to_id'];
+
+            $record_xls[] = $record_value;
+        }
+
+        import('excelwriter.lib');
+        $ExcelWriter = new ExcelWriter(CHARSET, $folder);
+        $ExcelWriter->add_array($record_xls);
+        $ExcelWriter->output();
     }
 
 }

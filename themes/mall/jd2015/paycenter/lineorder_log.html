@@ -1,0 +1,62 @@
+{include file="paycenter/header.html"}
+
+{include file="paycenter/left.html"}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section>
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">线下交易记录</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>订单ID</th>
+                        <th>买家</th>
+                        <th>卖家</th>
+                        <th>价格</th>
+                        <th>商品</th>
+                        <th>完成时间</th>
+                        <th style="width: 40px">状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <!--{foreach from=$orders item=order name=fe_order}-->
+                    <tr>
+                        <td>{$order.id}</td>
+                        <td>{$order.order_id}</td>
+                        <td>{$order.buyer_username}</td>
+                        <td>{$order.seller_username}</td>
+                        <td>{$order.money}</td>
+                        <td>{$order.goods_name}</td>
+                        <td>{$order.add_time|date:Y-m-d H:i}</td>
+                        <td>
+                            <!--{if $order.status eq 31}-->
+                            <span class="label label-danger">等待审核</span>
+                            <!--{elseif $order.status eq 40}-->
+                            <span class="label label-success">审核通过</span>
+                            <!--{else}-->
+                            <span class="label label-info">审核拒绝</span>
+                            <!--{/if}-->
+                        </td>
+
+
+                        <td>
+                            <a href="index.php?app=offline_order&act=log&id={$order.order_id}">查看</a>
+                        </td>
+                    </tr>
+
+                    <!--{/foreach}-->
+                </table>
+            </div>
+            <!-- /.box-body -->
+            {include file=paycenter/page.bottom.html}
+        </div>
+    </section>
+</div>
+<!-- /.content-wrapper -->
+
+
+{include file="paycenter/footer.html"}

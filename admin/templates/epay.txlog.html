@@ -3,6 +3,13 @@
     $(function () {
         $('#add_time_from').datepicker({dateFormat: 'yy-mm-dd'});
         $('#add_time_to').datepicker({dateFormat: 'yy-mm-dd'});
+		
+		$('.J_ExportDraw').click(function(){
+		$('#tx_list').find('input[name="act"]').val('export_txlog');
+		$('#tx_list').submit();
+		$('#tx_list').find('input[name="act"]').val('txlog');
+	    });
+		
     });
 </script>
 
@@ -19,7 +26,7 @@
 
 <div class="mrightTop">
     <div class="fontl">
-        <form method="get">
+        <form method="get" id="tx_list">
             <div class="left">
                 <input name="app" type="hidden" id="app" value="epay" />
                 <input name="act" type="hidden" id="act" value="txlog" />
@@ -49,7 +56,7 @@
     <table width="100%" cellspacing="0">
 
         <tr class="tatr1">
-            <td width="20" class="firstCell">&nbsp;</td>
+            <td width="20" class="firstCell"><input type="checkbox" class="checkall" /></td>
             <td width="140">{$lang.order_sn}</td>
             <td>{$lang.user_name}</td>
             <td>{$lang.tx_money}</td>
@@ -64,28 +71,23 @@
 
         <!--{foreach from=$index item=val key=key}-->
         <tr class="tatr2">
-            <td width="20" class="firstCell">&nbsp;</td>
+            <td class="firstCell"><input type="checkbox" class="checkitem" value="{$val.id}" /></td>
             <td>{$val.order_sn}</td>
             <td><b>{$val.user_name}</b></td>
             <td><font color="#FF0000">{$val.money}</font></td>
             <td>{$val.add_time|date:y-m-d H:i}</td>        
             <td><!--{if $val.add_time}-->{$val.add_time|date:y-m-d H:i}<!--{else}-->{$lang.tx_weishenhe}<!--{/if}--></td>
             <td class="table_center">
-                <!--{if $val.states==72}-->
-                <img src="templates/style/images/positive_enabled.gif">
-                <!--{/if}-->
                 <!--{if $val.states==71}-->
-                <img src="templates/style/images/positive_enabled.gif">
+                <img src="{res file=style/images/positive_enabled.gif}">
                 <!--{/if}-->
                 <!--{if $val.states==70}-->
-                <img src="templates/style/images/positive_disabled.gif">
+                <img src="{res file=style/images/positive_disabled.gif}">
                 <!--{/if}-->
             </td>
             <td>{$val.to_id}</td>  
             <td class="handler">
-                <!--{if $val.states==72}-->
-                <font color="#FF0000">已驳回</font>
-                <!--{elseif $val.states==70}-->
+                <!--{if $val.states==70}-->
                 <a href="index.php?app=epay&act=tx_view&user_id={$val.user_id}&log_id={$val.id}">{$lang.tx_xq_shenhe}</a>
                 <!--{else}-->
                 {$lang.tx_yishenhe}
@@ -100,6 +102,10 @@
     </table>
     <!--{if $index}-->
     <div id="dataFuncs">
+        <div id="batchAction" class="left paddingT15"> &nbsp;&nbsp;
+          <input class="formbtn batchButton" type="button" value="{$lang.drop}" name="id" uri="index.php?app=epay&act=drop_txlog" presubmit="confirm('{$lang.drop_confirm}');" />
+          <a class="formbtn J_ExportDraw" style="display:inline-block; text-align:center; text-decoration:none; line-height:20px;" href="javascript:;">批量导出</a>
+        </div>
         <div class="pageLinks">{include file=page.bottom.html}</div>
         <div class="clear"></div>
     </div>

@@ -1,0 +1,142 @@
+{include file="paycenter/header.html"}
+
+{include file="paycenter/left.html"}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            账户预览
+            <small>Version 1.0</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">账户预览</li>
+        </ol>
+    </section>
+
+
+    <section class="content">
+        <h2>现金账户</h2>
+
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="ion ion-social-yen-outline"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">现金余额</span>
+                        <span class="info-box-number">{$member.money}</span>
+                        <a href="/index.php?app=epay&act=czlist" target="_blank">
+                            <button type="button" class="btn btn-success">充值</button>
+                        </a>
+                        <a href="/index.php?app=epay&act=withdraw" target="_blank">
+                            <button type="button" class="btn btn-danger">提现</button>
+                        </a>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-maroon-active"><i class="fa ion-social-chrome-outline"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">冻结资金</span>
+                        <span class="info-box-number">{$member.money_dj}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">税费资金</span>
+                        <span class="info-box-number">{$member.money_tax}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <h2>积分账户</h2>
+
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-fuchsia"><i class="ion ion-social-github-outline"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">积分赠送权</span>
+                        <span class="info-box-number">{$member.integral_power}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow-active"><i class="fa ion-social-twitter"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">白积分</span>
+                        <span class="info-box-number">{$member.integral_white}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="ion ion-social-reddit-outline"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">红积分</span>
+                        <span class="info-box-number">{$member.integral_red}</span>
+
+                        <form action="index.php?app=integral_red&act=exchange" method="post">
+                            <div class="input-group">
+                                <input type="number" name="integral_red" placeholder="输入红积分数量" class="form-control">
+                                <span class="input-group-btn">
+                                     <button type="submit" class="btn btn-success btn-flat">兑换</button>
+                                </span>
+                            </div>
+                        </form>
+
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+
+</div>
+<!-- /.content-wrapper -->
+
+
+{include file="paycenter/footer.html"}
